@@ -50,14 +50,14 @@ def iverilog_call(dir, silent = False, timeout = 120):
     # vvp_filename = "%s.vvp"%(task_id)
     vvp_filename = "run.vvp"
     # cmd1 = "iverilog -g2012 -o %s %s"%(vvp_filename, vlist_str) # used to be vvp_path
-    cmd1 = "~/bin/bin/iverilog -g2012 -o %s %s"%(vvp_filename, vlist_str) # used to be vvp_path
+    cmd1 = "~/iverilog/bin/iverilog -g2012 -o %s %s"%(vvp_filename, vlist_str) # used to be vvp_path
     s_print(cmd1)
     with run_in_dir(dir):
         run1_info = subproc_call(cmd1, timeout) # {"out": out_reg, "err": err_reg, "haserror": error_exist}
     if run1_info["haserror"]:
         s_print("iverilog compiling failed")
         return [False, cmd1, run1_info, None, None, run1_info["err"]]
-    cmd2 = "~/bin/bin/vvp %s"%(vvp_filename) # used to be vvp_path
+    cmd2 = "~/iverilog/bin/vvp %s"%(vvp_filename) # used to be vvp_path
     s_print(cmd2)
     with run_in_dir(dir):
         run2_info = subproc_call(cmd2, timeout)

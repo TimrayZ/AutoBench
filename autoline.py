@@ -154,9 +154,9 @@ def pipeline_one_prob(prob_data:dict, TBgen_prompt_script, config):
                 TBgen()
                 TBsim = TaskTBsimNew(TBgen, TBgen.TB_code, header, task_dir, task_id, config)
                 TBsim.run()
-                # TB_code = TBgen.TB_code if TBsim.debug_iter_now == 0 else TBsim.TB_code_now
-                TBeval = TaskTBeval(task_id, task_dir, TB_gen=TBsim.TB_code_now, TB_golden=TB_golden, DUT_golden=DUT_golden, DUT_mutant_list=mutant_list, DUT_gptgen_list=gptgen_list, pychecker_en=TBsim.pychecker_en, pychecker_code=TBsim.PY_code_now, config=config)
-                TBeval.run()
+                # # TB_code = TBgen.TB_code if TBsim.debug_iter_now == 0 else TBsim.TB_code_now
+                # TBeval = TaskTBeval(task_id, task_dir, TB_gen=TBsim.TB_code_now, TB_golden=TB_golden, DUT_golden=DUT_golden, DUT_mutant_list=mutant_list, DUT_gptgen_list=gptgen_list, pychecker_en=TBsim.pychecker_en, pychecker_code=TBsim.PY_code_now, config=config)
+                # TBeval.run()
                 incomplete_running = False
             else: # normal running
                 try:
@@ -165,9 +165,9 @@ def pipeline_one_prob(prob_data:dict, TBgen_prompt_script, config):
                     TBgen()
                     TBsim = TaskTBsimNew(TBgen, TBgen.TB_code, header, task_dir, task_id, config)
                     TBsim.run()
-                    # TB_code = TBgen.TB_code if TBsim.debug_iter_now == 0 else TBsim.TB_code_now
-                    TBeval = TaskTBeval(task_id, task_dir, TB_gen=TBsim.TB_code_now, TB_golden=TB_golden, DUT_golden=DUT_golden, DUT_mutant_list=mutant_list, DUT_gptgen_list=gptgen_list, pychecker_en=TBsim.pychecker_en, pychecker_code=TBsim.PY_code_now, config=config)
-                    TBeval.run()
+                    # # TB_code = TBgen.TB_code if TBsim.debug_iter_now == 0 else TBsim.TB_code_now
+                    # TBeval = TaskTBeval(task_id, task_dir, TB_gen=TBsim.TB_code_now, TB_golden=TB_golden, DUT_golden=DUT_golden, DUT_mutant_list=mutant_list, DUT_gptgen_list=gptgen_list, pychecker_en=TBsim.pychecker_en, pychecker_code=TBsim.PY_code_now, config=config)
+                    # TBeval.run()
                 except Exception as e:
                     incomplete_running = True
                     print_and_save("{{ERROR}} [%s] %s"%(task_id, str(e)), config)            
@@ -207,26 +207,26 @@ def pipeline_one_prob(prob_data:dict, TBgen_prompt_script, config):
                 "py_runing_time": TBsim.py_runing_time
             })
         
-    if TBeval_exist:
-        if TBeval.Eval1_exist:
-            info_out.update({"Eval1_pass": TBeval.Eval1_pass})
-        if TBeval.Eval2_exist:
-            info_out.update({
-                "Eval2_pass": TBeval.Eval2_pass,
-                "Eval2_ratio": "%d/%d"%(len(TBeval.Eval2_passed_mutant_idx), len(prob_data['mutants'])),
-                "Eval2_failed_mutant_idxes": TBeval.Eval2_failed_mutant_idx
-            })
-        if TBeval.Eval2b_exist:
-            info_out.update({
-                "Eval2b_pass": TBeval.Eval2b_pass,
-                "Eval2b_ratio": "%d/%d"%(len(TBeval.Eval2b_passed_mutant_idx), len(prob_data['gptgen_RTL'])),
-                "Eval2b_failed_mutant_idxes": TBeval.Eval2b_failed_mutant_idx
-            })
-    if not incomplete_running:
-        full_pass = TBsim.sim_pass and TBeval.Eval1_pass and TBeval.Eval2_pass
-        info_out.update({
-            "full_pass": full_pass
-        })
+    # if TBeval_exist:
+    #     if TBeval.Eval1_exist:
+    #         info_out.update({"Eval1_pass": TBeval.Eval1_pass})
+    #     if TBeval.Eval2_exist:
+    #         info_out.update({
+    #             "Eval2_pass": TBeval.Eval2_pass,
+    #             "Eval2_ratio": "%d/%d"%(len(TBeval.Eval2_passed_mutant_idx), len(prob_data['mutants'])),
+    #             "Eval2_failed_mutant_idxes": TBeval.Eval2_failed_mutant_idx
+    #         })
+    #     if TBeval.Eval2b_exist:
+    #         info_out.update({
+    #             "Eval2b_pass": TBeval.Eval2b_pass,
+    #             "Eval2b_ratio": "%d/%d"%(len(TBeval.Eval2b_passed_mutant_idx), len(prob_data['gptgen_RTL'])),
+    #             "Eval2b_failed_mutant_idxes": TBeval.Eval2b_failed_mutant_idx
+    #         })
+    # if not incomplete_running:
+    #     full_pass = TBsim.sim_pass and TBeval.Eval1_pass and TBeval.Eval2_pass
+    #     info_out.update({
+    #         "full_pass": full_pass
+    #     })
     # save the info into a json file in problem dir
     save_dict_json_form(info_out, task_dir + "run_info.json")
     return info_out
