@@ -252,6 +252,9 @@ def run_like_a_chatgpt(config):
 def enter_api_key(api_key_path, provider="openai"):
     if provider == "openai":
         key = ls.load_json_dict(api_key_path)["OPENAI_API_KEY"]
+        api_key_env = os.getenv("OPENAI_API_KEY")
+        if api_key_env is not None:
+            key = api_key_env
         client = OpenAI(api_key=key)
     elif provider == "anthropic":
         key = ls.load_json_dict(api_key_path)["ANTHROPIC_API_KEY"]
