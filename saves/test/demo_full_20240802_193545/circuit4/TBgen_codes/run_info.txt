@@ -1,0 +1,15 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp circuit4_tb.v circuit4.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+circuit4_tb.v:114: $finish called at 90000 (1ps)
+
+iverilog cmd 2 error:
+

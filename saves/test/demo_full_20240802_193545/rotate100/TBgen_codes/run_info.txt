@@ -1,0 +1,18 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp rotate100_tb.v rotate100.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+rotate100_tb.v:33: warning: Extra digits given for sized binary constant.
+rotate100_tb.v:33: warning: Numeric constant truncated to 100 bits.
+rotate100_tb.v:79: warning: Extra digits given for sized binary constant.
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+rotate100_tb.v:114: $finish called at 210000 (1ps)
+
+iverilog cmd 2 error:
+

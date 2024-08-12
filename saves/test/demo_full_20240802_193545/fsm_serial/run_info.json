@@ -1,0 +1,14 @@
+{
+    "task_id": "fsm_serial",
+    "task_number": 147,
+    "time": 156.37,
+    "prompt_tokens": 11263,
+    "completion_tokens": 11500,
+    "ERROR(incomplete)": false,
+    "circuit_type": "SEQ",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 2,
+    "iv_runing_time": 0.06
+}

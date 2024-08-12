@@ -1,0 +1,10 @@
+scenario: 1, x =  0, y =  0, sum =  z
+scenario: 2, x =  1, y =  1, sum =  z
+scenario: 3, x =  2, y =  2, sum =  z
+scenario: 4, x = 15, y =  1, sum =  z
+scenario: 5, x =  5, y = 10, sum =  z
+scenario: 6, x =  8, y =  8, sum =  z
+scenario: 7, x = 15, y = 15, sum =  z
+scenario: 8, x =  7, y =  8, sum =  z
+scenario: 9, x =  3, y =  5, sum =  z
+scenario: 10, x =  0, y = 15, sum =  z

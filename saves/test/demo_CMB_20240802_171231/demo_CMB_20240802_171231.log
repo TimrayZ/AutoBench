@@ -1,0 +1,169 @@
+
+---------------custom config--------------
+run: 
+    mode: autoline
+save: 
+    en: True
+    pub: 
+        prefix: demo_CMB
+        subdir: test
+gpt: 
+    model: 4t
+autoline: 
+    probset: 
+        path: data/HDLBits/HDLBits_data.jsonl
+        mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+        only: ['conditional']
+    promptscript: pychecker
+    timeout: 40
+------------------------------------------
+------config info (custom + default)------
+run: 
+    version: 5.0
+    author: Ruidi Qiu - Technical University of Munich
+    time: 20240802_171231
+    custom_path: config/demos/CMB_template.yaml
+    mode: autoline
+    hostname: resi08
+    pid: 3634038
+save: 
+    en: True
+    root: saves/test/demo_CMB_20240802_171231/
+    pub: 
+        prefix: demo_CMB
+        dir: saves/
+        subdir: test/
+    log: 
+        en: True
+        dir: logs/
+        notes: None
+        cfg_pmode: iwantall
+    message: 
+        en: True
+        dir: messages/
+        format: json
+    iverilog: 
+        en: True
+        subdir: ivcode_nodebug
+load: 
+    prompt: 
+        path: config/initial_prompts/prompt1.txt
+        pick_idx: []
+    stage_template: 
+        path: config/templates/stage_template0301.txt
+gpt: 
+    model: gpt-4-turbo-2024-04-09
+    key_path: config/key_API.json
+    temperature: None
+    json_mode: False
+    chatgpt: 
+        start_form: chat
+        one_time_talk: False
+iverilog: 
+    dir: 
+    task_id: 
+autoline: 
+    probset: 
+        path: data/HDLBits/HDLBits_data.jsonl
+        mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+        gptgenRTL_path: None
+        more_info_paths: []
+        only: ['conditional']
+        exclude: []
+        exclude_json: None
+        filter: [{}]
+    checklist: 
+        max: 3
+    debug: 
+        max: 5
+        reboot: 1
+        py_rollback: 2
+    onlyrun: None
+    promptscript: pychecker
+    error_interruption: False
+    timeout: 40
+------------------------------------------
+
+--------------default config--------------
+run: 
+    version: 5.0
+    author: Ruidi Qiu - Technical University of Munich
+    time: None
+    custom_path: None
+    mode: chatgpt
+save: 
+    en: True
+    root: None
+    pub: 
+        prefix: None
+        dir: saves/
+        subdir: 
+    log: 
+        en: True
+        dir: logs/
+        notes: None
+        cfg_pmode: iwantall
+    message: 
+        en: True
+        dir: messages/
+        format: json
+    iverilog: 
+        en: True
+        subdir: ivcode_nodebug
+load: 
+    prompt: 
+        path: config/initial_prompts/prompt1.txt
+        pick_idx: []
+    stage_template: 
+        path: config/templates/stage_template0301.txt
+gpt: 
+    model: 4
+    key_path: config/key_API.json
+    temperature: None
+    json_mode: False
+    chatgpt: 
+        start_form: chat
+        one_time_talk: False
+iverilog: 
+    dir: 
+    task_id: 
+autoline: 
+    probset: 
+        path: None
+        mutant_path: None
+        gptgenRTL_path: None
+        more_info_paths: []
+        only: []
+        exclude: []
+        exclude_json: None
+        filter: [{}]
+    checklist: 
+        max: 3
+    debug: 
+        max: 5
+        reboot: 1
+        py_rollback: 2
+    onlyrun: None
+    promptscript: None
+    error_interruption: False
+    timeout: 60
+------------------------------------------
+
+#################### task 1/1 [conditional] ####################
+stage_0 ends (7.74s used, time: 17:12:39 2024-08-02)
+stage_1 ends (13.37s used, time: 17:12:52 2024-08-02)
+stage_2 ends (12.08s used, time: 17:13:05 2024-08-02)
+stage_3 ends (15.70s used, time: 17:13:20 2024-08-02)
+stage_4 ends (27.20s used, time: 17:13:47 2024-08-02)
+stage_checklist ends (1.09s used, time: 17:13:49 2024-08-02)
+stage_5 ends (10.42s used, time: 17:13:59 2024-08-02)
+
+[conditional] iverilog simulation failed! Debuging... (debug_iter = 1, time: 17:13:59 2024-08-02)
+[conditional] verilog iter - 1/5, total - 1/10: verilog DEBUG finished (33.91s used, time: 17:14:33 2024-08-02)
+
+[conditional] iverilog simulation failed! Rebooting... (debug_iter = 2, time: 17:14:33 2024-08-02)
+stage_4 ends (36.39s used, time: 17:15:09 2024-08-02)
+stage_checklist ends (1.16s used, time: 17:15:10 2024-08-02)
+[conditional] verilog iter - 2/5, total - 2/10: verilog REBOOT finished (37.62s used, time: 17:15:11 2024-08-02)
+
+[conditional] iverilog simulation failed! Debuging... (debug_iter = 3, time: 17:15:11 2024-08-02)

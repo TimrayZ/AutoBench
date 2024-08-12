@@ -1,0 +1,56 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+The game Lemmings involves critters with fairly simple brains. So simple that we are going to model it using a finite state machine. In the Lemmings' 2D world, Lemmings can be in one of two states: walking left (walk_left is 1) or walking right (walk_right is 1). It will switch directions if it hits an obstacle. In particular, if a Lemming is bumped on the left (by receiving a 1 on bump_left), it will walk right. If it's bumped on the right (by receiving a 1 on bump_right), it will walk left. If it's bumped on both sides at the same time, it will still switch directions. Implement a Moore state machine with two states, two inputs, and one output (internal to the module) that models this behaviour. areset is positive edge triggered asynchronous reseting the Lemming machine to walk left.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT implements a Moore state machine with two states: 'walking left' and 'walking right'.",
+    "2. The DUT has two input signals: 'bump_left' and 'bump_right', which determine the direction of walking based on user input.",
+    "3. The DUT has one output for each state: 'walk_left' when in the 'walking left' state and 'walk_right' when in the 'walking right' state.",
+    "4. The input 'areset' is a positive edge-triggered asynchronous reset signal that resets the state machine to 'walking left'.",
+    "5. The state machine should switch states based on bump signals; if bumped left, it switches to 'walking right', and if bumped right, it switches to 'walking left'.",
+    "6. In scenarios where both bumps are received simultaneously, the machine should switch directions regardless."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input areset,
+	input bump_left,
+	input bump_right,
+	output walk_left,
+	output walk_right
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Initially, assert areset high and hold for 1 clock cycle to reset the DUT. After reset, release areset and wait for 1 clock cycle.",
+  "scenario 2": "After the reset, set bump_left high for 1 clock cycle and observe the outputs. Ensure bump_right remains low during this cycle.",
+  "scenario 3": "Set bump_right high for 1 clock cycle, while bump_left is low. Observe the outputs during this cycle.",
+  "scenario 4": "Set bump_left high and bump_right low for 2 clock cycles, then set bump_left low and bump_right low for 1 clock cycle, followed by asserting bump_left high for 1 clock cycle.",
+  "scenario 5": "Simultaneously assert both bump_left and bump_right high for 1 clock cycle, then release both signals and observe the outputs for 1 clock cycle.",
+  "scenario 6": "Hold bump_left high for 1 clock cycle while asserting bump_right low, release bump_left after the cycle, and observe the outputs for 1 clock cycle.",
+  "scenario 7": "Keep bump_right high for 2 clock cycles, then set it low and keep bump_left low. Observe outputs for 1 clock cycle.",
+  "scenario 8": "Perform a final test by asserting areset high for 1 clock cycle, then release it and check the initial state outputs."
+}
+

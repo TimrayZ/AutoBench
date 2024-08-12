@@ -1,0 +1,28 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp vector100r_tb.v vector100r.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+vector100r_tb.v:22: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:27: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:27: warning: Numeric constant truncated to 100 bits.
+vector100r_tb.v:32: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:32: warning: Numeric constant truncated to 100 bits.
+vector100r_tb.v:37: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:42: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:42: warning: Numeric constant truncated to 100 bits.
+vector100r_tb.v:47: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:52: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:57: warning: Extra digits given for sized binary constant.
+vector100r_tb.v:57: warning: Numeric constant truncated to 100 bits.
+vector100r_tb.v:67: warning: Extra digits given for sized binary constant.
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+vector100r_tb.v:75: $finish called at 10 (1s)
+
+iverilog cmd 2 error:
+

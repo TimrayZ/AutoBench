@@ -1,0 +1,25 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp gatesv100_tb.v gatesv100.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+gatesv100_tb.v:31: warning: Extra digits given for sized binary constant.
+gatesv100_tb.v:31: warning: Numeric constant truncated to 100 bits.
+gatesv100_tb.v:36: warning: Extra digits given for sized binary constant.
+gatesv100_tb.v:36: warning: Numeric constant truncated to 100 bits.
+gatesv100_tb.v:41: warning: Extra digits given for sized binary constant.
+gatesv100_tb.v:41: warning: Numeric constant truncated to 100 bits.
+gatesv100_tb.v:46: warning: Extra digits given for sized binary constant.
+gatesv100_tb.v:46: warning: Numeric constant truncated to 100 bits.
+gatesv100_tb.v:51: warning: Extra digits given for sized binary constant.
+gatesv100_tb.v:51: warning: Numeric constant truncated to 100 bits.
+gatesv100_tb.v:56: warning: Extra digits given for sized binary constant.
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+
+iverilog cmd 2 error:
+

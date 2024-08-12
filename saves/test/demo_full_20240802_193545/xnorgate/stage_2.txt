@@ -1,0 +1,50 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Create a module that implements an XNOR gate.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1: The DUT is an XNOR gate, which means the output 'out' should be true (1) if the inputs 'a' and 'b' are both true (1) or both false (0). Otherwise, the output 'out' should be false (0).",
+    "2: The input signals 'a' and 'b' are 1-bit binary signals (either 0 or 1).",
+    "3: The output signal 'out' is also a 1-bit binary signal.",
+    "4: The XNOR gate truth table is as follows: if a=0, b=0 then out=1; if a=0, b=1 then out=0; if a=1, b=0 then out=0; if a=1, b=1 then out=1."
+  ]
+}
+DUT header:
+module top_module(
+	input a, 
+	input b,
+	output out
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set inputs 'a' and 'b' to 0 at clock cycle 0. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set inputs 'a' to 0 and 'b' to 1 at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 3": "Set inputs 'a' to 1 and 'b' to 0 at clock cycle 2. Wait for 1 clock cycle to observe the output.",
+  "scenario 4": "Set inputs 'a' and 'b' to 1 at clock cycle 3. Wait for 1 clock cycle to observe the output.",
+  "scenario 5": "Toggle inputs 'a' and 'b' to 0 at clock cycle 4, and then set 'a' to 1 and 'b' to 0 at clock cycle 5. Wait for 1 clock cycle to observe the output for both sets of inputs.",
+  "scenario 6": "Set inputs 'a' to 1 and 'b' to 1 at clock cycle 6. Wait for 1 clock cycle to observe the output.",
+  "scenario 7": "Reset inputs 'a' and 'b' to their initial state (0, 0) at clock cycle 7. Wait for 1 clock cycle to observe the output."
+}
+

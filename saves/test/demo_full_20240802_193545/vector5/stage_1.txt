@@ -1,0 +1,45 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Given five 1-bit signals (a, b, c, d, and e), compute all 25 pairwise one-bit comparisons in the 25-bit output vector. The output should be 1 if the two bits being compared are equal. Example: out[24] = ~a ^ a; out[23] = ~a ^ b; out[22] = ~a ^ c; ... out[ 1] = ~e ^ d; out[ 0] = ~e ^ e.
+DUT header:
+module top_module (
+	input a,
+	input b,
+	input c,
+	input d,
+	input e,
+	output [24:0] out
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "Given five 1-bit signals (a, b, c, d, and e), compute all 25 pairwise one-bit comparisons in the 25-bit output vector. The output should be 1 if the two bits being compared are equal. Example comparisons include out[24] = ~a ^ a; out[23] = ~a ^ b; out[22] = ~a ^ c; ... out[1] = ~e ^ d; out[0] = ~e ^ e.",
+  "technical specifications": [
+    "1. Module Header: module top_module (input a, input b, input c, input d, input e, output [24:0] out)",
+    "2. Input signals: 5 one-bit inputs (a, b, c, d, e)",
+    "3. Output signal: 25-bit output vector (out)",
+    "4. Output logic: out[n] = ~(input1 ^ input2) where input1 and input2 are combined from inputs a, b, c, d, and e for all pairwise comparisons.",
+    "5. Total number of comparisons: 25 pairs from 5 signals (each signal compared with every other, including itself).",
+    "6. Expected output should match the condition where out[i] is 1 if the corresponding bits are equal and 0 otherwise."
+  ]
+}
+

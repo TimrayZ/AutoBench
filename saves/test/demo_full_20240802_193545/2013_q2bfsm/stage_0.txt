@@ -1,0 +1,123 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Consider a finite state machine that is used to control some type of motor. The FSM has inputs x and y, which come from the motor, and produces outputs f and g, which control the motor. There is also a clock input called clk and a reset input (synchronous, active low) called resetn. The FSM has to work as follows. As long as the reset input is asserted, the FSM stays in a beginning state, called state A. When the reset signal is de-asserted, then after the next clock edge the FSM has to set the output f to 1 for one clock cycle. Then, the FSM has to monitor the x input. When x has produced the values 1, 0, 1 in three successive clock cycles, then g should be set to 1 on the following clock cycle. While maintaining g = 1 the FSM has to monitor the y input. If y has the value 1 within at most two clock cycles, then the FSM should maintain g = 1 permanently (that is, until reset). But if y does not become 1 within two clock cycles, then the FSM should set g = 0 permanently (until reset).
+RTL header:
+module top_module (
+	input clk,
+	input resetn,
+	input x,
+	input y,
+	output f,
+	output g
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input clk,
+    input resetn,
+    input x,
+    input y,
+    output reg f,
+    output reg g
+);
+    
+    // State encoding
+    typedef enum logic [2:0] {
+        STATE_A = 3'b000,
+        STATE_B = 3'b001,
+        STATE_C = 3'b010,
+        STATE_D = 3'b011,
+        WAIT_Y1 = 3'b100,
+        WAIT_Y2 = 3'b101
+    } state_t;
+
+    state_t current_state, next_state;
+    reg [1:0] x_counter; // Counter for the x sequence
+    reg y_detected;      // Flag for y detection
+
+    // Sequential Logic
+    always @(posedge clk or negedge resetn) begin
+        if (!resetn) begin
+            current_state <= STATE_A;
+            f <= 0;
+            g <= 0;
+            x_counter <= 2'b00;
+            y_detected <= 0;
+        end else begin
+            current_state <= next_state;
+        end
+    end
+
+    // Combinational Logic
+    always @(*) begin
+        next_state = current_state; // Default next state
+        f = 0; // Default output f
+        g = 0; // Default output g
+        case (current_state)
+            STATE_A: begin
+                // On reset, stay in state A
+                if (!resetn) begin
+                    next_state = STATE_A;
+                end else begin
+                    f = 1; // Set f to 1 on the first clock after reset
+                    next_state = STATE_B; // Move to state B
+                end
+            end
+            
+            STATE_B: begin
+                // Monitor x for three cycles
+                if (x_counter == 2'b10 && x == 1) begin
+                    g = 1; // Set g to 1 after finding 1, 0, 1 sequence
+                    next_state = WAIT_Y1; // Move to wait for y
+                end else begin
+                    if (x == 1) begin
+                        x_counter = x_counter + 1; // Increment x sequence counter
+                    end else begin
+                        x_counter = 2'b00; // Reset counter if x is 0
+                    end
+                end
+            end
+            
+            WAIT_Y1: begin
+                // First clock monitoring y
+                if (y == 1) begin
+                    g = 1; // Maintain g = 1
+                    y_detected = 1; // y has been detected
+                    next_state = WAIT_Y1; // Stay here while g is maintained
+                end else begin
+                    next_state = WAIT_Y2; // Move to wait for y in next clock
+                end
+            end
+            
+            WAIT_Y2: begin
+                // Second clock monitoring y
+                if (y == 1) begin
+                    g = 1; // Maintain g = 1
+                    y_detected = 1; // y has been detected
+                    next_state = WAIT_Y1; // Stay here while g is maintained
+                end else begin
+                    g = 0; // Set g to 0 if y is not detected
+                    next_state = WAIT_Y1; // Go back to maintain state
+                end
+            end
+            
+            default: begin
+                next_state = STATE_A; // Default state
+            end
+        endcase
+    end
+endmodule
+```
+

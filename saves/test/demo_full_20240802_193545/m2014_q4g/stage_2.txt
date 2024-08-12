@@ -1,0 +1,55 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Implement in Verilog the following circuit: A two-input XNOR (connected to 'in1' and 'in2) has an output connected to the input of a two-input XOR. The second input of the XOR is 'in3.' The output of the XOR is 'out'.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is a digital circuit that implements a two-input XNOR gate followed by a two-input XOR gate.",
+    "2. The inputs of the DUT are 'in1', 'in2', and 'in3'.",
+    "3. The output of the XNOR gate (connected to 'in1' and 'in2') is the first input to the XOR gate.",
+    "4. The output of the XOR gate is 'out'.",
+    "5. The expected behavior of the DUT is that the output 'out' is true if the number of true inputs at 'in1', 'in2', and 'in3' is odd (after being processed through the XNOR and XOR gates)."
+  ]
+}
+DUT header:
+module top_module (
+	input in1,
+	input in2,
+	input in3,
+	output logic out
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply inputs in1=0, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 2": "Apply inputs in1=0, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 3": "Apply inputs in1=0, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 4": "Apply inputs in1=0, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 5": "Apply inputs in1=1, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 6": "Apply inputs in1=1, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 7": "Apply inputs in1=1, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 8": "Apply inputs in1=1, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 9": "Apply inputs in1=0, in2=1, in3=0, then change in1 to 1 after 1 clock cycle.",
+  "scenario 10": "Apply inputs in1=1, in2=0, in3=0, then change in3 to 1 after 1 clock cycle."
+}
+

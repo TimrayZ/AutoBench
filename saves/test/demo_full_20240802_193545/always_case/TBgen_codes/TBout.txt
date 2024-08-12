@@ -1,0 +1,8 @@
+scenario: 1, sel = 0, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 2, sel = 1, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 3, sel = 2, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 4, sel = 3, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 5, sel = 4, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 6, sel = 5, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 7, sel = 6, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x
+scenario: 8, sel = 7, data0 =  1, data1 =  2, data2 =  3, data3 =  4, data4 =  5, data5 =  6, out =  x

@@ -1,0 +1,2 @@
+edgecapture_tb.v
+edgecapture.v

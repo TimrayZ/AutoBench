@@ -1,0 +1,9 @@
+scenario: 1, clk = 1, resetn = 1, r = xxx, g = zzz
+scenario: 2, clk = 1, resetn = 1, r = 100, g = zzz
+scenario: 3, clk = 1, resetn = 1, r = 010, g = zzz
+scenario: 4, clk = 1, resetn = 1, r = 001, g = zzz
+scenario: 5, clk = 1, resetn = 1, r = 110, g = zzz
+scenario: 5a, clk = 1, resetn = 1, r = 010, g = zzz
+scenario: 6, clk = 1, resetn = 1, r = 001, g = zzz
+scenario: 7, clk = 1, resetn = 1, r = 111, g = zzz
+scenario: 8, clk = 1, resetn = 1, r = 000, g = zzz

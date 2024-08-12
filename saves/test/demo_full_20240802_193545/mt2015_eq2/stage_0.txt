@@ -1,0 +1,31 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Create a circuit that has two 2-bit inputs A[1:0] and B[1:0], and produces an output z. The value of z should be 1 if A = B, otherwise z should be 0.
+RTL header:
+module top_module(
+	input [1:0] A,
+	input [1:0] B,
+	output z);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+	input [1:0] A,
+	input [1:0] B,
+	output z
+);
+	assign z = (A == B) ? 1'b1 : 1'b0;
+endmodule
+```
+

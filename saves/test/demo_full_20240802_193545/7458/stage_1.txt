@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+The 7458 is a chip with four AND gates and two OR gates. Create a module in Verilog with the same functionality as the 7458 chip. It has 10 inputs and 2 outputs. You may choose to use an `assign` statement to drive each of the output wires, or you may choose to declare (four) wires for use as intermediate signals, where each internal wire is driven by the output of one of the AND gates.
+
+// In this circuit, p1y should be the OR of two 3-input AND gates: one that ANDs p1a, p1b, and p1c, and the second that ANDs p1d, p1e, and p1f. The output p2y is the OR of two 2-input AND gates: one that ANDs p2a and p2b, and the second that ANDs p2c and p2d.
+DUT header:
+module top_module(
+	input p1a, 
+	input p1b, 
+	input p1c, 
+	input p1d,
+	input p1e,
+	input p1f,
+	output p1y, 
+	input p2a, 
+	input p2b, 
+	input p2c, 
+	input p2d, 
+	output p2y
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "Module header for the DUT: module top_module(input p1a, input p1b, input p1c, input p1d, input p1e, input p1f, output p1y, input p2a, input p2b, input p2c, input p2d, output p2y);",
+  "technical specifications": [
+    "1. DUT has a total of 10 inputs: p1a, p1b, p1c, p1d, p1e, p1f, p2a, p2b, p2c, p2d.",
+    "2. DUT has 2 outputs: p1y and p2y.",
+    "3. The output p1y is the OR of two 3-input AND gates. The first AND gate takes inputs p1a, p1b, and p1c. The second AND gate takes inputs p1d, p1e, and p1f.",
+    "4. The output p2y is the OR of two 2-input AND gates. The first AND gate takes inputs p2a and p2b. The second AND gate takes inputs p2c and p2d.",
+    "5. Testbench must include test cases for all possible combinations of the input signals to verify that the outputs p1y and p2y match the expected results."
+  ]
+}
+

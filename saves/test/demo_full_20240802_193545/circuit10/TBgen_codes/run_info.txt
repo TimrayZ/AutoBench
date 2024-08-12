@@ -1,0 +1,10 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp circuit10_tb.v circuit10.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+circuit10_tb.v:34: error: Unable to bind wire/reg/memory `x' in `testbench'
+1 error(s) during elaboration.
+

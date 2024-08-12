@@ -1,0 +1,22 @@
+[
+    {
+        "task_id": "mux2to1v",
+        "task_number": 1,
+        "time": 93.35,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "ERROR(incomplete)": true,
+        "circuit_type": "CMB",
+        "checklist_worked": true
+    },
+    {
+        "task_id": "m2014_q6b",
+        "task_number": 2,
+        "time": 86.12,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "ERROR(incomplete)": true,
+        "circuit_type": "CMB",
+        "checklist_worked": true
+    }
+]

@@ -1,0 +1,249 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+
+1. Your task is to complete a given verilog testbench code. This testbench is for a verilog RTL module code (we call it as "DUT", device under test). This circuit is a sequential circuit. The infomation we have is 
+- 1.1. the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". 
+- 1.2. the module header.
+- 1.3. test scenarios which determines values and sequential information of test vectors
+- 1.4. the testbench structure
+- 1.5. the instruction of writing our testbench
+
+DUT header:
+module top_module (
+	input clk,
+	input reset,
+	input x,
+	output reg z
+);
+
+Your other information:
+RTL circuit problem description:
+Given the state-assigned table shown below, implement the finite-state machine. Reset should synchronous active high reset the FSM to state 000.
+
+// Present state y[2:0] | Next state y[2:0] x=0, Next state y[2:0] x=1, Output z
+// 000 | 000, 001 | 0
+// 001 | 001, 100 | 0
+// 010 | 010, 001 | 0
+// 011 | 001, 010 | 1
+// 100 | 011, 100 | 1
+
+IMPORTANT - test scenario (Please determine the values of input signals according to these test scenarios.):
+{
+  "scenario 1": "Assert reset high at clk cycle 0 (reset = 1) to reset the FSM to state 000. After one clock cycle (clk cycle 1), de-assert reset (reset = 0).",
+  "scenario 2": "At clk cycle 2, apply x = 0 while in state 000. Observe the state transition at the next clock cycle (clk cycle 3).",
+  "scenario 3": "At clk cycle 4, apply x = 1 while in state 000. Observe the state transition at the next clock cycle (clk cycle 5).",
+  "scenario 4": "At clk cycle 6, apply x = 1 while in state 001. Observe the state transition at the next clock cycle (clk cycle 7).",
+  "scenario 5": "At clk cycle 8, apply x = 0 while in state 001. Observe at the next clock cycle (clk cycle 9).",
+  "scenario 6": "At clk cycle 10, apply x = 1 while in state 010. Observe at the next clock cycle (clk cycle 11).",
+  "scenario 7": "At clk cycle 12, apply x = 0 while in state 011. Observe the state transition at the next clock cycle (clk cycle 13).",
+  "scenario 8": "At clk cycle 14, apply x = 1 while in state 011. Observe the state transition at the next clock cycle (clk cycle 15).",
+  "scenario 9": "At clk cycle 16, apply x = 1 while in state 100. Observe the state transition at the next clock cycle (clk cycle 17).",
+  "scenario 10": "At clk cycle 18, apply x = 0 while in state 100. Observe the state transition at the next clock cycle (clk cycle 19).",
+  "scenario 11": "At clk cycle 20, reapply x = 0 while in state 011 to verify the consistency of the output and state at clk cycle 21.",
+  "scenario 12": "At clk cycle 22, apply x = 1 while in state 010. Observe at the next clock cycle (clk cycle 23)."
+}
+below is the given testbench codes:
+`timescale 1ns / 1ps
+module testbench;
+reg  clk;
+reg  reset;
+reg  x;
+wire  z;
+
+integer file, scenario;
+// DUT instantiation
+top_module DUT (
+	.clk(clk),
+	.reset(reset),
+	.x(x),
+	.z(z)
+);
+// Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+
+initial begin
+    file = $fopen("TBout.txt", "w");
+end
+// Scenario Based Test
+initial begin
+
+    // write your scenario checking codes here, according to scenario information
+
+    $fclose(file);
+    $finish;
+end
+
+endmodule
+
+
+The testbench does not need to check the DUT's output but only export the signals of DUT. Please export the signals of DUT to a file named "TBout.txt" at the end of each scenario. The template is given below:
+$fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+The variables are already declared. The clock signal is already prepared. This output will be used to check the correctness of the DUT's output later.
+please only use "#10" as the delay when you need. If you need longer delay, you can use multiple "#10", such as "#10; #10; #10;". Avoid meaningless long delay in your code.
+If you need a loop in a scenario to check multiple time points, use "repeat" loop. for exmaple:
+```
+// scenario x
+scenario = x;
+signal_1 = 1;
+repeat(5) begin
+    $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+    #10;
+end
+```
+Please determine the input signal's exact values according to given test scenarios. 
+Note: please complete the last initial code part (marked in the given testbench template). You should give me the completed full code. The testbench template above is to help you generate the code. You must use %d when exporting values.
+please generate the full testbench code. please only reply verilog codes, no other words. 
+
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+module testbench;
+reg  clk;
+reg  reset;
+reg  x;
+wire  z;
+
+integer file, scenario;
+// DUT instantiation
+top_module DUT (
+	.clk(clk),
+	.reset(reset),
+	.x(x),
+	.z(z)
+);
+// Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+
+initial begin
+    file = $fopen("TBout.txt", "w");
+end
+// Scenario Based Test
+initial begin
+
+    // scenario 1
+    scenario = 1;
+    reset = 1;
+    #10;
+    reset = 0;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 2
+    scenario = 2;
+    x = 0;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 3
+    scenario = 3;
+    x = 1;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 4
+    scenario = 4;
+    x = 1;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 5
+    scenario = 5;
+    x = 0;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 6
+    scenario = 6;
+    x = 1;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 7
+    scenario = 7;
+    x = 0;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 8
+    scenario = 8;
+    x = 1;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 9
+    scenario = 9;
+    x = 1;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 10
+    scenario = 10;
+    x = 0;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 11
+    scenario = 11;
+    x = 0;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    // scenario 12
+    scenario = 12;
+    x = 1;
+    #10;
+    repeat(1) begin
+        $fdisplay(file, "[check]scenario: %d, clk = %d, reset = %d, x = %d, z = %d", scenario, clk, reset, x, z);
+        #10;
+    end
+
+    $fclose(file);
+    $finish;
+end
+
+endmodule
+```
+

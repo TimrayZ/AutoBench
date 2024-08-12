@@ -1,0 +1,12 @@
+module top_module (
+	input clk,
+	input reset,
+	input [3:1] s,
+	output reg fr3,
+	output reg fr2,
+	output reg fr1,
+	output reg dfr
+);
+
+
+endmodule

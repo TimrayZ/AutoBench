@@ -1,0 +1,51 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+The following is the state transition table for a Moore state machine with one input, one output, and four states. Implement this state machine. Include a positive edge triggered asynchronous reset that resets the FSM to state A.
+ 
+// state | next state in=0, next state in=1 | output
+// A | A, B | 0
+// B | C, B | 0
+// C | A, D | 0
+// D | C, B | 1
+DUT header:
+module top_module (
+	input clk,
+	input in,
+	input areset,
+	output out
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "// state | next state in=0, next state in=1 | output\n// A | A, B | 0\n// B | C, B | 0\n// C | A, D | 0\n// D | C, B | 1",
+  "technical specifications": [
+    "1. DUT Module Header: module top_module (input clk, input in, input areset, output out);",
+    "2. The state machine has four states: A, B, C, and D.",
+    "3. The state transition based on input 'in' is defined in the provided state transition table.",
+    "4. The state machine is a Moore state machine, which means the output is determined by the state alone, not by the input.",
+    "5. An asynchronous reset input 'areset' is present, which resets the FSM to state A on a positive edge.",
+    "6. The output 'out' is defined as follows: it is 1 only when the system is in state D, and 0 in all other states.",
+    "7. The testbench must generate input signals that test all transitions between states for both input values (0 and 1).",
+    "8. There should be a series of checks in the testbench to validate that the output 'out' matches expected output for each state and input condition."
+  ]
+}
+

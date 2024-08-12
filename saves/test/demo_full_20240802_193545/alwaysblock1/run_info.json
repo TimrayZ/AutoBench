@@ -1,0 +1,14 @@
+{
+    "task_id": "alwaysblock1",
+    "task_number": 4,
+    "time": 147.23,
+    "prompt_tokens": 7803,
+    "completion_tokens": 5432,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 2,
+    "iv_runing_time": 0.07
+}

@@ -1,0 +1,34 @@
+scenario: 1, in1 = 0, in2 = 0, out = x
+scenario: 2, in1 = 0, in2 = 1, out = x
+scenario: 3, in1 = 1, in2 = 0, out = x
+scenario: 4, in1 = 1, in2 = 1, out = x
+scenario: 5          0, in1 = 0, in2 = 0, out = x
+scenario: 5          1, in1 = 0, in2 = 1, out = x
+scenario: 5          0, in1 = 0, in2 = 0, out = x
+scenario: 5          1, in1 = 0, in2 = 1, out = x
+scenario: 5          0, in1 = 0, in2 = 0, out = x
+scenario: 6          0, in1 = 1, in2 = 0, out = x
+scenario: 6          1, in1 = 1, in2 = 1, out = x
+scenario: 6          0, in1 = 1, in2 = 0, out = x
+scenario: 6          1, in1 = 1, in2 = 1, out = x
+scenario: 6          0, in1 = 1, in2 = 0, out = x
+scenario: 7          0, in1 = 0, in2 = 0, out = x
+scenario: 7          1, in1 = 0, in2 = 1, out = x
+scenario: 7          2, in1 = 0, in2 = 1, out = x
+scenario: 7          3, in1 = 1, in2 = 1, out = x
+scenario: 7          4, in1 = 0, in2 = 1, out = x
+scenario: 7          5, in1 = 0, in2 = 1, out = x
+scenario: 7          6, in1 = 0, in2 = 1, out = x
+scenario: 7          7, in1 = 1, in2 = 0, out = x
+scenario: 7          8, in1 = 0, in2 = 1, out = x
+scenario: 7          9, in1 = 0, in2 = 1, out = x
+scenario: 7         10, in1 = 1, in2 = 0, out = x
+scenario: 7         11, in1 = 0, in2 = 1, out = x
+scenario: 7         12, in1 = 0, in2 = 1, out = x
+scenario: 7         13, in1 = 0, in2 = 0, out = x
+scenario: 7         14, in1 = 0, in2 = 1, out = x
+scenario: 7         15, in1 = 1, in2 = 0, out = x
+scenario: 7         16, in1 = 0, in2 = 1, out = x
+scenario: 7         17, in1 = 1, in2 = 0, out = x
+scenario: 7         18, in1 = 0, in2 = 1, out = x
+scenario: 7         19, in1 = 1, in2 = 1, out = x

@@ -1,0 +1,561 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module tb_top_module;
+
+  // Parameters
+  reg [99:0] in;
+  wire [99:0] out;
+
+  // DUT Instantiation
+  top_module DUT (
+    .in(in),
+    .out(out)
+  );
+
+  // File handle for exporting signals
+  integer file;
+
+  // Initialize simulation
+  initial begin
+    // Open the output file
+    file = $fopen("TBout.txt", "w");
+
+    // Scenario 1
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 1, in = %b, out = %b", in, out);
+
+    // Scenario 2
+    in = 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010;
+    #1; 
+    $fdisplay(file, "scenario: 2, in = %b, out = %b", in, out);
+
+    // Scenario 3
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 3, in = %b, out = %b", in, out);
+
+    // Scenario 4
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 4, in = %b, out = %b", in, out);
+
+    // Scenario 5
+    in = 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+    #1; 
+    $fdisplay(file, "scenario: 5, in = %b, out = %b", in, out);
+
+    // Scenario 6
+    in = 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000;
+    #1; 
+    $fdisplay(file, "scenario: 6, in = %b, out = %b", in, out);
+
+    // Scenario 7
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 7, in = %b, out = %b", in, out);
+
+    // Scenario 8
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 8, in = %b, out = %b", in, out);
+
+    // Scenario 9
+    in = 100'b00001111000011110000111100001111000011110000111100001111000011110000;
+    #1; 
+    $fdisplay(file, "scenario: 9, in = %b, out = %b", in, out);
+
+    // Scenario 10
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 10, in = %b, out = %b", in, out);
+    
+    // Close the file
+    $fclose(file);
+
+    // End simulation
+    $finish;
+  end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Apply the input vector 'in' with all bits set to 0: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 0.",
+  "scenario 2": "Apply the input vector 'in' with a pattern of alternating bits: 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010 at clock cycle 1.",
+  "scenario 3": "Apply the input vector 'in' where the most significant bit is set and the rest are 0's: 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 2.",
+  "scenario 4": "Apply the input vector 'in' with only the least significant bit set: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 at clock cycle 3.",
+  "scenario 5": "Apply the input vector 'in' with a pattern of all bits set to 1: 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 at clock cycle 4.",
+  "scenario 6": "Apply a random 100-bit input vector 'in': 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000 at clock cycle 5.",
+  "scenario 7": "Apply the input vector 'in' with a single bit in the middle set: 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000 at clock cycle 6.",
+  "scenario 8": "Apply the input vector 'in' with a single bit at the start: 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 7.",
+  "scenario 9": "Apply the input vector 'in' with multiple clusters of 1's and 0's: 100'b00001111000011110000111100001111000011110000111100001111000011110000 at clock cycle 8.",
+  "scenario 10": "Apply the input vector 'in' in an increasing binary fashion: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 at clock cycle 9."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module tb_top_module;
+
+  // Parameters
+  reg [99:0] in;
+  wire [99:0] out;
+
+  // DUT Instantiation
+  top_module DUT (
+    .in(in),
+    .out(out)
+  );
+
+  // File handle for exporting signals
+  integer file;
+
+  // Initialize simulation
+  initial begin
+    // Open the output file
+    file = $fopen("TBout.txt", "w");
+
+    // Scenario 1
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 1, in = %b, out = %b", in, out);
+
+    // Scenario 2
+    in = 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010;
+    #1; 
+    $fdisplay(file, "scenario: 2, in = %b, out = %b", in, out);
+
+    // Scenario 3
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 3, in = %b, out = %b", in, out);
+
+    // Scenario 4
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 4, in = %b, out = %b", in, out);
+
+    // Scenario 5
+    in = 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+    #1; 
+    $fdisplay(file, "scenario: 5, in = %b, out = %b", in, out);
+
+    // Scenario 6
+    in = 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000;
+    #1; 
+    $fdisplay(file, "scenario: 6, in = %b, out = %b", in, out);
+
+    // Scenario 7
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 7, in = %b, out = %b", in, out);
+
+    // Scenario 8
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 8, in = %b, out = %b", in, out);
+
+    // Scenario 9
+    in = 100'b00001111000011110000111100001111000011110000111100001111000011110000;
+    #1; 
+    $fdisplay(file, "scenario: 9, in = %b, out = %b", in, out);
+
+    // Scenario 10
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 10, in = %b, out = %b", in, out);
+    
+    // Close the file
+    $fclose(file);
+
+    // End simulation
+    $finish;
+  end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module tb_top_module;
+
+  // Parameters
+  reg [99:0] in;
+  wire [99:0] out;
+
+  // DUT Instantiation
+  top_module DUT (
+    .in(in),
+    .out(out)
+  );
+
+  // File handle for exporting signals
+  integer file;
+
+  // Initialize simulation
+  initial begin
+    // Open the output file
+    file = $fopen("TBout.txt", "w");
+
+    // Scenario 1
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 1, in = %b, out = %b", in, out);
+
+    // Scenario 2
+    in = 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010;
+    #1; 
+    $fdisplay(file, "scenario: 2, in = %b, out = %b", in, out);
+
+    // Scenario 3
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 3, in = %b, out = %b", in, out);
+
+    // Scenario 4
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 4, in = %b, out = %b", in, out);
+
+    // Scenario 5
+    in = 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+    #1; 
+    $fdisplay(file, "scenario: 5, in = %b, out = %b", in, out);
+
+    // Scenario 6
+    in = 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000;
+    #1; 
+    $fdisplay(file, "scenario: 6, in = %b, out = %b", in, out);
+
+    // Scenario 7
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 7, in = %b, out = %b", in, out);
+
+    // Scenario 8
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 8, in = %b, out = %b", in, out);
+
+    // Scenario 9
+    in = 100'b00001111000011110000111100001111000011110000111100001111000011110000;
+    #1; 
+    $fdisplay(file, "scenario: 9, in = %b, out = %b", in, out);
+
+    // Scenario 10
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 10, in = %b, out = %b", in, out);
+    
+    // Close the file
+    $fclose(file);
+
+    // End simulation
+    $finish;
+  end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Apply the input vector 'in' with all bits set to 0: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 0.",
+  "scenario 2": "Apply the input vector 'in' with a pattern of alternating bits: 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010 at clock cycle 1.",
+  "scenario 3": "Apply the input vector 'in' where the most significant bit is set and the rest are 0's: 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 2.",
+  "scenario 4": "Apply the input vector 'in' with only the least significant bit set: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 at clock cycle 3.",
+  "scenario 5": "Apply the input vector 'in' with a pattern of all bits set to 1: 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 at clock cycle 4.",
+  "scenario 6": "Apply a random 100-bit input vector 'in': 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000 at clock cycle 5.",
+  "scenario 7": "Apply the input vector 'in' with a single bit in the middle set: 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000 at clock cycle 6.",
+  "scenario 8": "Apply the input vector 'in' with a single bit at the start: 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 7.",
+  "scenario 9": "Apply the input vector 'in' with multiple clusters of 1's and 0's: 100'b00001111000011110000111100001111000011110000111100001111000011110000 at clock cycle 8.",
+  "scenario 10": "Apply the input vector 'in' in an increasing binary fashion: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 at clock cycle 9."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module tb_top_module;
+
+  // Parameters
+  reg [99:0] in;
+  wire [99:0] out;
+
+  // DUT Instantiation
+  top_module DUT (
+    .in(in),
+    .out(out)
+  );
+
+  // File handle for exporting signals
+  integer file;
+
+  // Initialize simulation
+  initial begin
+    // Open the output file
+    file = $fopen("TBout.txt", "w");
+
+    // Scenario 1
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 1, in = %b, out = %b", in, out);
+
+    // Scenario 2
+    in = 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010;
+    #1; 
+    $fdisplay(file, "scenario: 2, in = %b, out = %b", in, out);
+
+    // Scenario 3
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 3, in = %b, out = %b", in, out);
+
+    // Scenario 4
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 4, in = %b, out = %b", in, out);
+
+    // Scenario 5
+    in = 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+    #1; 
+    $fdisplay(file, "scenario: 5, in = %b, out = %b", in, out);
+
+    // Scenario 6
+    in = 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000;
+    #1; 
+    $fdisplay(file, "scenario: 6, in = %b, out = %b", in, out);
+
+    // Scenario 7
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 7, in = %b, out = %b", in, out);
+
+    // Scenario 8
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 8, in = %b, out = %b", in, out);
+
+    // Scenario 9
+    in = 100'b00001111000011110000111100001111000011110000111100001111000011110000;
+    #1; 
+    $fdisplay(file, "scenario: 9, in = %b, out = %b", in, out);
+
+    // Scenario 10
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 10, in = %b, out = %b", in, out);
+    
+    // Close the file
+    $fclose(file);
+
+    // End simulation
+    $finish;
+  end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module tb_top_module;
+
+  // Parameters
+  reg [99:0] in;
+  wire [99:0] out;
+
+  // DUT Instantiation
+  top_module DUT (
+    .in(in),
+    .out(out)
+  );
+
+  // File handle for exporting signals
+  integer file;
+
+  // Initialize simulation
+  initial begin
+    // Open the output file
+    file = $fopen("TBout.txt", "w");
+
+    // Scenario 1
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 1, in = %b, out = %b", in, out);
+
+    // Scenario 2
+    in = 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010;
+    #1; 
+    $fdisplay(file, "scenario: 2, in = %b, out = %b", in, out);
+
+    // Scenario 3
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 3, in = %b, out = %b", in, out);
+
+    // Scenario 4
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 4, in = %b, out = %b", in, out);
+
+    // Scenario 5
+    in = 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+    #1; 
+    $fdisplay(file, "scenario: 5, in = %b, out = %b", in, out);
+
+    // Scenario 6
+    in = 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000;
+    #1; 
+    $fdisplay(file, "scenario: 6, in = %b, out = %b", in, out);
+
+    // Scenario 7
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 7, in = %b, out = %b", in, out);
+
+    // Scenario 8
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 8, in = %b, out = %b", in, out);
+
+    // Scenario 9
+    in = 100'b00001111000011110000111100001111000011110000111100001111000011110000;
+    #1; 
+    $fdisplay(file, "scenario: 9, in = %b, out = %b", in, out);
+
+    // Scenario 10
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 10, in = %b, out = %b", in, out);
+    
+    // Close the file
+    $fclose(file);
+
+    // End simulation
+    $finish;
+  end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Apply the input vector 'in' with all bits set to 0: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 0.",
+  "scenario 2": "Apply the input vector 'in' with a pattern of alternating bits: 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010 at clock cycle 1.",
+  "scenario 3": "Apply the input vector 'in' where the most significant bit is set and the rest are 0's: 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 2.",
+  "scenario 4": "Apply the input vector 'in' with only the least significant bit set: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 at clock cycle 3.",
+  "scenario 5": "Apply the input vector 'in' with a pattern of all bits set to 1: 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111 at clock cycle 4.",
+  "scenario 6": "Apply a random 100-bit input vector 'in': 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000 at clock cycle 5.",
+  "scenario 7": "Apply the input vector 'in' with a single bit in the middle set: 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000 at clock cycle 6.",
+  "scenario 8": "Apply the input vector 'in' with a single bit at the start: 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 at clock cycle 7.",
+  "scenario 9": "Apply the input vector 'in' with multiple clusters of 1's and 0's: 100'b00001111000011110000111100001111000011110000111100001111000011110000 at clock cycle 8.",
+  "scenario 10": "Apply the input vector 'in' in an increasing binary fashion: 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001 at clock cycle 9."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module tb_top_module;
+
+  // Parameters
+  reg [99:0] in;
+  wire [99:0] out;
+
+  // DUT Instantiation
+  top_module DUT (
+    .in(in),
+    .out(out)
+  );
+
+  // File handle for exporting signals
+  integer file;
+
+  // Initialize simulation
+  initial begin
+    // Open the output file
+    file = $fopen("TBout.txt", "w");
+
+    // Scenario 1
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 1, in = %b, out = %b", in, out);
+
+    // Scenario 2
+    in = 100'b10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010;
+    #1; 
+    $fdisplay(file, "scenario: 2, in = %b, out = %b", in, out);
+
+    // Scenario 3
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 3, in = %b, out = %b", in, out);
+
+    // Scenario 4
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 4, in = %b, out = %b", in, out);
+
+    // Scenario 5
+    in = 100'b11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+    #1; 
+    $fdisplay(file, "scenario: 5, in = %b, out = %b", in, out);
+
+    // Scenario 6
+    in = 100'b01111000011010100010101011101110011100001111001101010101001000001111011010100001100010001000000110000;
+    #1; 
+    $fdisplay(file, "scenario: 6, in = %b, out = %b", in, out);
+
+    // Scenario 7
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 7, in = %b, out = %b", in, out);
+
+    // Scenario 8
+    in = 100'b10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+    #1; 
+    $fdisplay(file, "scenario: 8, in = %b, out = %b", in, out);
+
+    // Scenario 9
+    in = 100'b00001111000011110000111100001111000011110000111100001111000011110000;
+    #1; 
+    $fdisplay(file, "scenario: 9, in = %b, out = %b", in, out);
+
+    // Scenario 10
+    in = 100'b00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001;
+    #1; 
+    $fdisplay(file, "scenario: 10, in = %b, out = %b", in, out);
+
+    // Close the file
+    $fclose(file);
+
+    // End simulation
+    $finish;
+  end
+
+endmodule
+```
+

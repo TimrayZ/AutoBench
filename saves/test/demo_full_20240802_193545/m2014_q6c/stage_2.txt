@@ -1,0 +1,76 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Consider the state machine shown below:
+
+// A (0) --0--> B
+// A (0) --1--> A
+// B (0) --0--> C
+// B (0) --1--> D
+// C (0) --0--> E
+// C (0) --1--> D
+// D (0) --0--> F
+// D (0) --1--> A
+// E (1) --0--> E
+// E (1) --1--> D
+// F (1) --0--> C
+// F (1) --1--> D
+
+// Resets into state A. For this part, assume that a one-hot code is used with the state assignment y[6:1] = 000001, 000010, 000100, 001000, 010000, 100000 for states A, B,..., F, respectively.
+
+// Write Verilog for the next-state signals Y2 and Y4 corresponding to signal y[2] and y[4]. Derive the logic equations by inspection assuming a one-hot encoding. 
+RTL testbench specification:
+{
+  "important data": "State Transition Table:\n  - A (0) --0--> B \n  - A (0) --1--> A \n  - B (0) --0--> C \n  - B (0) --1--> D \n  - C (0) --0--> E \n  - C (0) --1--> D \n  - D (0) --0--> F \n  - D (0) --1--> A \n  - E (1) --0--> E \n  - E (1) --1--> D \n  - F (1) --0--> C \n  - F (1) --1--> D \n\nState Assignments: y[6:1] = 000001 (A), 000010 (B), 000100 (C), 001000 (D), 010000 (E), 100000 (F)",
+  "technical specifications": [
+    "0. Module Header: module top_module (input [6:1] y, input w, output Y2, output Y4)",
+    "1. DUT function: The DUT should compute next-state signals Y2 and Y4 derived from the state transitions based on input signals y (current state) and w (input signal).",
+    "2. Reset condition: The DUT should reset to state A (000001) upon initialization.",
+    "3. Input conditions: The set of input conditions includes the one-hot encoded states and the input signal w (0 or 1).",
+    "4. Expected output specifications: The DUT's output Y2 and Y4 must correspond to the next-state logic for their specific conditions derived from the given state transition table.",
+    "5. Testbench requirements: The testbench should instantiate the DUT, apply various input combinations based on the defined state transitions and input signal w, and check if the outputs Y2 and Y4 match the expected results."
+  ]
+}
+DUT header:
+module top_module (
+	input [6:1] y,
+	input w,
+	output Y2,
+	output Y4
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Reset the DUT to state A at time 0. Set y = 000001 and w = 0. Wait for 1 clock cycle.",
+  "scenario 2": "Apply input w = 1 while remaining in state A. Set y = 000001 and hold for 1 clock cycle. Observe outputs Y2 and Y4.",
+  "scenario 3": "Apply input w = 0 while in state A. Set y = 000001, wait for 1 clock cycle. Observe state transition to B (y = 000010).",
+  "scenario 4": "In state B, apply w = 0. Set y = 000010, wait for 1 clock cycle. Check transition to C (y = 000100).",
+  "scenario 5": "In state B, apply w = 1. Set y = 000010, wait for 1 clock cycle. Observe transition to D (y = 001000).",
+  "scenario 6": "In state C, apply w = 0. Set y = 000100, wait for 1 clock cycle. Transition to E (y = 010000).",
+  "scenario 7": "In state C, apply w = 1. Set y = 000100, wait for 1 clock cycle. Observe the transition to D (y = 001000).",
+  "scenario 8": "In state D, apply w = 0. Set y = 001000, wait for 1 clock cycle. Transition to F (y = 100000).",
+  "scenario 9": "In state D, apply w = 1. Set y = 001000, wait for 1 clock cycle. Transition back to A (y = 000001).",
+  "scenario 10": "In state E, apply w = 0. Set y = 010000, wait for 1 clock cycle. Observe that y remains E (y = 010000).",
+  "scenario 11": "In state E, apply w = 1. Set y = 010000, wait for 1 clock cycle. Transition to D (y = 001000).",
+  "scenario 12": "In state F, apply w = 0. Set y = 100000, wait for 1 clock cycle. Transition to C (y = 000100).",
+  "scenario 13": "In state F, apply w = 1. Set y = 100000, wait for 1 clock cycle. Transition to D (y = 001000)."
+}
+

@@ -1,0 +1,38 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+For each bit in an 8-bit vector, detect when the input signal changes from 0 in one clock cycle to 1 the next (similar to positive edge detection). The output bit should be set the cycle after a 0 to 1 transition occurs.
+RTL header:
+module top_module(
+	input clk,
+	input [7:0] in,
+	output reg [7:0] pedge);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+	input clk,
+	input [7:0] in,
+	output reg [7:0] pedge
+);
+
+reg [7:0] prev_in;
+
+always @(posedge clk) begin
+    pedge <= (in & ~prev_in); // Detect rising edge
+    prev_in <= in; // Store current input for the next clock cycle
+end
+
+endmodule
+```
+

@@ -1,0 +1,134 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x55813c0d3820 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x55813c0d39b0 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x55813c102070_0 .var "a", 0 0;
+v0x55813c102130_0 .var "b", 0 0;
+v0x55813c102200_0 .var/i "fd", 31 0;
+o0x7f39ce046078 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c1022d0_0 .net "out_and", 0 0, o0x7f39ce046078;  0 drivers
+o0x7f39ce0460a8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c1023a0_0 .net "out_anotb", 0 0, o0x7f39ce0460a8;  0 drivers
+o0x7f39ce0460d8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c102440_0 .net "out_nand", 0 0, o0x7f39ce0460d8;  0 drivers
+o0x7f39ce046108 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c102510_0 .net "out_nor", 0 0, o0x7f39ce046108;  0 drivers
+o0x7f39ce046138 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c1025e0_0 .net "out_or", 0 0, o0x7f39ce046138;  0 drivers
+o0x7f39ce046168 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c1026b0_0 .net "out_xnor", 0 0, o0x7f39ce046168;  0 drivers
+o0x7f39ce046198 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55813c102780_0 .net "out_xor", 0 0, o0x7f39ce046198;  0 drivers
+S_0x55813c0e3a90 .scope module, "DUT" "top_module" 3 19, 4 1 0, S_0x55813c0d39b0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "out_and";
+    .port_info 3 /OUTPUT 1 "out_or";
+    .port_info 4 /OUTPUT 1 "out_xor";
+    .port_info 5 /OUTPUT 1 "out_nand";
+    .port_info 6 /OUTPUT 1 "out_nor";
+    .port_info 7 /OUTPUT 1 "out_xnor";
+    .port_info 8 /OUTPUT 1 "out_anotb";
+v0x55813c0ca340_0 .net "a", 0 0, v0x55813c102070_0;  1 drivers
+v0x55813c0ca3e0_0 .net "b", 0 0, v0x55813c102130_0;  1 drivers
+v0x55813c1019e0_0 .net "out_and", 0 0, o0x7f39ce046078;  alias, 0 drivers
+v0x55813c101a80_0 .net "out_anotb", 0 0, o0x7f39ce0460a8;  alias, 0 drivers
+v0x55813c101b40_0 .net "out_nand", 0 0, o0x7f39ce0460d8;  alias, 0 drivers
+v0x55813c101c50_0 .net "out_nor", 0 0, o0x7f39ce046108;  alias, 0 drivers
+v0x55813c101d10_0 .net "out_or", 0 0, o0x7f39ce046138;  alias, 0 drivers
+v0x55813c101dd0_0 .net "out_xnor", 0 0, o0x7f39ce046168;  alias, 0 drivers
+v0x55813c101e90_0 .net "out_xor", 0 0, o0x7f39ce046198;  alias, 0 drivers
+    .scope S_0x55813c0d39b0;
+T_0 ;
+    %vpi_func 3 36 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x55813c102200_0, 0, 32;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 41 "$fdisplay", v0x55813c102200_0, "scenario: 1, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 46 "$fdisplay", v0x55813c102200_0, "scenario: 2, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 51 "$fdisplay", v0x55813c102200_0, "scenario: 3, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 56 "$fdisplay", v0x55813c102200_0, "scenario: 4, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 62 "$fdisplay", v0x55813c102200_0, "scenario: 5, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 68 "$fdisplay", v0x55813c102200_0, "scenario: 6, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 74 "$fdisplay", v0x55813c102200_0, "scenario: 7, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102070_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x55813c102130_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call/w 3 80 "$fdisplay", v0x55813c102200_0, "scenario: 8, a = %d, b = %d, out_and = %d, out_or = %d, out_xor = %d, out_nand = %d, out_nor = %d, out_xnor = %d, out_anotb = %d", v0x55813c102070_0, v0x55813c102130_0, v0x55813c1022d0_0, v0x55813c1025e0_0, v0x55813c102780_0, v0x55813c102440_0, v0x55813c102510_0, v0x55813c1026b0_0, v0x55813c1023a0_0 {0 0 0};
+    %vpi_call/w 3 83 "$fclose", v0x55813c102200_0 {0 0 0};
+    %vpi_call/w 3 84 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "gates_tb.v";
+    "gates.v";

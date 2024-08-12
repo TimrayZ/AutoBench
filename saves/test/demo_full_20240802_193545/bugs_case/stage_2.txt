@@ -1,0 +1,62 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+This combinational circuit is supposed to recognize 8-bit keyboard scancodes for keys 0 through 9. It should indicate whether one of the 10 cases were recognized (valid), and if so, which key was detected. If the 8-bit input is 8'h45, 8'h16, 8'h1e, 8'h26, 8'h25, 8'h2e, 8'h36, 8'h3d, 8'h3e, or 8'h46, the 4-bit output will be set to 0, 1, 2, 3, 4, 5, 6, 7, 8, or 9 respectively, the 1-bit valid would be set to 1. If the input does not match any of the cases, both output signals would be set to 0.
+RTL testbench specification:
+{
+  "important data": "The 8-bit input codes and their corresponding outputs are: 8'h45 -> 0, 8'h16 -> 1, 8'h1e -> 2, 8'h26 -> 3, 8'h25 -> 4, 8'h2e -> 5, 8'h36 -> 6, 8'h3d -> 7, 8'h3e -> 8, 8'h46 -> 9. If the input doesn't match any of these, both output signals (out and valid) will be set to 0.",
+  "technical specifications": [
+    "0: DUT module header is 'module top_module (input [7:0] code, output reg [3:0] out, output reg valid);'.",
+    "1: DUT recognizes the 8-bit scancodes for keys 0 through 9.",
+    "2: The valid output should be set to 1 if a recognized key is detected, otherwise it should be set to 0.",
+    "3: The output 'out' should reflect the corresponding key number (0-9) for recognized scancodes.",
+    "4: The expected output for each corresponding input has to be checked in the testbench.",
+    "5: The testbench should simulate all 10 valid inputs and additional invalid inputs to test both valid and invalid scenarios.",
+    "6: The expected testbench results for valid inputs are: if code is 8'h45 -> out should be 0, valid should be 1; if 8'h16 -> out should be 1, valid should be 1; and so on.",
+    "7: For invalid inputs, the out and valid signals should both be 0."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] code,
+	output reg [3:0] out,
+	output reg valid
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply a stimulus of 8'h45 to the DUT at time 0 clock cycles. This code represents the key '0'. Wait for 1 clock cycle.",
+  "scenario 2": "Apply a stimulus of 8'h16 to the DUT at time 1 clock cycle. This code represents the key '1'. Wait for 1 clock cycle.",
+  "scenario 3": "Apply a stimulus of 8'h1e to the DUT at time 2 clock cycles. This code represents the key '2'. Wait for 1 clock cycle.",
+  "scenario 4": "Apply a stimulus of 8'h26 to the DUT at time 3 clock cycles. This code represents the key '3'. Wait for 1 clock cycle.",
+  "scenario 5": "Apply a stimulus of 8'h25 to the DUT at time 4 clock cycles. This code represents the key '4'. Wait for 1 clock cycle.",
+  "scenario 6": "Apply a stimulus of 8'h2e to the DUT at time 5 clock cycles. This code represents the key '5'. Wait for 1 clock cycle.",
+  "scenario 7": "Apply a stimulus of 8'h36 to the DUT at time 6 clock cycles. This code represents the key '6'. Wait for 1 clock cycle.",
+  "scenario 8": "Apply a stimulus of 8'h3d to the DUT at time 7 clock cycles. This code represents the key '7'. Wait for 1 clock cycle.",
+  "scenario 9": "Apply a stimulus of 8'h3e to the DUT at time 8 clock cycles. This code represents the key '8'. Wait for 1 clock cycle.",
+  "scenario 10": "Apply a stimulus of 8'h46 to the DUT at time 9 clock cycles. This code represents the key '9'. Wait for 1 clock cycle.",
+  "scenario 11": "Apply a stimulus of 8'h00 to the DUT at time 10 clock cycles. This code is an invalid input. Wait for 1 clock cycle.",
+  "scenario 12": "Apply a stimulus of 8'h99 to the DUT at time 11 clock cycles. This code is an invalid input. Wait for 1 clock cycle.",
+  "scenario 13": "Apply a stimulus of 8'hFF to the DUT at time 12 clock cycles. This code is an invalid input. Wait for 1 clock cycle.",
+  "scenario 14": "Apply a stimulus of 8'h3A to the DUT at time 13 clock cycles. This code is an invalid input. Wait for 1 clock cycle.",
+  "scenario 15": "Apply a stimulus of 8'hAB to the DUT at time 14 clock cycles. This code is an invalid input. Wait for 1 clock cycle."
+}
+

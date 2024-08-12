@@ -1,0 +1,14 @@
+{
+    "task_id": "mux2to1v",
+    "task_number": 1,
+    "time": 95.63,
+    "prompt_tokens": 4838,
+    "completion_tokens": 3150,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.09
+}

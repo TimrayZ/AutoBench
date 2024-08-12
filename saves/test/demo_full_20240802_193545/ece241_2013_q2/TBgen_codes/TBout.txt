@@ -1,0 +1,12 @@
+scenario: 1, a = 0, b = 0, c = 1, d = 0, out_sop = z, out_pos = z
+scenario: 2, a = 0, b = 1, c = 1, d = 1, out_sop = z, out_pos = z
+scenario: 3, a = 1, b = 1, c = 1, d = 1, out_sop = z, out_pos = z
+scenario: 4, a = 0, b = 0, c = 0, d = 0, out_sop = z, out_pos = z
+scenario: 5, a = 0, b = 0, c = 1, d = 1, out_sop = z, out_pos = z
+scenario: 6, a = 0, b = 1, c = 0, d = 0, out_sop = z, out_pos = z
+scenario: 7, a = 0, b = 1, c = 0, d = 1, out_sop = z, out_pos = z
+scenario: 8, a = 0, b = 1, c = 1, d = 0, out_sop = z, out_pos = z
+scenario: 9, a = 1, b = 0, c = 0, d = 0, out_sop = z, out_pos = z
+scenario: 10, a = 1, b = 0, c = 1, d = 1, out_sop = z, out_pos = z
+scenario: 11, a = 1, b = 1, c = 0, d = 1, out_sop = z, out_pos = z
+scenario: 12, a = 1, b = 1, c = 1, d = 0, out_sop = z, out_pos = z

@@ -1,0 +1,61 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Build a 4-bit shift register (right shift), with asynchronous positive edge triggered areset, synchronous active high signals load, and enable. 
+// (1) areset: Resets shift register to zero. 
+// (2) load: Loads shift register with data[3:0] instead of shifting. 
+// (3) ena: Shift right (q[3] becomes zero, q[0] is shifted out and disappears). 
+// (4) q: The contents of the shift register. If both the load and ena inputs are asserted (1), the load input has higher priority. 
+
+RTL testbench specification:
+{
+  "important data": "The DUT is a 4-bit shift register that performs right shifts, with an asynchronous reset, synchronous load, and enable signals.",
+  "technical specifications": [
+    "1: The DUT is a 4-bit shift register that shifts data to the right. It has an asynchronous reset input (areset) that sets the output to zero when asserted.",
+    "2: The DUT can load a 4-bit input (data) into the output (q) when the load signal is high. If both load and ena are high, load has priority over the shift operation.",
+    "3: The output q represents the contents of the shift register and is a 4-bit register.",
+    "4: The DUT operates on the positive edge of the clk signal when ena is asserted, shifting the bits to the right and making q[3] zero while q[0] is shifted out.",
+    "5: The DUT has the following I/O specifications: input clk, areset, load, ena, and input data[3:0]; output is q[3:0]."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input areset,
+	input load,
+	input ena,
+	input [3:0] data,
+	output reg [3:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Assert areset (high) for one clock cycle. Release areset (low) and verify that q is set to 0000.",
+  "scenario 2": "Set areset (low). Apply load signal (high) with data set to 1010. Hold load high for one clock cycle and check q for 1010 thereafter.",
+  "scenario 3": "Set areset (low), load (low), and ena (high). Apply clk and verify that q remains unchanged. This should be done for two clock cycles.",
+  "scenario 4": "Set areset (low), then set load (high) and ena (high) with data set to 1100. After one clock cycle, assert ena (low) while keeping load high and check that q remains 1100 in the next clock cycle.",
+  "scenario 5": "Set areset (low) and load (low). After one clock cycle, apply ena (high) and clk. Observe that with q initialized at 0000, q remains the same for each clock cycle of ena (high) asserted.",
+  "scenario 6": "Set areset (low), then apply data as 1111 with load (high) for one clock cycle. Next, after releasing load (low), assert ena (high) and pulse clk for two clock cycles to observe right shifts occur.",
+  "scenario 7": "Set areset (low) and apply data as 0011 with load (high) for one clock cycle, then release load and set ena (high). Pulse clk for three clock cycles to verify that shifting takes place correctly from initial data.",
+  "scenario 8": "Set areset (low), then apply load with data as 0001 (high), followed by setting ena (low) and observing q for two clock cycles to ensure it retains its value despite ena being low.",
+  "scenario 9": "Set areset (low), apply load with data as 1001 (high), release load (low), then assert ena (high) and pulse clk for one clock cycle to check the right shift of q from initialized data.",
+  "scenario 10": "Set areset (high) for one cycle, then return to low and verify q is 0000, then apply ena (high) without loading any data and pulse clk for three clock cycles to check that q remains zero."
+}
+

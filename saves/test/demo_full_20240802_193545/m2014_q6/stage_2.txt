@@ -1,0 +1,71 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Consider the state machine shown below:
+
+// A (0) --0--> B
+// A (0) --1--> A
+// B (0) --0--> C
+// B (0) --1--> D
+// C (0) --0--> E
+// C (0) --1--> D
+// D (0) --0--> F
+// D (0) --1--> A
+// E (1) --0--> E
+// E (1) --1--> D
+// F (1) --0--> C
+// F (1) --1--> D
+
+// Implement this state machine in Verilog.
+RTL testbench specification:
+{
+  "important data": "// A (0) --0--> B\n// A (0) --1--> A\n// B (0) --0--> C\n// B (0) --1--> D\n// C (0) --0--> E\n// C (0) --1--> D\n// D (0) --0--> F\n// D (0) --1--> A\n// E (1) --0--> E\n// E (1) --1--> D\n// F (1) --0--> C\n// F (1) --1--> D",
+  "technical specifications": [
+    "1: DUT functionality must represent a finite state machine with states: A, B, C, D, E, F.",
+    "2: The state transitions must occur based on inputs w, with the following behavior:\n   - From state A:\n     - w=0: go to B\n     - w=1: stay in A\n   - From state B:\n     - w=0: go to C\n     - w=1: go to D\n   - From state C:\n     - w=0: go to E\n     - w=1: go to D\n   - From state D:\n     - w=0: go to F\n     - w=1: go to A\n   - From state E:\n     - w=0: stay in E\n     - w=1: go to D\n   - From state F:\n     - w=0: go to C\n     - w=1: go to D",
+    "3: The module has inputs clk (clock), reset (active high), and w, and an output z.",
+    "4: The output z should reflect the current state, with z=1 if in states E or F; otherwise z=0.",
+    "5: The testbench must initialize the state machine and apply sequences of inputs to fully test all transitions, including corner cases.",
+    "6: The testbench must monitor the output z and confirm it matches the expected results based on the state transitions defined in the specification."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input reset,
+	input w,
+	output z
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply reset high for 1 clock cycle (clk=1, reset=1), then release reset (reset=0). Initialize w=0 to transition from State A to State B.",
+  "scenario 2": "After 2 clock cycles, set w=0 to transition from State B to State C.",
+  "scenario 3": "After 1 clock cycle, set w=1 to transition from State B to State D.",
+  "scenario 4": "After 1 clock cycle in State D, set w=0 to transition to State F.",
+  "scenario 5": "After 1 clock cycle in State F, set w=1 to transition to State D.",
+  "scenario 6": "After 1 clock cycle in State D, set w=1 to transition back to State A.",
+  "scenario 7": "After 1 clock cycle in State A, set w=0 to transition to State B.",
+  "scenario 8": "After 1 clock cycle in State A, set w=1 to remain in State A for 2 clock cycles.",
+  "scenario 9": "After 1 clock cycle in State C, set w=0 to transition to State E.",
+  "scenario 10": "After 1 clock cycle in State E, set w=0 to remain in State E for 2 clock cycles, then set w=1 to transition to State D."
+}
+

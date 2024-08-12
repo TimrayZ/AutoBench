@@ -1,0 +1,46 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+The following diagram is a Mealy machine implementation of the 2's complementer. Implement in Verilog using one-hot encoding. Resets into state A and reset is asynchronous active-high.
+
+// A --x=0 (z=0)--> A
+// A --x=1 (z=1)--> B
+// B --x=0 (z=1)--> B
+// B --x=1 (z=0)--> B
+DUT header:
+module top_module (
+	input clk,
+	input areset,
+	input x,
+	output z
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "The Mealy machine has two states: A and B. In state A, when x=0, the output z=0 and remains in state A; when x=1, the output z=1 and transitions to state B. In state B, when x=0, the output z=1 and remains in state B; when x=1, the output z=0 and remains in state B. The machine resets to state A asynchronously when areset is high.",
+  "technical specifications": [
+    "1. The top module includes the following inputs and outputs: clk, areset, x, and z.",
+    "2. The state machine operates with one-hot encoding, using two states A and B.",
+    "3. The areset input is asynchronous and active-high, resetting the state to A.",
+    "4. The output z is determined based on the current state and the input x using the specified state transition diagram."
+  ]
+}
+

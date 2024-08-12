@@ -1,0 +1,14 @@
+{
+    "task_id": "circuit2",
+    "task_number": 135,
+    "time": 81.3,
+    "prompt_tokens": 6653,
+    "completion_tokens": 3556,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.08
+}

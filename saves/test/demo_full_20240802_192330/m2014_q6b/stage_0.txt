@@ -1,0 +1,63 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Consider the state machine shown below:
+
+// A (0) --0--> B
+// A (0) --1--> A
+// B (0) --0--> C
+// B (0) --1--> D
+// C (0) --0--> E
+// C (0) --1--> D
+// D (0) --0--> F
+// D (0) --1--> A
+// E (1) --0--> E
+// E (1) --1--> D
+// F (1) --0--> C
+// F (1) --1--> D
+
+// Assume that you want to Implement the FSM using three flip-flops and state codes y[3:1] = 000, 001, ..., 101 for states A, B, ..., F, respectively. Implement just the next-state logic for y[2] in Verilog. The output Y2 is y[2].
+RTL header:
+module top_module(
+	input [3:1] y,
+	input w,
+	output reg Y2);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+	input [3:1] y,
+	input w,
+	output reg Y2);
+
+	always @(*) begin
+		case ({y, w})
+			{3'b000, 1'b0}: Y2 = 0; // State A (0) --0--> B
+			{3'b000, 1'b1}: Y2 = 0; // State A (0) --1--> A
+			{3'b001, 1'b0}: Y2 = 0; // State B (0) --0--> C
+			{3'b001, 1'b1}: Y2 = 1; // State B (0) --1--> D
+			{3'b010, 1'b0}: Y2 = 0; // State C (0) --0--> E
+			{3'b010, 1'b1}: Y2 = 1; // State C (0) --1--> D
+			{3'b011, 1'b0}: Y2 = 0; // State D (0) --0--> F
+			{3'b011, 1'b1}: Y2 = 0; // State D (0) --1--> A
+			{3'b100, 1'b0}: Y2 = 1; // State E (1) --0--> E
+			{3'b100, 1'b1}: Y2 = 1; // State E (1) --1--> D
+			{3'b101, 1'b0}: Y2 = 0; // State F (1) --0--> C
+			{3'b101, 1'b1}: Y2 = 0; // State F (1) --1--> D
+			default: Y2 = 0; // Default state
+		endcase
+	end
+
+endmodule
+```
+

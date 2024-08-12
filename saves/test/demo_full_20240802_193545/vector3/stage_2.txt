@@ -1,0 +1,61 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Given several input vectors, concatenate them together then split them up into several output vectors. There are six 5-bit input vectors: a, b, c, d, e, and f, for a total of 30 bits of input. There are four 8-bit output vectors: w, x, y, and z, for 32 bits of output. The output should be a concatenation of the input vectors followed by two 1 bits (the two 1 bits should be in the LSB positions).
+RTL testbench specification:
+{
+  "important data": "There are six 5-bit input vectors (a, b, c, d, e, f) for a total of 30 bits of input and four 8-bit output vectors (w, x, y, z) for 32 bits of output. The output must be a concatenation of the input vectors followed by two 1 bits in the LSB positions.",
+  "technical specifications": [
+    "0. DUT module header: module top_module (input [4:0] a, input [4:0] b, input [4:0] c, input [4:0] d, input [4:0] e, input [4:0] f, output [7:0] w, output [7:0] x, output [7:0] y, output [7:0] z);",
+    "1. Total input size: 30 bits (6 vectors of 5 bits each).",
+    "2. Total output size: 32 bits (4 vectors of 8 bits each).",
+    "3. Output vectors (w, x, y, z) should be derived from the concatenation of input vectors (a, b, c, d, e, f) and have 2 LSB bits set to 1.",
+    "4. Testbench should apply various combinations of input vectors (a, b, c, d, e, f) and verify the expected output (w, x, y, z) against the specification that they are correctly generated.",
+    "5. The concatenated output for w should consist of the first 8 bits of concatenated inputs followed by the two 1 bits.",
+    "6. The output x, y, z must similarly be derived from the relevant segments of the concatenated input stream plus the final two 1 bits."
+  ]
+}
+DUT header:
+module top_module (
+	input [4:0] a,
+	input [4:0] b,
+	input [4:0] c,
+	input [4:0] d,
+	input [4:0] e,
+	input [4:0] f,
+	output [7:0] w,
+	output [7:0] x,
+	output [7:0] y,
+	output [7:0] z
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply inputs a = 5'b00001, b = 5'b00010, c = 5'b00011, d = 5'b00100, e = 5'b00101, f = 5'b00110 at clock cycle 1.",
+  "scenario 2": "Apply inputs a = 5'b11111, b = 5'b11110, c = 5'b11101, d = 5'b11100, e = 5'b11011, f = 5'b11010 at clock cycle 2.",
+  "scenario 3": "Apply inputs a = 5'b01010, b = 5'b10101, c = 5'b11000, d = 5'b00111, e = 5'b01001, f = 5'b10010 at clock cycle 3.",
+  "scenario 4": "Apply inputs a = 5'b00000, b = 5'b11111, c = 5'b00001, d = 5'b11110, e = 5'b00010, f = 5'b11101 at clock cycle 4.",
+  "scenario 5": "Apply inputs a = 5'b00111, b = 5'b01000, c = 5'b01001, d = 5'b01010, e = 5'b01011, f = 5'b01100 at clock cycle 5.",
+  "scenario 6": "Apply inputs a = 5'b10000, b = 5'b10001, c = 5'b10010, d = 5'b10011, e = 5'b10100, f = 5'b10101 at clock cycle 6.",
+  "scenario 7": "Apply inputs a = 5'b11001, b = 5'b11010, c = 5'b11011, d = 5'b11100, e = 5'b11101, f = 5'b11110 at clock cycle 7.",
+  "scenario 8": "Apply inputs a = 5'b11111, b = 5'b00000, c = 5'b10101, d = 5'b10110, e = 5'b01000, f = 5'b01001 at clock cycle 8."
+}
+

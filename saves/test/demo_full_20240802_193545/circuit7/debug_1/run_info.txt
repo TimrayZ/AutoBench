@@ -1,0 +1,10 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp circuit7_tb.v circuit7.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+circuit7_tb.v:28: syntax error
+circuit7_tb.v:28: error: Malformed statement
+

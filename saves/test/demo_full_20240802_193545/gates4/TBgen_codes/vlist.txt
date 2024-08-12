@@ -1,0 +1,2 @@
+gates4_tb.v
+gates4.v

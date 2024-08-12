@@ -1,0 +1,10 @@
+scenario: 1, cpu_overheated = 1, shut_off_computer = x, arrived = 0, gas_tank_empty = 0, keep_driving = x
+scenario: 2, cpu_overheated = 0, shut_off_computer = x, arrived = 1, gas_tank_empty = 1, keep_driving = x
+scenario: 3, cpu_overheated = 0, shut_off_computer = x, arrived = 0, gas_tank_empty = 0, keep_driving = x
+scenario: 4, cpu_overheated = 1, shut_off_computer = x, arrived = 1, gas_tank_empty = 0, keep_driving = x
+scenario: 5, cpu_overheated = 0, shut_off_computer = x, arrived = 0, gas_tank_empty = 1, keep_driving = x
+scenario: 6, cpu_overheated = 1, shut_off_computer = x, arrived = 0, gas_tank_empty = 1, keep_driving = x
+scenario: 7, cpu_overheated = 0, shut_off_computer = x, arrived = 1, gas_tank_empty = 1, keep_driving = x
+scenario: 8, cpu_overheated = 1, shut_off_computer = x, arrived = 1, gas_tank_empty = 1, keep_driving = x
+scenario: 9a, cpu_overheated = 1, shut_off_computer = x, arrived = 0, gas_tank_empty = 0, keep_driving = x
+scenario: 9b, cpu_overheated = 1, shut_off_computer = x, arrived = 1, gas_tank_empty = 0, keep_driving = x

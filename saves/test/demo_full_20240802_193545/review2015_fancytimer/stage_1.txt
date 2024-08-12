@@ -1,0 +1,61 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+We want to create a timer with one input that:
+
+// (1) is started when a particular input pattern (1101) is detected,
+// (2) shifts in 4 more bits to determine the duration to delay,
+// (3) waits for the counters to finish counting, and
+// (4) notifies the user and waits for the user to acknowledge the timer.
+
+// The serial data is available on the data input pin. When the pattern 1101 is received, the circuit must then shift in the next 4 bits, most-significant-bit first. These 4 bits determine the duration of the timer delay, referred to as delay[3:0]. After that, the state machine asserts its counting output to indicate it is counting. Once the 1101 and delay[3:0] have been read, the circuit no longer looks at the data input until it resumes searching after everything else is done.
+
+// The state machine must count for exactly (delay[3:0] + 1) * 1000 clock cycles. e.g., delay=0 means count 1000 cycles, and delay=5 means count 6000 cycles. Also output the current remaining time. This should be equal to delay for 1000 cycles, then delay-1 for 1000 cycles, and so on until it is 0 for 1000 cycles. 
+
+// When the circuit isn't counting, the count[3:0] output is don't-care (whatever value is convenient for you to implement). At that point, the circuit must assert done to notify the user the timer has timed out, and waits until input ack is 1 before being reset to look for the next occurrence of the start sequence (1101).
+
+// The circuit should reset into a state where it begins searching for the input sequence 1101. The reset signal is active high synchronous. 
+
+DUT header:
+module top_module(
+	input wire clk,
+	input wire reset,
+	input wire data,
+    output wire [3:0] count,
+    output reg counting,
+    output reg done,
+    input wire ack );
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "The timer circuit starts on detecting the pattern 1101, shifts in 4 bits for delay, counts for (delay + 1) * 1000 cycles, and outputs the remaining time. It asserts done to notify when the timer has timed out and waits for ack to reset.",
+  "technical specifications": [
+    "1. The DUT module header is defined as follows: module top_module(input wire clk, input wire reset, input wire data, output wire [3:0] count, output reg counting, output reg done, input wire ack);",
+    "2. The DUT must respond to an input sequence of 1101 as a trigger to start counting.",
+    "3. The DUT should shift in 4 bits (delay[3:0]) after detecting the start sequence indicating the duration for the timer.",
+    "4. The count signal should represent the remaining time, decrementing every 1000 clock cycles until it reaches 0.",
+    "5. The counting signal should be asserted while the DUT is counting down.",
+    "6. The done output should signal that the timer has completed its count and is waiting for an acknowledge (ack) signal to reset.",
+    "7. The reset signal is active high and synchronous; the circuit should return to searching for the input sequence after a reset.",
+    "8. The state machine should not monitor the data input after detecting 1101 until the timer has finished counting."
+  ]
+}
+

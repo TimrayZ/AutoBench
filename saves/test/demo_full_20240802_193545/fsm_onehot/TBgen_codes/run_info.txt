@@ -1,0 +1,15 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp fsm_onehot_tb.v fsm_onehot.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+fsm_onehot_tb.v:154: $finish called at 20000 (1ps)
+
+iverilog cmd 2 error:
+

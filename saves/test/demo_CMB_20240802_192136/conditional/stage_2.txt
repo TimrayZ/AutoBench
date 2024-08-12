@@ -1,0 +1,58 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Given four unsigned numbers, find the minimum. Unsigned numbers can be compared with standard comparison operators (a < b). 
+RTL testbench specification:
+{
+  "important data": "Given four unsigned numbers, find the minimum. Unsigned numbers can be compared with standard comparison operators (a < b).",
+  "technical specifications": [
+    "1. The DUT is declared as a module named 'top_module'.",
+    "2. The module has four 8-bit unsigned input ports: 'a', 'b', 'c', and 'd'.",
+    "3. The module has one 8-bit unsigned output port: 'min'.",
+    "4. The output 'min' should represent the minimum value among the four input numbers.",
+    "5. The testbench should apply various sets of input values to ensure all combinations are tested.",
+    "6. The expected output must be calculated to verify if the DUT correctly outputs the minimum value.",
+    "7. The testbench must include at least 10 test cases that cover normal cases, edge cases (e.g., all values the same, minimum and maximum values), and random cases."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] a,
+	input [7:0] b,
+	input [7:0] c,
+	input [7:0] d,
+	output reg [7:0] min
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply inputs a=8'h01, b=8'h02, c=8'h03, d=8'h04 at clock cycle 0 and validate the output at clock cycle 1.",
+  "scenario 2": "Apply inputs a=8'hFF, b=8'h80, c=8'h7F, d=8'h01 at clock cycle 2 and validate the output at clock cycle 3.",
+  "scenario 3": "Apply inputs a=8'h10, b=8'h10, c=8'h10, d=8'h10 at clock cycle 4 and validate the output at clock cycle 5.",
+  "scenario 4": "Apply inputs a=8'h00, b=8'h01, c=8'h02, d=8'h03 at clock cycle 6 and validate the output at clock cycle 7.",
+  "scenario 5": "Apply inputs a=8'h7F, b=8'h80, c=8'h81, d=8'hFF at clock cycle 8 and validate the output at clock cycle 9.",
+  "scenario 6": "Apply inputs a=8'h04, b=8'h03, c=8'h02, d=8'h01 at clock cycle 10 and validate the output at clock cycle 11.",
+  "scenario 7": "Apply inputs a=8'hA0, b=8'h5A, c=8'h1F, d=8'h30 at clock cycle 12 and validate the output at clock cycle 13.",
+  "scenario 8": "Apply inputs a=8'h12, b=8'h34, c=8'h56, d=8'h78 at clock cycle 14 and validate the output at clock cycle 15.",
+  "scenario 9": "Apply inputs a=8'h00, b=8'h00, c=8'h00, d=8'h00 at clock cycle 16 and validate the output at clock cycle 17.",
+  "scenario 10": "Apply inputs a=8'h80, b=8'h40, c=8'h20, d=8'h00 at clock cycle 18 and validate the output at clock cycle 19."
+}
+

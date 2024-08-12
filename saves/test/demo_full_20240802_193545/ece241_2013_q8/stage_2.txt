@@ -1,0 +1,57 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Implement a Mealy-type finite state machine that recognizes the sequence "101" on an input signal named x. Your FSM should have an output signal, z, that is asserted to logic-1 when the "101" sequence is detected. Your FSM should also have a negative edge triggered asynchronous reset. You may only have 3 states in your state machine. Your FSM should recognize overlapping sequences.
+RTL testbench specification:
+{
+  "important data": "The Mealy-type finite state machine recognizes the sequence '101' on an input signal named x. It has an output signal z that is asserted to logic-1 when the sequence is detected. The FSM has a negative edge triggered asynchronous reset and recognizes overlapping sequences.",
+  "technical specifications": [
+    "1. The DUT is a Mealy-type FSM that detects the sequence '101'.",
+    "2. The FSM should have three states to recognize the sequence.",
+    "3. The FSM output z should be asserted (set to logic-1) when the '101' sequence is detected.",
+    "4. The FSM has an asynchronous reset input (aresetn) that is active low.",
+    "5. The DUT must handle overlapping sequences.",
+    "6. The DUT inputs include clk, aresetn, and x.",
+    "7. The DUT output is z, which is a register output."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input aresetn,
+	input x,
+	output reg z
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply aresetn low for one clock cycle to reset the FSM. After the reset, assert x low for three clock cycles.",
+  "scenario 2": "After the initial reset, apply x high for one clock cycle, then apply x low for one clock cycle. This simulates the input '10'.",
+  "scenario 3": "Continuing from the previous state, assert x high for one clock cycle (input '101'). Observe if output z is asserted.",
+  "scenario 4": "After the '101' detection, apply x high for one clock cycle, then low for two clock cycles to test the overlap detection ('1 follows 0').",
+  "scenario 5": "Assert x low for one clock cycle to reset the sequence, and then apply x high for two clock cycles (simulating '10').",
+  "scenario 6": "From the previous state of '10', assert x high for one clock cycle to apply input '101'. Again check if output z is asserted.",
+  "scenario 7": "Apply aresetn low for one clock cycle again for a full reset. After reset, assert x high for a clock cycle, then low for two clock cycles.",
+  "scenario 8": "Assert x high for one clock cycle after '10' to complete '101' and observe the output. After that, apply x low for one clock cycle.",
+  "scenario 9": "Apply a longer sequence of inputs by setting x to high for three cycles, followed by low for three cycles, to test long sequences without triggering z.",
+  "scenario 10": "Finally, apply x high for two clock cycles, followed by low for one clock cycle, to capture the edge conditions of the FSM's responsiveness."
+}
+

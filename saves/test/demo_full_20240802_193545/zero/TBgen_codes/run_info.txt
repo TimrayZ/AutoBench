@@ -1,0 +1,21 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp zero_tb.v zero.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+Starting Scenario 1
+Starting Scenario 2
+Starting Scenario 3
+Starting Scenario 4
+Starting Scenario 5
+Starting Scenario 6
+zero_tb.v:80: $finish called at 74000 (1ps)
+
+iverilog cmd 2 error:
+

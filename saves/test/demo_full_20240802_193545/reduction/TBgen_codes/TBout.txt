@@ -1,0 +1,10 @@
+scenario: 1, in =   0, parity = z
+scenario: 2, in =   1, parity = z
+scenario: 3, in = 255, parity = z
+scenario: 4, in = 170, parity = z
+scenario: 5, in =  85, parity = z
+scenario: 6, in = 204, parity = z
+scenario: 7, in =  51, parity = z
+scenario: 8, in =  15, parity = z
+scenario: 9, in = 240, parity = z
+scenario: 10, in = 188, parity = z

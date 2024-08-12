@@ -1,0 +1,51 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Given the state-assigned table shown below, implement the logic functions Y[0] and z.
+// Present state y[2:0] | Next state Y[2:0] x=0, Next state Y[2:0] x=1 | Output z
+// 000 | 000, 001 | 0
+// 001 | 001, 100 | 0
+// 010 | 010, 001 | 0
+// 011 | 001, 010 | 1
+// 100 | 011, 100 | 1
+
+DUT header:
+module top_module (
+	input clk,
+	input x,
+	input [2:0] y,
+	output reg Y0,
+	output reg z
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "State-assigned table for state transitions and outputs: Present state y[2:0] | Next state Y[2:0] x=0, Next state Y[2:0] x=1 | Output z\n000 | 000, 001 | 0\n001 | 001, 100 | 0\n010 | 010, 001 | 0\n011 | 001, 010 | 1\n100 | 011, 100 | 1",
+  "technical specifications": [
+    "1: DUT module header - module top_module (input clk, input x, input [2:0] y, output reg Y0, output reg z)",
+    "2: Testbench should instantiate the DUT module and drive the clk, x, and y inputs.",
+    "3: Generate a clock signal in the testbench for timing control.",
+    "4: Testbench must include a variety of input test cases (x = 0 and x = 1) and corresponding states y to validate state transitions and output z as defined in the problem description.",
+    "5: For each state, validate the output z based on the given transition table and check if the output Y0 also meets the expected results.",
+    "6: Each test case in the testbench shall monitor the output and log the results (pass/fail) based on the expected output."
+  ]
+}
+

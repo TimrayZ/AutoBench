@@ -1,0 +1,43 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Build a four-bit shift register that also acts as a down counter. Data is shifted in most-significant-bit first when shift_ena is 1. The number currently in the shift register is decremented when count_ena is 1. Since the full system doesn't ever use shift_ena and count_ena together, it does not matter what your circuit does if both control inputs are 1 (This mainly means that it doesn't matter which case gets higher priority).
+RTL header:
+module top_module(
+	input clk,
+	input shift_ena,
+	input count_ena,
+	input data,
+	output reg [3:0] q);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+    input clk,
+    input shift_ena,
+    input count_ena,
+    input data,
+    output reg [3:0] q
+);
+    
+    always @(posedge clk) begin
+        if (shift_ena) begin
+            q <= {data, q[3:1]}; // Shift in data MSB first
+        end else if (count_ena) begin
+            q <= q - 1; // Decrement the counter
+        end
+    end
+
+endmodule
+```
+

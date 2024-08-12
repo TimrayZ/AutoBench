@@ -1,0 +1,14 @@
+{
+    "task_id": "kmap4",
+    "task_number": 18,
+    "time": 42.74,
+    "prompt_tokens": 5179,
+    "completion_tokens": 2584,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.06
+}

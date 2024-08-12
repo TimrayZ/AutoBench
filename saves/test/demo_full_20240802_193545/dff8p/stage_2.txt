@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Create 8 D flip-flops with active high synchronous reset. The flip-flops must be reset to 0x34 rather than zero. All DFFs should be triggered by the negative edge of clk.
+RTL testbench specification:
+{
+  "important data": "The DUT implements 8 D flip-flops with active high synchronous reset, which resets the flip-flops to 0x34. The flip-flops are triggered by the negative edge of the clock.",
+  "technical specifications": [
+    "1. Module Header: module top_module(input clk, input [7:0] d, input reset, output reg [7:0] q);",
+    "2. The DUT has 3 inputs: clk (clock signal), d (an 8-bit input), and reset (active high reset signal).",
+    "3. The DUT has 1 output: q (an 8-bit output representing the state of the flip-flops).",
+    "4. The DUT consists of 8 individual D flip-flops, which are triggered on the negative edge of clk.",
+    "5. On receiving a high 'reset' signal, all flip-flops should reset their output to the value 0x34.",
+    "6. When the reset is low, the output of each flip-flop should follow the corresponding input 'd' on the negative edge of clk."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input [7:0] d,
+	input reset,
+	output reg [7:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply a high reset signal (reset = 1) while clk = 0. Wait for 1 clock cycle (clk goes low to high), then release reset (reset = 0) at the next negative edge of clk.",
+  "scenario 2": "Set d = 8'b00000001 (d = 1) and apply a negative edge transition of clk after 1 clock cycle of reset = 0, to observe the behavior of the flip-flops.",
+  "scenario 3": "Set d = 8'b11111111 (d = 255) and apply a negative edge transition of clk. Wait for 1 clock cycle and then set d = 8'b10101010 (d = 170) and apply another negative edge of clk.",
+  "scenario 4": "Apply a high reset signal (reset = 1) while clk = 0, wait 1 clock cycle, then release reset (reset = 0) and set d = 8'b00000000 (d = 0). Apply a negative edge of clk after 1 clock cycle.",
+  "scenario 5": "Set d = 8'b01010101 (d = 85) and apply a negative edge transition of clk. After 1 clock cycle, maintain the same d value and apply another negative edge of clk.",
+  "scenario 6": "Keep reset low (reset = 0) and set d = 8'b11110000 (d = 240). After 1 clock cycle, set reset = 1 for 1 clock cycle and then back to reset = 0. Wait for the next negative edge of clk.",
+  "scenario 7": "Set d = 8'b00001111 (d = 15) and apply a negative edge of clk. Change d to 8'b00110011 (d = 51) while maintaining reset = 0, and apply another negative edge of clk after 2 clock cycles."
+}
+

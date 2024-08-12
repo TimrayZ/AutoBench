@@ -1,0 +1,8 @@
+scenario: 1, a = 0, b = 0, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 2, a = 0, b = 1, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 3, a = 1, b = 0, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 4, a = 1, b = 1, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 5, a = 0, b = 1, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 6, a = 1, b = 1, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 7, a = 1, b = 1, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z
+scenario: 8, a = 0, b = 0, out_and = z, out_or = z, out_xor = z, out_nand = z, out_nor = z, out_xnor = z, out_anotb = z

@@ -1,0 +1,41 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Build a priority encoder for 8-bit inputs. Given an 8-bit vector, the output should report the first (least significant) bit in the vector that is 1. Report zero if the input vector has no bits that are high. For example, the input 8'b10010000 should output 3'd4, because bit[4] is first bit that is high.
+RTL header:
+module top_module (
+	input [7:0] in,
+	output reg [2:0] pos
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input [7:0] in,
+    output reg [2:0] pos
+);
+    integer i;
+
+    always @(*) begin
+        pos = 3'b000; // default value
+        for (i = 0; i < 8; i = i + 1) begin
+            if (in[i] == 1'b1) begin
+                pos = i[2:0]; // assign the position of the first '1'
+                break; // exit the loop after finding the first '1'
+            end
+        end
+        // If no bits are high, pos remains 3'b000
+    end
+endmodule
+```
+

@@ -1,0 +1,55 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Given four unsigned numbers, find the minimum. Unsigned numbers can be compared with standard comparison operators (a < b). 
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. DUT Name: top_module",
+    "2. Input Ports: four 8-bit unsigned inputs (a, b, c, d)",
+    "3. Output Port: one 8-bit unsigned output (min)",
+    "4. Functionality: The DUT is designed to compute the minimum of the four unsigned numbers provided as inputs.",
+    "5. Comparison Method: Utilize standard comparison operators for finding the minimum value (a < b, a < c, etc.).",
+    "6. Output Condition: The output 'min' should hold the minimum value among the inputs a, b, c, and d."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] a,
+	input [7:0] b,
+	input [7:0] c,
+	input [7:0] d,
+	output reg [7:0] min
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set inputs a, b, c, and d to 8'h00, 8'h10, 8'h20, and 8'h30 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set inputs a, b, c, and d to 8'hFF, 8'hFF, 8'hFF, and 8'hFF respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 3": "Set inputs a, b, c, and d to 8'h05, 8'h03, 8'h02, and 8'h01 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 4": "Set inputs a, b, c, and d to 8'hAA, 8'h55, 8'h77, and 8'h99 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 5": "Set inputs a, b, c, and d to 8'h10, 8'h20, 8'h30, and 8'h00 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 6": "Set inputs a, b, c as 8'h0F, 8'h1F, and 8'h2F, and leave d as 8'h00 at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 7": "Set inputs a, b, c, and d to 8'hFF, 8'h01, 8'hFE, and 8'h02 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 8": "Set inputs a, b, c, and d to 8'h12, 8'h12, 8'h12, and 8'h12 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output."
+}
+

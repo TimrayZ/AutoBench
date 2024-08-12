@@ -1,0 +1,102 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+In many (older) serial communications protocols, each data byte is sent along with a start bit and a stop bit, to help the receiver delimit bytes from the stream of bits. One common scheme is to use one start bit (0), 8 data bits, and 1 stop bit (1). The line is also at logic 1 when nothing is being transmitted (idle). Design a finite state machine that will identify when bytes have been correctly received when given a stream of bits. It needs to identify the start bit, wait for all 8 data bits, then verify that the stop bit was correct. If the stop bit does not appear when expected, the FSM must wait until it finds a stop bit before attempting to receive the next byte. Include a active-high synchronous reset. Note that the serial protocol sends the least significant bit first.
+RTL header:
+module top_module (
+	input clk,
+	input in,
+	input reset,
+	output done
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input clk,
+    input in,
+    input reset,
+    output reg done
+);
+    // State encoding
+    typedef enum reg [2:0] {
+        IDLE       = 3'b000,
+        START_BIT  = 3'b001,
+        DATA_BITS  = 3'b010,
+        STOP_BIT   = 3'b011,
+        ERROR      = 3'b100
+    } state_t;
+
+    state_t current_state, next_state;
+    reg [3:0] bit_count; // To count the number of data bits received
+
+    // State transition on clock edge
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            current_state <= IDLE;
+            bit_count <= 0;
+            done <= 0;
+        end else begin
+            current_state <= next_state;
+            if (current_state == DATA_BITS) begin
+                // Increment bit count if in data bits state
+                bit_count <= bit_count + 1;
+            end else if (current_state == STOP_BIT) begin
+                // Reset bit count after stop bit is received
+                bit_count <= 0;
+            end else if (current_state == IDLE) begin
+                done <= 0; // Clear done in IDLE state
+            end else if (current_state == ERROR) begin
+                done <= 0; // Clear done in ERROR state
+            end
+        end
+    end
+
+    // Next state logic
+    always @(*) begin
+        case (current_state)
+            IDLE: begin
+                if (in == 0) // Start bit detected
+                    next_state = START_BIT;
+                else
+                    next_state = IDLE;
+            end
+            START_BIT: begin
+                next_state = DATA_BITS; // Move to data bits
+            end
+            DATA_BITS: begin
+                if (bit_count == 7) // 8 bits received (bit_count starts from 0)
+                    next_state = STOP_BIT;
+                else
+                    next_state = DATA_BITS; // Stay in data bits
+            end
+            STOP_BIT: begin
+                if (in == 1) begin // Stop bit detected
+                    done = 1; // Byte received successfully
+                    next_state = IDLE; // Go back to IDLE state
+                end else begin
+                    next_state = ERROR; // Go to ERROR state
+                end
+            end
+            ERROR: begin
+                if (in == 1) // If stop bit is found
+                    next_state = IDLE; // Go back to IDLE state
+                else
+                    next_state = ERROR; // Stay in ERROR until stop bit
+            end
+            default: next_state = IDLE; // Default case
+        endcase
+    end
+endmodule
+```
+

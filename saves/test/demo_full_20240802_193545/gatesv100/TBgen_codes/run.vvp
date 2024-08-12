@@ -1,0 +1,93 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x5559c242f540 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x5559c242f6d0 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x5559c2447610_0 .var/i "file", 31 0;
+v0x5559c2447710_0 .var "in", 99 0;
+o0x7f17dcba7048 .functor BUFZ 99, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x5559c24477d0_0 .net "out_any", 99 1, o0x7f17dcba7048;  0 drivers
+o0x7f17dcba7078 .functor BUFZ 99, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x5559c24478d0_0 .net "out_both", 98 0, o0x7f17dcba7078;  0 drivers
+o0x7f17dcba70a8 .functor BUFZ 100, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v0x5559c24479a0_0 .net "out_different", 99 0, o0x7f17dcba70a8;  0 drivers
+S_0x5559c23f0d40 .scope module, "dut" "top_module" 3 12, 4 1 0, S_0x5559c242f6d0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 100 "in";
+    .port_info 1 /OUTPUT 99 "out_both";
+    .port_info 2 /OUTPUT 99 "out_any";
+    .port_info 3 /OUTPUT 100 "out_different";
+v0x5559c2418360_0 .net "in", 99 0, v0x5559c2447710_0;  1 drivers
+v0x5559c24472b0_0 .net "out_any", 99 1, o0x7f17dcba7048;  alias, 0 drivers
+v0x5559c2447390_0 .net "out_both", 98 0, o0x7f17dcba7078;  alias, 0 drivers
+v0x5559c2447480_0 .net "out_different", 99 0, o0x7f17dcba70a8;  alias, 0 drivers
+    .scope S_0x5559c242f6d0;
+T_0 ;
+    %vpi_func 3 23 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x5559c2447610_0, 0, 32;
+    %pushi/vec4 0, 0, 100;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 28 "$fdisplay", v0x5559c2447610_0, "scenario: 1, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 4294967295, 0, 32;
+    %concati/vec4 4294934528, 0, 32;
+    %concati/vec4 0, 0, 36;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 33 "$fdisplay", v0x5559c2447610_0, "scenario: 2, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 2863311530, 0, 32;
+    %concati/vec4 2863311530, 0, 32;
+    %concati/vec4 2863311530, 0, 32;
+    %concati/vec4 10, 0, 4;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 38 "$fdisplay", v0x5559c2447610_0, "scenario: 3, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 4294967295, 0, 32;
+    %concati/vec4 4294966784, 0, 32;
+    %concati/vec4 0, 0, 36;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 43 "$fdisplay", v0x5559c2447610_0, "scenario: 4, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 4294967295, 0, 32;
+    %concati/vec4 4294967295, 0, 32;
+    %concati/vec4 4294967295, 0, 32;
+    %concati/vec4 15, 0, 4;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 48 "$fdisplay", v0x5559c2447610_0, "scenario: 5, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 2863311530, 0, 33;
+    %concati/vec4 2863311530, 0, 32;
+    %concati/vec4 2863311530, 0, 32;
+    %concati/vec4 5, 0, 3;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 53 "$fdisplay", v0x5559c2447610_0, "scenario: 6, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 100;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 58 "$fdisplay", v0x5559c2447610_0, "scenario: 7, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %pushi/vec4 3865723341, 0, 43;
+    %concati/vec4 3451475468, 0, 34;
+    %concati/vec4 5592404, 0, 23;
+    %store/vec4 v0x5559c2447710_0, 0, 100;
+    %delay 1000, 0;
+    %vpi_call/w 3 63 "$fdisplay", v0x5559c2447610_0, "scenario: 8, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x5559c2447710_0, v0x5559c24478d0_0, v0x5559c24477d0_0, v0x5559c24479a0_0 {0 0 0};
+    %vpi_call/w 3 66 "$fclose", v0x5559c2447610_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "gatesv100_tb.v";
+    "gatesv100.v";

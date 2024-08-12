@@ -1,0 +1,82 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+The following diagram is a Mealy machine implementation of the 2's complementer. Implement in Verilog using one-hot encoding. Resets into state A and reset is asynchronous active-high.
+
+// A --x=0 (z=0)--> A
+// A --x=1 (z=1)--> B
+// B --x=0 (z=1)--> B
+// B --x=1 (z=0)--> B
+RTL header:
+module top_module (
+	input clk,
+	input areset,
+	input x,
+	output z
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input clk,
+    input areset,
+    input x,
+    output reg z
+);
+
+    // State encoding using one-hot
+    parameter A = 2'b01;
+    parameter B = 2'b10;
+
+    reg [1:0] state, next_state;
+
+    // Asynchronous reset logic
+    always @(posedge clk or posedge areset) begin
+        if (areset) begin
+            state <= A; // Reset to state A
+        end else begin
+            state <= next_state; // Move to next state
+        end
+    end
+
+    // Combinational logic for next state and output
+    always @(*) begin
+        case (state)
+            A: begin
+                if (x) begin
+                    next_state = B;
+                    z = 1; // output z=1 when transitioning to B
+                end else begin
+                    next_state = A;
+                    z = 0; // output z=0 when staying in A
+                end
+            end
+            B: begin
+                if (x) begin
+                    next_state = B;
+                    z = 0; // output z=0 when staying in B on x=1
+                end else begin
+                    next_state = B;
+                    z = 1; // output z=1 when staying in B on x=0
+                end
+            end
+            default: begin
+                next_state = A;
+                z = 0; // Default case (should not occur)
+            end
+        endcase
+    end
+
+endmodule
+```
+

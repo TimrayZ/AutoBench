@@ -1,0 +1,50 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Given several input vectors, concatenate them together then split them up into several output vectors. There are six 5-bit input vectors: a, b, c, d, e, and f, for a total of 30 bits of input. There are four 8-bit output vectors: w, x, y, and z, for 32 bits of output. The output should be a concatenation of the input vectors followed by two 1 bits (the two 1 bits should be in the LSB positions).
+DUT header:
+module top_module (
+	input [4:0] a,
+	input [4:0] b,
+	input [4:0] c,
+	input [4:0] d,
+	input [4:0] e,
+	input [4:0] f,
+	output [7:0] w,
+	output [7:0] x,
+	output [7:0] y,
+	output [7:0] z
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "There are six 5-bit input vectors (a, b, c, d, e, f) for a total of 30 bits of input and four 8-bit output vectors (w, x, y, z) for 32 bits of output. The output must be a concatenation of the input vectors followed by two 1 bits in the LSB positions.",
+  "technical specifications": [
+    "0. DUT module header: module top_module (input [4:0] a, input [4:0] b, input [4:0] c, input [4:0] d, input [4:0] e, input [4:0] f, output [7:0] w, output [7:0] x, output [7:0] y, output [7:0] z);",
+    "1. Total input size: 30 bits (6 vectors of 5 bits each).",
+    "2. Total output size: 32 bits (4 vectors of 8 bits each).",
+    "3. Output vectors (w, x, y, z) should be derived from the concatenation of input vectors (a, b, c, d, e, f) and have 2 LSB bits set to 1.",
+    "4. Testbench should apply various combinations of input vectors (a, b, c, d, e, f) and verify the expected output (w, x, y, z) against the specification that they are correctly generated.",
+    "5. The concatenated output for w should consist of the first 8 bits of concatenated inputs followed by the two 1 bits.",
+    "6. The output x, y, z must similarly be derived from the relevant segments of the concatenated input stream plus the final two 1 bits."
+  ]
+}
+

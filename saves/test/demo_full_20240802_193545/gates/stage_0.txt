@@ -1,0 +1,59 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Build a combinational circuit with two inputs, a and b. There are 7 outputs, each with a logic gate driving it: 
+// (1) out_and: a and b 
+// (2) out_or: a or b 
+// (3) out_xor: a xor b 
+// (4) out_nand: a nand b 
+// (5) out_nor: a nor b 
+// (6) out_xnor: a xnor b 
+// (7) out_anotb: a and-not b
+RTL header:
+module top_module (
+	input a,
+	input b,
+	output out_and,
+	output out_or,
+	output out_xor,
+	output out_nand,
+	output out_nor,
+	output out_xnor,
+	output out_anotb
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+	input a,
+	input b,
+	output out_and,
+	output out_or,
+	output out_xor,
+	output out_nand,
+	output out_nor,
+	output out_xnor,
+	output out_anotb
+);
+
+assign out_and = a & b;        // AND operation
+assign out_or = a | b;         // OR operation
+assign out_xor = a ^ b;        // XOR operation
+assign out_nand = ~(a & b);    // NAND operation
+assign out_nor = ~(a | b);     // NOR operation
+assign out_xnor = ~(a ^ b);    // XNOR operation
+assign out_anotb = a & ~b;     // AND-NOT operation
+
+endmodule
+```
+

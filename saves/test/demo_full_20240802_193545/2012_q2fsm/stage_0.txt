@@ -1,0 +1,127 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Consider the state machine shown below:
+
+// A (0) --1--> B
+// A (0) --0--> A
+// B (0) --1--> C
+// B (0) --0--> D
+// C (0) --1--> E
+// C (0) --0--> D
+// D (0) --1--> F
+// D (0) --0--> A
+// E (1) --1--> E
+// E (1) --0--> D
+// F (1) --1--> C
+// F (1) --0--> D
+
+// Reset resets into state A and is synchronous active-high. 
+
+// Write complete Verilog code that represents this FSM. Use separate **always** blocks for the state table and the state flip-flops. Describe the FSM output, which is called _z_, using either continuous assignment statement(s) or an **always** block (at your discretion). Assign any state codes that you wish to use.
+RTL header:
+module top_module (
+	input clk,
+	input reset,
+	input w,
+	output z
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input clk,
+    input reset,
+    input w,
+    output reg z
+);
+
+    // State encoding
+    typedef enum logic [2:0] {
+        A = 3'b000,
+        B = 3'b001,
+        C = 3'b010,
+        D = 3'b011,
+        E = 3'b100,
+        F = 3'b101
+    } state_t;
+
+    state_t current_state, next_state;
+
+    // State flip-flops
+    always_ff @(posedge clk or posedge reset) begin
+        if (reset)
+            current_state <= A; // Reset to state A
+        else
+            current_state <= next_state;
+    end
+
+    // Next state logic
+    always_comb begin
+        case (current_state)
+            A: begin
+                if (w)
+                    next_state = B;
+                else
+                    next_state = A;
+            end
+            B: begin
+                if (w)
+                    next_state = C;
+                else
+                    next_state = D;
+            end
+            C: begin
+                if (w)
+                    next_state = E;
+                else
+                    next_state = D;
+            end
+            D: begin
+                if (w)
+                    next_state = F;
+                else
+                    next_state = A;
+            end
+            E: begin
+                if (w)
+                    next_state = E;
+                else
+                    next_state = D;
+            end
+            F: begin
+                if (w)
+                    next_state = C;
+                else
+                    next_state = D;
+            end
+            default: next_state = A; // Default case to reset to state A
+        endcase
+    end
+
+    // Output logic
+    always_ff @(posedge clk) begin
+        case (current_state)
+            A: z = 0;
+            B: z = 0;
+            C: z = 0;
+            D: z = 0;
+            E: z = 1;
+            F: z = 1;
+            default: z = 0; // Default output value
+        endcase
+    end
+
+endmodule
+```
+

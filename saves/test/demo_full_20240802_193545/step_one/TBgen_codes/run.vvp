@@ -1,0 +1,62 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x55814fe9a790 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x55814fe9a920 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x55814feabb90_0 .var/i "fd", 31 0;
+o0x7fb4aff92018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x55814feabc70_0 .net "one", 0 0, o0x7fb4aff92018;  0 drivers
+S_0x55814fe5fd40 .scope module, "DUT" "top_module" 3 7, 4 1 0, S_0x55814fe9a920;
+ .timescale -9 -12;
+    .port_info 0 /OUTPUT 1 "one";
+v0x55814fe5fef0_0 .net "one", 0 0, o0x7fb4aff92018;  alias, 0 drivers
+    .scope S_0x55814fe9a920;
+T_0 ;
+    %vpi_func 3 16 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x55814feabb90_0, 0, 32;
+    %delay 0, 0;
+    %vpi_call/w 3 20 "$fdisplay", v0x55814feabb90_0, "scenario: 1, one = %d", v0x55814feabc70_0 {0 0 0};
+    %pushi/vec4 10, 0, 32;
+T_0.0 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_0.1, 5;
+    %jmp/1 T_0.1, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %delay 10000, 0;
+    %vpi_call/w 3 25 "$fdisplay", v0x55814feabb90_0, "scenario: 2, one = %d", v0x55814feabc70_0 {0 0 0};
+    %jmp T_0.0;
+T_0.1 ;
+    %pop/vec4 1;
+    %delay 100000, 0;
+    %delay 10000, 0;
+    %vpi_call/w 3 31 "$fdisplay", v0x55814feabb90_0, "scenario: 3, one = %d", v0x55814feabc70_0 {0 0 0};
+    %delay 90000, 0;
+    %delay 10000, 0;
+    %vpi_call/w 3 36 "$fdisplay", v0x55814feabb90_0, "scenario: 4a, one = %d", v0x55814feabc70_0 {0 0 0};
+    %delay 100000, 0;
+    %delay 10000, 0;
+    %vpi_call/w 3 39 "$fdisplay", v0x55814feabb90_0, "scenario: 4b, one = %d", v0x55814feabc70_0 {0 0 0};
+    %delay 10000, 0;
+    %vpi_call/w 3 43 "$fdisplay", v0x55814feabb90_0, "scenario: 1a, one = %d", v0x55814feabc70_0 {0 0 0};
+    %vpi_call/w 3 46 "$fclose", v0x55814feabb90_0 {0 0 0};
+    %vpi_call/w 3 47 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "step_one_tb.v";
+    "step_one.v";

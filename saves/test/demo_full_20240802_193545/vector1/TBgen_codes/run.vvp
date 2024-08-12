@@ -1,0 +1,83 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x5555b9d63ab0 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x5555b9d63c40 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x5555b9d7a000_0 .var/i "file", 31 0;
+v0x5555b9d7a0e0_0 .var "in", 15 0;
+o0x7fec2519d048 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x5555b9d7a1d0_0 .net "out_hi", 7 0, o0x7fec2519d048;  0 drivers
+o0x7fec2519d078 .functor BUFZ 8, C4<zzzzzzzz>; HiZ drive
+v0x5555b9d7a2d0_0 .net "out_lo", 7 0, o0x7fec2519d078;  0 drivers
+S_0x5555b9d63dd0 .scope module, "DUT" "top_module" 3 10, 4 1 0, S_0x5555b9d63c40;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 16 "in";
+    .port_info 1 /OUTPUT 8 "out_hi";
+    .port_info 2 /OUTPUT 8 "out_lo";
+v0x5555b9d515f0_0 .net "in", 15 0, v0x5555b9d7a0e0_0;  1 drivers
+v0x5555b9d79de0_0 .net "out_hi", 7 0, o0x7fec2519d048;  alias, 0 drivers
+v0x5555b9d79ec0_0 .net "out_lo", 7 0, o0x7fec2519d078;  alias, 0 drivers
+    .scope S_0x5555b9d63c40;
+T_0 ;
+    %vpi_func 3 20 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x5555b9d7a000_0, 0, 32;
+    %pushi/vec4 0, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 25 "$fdisplay", v0x5555b9d7a000_0, "scenario: 1, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 65535, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 30 "$fdisplay", v0x5555b9d7a000_0, "scenario: 2, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 43690, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 35 "$fdisplay", v0x5555b9d7a000_0, "scenario: 3, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 4660, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 40 "$fdisplay", v0x5555b9d7a000_0, "scenario: 4, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 61680, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 45 "$fdisplay", v0x5555b9d7a000_0, "scenario: 5, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 3855, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 50 "$fdisplay", v0x5555b9d7a000_0, "scenario: 6, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 21845, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 55 "$fdisplay", v0x5555b9d7a000_0, "scenario: 7, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 52428, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 60 "$fdisplay", v0x5555b9d7a000_0, "scenario: 8, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 255, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 65 "$fdisplay", v0x5555b9d7a000_0, "scenario: 9, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %pushi/vec4 65280, 0, 16;
+    %store/vec4 v0x5555b9d7a0e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call/w 3 70 "$fdisplay", v0x5555b9d7a000_0, "scenario: 10, in = %d, out_hi = %d, out_lo = %d", v0x5555b9d7a0e0_0, v0x5555b9d7a1d0_0, v0x5555b9d7a2d0_0 {0 0 0};
+    %vpi_call/w 3 72 "$fclose", v0x5555b9d7a000_0 {0 0 0};
+    %vpi_call/w 3 73 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "vector1_tb.v";
+    "vector1.v";

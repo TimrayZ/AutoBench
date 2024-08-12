@@ -1,0 +1,14 @@
+{
+    "task_id": "ece241_2013_q12",
+    "task_number": 43,
+    "time": 63.6,
+    "prompt_tokens": 5362,
+    "completion_tokens": 5040,
+    "ERROR(incomplete)": false,
+    "circuit_type": "SEQ",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.09
+}

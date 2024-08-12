@@ -1,0 +1,55 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Create 8 D flip-flops with active high asynchronous reset. The output should be reset to 0. All DFFs should be triggered by the positive edge of clk.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1: The DUT (Device Under Test) is a module named 'top_module' that implements 8 D flip-flops.",
+    "2: The DUT has the following inputs: 'clk' (clock signal), 'd' (8-bit data input), and 'areset' (active high asynchronous reset).",
+    "3: The DUT has a single output 'q', which is an 8-bit register that holds the state of the flip-flops.",
+    "4: The D flip-flops are triggered on the positive edge of the 'clk' signal.",
+    "5: When 'areset' is asserted (active high), all flip-flops should output 0, regardless of the input 'd'.",
+    "6: The output 'q' reflects the values of the input 'd' when 'areset' is not asserted and 'clk' has a rising edge."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input [7:0] d,
+	input areset,
+	output reg [7:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Assert 'areset' high at clock cycle 0. Hold 'areset' high for 1 clock cycle. Then deassert 'areset' at clock cycle 1.",
+  "scenario 2": "Set 'd' to 8'b10101010 at clock cycle 1. Toggle 'clk' to trigger the first positive edge.",
+  "scenario 3": "Set 'd' to 8'b11110000 at clock cycle 2. Toggle 'clk' to trigger the second positive edge.",
+  "scenario 4": "Assert 'areset' high at clock cycle 3. Hold 'areset' high for 2 clock cycles. Then deassert 'areset' at clock cycle 5.",
+  "scenario 5": "Set 'd' to 8'b00001111 at clock cycle 5. Toggle 'clk' to trigger the positive edge at clock cycle 6.",
+  "scenario 6": "Set 'd' to 8'b00110011 at clock cycle 6. Toggle 'clk' to trigger the positive edge at clock cycle 7.",
+  "scenario 7": "Set 'd' to 8'b11111111 at clock cycle 7. Toggle 'clk' to trigger the positive edge at clock cycle 8.",
+  "scenario 8": "Set 'd' to 8'b00000000 at clock cycle 8. Toggle 'clk' to trigger the positive edge at clock cycle 9.",
+  "scenario 9": "Toggle 'areset' high again at clock cycle 10. Hold 'areset' high for 1 clock cycle. Then deassert 'areset' at clock cycle 11.",
+  "scenario 10": "Set 'd' to 8'b10101010 at clock cycle 11. Toggle 'clk' to trigger the positive edge at clock cycle 12."
+}
+

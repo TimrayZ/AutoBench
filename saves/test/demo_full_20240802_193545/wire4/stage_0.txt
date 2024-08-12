@@ -1,0 +1,43 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Create a module with 3 inputs and 4 outputs that behaves like wires that makes these connections: a -> w
+// ; b -> x; b -> y; c -> z.
+RTL header:
+module top_module (
+	input a,
+	input b,
+	input c,
+	output w,
+	output x,
+	output y,
+	output z  );
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input a,
+    input b,
+    input c,
+    output w,
+    output x,
+    output y,
+    output z
+);
+    assign w = a;
+    assign x = b;
+    assign y = b;
+    assign z = c;
+endmodule
+```
+

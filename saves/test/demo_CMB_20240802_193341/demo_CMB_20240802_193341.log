@@ -1,0 +1,190 @@
+
+---------------custom config--------------
+run: 
+    mode: autoline
+save: 
+    en: True
+    pub: 
+        prefix: demo_CMB
+        subdir: test
+gpt: 
+    model: 4om
+autoline: 
+    probset: 
+        path: data/HDLBits/HDLBits_data.jsonl
+        mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+        only: ['conditional']
+    promptscript: pychecker
+    timeout: 40
+------------------------------------------
+------config info (custom + default)------
+run: 
+    version: 5.0
+    author: Ruidi Qiu - Technical University of Munich
+    time: 20240802_193341
+    custom_path: config/demos/CMB_template.yaml
+    mode: autoline
+    hostname: resi08
+    pid: 3662431
+save: 
+    en: True
+    root: saves/test/demo_CMB_20240802_193341/
+    pub: 
+        prefix: demo_CMB
+        dir: saves/
+        subdir: test/
+    log: 
+        en: True
+        dir: logs/
+        notes: None
+        cfg_pmode: iwantall
+    message: 
+        en: True
+        dir: messages/
+        format: json
+    iverilog: 
+        en: True
+        subdir: ivcode_nodebug
+load: 
+    prompt: 
+        path: config/initial_prompts/prompt1.txt
+        pick_idx: []
+    stage_template: 
+        path: config/templates/stage_template0301.txt
+gpt: 
+    model: gpt-4o-mini-2024-07-18
+    key_path: config/key_API.json
+    temperature: None
+    json_mode: False
+    chatgpt: 
+        start_form: chat
+        one_time_talk: False
+iverilog: 
+    dir: 
+    task_id: 
+autoline: 
+    probset: 
+        path: data/HDLBits/HDLBits_data.jsonl
+        mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+        gptgenRTL_path: None
+        more_info_paths: []
+        only: ['conditional']
+        exclude: []
+        exclude_json: None
+        filter: [{}]
+    checklist: 
+        max: 3
+    debug: 
+        max: 5
+        reboot: 1
+        py_rollback: 2
+    onlyrun: None
+    promptscript: pychecker
+    error_interruption: False
+    timeout: 40
+------------------------------------------
+
+--------------default config--------------
+run: 
+    version: 5.0
+    author: Ruidi Qiu - Technical University of Munich
+    time: None
+    custom_path: None
+    mode: chatgpt
+save: 
+    en: True
+    root: None
+    pub: 
+        prefix: None
+        dir: saves/
+        subdir: 
+    log: 
+        en: True
+        dir: logs/
+        notes: None
+        cfg_pmode: iwantall
+    message: 
+        en: True
+        dir: messages/
+        format: json
+    iverilog: 
+        en: True
+        subdir: ivcode_nodebug
+load: 
+    prompt: 
+        path: config/initial_prompts/prompt1.txt
+        pick_idx: []
+    stage_template: 
+        path: config/templates/stage_template0301.txt
+gpt: 
+    model: 4
+    key_path: config/key_API.json
+    temperature: None
+    json_mode: False
+    chatgpt: 
+        start_form: chat
+        one_time_talk: False
+iverilog: 
+    dir: 
+    task_id: 
+autoline: 
+    probset: 
+        path: None
+        mutant_path: None
+        gptgenRTL_path: None
+        more_info_paths: []
+        only: []
+        exclude: []
+        exclude_json: None
+        filter: [{}]
+    checklist: 
+        max: 3
+    debug: 
+        max: 5
+        reboot: 1
+        py_rollback: 2
+    onlyrun: None
+    promptscript: None
+    error_interruption: False
+    timeout: 60
+------------------------------------------
+
+#################### task 1/1 [conditional] ####################
+stage_0 ends (2.20s used, time: 19:33:43 2024-08-02)
+stage_1 ends (3.31s used, time: 19:33:46 2024-08-02)
+stage_2 ends (6.38s used, time: 19:33:53 2024-08-02)
+stage_4 ends (12.59s used, time: 19:34:05 2024-08-02)
+stage_checklist ends (44.34s used, time: 19:34:50 2024-08-02)
+[conditional] iverilog compilation : passed! (19:34:50 2024-08-02)
+[conditional] TBsim finished : True! (19:34:50 2024-08-02)
+
+########## Analyze of Chatbench_RunInfo ##########
+
+#### pass numbers:
+Eval2 : 0
+Eval1 : 0
+Eval0 : 1
+total : 1 (Failed: 0)
+
+#### tokens and cost:
+average prompt tokens: 4239
+average completion tokens: 2552
+total cost: 0.0022
+average cost: 0.0022
+
+#### time:
+average time: 68.96s
+
+#### debug info table:
+debug info table:
+         | un-debugged | debugged | total |
+failed   |           0 |        0 |     0 |
+Eval0    |           1 |        0 |     1 |
+Eval1    |           0 |        0 |     0 |
+Eval2    |           0 |        0 |     0 |
+
+#### Eval2 ratio:
+
+loose Eval2 pass metric applied: R = 0.80
+
+

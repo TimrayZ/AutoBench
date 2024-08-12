@@ -1,0 +1,15 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp m2014_q4h_tb.v m2014_q4h.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+m2014_q4h_tb.v:68: $finish called at 13000 (1ps)
+
+iverilog cmd 2 error:
+

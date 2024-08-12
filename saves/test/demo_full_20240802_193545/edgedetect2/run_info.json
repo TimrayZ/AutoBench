@@ -1,0 +1,14 @@
+{
+    "task_id": "edgedetect2",
+    "task_number": 77,
+    "time": 72.55,
+    "prompt_tokens": 6167,
+    "completion_tokens": 5001,
+    "ERROR(incomplete)": false,
+    "circuit_type": "SEQ",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 1,
+    "iv_runing_time": 0.05
+}

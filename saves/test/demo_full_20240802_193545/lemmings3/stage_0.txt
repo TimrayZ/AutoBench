@@ -1,0 +1,132 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+The game Lemmings involves critters with fairly simple brains. So simple that we are going to model it using a finite state machine. In the Lemmings' 2D world, Lemmings can be in one of two states: walking left (walk_left is 1) or walking right (walk_right is 1). It will switch directions if it hits an obstacle. In particular, if a Lemming is bumped on the left (by receiving a 1 on bump_left), it will walk right. If it's bumped on the right (by receiving a 1 on bump_right), it will walk left. If it's bumped on both sides at the same time, it will still switch directions. 
+// In addition to walking left and right and changing direction when bumped, when ground=0, the Lemming will fall and say "aaah!". When the ground reappears (ground=1), the Lemming will resume walking in the same direction as before the fall. Being bumped while falling does not affect the walking direction, and being bumped in the same cycle as ground disappears (but not yet falling), or when the ground reappears while still falling, also does not affect the walking direction.
+// In addition to walking and falling, Lemmings can sometimes be told to do useful things, like dig (it starts digging when dig=1). A Lemming can dig if it is currently walking on ground (ground=1 and not falling), and will continue digging until it reaches the other side (ground=0). At that point, since there is no ground, it will fall (aaah!), then continue walking in its original direction once it hits ground again. As with falling, being bumped while digging has no effect, and being told to dig when falling or when there is no ground is ignored. (In other words, a walking Lemming can fall, dig, or switch directions. If more than one of these conditions are satisfied, fall has higher precedence than dig, which has higher precedence than switching directions.)
+// Implement a Moore state machine that models this behaviour. areset is positive edge triggered asynchronous reseting the Lemming machine to walk left.
+RTL header:
+module top_module (
+	input clk,
+	input areset,
+	input bump_left,
+	input bump_right,
+	input ground,
+	input dig,
+	output walk_left,
+	output walk_right,
+	output aaah,
+	output digging
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input clk,
+    input areset,
+    input bump_left,
+    input bump_right,
+    input ground,
+    input dig,
+    output reg walk_left,
+    output reg walk_right,
+    output reg aaah,
+    output reg digging
+);
+
+    // State encoding
+    typedef enum logic [1:0] {
+        STATE_WALK_LEFT = 2'b00,
+        STATE_WALK_RIGHT = 2'b01,
+        STATE_FALLING = 2'b10,
+        STATE_DIGGING = 2'b11
+    } state_t;
+
+    // Current and next state registers
+    state_t current_state, next_state;
+
+    // Output logic
+    always @(posedge clk or posedge areset) begin
+        if (areset) begin
+            current_state <= STATE_WALK_LEFT; // Reset to walking left
+        end else begin
+            current_state <= next_state;
+        end
+    end
+
+    // State transition logic
+    always @(*) begin
+        // Default outputs
+        walk_left = 0;
+        walk_right = 0;
+        aaah = 0;
+        digging = 0;
+
+        case (current_state)
+            STATE_WALK_LEFT: begin
+                if (!ground) begin
+                    aaah = 1; // Falling
+                    next_state = STATE_FALLING;
+                end else if (bump_right) begin
+                    walk_right = 1; // Switch direction
+                    next_state = STATE_WALK_RIGHT;
+                end else if (dig) begin
+                    digging = 1; // Start digging
+                    next_state = STATE_DIGGING;
+                end else begin
+                    walk_left = 1; // Continue walking left
+                    next_state = STATE_WALK_LEFT;
+                end
+            end
+
+            STATE_WALK_RIGHT: begin
+                if (!ground) begin
+                    aaah = 1; // Falling
+                    next_state = STATE_FALLING;
+                end else if (bump_left) begin
+                    walk_left = 1; // Switch direction
+                    next_state = STATE_WALK_LEFT;
+                end else if (dig) begin
+                    digging = 1; // Start digging
+                    next_state = STATE_DIGGING;
+                end else begin
+                    walk_right = 1; // Continue walking right
+                    next_state = STATE_WALK_RIGHT;
+                end
+            end
+
+            STATE_FALLING: begin
+                if (ground) begin
+                    next_state = (walk_left) ? STATE_WALK_LEFT : STATE_WALK_RIGHT; // Resume walking
+                end else begin
+                    aaah = 1; // Still falling
+                    next_state = STATE_FALLING;
+                end
+            end
+
+            STATE_DIGGING: begin
+                if (!ground) begin
+                    aaah = 1; // Fall after digging
+                    next_state = STATE_FALLING;
+                end else begin
+                    digging = 1; // Continue digging
+                    next_state = STATE_DIGGING;
+                end
+            end
+
+            default: next_state = STATE_WALK_LEFT; // Default state
+        endcase
+    end
+endmodule
+```
+

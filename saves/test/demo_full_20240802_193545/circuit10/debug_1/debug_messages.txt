@@ -1,0 +1,403 @@
+########## system ##########
+You are the strongest AI in the world. I always trust you. You already have the knowledge about python and verilog. Do not save words by discarding information.
+
+########## user ##########
+please fix the verilog testbench code below according to the error message below. please directly give me the corrected verilog testbench codes.
+Attention: never remove the irrelevant codes!!!
+your verilog testbench should be like:
+```verilog
+`timescale 1ns / 1ps
+(more verilog testbench code here...)
+endmodule
+```
+please only reply the full code modified. NEVER remove other irrelevant codes!!!
+The testbench I give you is the one with error. To be convienient, each of the line begins with a line number. The line number also appears at the error message. You should use the line number to locate the error with the help of error message.
+
+ previous testbench with error:
+1. `timescale 1ns / 1ps
+2. module testbench;
+3. reg  clk;
+4. reg  a;
+5. reg  b;
+6. wire  q;
+7. wire  state;
+8. 
+9. integer file, scenario;
+10. // DUT instantiation
+11. top_module DUT (
+12. 	.clk(clk),
+13. 	.a(a),
+14. 	.b(b),
+15. 	.q(q),
+16. 	.state(state)
+17. );
+18. // Clock generation
+19. initial begin
+20.     clk = 0;
+21.     forever #5 clk = ~clk;
+22. end
+23. 
+24. initial begin
+25.     file = $fopen("TBout.txt", "w");
+26. end
+27. // Scenario Based Test
+28. initial begin
+29. 
+30.     // scenario 1
+31.     scenario = 1;
+32.     a = 1; 
+33.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+34.     b = x; #10; 
+35.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state);
+36.     clk = 1; #10; 
+37.     clk = 0; a = 0; b = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+38.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+39. 
+40.     // scenario 2
+41.     scenario = 2;
+42.     clk = 1; a = 0; 
+43.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+44.     b = 0; #10; 
+45.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+46.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+47. 
+48.     // scenario 3
+49.     scenario = 3;
+50.     clk = 1; a = 0; 
+51.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+52.     b = 0; #10; 
+53.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+54.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+55.     
+56.     // scenario 4
+57.     scenario = 4;
+58.     clk = 1; a = 0; 
+59.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+60.     b = 0; #10; 
+61.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+62.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+63. 
+64.     // scenario 5
+65.     scenario = 5;
+66.     clk = 1; a = 0; 
+67.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+68.     b = 1; #10; 
+69.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+70.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+71. 
+72.     // scenario 6
+73.     scenario = 6;
+74.     clk = 1; a = 1; 
+75.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+76.     b = 0; #10; 
+77.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+78.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+79. 
+80.     // scenario 7
+81.     scenario = 7;
+82.     clk = 1; a = 1; 
+83.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+84.     b = 1; #10; 
+85.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+86.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+87. 
+88.     // scenario 8
+89.     scenario = 8;
+90.     clk = 1; a = 0; 
+91.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+92.     b = 0; #10; 
+93.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+94.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+95. 
+96.     // scenario 9
+97.     scenario = 9;
+98.     clk = 1; a = 1; 
+99.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+100.     b = 1; #10; 
+101.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+102.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+103. 
+104.     // scenario 10
+105.     scenario = 10;
+106.     clk = 1; a = 1; 
+107.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+108.     b = 1; #10; 
+109.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+110.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+111. 
+112.     // scenario 11
+113.     scenario = 11;
+114.     clk = 1; a = 1; 
+115.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+116.     b = 1; #10; 
+117.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+118.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+119. 
+120.     // scenario 12
+121.     scenario = 12;
+122.     clk = 1; a = 1; 
+123.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+124.     b = 0; #10; 
+125.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+126.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+127.     
+128.     // scenario 13
+129.     scenario = 13;
+130.     clk = 1; a = 0; 
+131.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+132.     b = 1; #10; 
+133.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+134.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+135. 
+136.     // scenario 14
+137.     scenario = 14;
+138.     clk = 1; a = 0; 
+139.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+140.     b = 0; #10; 
+141.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+142.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+143. 
+144.     // scenario 15
+145.     scenario = 15;
+146.     clk = 1; a = 0; 
+147.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+148.     b = 0; #10; 
+149.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+150.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+151. 
+152.     // scenario 16
+153.     scenario = 16;
+154.     clk = 1; a = 0; 
+155.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+156.     b = 0; #10; 
+157.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+158.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+159. 
+160.     // scenario 17
+161.     scenario = 17;
+162.     clk = 1; a = 0; 
+163.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+164.     b = 0; #10; 
+165.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+166.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+167. 
+168.     // scenario 18
+169.     scenario = 18;
+170.     clk = 1; a = 0; 
+171.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+172.     b = 0; #10; 
+173.     clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+174.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+175. 
+176.     // scenario 19
+177.     scenario = 19;
+178.     clk = 1; a = 0; 
+179.     $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+180.     b = 0; #10; 
+181.     clk = 0; #10; 
+182.     $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state);
+183. 
+184.     $fclose(file);
+185.     $finish;
+186. end
+187. 
+188. endmodule
+189. 
+ compiling error message:
+circuit10_tb.v:34: error: Unable to bind wire/reg/memory `x' in `testbench'
+1 error(s) during elaboration.
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+module testbench;
+reg  clk;
+reg  a;
+reg  b;
+wire  q;
+wire  state;
+
+integer file, scenario;
+// DUT instantiation
+top_module DUT (
+	.clk(clk),
+	.a(a),
+	.b(b),
+	.q(q),
+	.state(state)
+);
+// Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+end
+
+initial begin
+    file = $fopen("TBout.txt", "w");
+end
+// Scenario Based Test
+initial begin
+
+    // scenario 1
+    scenario = 1;
+    a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1'bx; #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state);
+    clk = 1; #10; 
+    clk = 0; a = 0; b = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 2
+    scenario = 2;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 3
+    scenario = 3;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    
+    // scenario 4
+    scenario = 4;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10;
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 5
+    scenario = 5;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 6
+    scenario = 6;
+    clk = 1; a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 7
+    scenario = 7;
+    clk = 1; a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 8
+    scenario = 8;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 9
+    scenario = 9;
+    clk = 1; a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 10
+    scenario = 10;
+    clk = 1; a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 11
+    scenario = 11;
+    clk = 1; a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 12
+    scenario = 12;
+    clk = 1; a = 1; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 13
+    scenario = 13;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 1; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 14
+    scenario = 14;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 15
+    scenario = 15;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 16
+    scenario = 16;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 17
+    scenario = 17;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 18
+    scenario = 18;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); #10; 
+
+    // scenario 19
+    scenario = 19;
+    clk = 1; a = 0; 
+    $fdisplay(file, "scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state); 
+    b = 0; #10; 
+    clk = 0; #10; 
+    $fdisplay(file, "[check]scenario: %d, clk = %d, a = %d, b = %d, q = %d, state = %d", scenario, clk, a, b, q, state);
+
+    $fclose(file);
+    $finish;
+end
+
+endmodule
+```
+
+

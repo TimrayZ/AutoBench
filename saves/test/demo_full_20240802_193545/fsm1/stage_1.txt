@@ -1,0 +1,53 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Consider the follow Moore machine with the diagram described below:
+
+// B (1) --0--> A
+// B (1) --1--> B
+// A (0) --0--> B
+// A (0) --1--> A
+
+// Write Verilog implementing this state machine. It should asynchronously reset into state B if reset if high.
+DUT header:
+module top_module (
+	input clk,
+	input in,
+	input areset,
+	output out
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "// State transition diagram:\n// B (1) --0--> A\n// B (1) --1--> B\n// A (0) --0--> B\n// A (0) --1--> A\n\n// Asynchronous reset to state B if areset is high.",
+  "technical specifications": [
+    "1. DUT is a Moore machine with two states: A (output 0) and B (output 1).",
+    "2. The machine transitions from state B to state A on input '0'.",
+    "3. The machine remains in state B on input '1'.",
+    "4. The machine transitions from state A to state B on input '0'.",
+    "5. The machine remains in state A on input '1'.",
+    "6. The machine asynchronously resets to state B when 'areset' is high.",
+    "7. The input signals are 'clk', 'in', and 'areset'.",
+    "8. The output signal is 'out'.",
+    "9. The testbench must apply test cases that cover all transition scenarios and ensure state behavior aligns with the state diagram."
+  ]
+}
+

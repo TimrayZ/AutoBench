@@ -1,0 +1,64 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+The game Lemmings involves critters with fairly simple brains. So simple that we are going to model it using a finite state machine. In the Lemmings' 2D world, Lemmings can be in one of two states: walking left (walk_left is 1) or walking right (walk_right is 1). It will switch directions if it hits an obstacle. In particular, if a Lemming is bumped on the left (by receiving a 1 on bump_left), it will walk right. If it's bumped on the right (by receiving a 1 on bump_right), it will walk left. If it's bumped on both sides at the same time, it will still switch directions. 
+// In addition to walking left and right and changing direction when bumped, when ground=0, the Lemming will fall and say "aaah!". When the ground reappears (ground=1), the Lemming will resume walking in the same direction as before the fall. Being bumped while falling does not affect the walking direction, and being bumped in the same cycle as ground disappears (but not yet falling), or when the ground reappears while still falling, also does not affect the walking direction.
+// In addition to walking and falling, Lemmings can sometimes be told to do useful things, like dig (it starts digging when dig=1). A Lemming can dig if it is currently walking on ground (ground=1 and not falling), and will continue digging until it reaches the other side (ground=0). At that point, since there is no ground, it will fall (aaah!), then continue walking in its original direction once it hits ground again. As with falling, being bumped while digging has no effect, and being told to dig when falling or when there is no ground is ignored. (In other words, a walking Lemming can fall, dig, or switch directions. If more than one of these conditions are satisfied, fall has higher precedence than dig, which has higher precedence than switching directions.)
+// Implement a Moore state machine that models this behaviour. areset is positive edge triggered asynchronous reseting the Lemming machine to walk left.
+RTL testbench specification:
+{
+  "important data": "The Lemming is a finite state machine that can be in one of the following states: walking left (walk_left=1) or walking right (walk_right=1). It can also fall (aaah=1) or dig (digging=1). Areset is an asynchronous reset signal that sets the state to walk left. Conditions include: ground presence affecting walking vs falling, bumps affecting walking direction, and the priority of actions (falling > digging > switching directions).",
+  "technical specifications": [
+    "0: The DUT must respond to bump_left and bump_right signals and change walking direction accordingly.",
+    "1: The DUT must handle ground state changes to control falling behavior correctly.",
+    "2: The DUT must allow digging only when the ground is present and not falling.",
+    "3: The DUT should maintain the walking direction after falling until the ground reappears.",
+    "4: The DUT should incorporate an asynchronous reset with areset to set the state to walk left."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input areset,
+	input bump_left,
+	input bump_right,
+	input ground,
+	input dig,
+	output walk_left,
+	output walk_right,
+	output aaah,
+	output digging
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply asynchronous reset (areset=1) for one clock cycle. Release reset (areset=0) and observe initial state: walk_left=1, walk_right=0.",
+  "scenario 2": "Set ground=1, and let the Lemming walk left (bump_left=0, bump_right=0) for 5 clock cycles. Then check if walk_left remains active.",
+  "scenario 3": "Set bump_right=1 for one clock cycle while ground=1, then reset bump_right to 0 and observe if the Lemming switches to walk_right after the bump.",
+  "scenario 4": "Set ground=0 for one clock cycle while walking left. Observe that aaah=1 for this clock cycle and the Lemming falls.",
+  "scenario 5": "Set bump_left=1 while fall state is active (ground=0) for one clock cycle, then check if the walking direction remains unchanged when ground=1 reappears in the next cycle.",
+  "scenario 6": "Set ground=1 and bump_right=1, then dig=1 for two clock cycles. Then set ground=0 and observe the resulting behaviors.",
+  "scenario 7": "Keep ground=0 for 3 clock cycles, then set ground=1 and observe if the Lemming resumes walking in the original direction.",
+  "scenario 8": "Set ground=1 and dig=1 for 2 clock cycles, then set ground=0 for one clock cycle and observe the fall behavior (aaah=1).",
+  "scenario 9": "Apply multiple bumps (bump_left=1 and bump_right=1) at the same time while ground=1 and check the Lemming's walking direction after the bumps are released.",
+  "scenario 10": "Set ground=1 and dig=0, and bump_left=1 for one clock cycle, then check the Lemming's behavior to ensure it continues walking in the original direction."
+}
+

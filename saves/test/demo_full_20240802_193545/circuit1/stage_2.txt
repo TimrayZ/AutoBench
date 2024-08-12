@@ -1,0 +1,75 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+This is a combinational circuit. Read the simulation waveforms to determine what the circuit does, then implement it.
+
+// time            a               b               q               
+// 0ns             0               0               0               
+// 5ns             0               0               0               
+// 10ns            0               0               0               
+// 15ns            0               0               0               
+// 20ns            0               0               0               
+// 25ns            0               1               0               
+// 30ns            0               1               0               
+// 35ns            1               0               0               
+// 40ns            1               0               0               
+// 45ns            1               1               1               
+// 50ns            1               1               1               
+// 55ns            0               0               0               
+// 60ns            0               0               0               
+// 65ns            0               1               0               
+// 70ns            0               1               0               
+// 75ns            1               0               0               
+// 80ns            1               0               0               
+// 85ns            1               1               1               
+// 90ns            1               1               1               
+
+RTL testbench specification:
+{
+  "important data": "This combinational circuit takes two inputs (a, b) and produces an output (q). Based on the provided waveform data, the relationship between inputs and output can be inferred.",
+  "technical specifications": [
+    "0. The DUT is a combinational circuit that has 2 input signals: a and b.",
+    "1. The DUT has 1 output signal: q.",
+    "2. The output q is 0 when both inputs a and b are 0.",
+    "3. The output q is 1 when inputs a is 1 and b is 1.",
+    "4. The output q is 0 when (a, b) are (0, 1) or (1, 0).",
+    "5. The output q remains stable (holding its last value) during periods of unchanged inputs."
+  ]
+}
+DUT header:
+module top_module (
+	input a, 
+	input b, 
+	output q
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "At time 0ns, set inputs a and b to 0. Wait for 5ns to observe the output.",
+  "scenario 2": "At time 25ns, set input a to 0 and input b to 1. Wait for 5ns to observe the output.",
+  "scenario 3": "At time 35ns, set input a to 1 and input b to 0. Wait for 5ns to observe the output.",
+  "scenario 4": "At time 45ns, set input a to 1 and input b to 1. Wait for 5ns to observe the output.",
+  "scenario 5": "At time 55ns, reset inputs a and b to 0. Wait for 5ns to observe the output.",
+  "scenario 6": "At time 65ns, set input a to 0 and input b to 1. Wait for 5ns to observe the output.",
+  "scenario 7": "At time 75ns, set input a to 1 and input b to 0. Wait for 5ns to observe the output.",
+  "scenario 8": "At time 85ns, set input a to 1 and input b to 1. Wait for 5ns to observe the output."
+}
+

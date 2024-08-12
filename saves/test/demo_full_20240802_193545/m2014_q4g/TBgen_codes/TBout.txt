@@ -1,0 +1,12 @@
+scenario: 1, in1 = 0, in2 = 0, in3 = 0, out = x
+scenario: 2, in1 = 0, in2 = 0, in3 = 1, out = x
+scenario: 3, in1 = 0, in2 = 1, in3 = 0, out = x
+scenario: 4, in1 = 0, in2 = 1, in3 = 1, out = x
+scenario: 5, in1 = 1, in2 = 0, in3 = 0, out = x
+scenario: 6, in1 = 1, in2 = 0, in3 = 1, out = x
+scenario: 7, in1 = 1, in2 = 1, in3 = 0, out = x
+scenario: 8, in1 = 1, in2 = 1, in3 = 1, out = x
+scenario: 9, in1 = 0, in2 = 1, in3 = 0, out = x
+scenario: 9a, in1 = 1, in2 = 1, in3 = 0, out = x
+scenario: 10, in1 = 1, in2 = 0, in3 = 0, out = x
+scenario: 10a, in1 = 1, in2 = 0, in3 = 1, out = x

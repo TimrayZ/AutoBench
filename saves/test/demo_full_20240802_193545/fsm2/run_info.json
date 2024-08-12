@@ -1,0 +1,14 @@
+{
+    "task_id": "fsm2",
+    "task_number": 122,
+    "time": 72.78,
+    "prompt_tokens": 4565,
+    "completion_tokens": 4584,
+    "ERROR(incomplete)": false,
+    "circuit_type": "SEQ",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.07
+}

@@ -1,0 +1,14 @@
+{
+    "task_id": "7420",
+    "task_number": 48,
+    "time": 140.86,
+    "prompt_tokens": 6091,
+    "completion_tokens": 4658,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.09
+}

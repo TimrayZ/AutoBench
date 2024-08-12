@@ -1,0 +1,585 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module testbench;
+    // Declare inputs and output
+    reg in1;
+    reg in2;
+    reg in3;
+    wire out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .in1(in1),
+        .in2(in2),
+        .in3(in3),
+        .out(out)
+    );
+
+    // File descriptor
+    integer fd;
+
+    initial begin
+        // Open the output file
+        fd = $fopen("TBout.txt", "w");
+        
+        // Scenario 1
+        in1 = 0; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 1, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 2
+        in1 = 0; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 2, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 3
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 3, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 4
+        in1 = 0; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 4, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 5
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 5, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 6
+        in1 = 1; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 6, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 7
+        in1 = 1; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 7, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 8
+        in1 = 1; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 8, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 9
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 9, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in1 = 1; // Change in1
+        #1;
+        $fdisplay(fd, "scenario: 9a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 10
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 10, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in3 = 1; // Change in3
+        #1;
+        $fdisplay(fd, "scenario: 10a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Close the file
+        $fclose(fd);
+    end
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Apply inputs in1=0, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 2": "Apply inputs in1=0, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 3": "Apply inputs in1=0, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 4": "Apply inputs in1=0, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 5": "Apply inputs in1=1, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 6": "Apply inputs in1=1, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 7": "Apply inputs in1=1, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 8": "Apply inputs in1=1, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 9": "Apply inputs in1=0, in2=1, in3=0, then change in1 to 1 after 1 clock cycle.",
+  "scenario 10": "Apply inputs in1=1, in2=0, in3=0, then change in3 to 1 after 1 clock cycle."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module testbench;
+    // Declare inputs and output
+    reg in1;
+    reg in2;
+    reg in3;
+    wire out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .in1(in1),
+        .in2(in2),
+        .in3(in3),
+        .out(out)
+    );
+
+    // File descriptor
+    integer fd;
+
+    initial begin
+        // Open the output file
+        fd = $fopen("TBout.txt", "w");
+        
+        // Scenario 1
+        in1 = 0; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 1, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 2
+        in1 = 0; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 2, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 3
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 3, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 4
+        in1 = 0; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 4, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 5
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 5, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 6
+        in1 = 1; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 6, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 7
+        in1 = 1; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 7, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 8
+        in1 = 1; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 8, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 9
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 9, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in1 = 1; // Change in1
+        #1;
+        $fdisplay(fd, "scenario: 9a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 10
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 10, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in3 = 1; // Change in3
+        #1;
+        $fdisplay(fd, "scenario: 10a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Close the file
+        $fclose(fd);
+    end
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module testbench;
+    // Declare inputs and output
+    reg in1;
+    reg in2;
+    reg in3;
+    wire out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .in1(in1),
+        .in2(in2),
+        .in3(in3),
+        .out(out)
+    );
+
+    // File descriptor
+    integer fd;
+
+    initial begin
+        // Open the output file
+        fd = $fopen("TBout.txt", "w");
+        
+        // Scenario 1
+        in1 = 0; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 1, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 2
+        in1 = 0; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 2, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 3
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 3, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 4
+        in1 = 0; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 4, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 5
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 5, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 6
+        in1 = 1; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 6, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 7
+        in1 = 1; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 7, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 8
+        in1 = 1; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 8, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 9
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 9, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in1 = 1; // Change in1
+        #1;
+        $fdisplay(fd, "scenario: 9a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 10
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 10, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in3 = 1; // Change in3
+        #1;
+        $fdisplay(fd, "scenario: 10a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Close the file
+        $fclose(fd);
+    end
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Apply inputs in1=0, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 2": "Apply inputs in1=0, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 3": "Apply inputs in1=0, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 4": "Apply inputs in1=0, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 5": "Apply inputs in1=1, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 6": "Apply inputs in1=1, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 7": "Apply inputs in1=1, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 8": "Apply inputs in1=1, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 9": "Apply inputs in1=0, in2=1, in3=0, then change in1 to 1 after 1 clock cycle.",
+  "scenario 10": "Apply inputs in1=1, in2=0, in3=0, then change in3 to 1 after 1 clock cycle."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module testbench;
+    // Declare inputs and output
+    reg in1;
+    reg in2;
+    reg in3;
+    wire out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .in1(in1),
+        .in2(in2),
+        .in3(in3),
+        .out(out)
+    );
+
+    // File descriptor
+    integer fd;
+
+    initial begin
+        // Open the output file
+        fd = $fopen("TBout.txt", "w");
+        
+        // Scenario 1
+        in1 = 0; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 1, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 2
+        in1 = 0; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 2, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 3
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 3, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 4
+        in1 = 0; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 4, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 5
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 5, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 6
+        in1 = 1; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 6, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 7
+        in1 = 1; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 7, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 8
+        in1 = 1; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 8, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 9
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 9, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in1 = 1; // Change in1
+        #1;
+        $fdisplay(fd, "scenario: 9a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 10
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 10, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in3 = 1; // Change in3
+        #1;
+        $fdisplay(fd, "scenario: 10a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Close the file
+        $fclose(fd);
+    end
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module testbench;
+    // Declare inputs and output
+    reg in1;
+    reg in2;
+    reg in3;
+    wire out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .in1(in1),
+        .in2(in2),
+        .in3(in3),
+        .out(out)
+    );
+
+    // File descriptor
+    integer fd;
+
+    initial begin
+        // Open the output file
+        fd = $fopen("TBout.txt", "w");
+        
+        // Scenario 1
+        in1 = 0; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 1, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 2
+        in1 = 0; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 2, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 3
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 3, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 4
+        in1 = 0; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 4, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 5
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 5, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 6
+        in1 = 1; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 6, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 7
+        in1 = 1; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 7, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 8
+        in1 = 1; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 8, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 9
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 9, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in1 = 1; // Change in1
+        #1;
+        $fdisplay(fd, "scenario: 9a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 10
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 10, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in3 = 1; // Change in3
+        #1;
+        $fdisplay(fd, "scenario: 10a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Close the file
+        $fclose(fd);
+    end
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Apply inputs in1=0, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 2": "Apply inputs in1=0, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 3": "Apply inputs in1=0, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 4": "Apply inputs in1=0, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 5": "Apply inputs in1=1, in2=0, in3=0 for 1 clock cycle.",
+  "scenario 6": "Apply inputs in1=1, in2=0, in3=1 for 1 clock cycle.",
+  "scenario 7": "Apply inputs in1=1, in2=1, in3=0 for 1 clock cycle.",
+  "scenario 8": "Apply inputs in1=1, in2=1, in3=1 for 1 clock cycle.",
+  "scenario 9": "Apply inputs in1=0, in2=1, in3=0, then change in1 to 1 after 1 clock cycle.",
+  "scenario 10": "Apply inputs in1=1, in2=0, in3=0, then change in3 to 1 after 1 clock cycle."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module testbench;
+    // Declare inputs and output
+    reg in1;
+    reg in2;
+    reg in3;
+    wire out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .in1(in1),
+        .in2(in2),
+        .in3(in3),
+        .out(out)
+    );
+
+    // File descriptor
+    integer fd;
+
+    initial begin
+        // Open the output file
+        fd = $fopen("TBout.txt", "w");
+        
+        // Scenario 1
+        in1 = 0; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 1, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 2
+        in1 = 0; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 2, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 3
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 3, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 4
+        in1 = 0; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 4, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 5
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 5, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 6
+        in1 = 1; in2 = 0; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 6, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 7
+        in1 = 1; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 7, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 8
+        in1 = 1; in2 = 1; in3 = 1;
+        #1;
+        $fdisplay(fd, "scenario: 8, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 9
+        in1 = 0; in2 = 1; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 9, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in1 = 1; // Change in1
+        #1;
+        $fdisplay(fd, "scenario: 9a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Scenario 10
+        in1 = 1; in2 = 0; in3 = 0;
+        #1;
+        $fdisplay(fd, "scenario: 10, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+        in3 = 1; // Change in3
+        #1;
+        $fdisplay(fd, "scenario: 10a, in1 = %d, in2 = %d, in3 = %d, out = %d", in1, in2, in3, out);
+
+        // Close the file
+        $fclose(fd);
+    end
+endmodule
+```
+

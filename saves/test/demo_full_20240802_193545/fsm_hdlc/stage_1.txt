@@ -1,0 +1,50 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Synchronous HDLC framing involves decoding a continuous bit stream of data to look for bit patterns that indicate the beginning and end of frames (packets). Seeing exactly 6 consecutive 1s (i.e., 01111110) is a "flag" that indicate frame boundaries. To avoid the data stream from accidentally containing "flags", the sender inserts a zero after every 5 consecutive 1s which the receiver must detect and discard. We also need to signal an error if there are 7 or more consecutive 1s. Create a Moore-type finite state machine to recognize these three sequences:
+
+// (1) 0111110: Signal a bit needs to be discarded (disc).
+// (2) 01111110: Flag the beginning/end of a frame (flag).
+// (3) 01111111...: Error (7 or more 1s) (err).
+
+// When the FSM is reset, it should be in a state that behaves as though the previous input were 0. The reset signal is active high synchronous. The output signals should be asserted for a complete cycle beginning on the clock cycle after the condition occurs.
+DUT header:
+module top_module (
+	input clk,
+	input reset,
+	input in,
+	output disc,
+	output flag,
+	output err);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "",
+  "technical specifications": [
+    "0: The DUT is a Moore-type finite state machine that detects specific bit patterns in a continuous bit stream.",
+    "1: The DUT has the following input signals: clk (clock), reset (active high synchronous reset), in (input bit stream).",
+    "2: The DUT has the following output signals: disc (asserted when a bit needs to be discarded), flag (asserted at the start/end of a frame), and err (asserted when there are 7 or more consecutive 1s).",
+    "3: The DUT must recognize three sequences: 0111110 (output 'disc'), 01111110 (output 'flag'), and 01111111... (output 'err').",
+    "4: The state of the DUT must reset to treat the last input as a 0 upon receiving a reset signal.",
+    "5: The outputs should be asserted for a complete cycle starting on the clock cycle immediately following the condition."
+  ]
+}
+

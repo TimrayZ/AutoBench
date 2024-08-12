@@ -1,0 +1,2 @@
+fsm3onehot_tb.v
+fsm3onehot.v

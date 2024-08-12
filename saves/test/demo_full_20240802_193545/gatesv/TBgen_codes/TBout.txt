@@ -1,0 +1,10 @@
+scenario: 1, in = 0000, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 2, in = 1111, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 3, in = 1010, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 4, in = 0101, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 5, in = 1100, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 6, in = 0011, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 7, in = 0110, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 8, in = 1001, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 9, in = 1110, out_both = zzz, out_any = zzz, out_different = zzzz
+scenario: 10, in = 0001, out_both = zzz, out_any = zzz, out_different = zzzz

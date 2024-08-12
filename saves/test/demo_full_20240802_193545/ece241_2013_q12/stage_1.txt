@@ -1,0 +1,45 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+In this question, you will design a circuit for an 8x1 memory, where writing to the memory is accomplished by shifting-in bits, and reading is "random access", as in a typical RAM. You will then use the circuit to realize a 3-input logic function. First, create an 8-bit shift register with 8 D-type flip-flops. Label the flip-flop outputs from Q[0]...Q[7]. The shift register input should be called S, which feeds the input of Q[0] (MSB is shifted in first). The enable input is synchronous active high and controls whether to shift. Extend the circuit to have 3 additional inputs A,B,C and an output Z. The circuit's behaviour should be as follows: when ABC is 000, Z=Q[0], when ABC is 001, Z=Q[1], and so on. Your circuit should contain ONLY the 8-bit shift register, and multiplexers. 
+DUT header:
+module top_module (
+	input clk,
+	input enable,
+	input S,
+	input A,
+	input B,
+	input C,
+	output reg Z
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is an 8x1 memory realized with an 8-bit shift register and logic functions based on the inputs A, B, and C.",
+    "2. The module header of the DUT is: module top_module (input clk, input enable, input S, input A, input B, input C, output reg Z);",
+    "3. The shift register consists of 8 D-type flip-flops labeled Q[0] to Q[7].",
+    "4. The input S feeds the MSB to Q[0], and the enable input is synchronous and controls the shifting process.",
+    "5. The output Z is determined by the combination of inputs A, B, and C, specifically as follows: when ABC is 000, Z=Q[0]; when ABC is 001, Z=Q[1]; when ABC is 010, Z=Q[2]; when ABC is 011, Z=Q[3]; when ABC is 100, Z=Q[4]; when ABC is 101, Z=Q[5]; when ABC is 110, Z=Q[6]; when ABC is 111, Z=Q[7]."
+  ]
+}
+

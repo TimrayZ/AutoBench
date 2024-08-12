@@ -1,0 +1,58 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Consider the FSM described by the state diagram shown below:
+
+// A --r1=0,r2=0,r3=0--> A
+// A --r1=1--> B
+// A --r1=0,r2=1--> C
+// A --r1=0,r2=0,r3=0--> D
+// B (g1=1) --r1=1--> B
+// B (g1=1) --r1=0--> A
+// C (g2=1) --r2=1--> C
+// C (g2=1) --r2=0--> A
+
+// Resetn is an active-low synchronous reset that resets into state A. This FSM acts as an arbiter circuit, which controls access to some type of resource by three requesting devices. Each device makes its request for the resource by setting a signal _r[i]_ = 1, where _r[i]_ is either _r[1]_, _r[2]_, or _r[3]_. Each r[i] is an input signal to the FSM, and represents one of the three devices. The FSM stays in state _A_ as long as there are no requests. When one or more request occurs, then the FSM decides which device receives a grant to use the resource and changes to a state that sets that device's _g[i]_ signal to 1. Each _g[i]_ is an output from the FSM. There is a priority system, in that device 1 has a higher priority than device 2, and device 3 has the lowest priority. Hence, for example, device 3 will only receive a grant if it is the only device making a request when the FSM is in state _A_. Once a device, _i_, is given a grant by the FSM, that device continues to receive the grant as long as its request, _r[i]_ = 1.
+
+// Write complete Verilog code that represents this FSM. Use separate always blocks for the state table and the state flip-flops, as done in lectures. Describe the FSM outputs, _g[i]_, using either continuous assignment statement(s) or an always block (at your discretion). Assign any state codes that you wish to use.
+DUT header:
+module top_module (
+	input clk,
+	input resetn,
+	input [3:1] r,
+	output [3:1] g
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "// A --r1=0,r2=0,r3=0--> A\n// A --r1=1--> B\n// A --r1=0,r2=1--> C\n// A --r1=0,r2=0,r3=0--> D\n// B (g1=1) --r1=1--> B\n// B (g1=1) --r1=0--> A\n// C (g2=1) --r2=1--> C\n// C (g2=1) --r2=0--> A\nResetn is an active-low synchronous reset that resets into state A.",
+  "technical specifications": [
+    "0: The DUT is a finite state machine (FSM) that manages requests from three devices.",
+    "1: The input signals to the DUT are clock (clk) signal, active-low synchronous reset (resetn), and request signals (r[3:1]) from devices.",
+    "2: The output signals from the DUT are grant signals (g[3:1]) indicating which device has been granted access.",
+    "3: The FSM must implement state transitions based on the input requests while adhering to the priority: device 1 > device 2 > device 3.",
+    "4: The initial state of the FSM is state A when resetn is low.",
+    "5: The testbench needs to apply various combinations of the r inputs to fully test the state transitions and outputs for all defined scenarios.",
+    "6: Expected result signals should match the specified FSM behavior for each test case defined in the problem description.",
+    "7: The testbench will check if the output signals (g signals) match the expected values for given input scenarios."
+  ]
+}
+

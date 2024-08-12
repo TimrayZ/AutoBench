@@ -1,0 +1,8 @@
+scenario: 1, x3 = 0, x2 = 0, x1 = 0, f = z
+scenario: 2, x3 = 0, x2 = 0, x1 = 1, f = z
+scenario: 3, x3 = 0, x2 = 1, x1 = 0, f = z
+scenario: 4, x3 = 0, x2 = 1, x1 = 1, f = z
+scenario: 5, x3 = 1, x2 = 0, x1 = 0, f = z
+scenario: 6, x3 = 1, x2 = 0, x1 = 1, f = z
+scenario: 7, x3 = 1, x2 = 1, x1 = 0, f = z
+scenario: 8, x3 = 1, x2 = 1, x1 = 1, f = z

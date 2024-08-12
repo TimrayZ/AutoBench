@@ -1,0 +1,12 @@
+scenario: 1, y = 000, w = 0, Y2 = x
+scenario: 2, y = 000, w = 1, Y2 = x
+scenario: 3, y = 001, w = 0, Y2 = x
+scenario: 4, y = 001, w = 1, Y2 = x
+scenario: 5, y = 010, w = 0, Y2 = x
+scenario: 6, y = 010, w = 1, Y2 = x
+scenario: 7, y = 011, w = 0, Y2 = x
+scenario: 8, y = 011, w = 1, Y2 = x
+scenario: 9, y = 100, w = 0, Y2 = x
+scenario: 10, y = 100, w = 1, Y2 = x
+scenario: 11, y = 101, w = 0, Y2 = x
+scenario: 12, y = 101, w = 1, Y2 = x

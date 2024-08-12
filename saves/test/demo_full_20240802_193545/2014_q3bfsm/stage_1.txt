@@ -1,0 +1,50 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Given the state-assigned table shown below, implement the finite-state machine. Reset should synchronous active high reset the FSM to state 000.
+
+// Present state y[2:0] | Next state y[2:0] x=0, Next state y[2:0] x=1, Output z
+// 000 | 000, 001 | 0
+// 001 | 001, 100 | 0
+// 010 | 010, 001 | 0
+// 011 | 001, 010 | 1
+// 100 | 011, 100 | 1
+
+DUT header:
+module top_module (
+	input clk,
+	input reset,
+	input x,
+	output reg z
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "Given the state-assigned table for the finite-state machine (FSM):\n Present state y[2:0] | Next state y[2:0] x=0, Next state y[2:0] x=1, Output z\n 000 | 000, 001 | 0\n 001 | 001, 100 | 0\n 010 | 010, 001 | 0\n 011 | 001, 010 | 1\n 100 | 011, 100 | 1\nAlso, the DUT header is module top_module (input clk, input reset, input x, output reg z).",
+  "technical specifications": [
+    "1. The testbench should instantiate the DUT with appropriate signals: clk, reset, x, and z.",
+    "2. Reset the FSM synchronously active high to state 000 when reset is asserted at the positive edge of clk.",
+    "3. Apply various combinations of the input signal x (0 and 1) during each clock cycle to transition between states based on the state transition table provided.",
+    "4. Capture the output z for the current state and input combination and compare it against the expected output derived from the state transition table.",
+    "5. Use a defined number of cycles to test all possible input combinations and verify the state transitions and outputs to ensure the DUT behaves correctly under all conditions."
+  ]
+}
+

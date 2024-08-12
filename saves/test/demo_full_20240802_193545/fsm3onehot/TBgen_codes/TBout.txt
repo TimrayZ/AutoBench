@@ -1,0 +1,8 @@
+scenario: 1, in = 0, state = 0001, next_state = xxxx, out = z
+scenario: 2, in = 1, state = 0001, next_state = xxxx, out = z
+scenario: 3, in = 0, state = 0010, next_state = xxxx, out = z
+scenario: 4, in = 1, state = 0010, next_state = xxxx, out = z
+scenario: 5, in = 0, state = 0100, next_state = xxxx, out = z
+scenario: 6, in = 1, state = 0100, next_state = xxxx, out = z
+scenario: 7, in = 0, state = 1000, next_state = xxxx, out = z
+scenario: 8, in = 1, state = 1000, next_state = xxxx, out = z

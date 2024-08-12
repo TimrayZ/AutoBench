@@ -1,0 +1,14 @@
+{
+    "task_id": "m2014_q4g",
+    "task_number": 139,
+    "time": 85.44,
+    "prompt_tokens": 4086,
+    "completion_tokens": 2558,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.07
+}

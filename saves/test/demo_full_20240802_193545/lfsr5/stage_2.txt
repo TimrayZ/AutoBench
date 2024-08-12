@@ -1,0 +1,49 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+A linear feedback shift register is a shift register usually with a few XOR gates to produce the next state of the shift register. A Galois LFSR is one particular arrangement where bit positions with a "tap" are XORed with the output bit to produce its next value, while bit positions without a tap shift. If the taps positions are carefully chosen, the LFSR can be made to be "maximum-length". A maximum-length LFSR of n bits cycles through 2**n-1 states before repeating (the all-zero state is never reached). Build a 5-bit maximal-length Galois LFSR with taps at bit positions 5 and 3. The active-high synchronous reset should reset the LFSR output to 1.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "0: The DUT is a 5-bit maximal-length Galois LFSR.",
+    "1: The module has inputs: 'clk' (clock signal) and 'reset' (active-high synchronous reset).",
+    "2: The module has an output: 'q' which is a 5-bit register [4:0].",
+    "3: The LFSR uses taps at bit positions 5 and 3, meaning that the feedback is taken from q[4] and q[2] and XORed to form the next state.",
+    "4: The LFSR must not reach the all-zero state and should cycle through 2^5-1 = 31 states.",
+    "5: The reset signal, when high, sets the LFSR output (q) to '1' (00001)."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	output reg [4:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Initialize reset to high for 2 clock cycles to reset the LFSR output to '00001'. Release reset on the rising edge of the 3rd clock cycle.",
+  "scenario 2": "After releasing reset, toggle clk every clock cycle and observe the output 'q' for 31 clock cycles, ensuring that the LFSR cycles through its maximum-length states.",
+  "scenario 3": "Assert reset again on the rising edge of the 10th clock cycle while the LFSR is in its normal cycling state and keep it asserted for 2 clock cycles. Release reset again on the rising edge of the 12th clock cycle.",
+  "scenario 4": "Monitor the output 'q' for 10 clock cycles after the second reset release, confirming that it continues cycling through valid states and follows the feedback logic.",
+  "scenario 5": "Simulate a continuous clock with an active reset signal at the beginning of the simulation and then deactivate it at the 5th clock cycle, checking if the output resets to '00001'."
+}
+

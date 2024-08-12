@@ -1,0 +1,53 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Implement a 4-bit adder with full adders. The output sum should include the overflow bit.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. DUT is a 4-bit adder that sums two 4-bit inputs (x and y) and produces a 5-bit output (sum) that includes an overflow bit.",
+    "2. Inputs: x [3:0] and y [3:0], both are 4-bit wide signals.",
+    "3. Output: sum [4:0], a 5-bit signal that includes the sum of x and y and the overflow bit.",
+    "4. The adder must correctly handle all combinations of 4-bit inputs, including edge cases where overflow occurs."
+  ]
+}
+DUT header:
+module top_module (
+	input [3:0] x,
+	input [3:0] y,
+	output [4:0] sum
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply x = 4'b0000 and y = 4'b0000 at time = 0 clock cycles.",
+  "scenario 2": "Apply x = 4'b0001 and y = 4'b0001 at time = 1 clock cycle.",
+  "scenario 3": "Apply x = 4'b0010 and y = 4'b0010 at time = 2 clock cycles.",
+  "scenario 4": "Apply x = 4'b1111 and y = 4'b0001 at time = 3 clock cycles.",
+  "scenario 5": "Apply x = 4'b0101 and y = 4'b1010 at time = 4 clock cycles.",
+  "scenario 6": "Apply x = 4'b1000 and y = 4'b1000 at time = 5 clock cycles.",
+  "scenario 7": "Apply x = 4'b1111 and y = 4'b1111 at time = 6 clock cycles.",
+  "scenario 8": "Apply x = 4'b0111 and y = 4'b1000 at time = 7 clock cycles.",
+  "scenario 9": "Apply x = 4'b0011 and y = 4'b0101 at time = 8 clock cycles.",
+  "scenario 10": "Apply x = 4'b0000 and y = 4'b1111 at time = 9 clock cycles."
+}
+

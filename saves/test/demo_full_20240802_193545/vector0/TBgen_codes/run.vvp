@@ -1,0 +1,83 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x556a8007da60 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x556a8008e860 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x556a800a54d0_0 .var/i "file", 31 0;
+o0x7f89af0f3018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556a800a55d0_0 .net "o0", 0 0, o0x7f89af0f3018;  0 drivers
+o0x7f89af0f3048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556a800a5690_0 .net "o1", 0 0, o0x7f89af0f3048;  0 drivers
+o0x7f89af0f3078 .functor BUFZ 1, C4<z>; HiZ drive
+v0x556a800a5790_0 .net "o2", 0 0, o0x7f89af0f3078;  0 drivers
+o0x7f89af0f30a8 .functor BUFZ 3, C4<zzz>; HiZ drive
+v0x556a800a5860_0 .net "outv", 2 0, o0x7f89af0f30a8;  0 drivers
+v0x556a800a5950_0 .var "vec", 2 0;
+S_0x556a8008e9f0 .scope module, "DUT" "top_module" 3 10, 4 1 0, S_0x556a8008e860;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 3 "vec";
+    .port_info 1 /OUTPUT 3 "outv";
+    .port_info 2 /OUTPUT 1 "o2";
+    .port_info 3 /OUTPUT 1 "o1";
+    .port_info 4 /OUTPUT 1 "o0";
+v0x556a8008ebd0_0 .net "o0", 0 0, o0x7f89af0f3018;  alias, 0 drivers
+v0x556a800a5090_0 .net "o1", 0 0, o0x7f89af0f3048;  alias, 0 drivers
+v0x556a800a5150_0 .net "o2", 0 0, o0x7f89af0f3078;  alias, 0 drivers
+v0x556a800a5220_0 .net "outv", 2 0, o0x7f89af0f30a8;  alias, 0 drivers
+v0x556a800a5300_0 .net "vec", 2 0, v0x556a800a5950_0;  1 drivers
+    .scope S_0x556a8008e860;
+T_0 ;
+    %vpi_func 3 22 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x556a800a54d0_0, 0, 32;
+    %pushi/vec4 0, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 27 "$fdisplay", v0x556a800a54d0_0, "scenario: 1, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 1, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 32 "$fdisplay", v0x556a800a54d0_0, "scenario: 2, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 2, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 37 "$fdisplay", v0x556a800a54d0_0, "scenario: 3, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 3, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 42 "$fdisplay", v0x556a800a54d0_0, "scenario: 4, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 4, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 47 "$fdisplay", v0x556a800a54d0_0, "scenario: 5, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 5, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 52 "$fdisplay", v0x556a800a54d0_0, "scenario: 6, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 6, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 57 "$fdisplay", v0x556a800a54d0_0, "scenario: 7, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %pushi/vec4 7, 0, 3;
+    %store/vec4 v0x556a800a5950_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 62 "$fdisplay", v0x556a800a54d0_0, "scenario: 8, vec = %d, outv = %d, o2 = %d, o1 = %d, o0 = %d", v0x556a800a5950_0, v0x556a800a5860_0, v0x556a800a5790_0, v0x556a800a5690_0, v0x556a800a55d0_0 {0 0 0};
+    %vpi_call/w 3 65 "$fclose", v0x556a800a54d0_0 {0 0 0};
+    %vpi_call/w 3 68 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "vector0_tb.v";
+    "vector0.v";

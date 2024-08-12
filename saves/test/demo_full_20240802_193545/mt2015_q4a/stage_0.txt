@@ -1,0 +1,31 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Implement the boolean function z = (x^y) & x.
+RTL header:
+module top_module(
+	input x,
+	input y,
+	output z);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+    input x,
+    input y,
+    output z
+);
+    assign z = (x ^ y) & x;
+endmodule
+```
+

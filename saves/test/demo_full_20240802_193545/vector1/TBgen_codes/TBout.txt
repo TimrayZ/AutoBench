@@ -1,0 +1,10 @@
+scenario: 1, in =     0, out_hi =   z, out_lo =   z
+scenario: 2, in = 65535, out_hi =   z, out_lo =   z
+scenario: 3, in = 43690, out_hi =   z, out_lo =   z
+scenario: 4, in =  4660, out_hi =   z, out_lo =   z
+scenario: 5, in = 61680, out_hi =   z, out_lo =   z
+scenario: 6, in =  3855, out_hi =   z, out_lo =   z
+scenario: 7, in = 21845, out_hi =   z, out_lo =   z
+scenario: 8, in = 52428, out_hi =   z, out_lo =   z
+scenario: 9, in =   255, out_hi =   z, out_lo =   z
+scenario: 10, in = 65280, out_hi =   z, out_lo =   z

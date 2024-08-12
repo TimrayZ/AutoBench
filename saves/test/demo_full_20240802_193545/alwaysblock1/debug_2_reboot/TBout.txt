@@ -1,0 +1,12 @@
+scenario: 1, a = 0, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 2, a = 0, b = 1, out_assign = z, out_alwaysblock = x
+scenario: 3, a = 1, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 4, a = 1, b = 1, out_assign = z, out_alwaysblock = x
+scenario: 5a, a = 0, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 5b, a = 1, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 6a, a = 0, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 6b, a = 0, b = 1, out_assign = z, out_alwaysblock = x
+scenario: 7a, a = 0, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 7b, a = 1, b = 1, out_assign = z, out_alwaysblock = x
+scenario: 8a, a = 0, b = 0, out_assign = z, out_alwaysblock = x
+scenario: 8b, a = z, b = z, out_assign = z, out_alwaysblock = x

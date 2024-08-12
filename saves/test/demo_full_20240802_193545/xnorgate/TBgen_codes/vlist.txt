@@ -1,0 +1,2 @@
+xnorgate_tb.v
+xnorgate.v

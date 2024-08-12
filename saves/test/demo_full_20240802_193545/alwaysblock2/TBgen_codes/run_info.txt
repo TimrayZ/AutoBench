@@ -1,0 +1,15 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp alwaysblock2_tb.v alwaysblock2.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+alwaysblock2_tb.v:146: $finish called at 1210000 (1ps)
+
+iverilog cmd 2 error:
+

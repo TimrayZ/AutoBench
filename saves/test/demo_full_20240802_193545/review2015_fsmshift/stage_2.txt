@@ -1,0 +1,48 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+This module is a part of the FSM for controlling the shift register, we want the ability to enable the shift register for exactly 4 clock cycles whenever the proper bit pattern is detected. Whenever the FSM is reset, assert shift_ena for 4 cycles, then 0 forever (until reset). Reset should be active high synchronous.
+RTL testbench specification:
+{
+  "important data": "The module is part of a finite state machine (FSM) controlling a shift register, specifically designed to enable the shift register for exactly 4 clock cycles upon detection of a proper bit pattern. The shift_enable (shift_ena) signal should be asserted for 4 cycles following a reset and should remain low thereafter until another reset occurs. Reset is active high and synchronous.",
+  "technical specifications": [
+    "1. The DUT's module header is: module top_module(input clk, input reset, output shift_ena);",
+    "2. The shift_ena output must be high for exactly 4 clock cycles when the reset signal is asserted.",
+    "3. The reset signal (reset) is active high and synchronous, meaning that the output behavior depends on the clk and the reset inputs.",
+    "4. After 4 cycles of asserting shift_ena during reset, the output should remain low until the reset signal is asserted again.",
+    "5. The testbench must verify that for multiple assertions of reset, shift_ena behaves consistently: it should go high for 4 cycles and then low indefinitely."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	output shift_ena);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Assert reset high at clock cycle 0. Wait for 4 clock cycles while observing the shift_ena output. Release reset at clock cycle 4.",
+  "scenario 2": "Verify behavior when reset is asserted again after the initial 4 cycles. Assert reset high at clock cycle 10 and release at clock cycle 14. Observe shift_ena during this period.",
+  "scenario 3": "Perform a reset in the middle of the 4-cycle period. Assert reset high at clock cycle 6 and release at clock cycle 10. Observe shift_ena output from clock cycles 6 to 14.",
+  "scenario 4": "Check the behavior when reset is asserted consecutively with a short delay. Assert reset high at clock cycle 18 and release at clock cycle 20. Note the shift_ena output between clock cycles 18 and 24.",
+  "scenario 5": "Test the reset functionality by asserting reset, keeping it active for multiple clock cycles. Assert reset high at clock cycle 25 and hold it until clock cycle 30. Release reset at clock cycle 30 and observe shift_ena output for the next 4 clock cycles."
+}
+

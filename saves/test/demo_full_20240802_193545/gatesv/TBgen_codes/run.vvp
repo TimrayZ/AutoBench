@@ -1,0 +1,87 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x55e438de6020 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x55e438df6490 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x55e438e0f1a0_0 .var/i "file", 31 0;
+v0x55e438e0f2a0_0 .var "in", 3 0;
+o0x7f5489275048 .functor BUFZ 3, C4<zzz>; HiZ drive
+v0x55e438e0f360_0 .net "out_any", 3 1, o0x7f5489275048;  0 drivers
+o0x7f5489275078 .functor BUFZ 3, C4<zzz>; HiZ drive
+v0x55e438e0f460_0 .net "out_both", 2 0, o0x7f5489275078;  0 drivers
+o0x7f54892750a8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v0x55e438e0f530_0 .net "out_different", 3 0, o0x7f54892750a8;  0 drivers
+S_0x55e438df6620 .scope module, "dut" "top_module" 3 11, 4 1 0, S_0x55e438df6490;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 4 "in";
+    .port_info 1 /OUTPUT 3 "out_both";
+    .port_info 2 /OUTPUT 3 "out_any";
+    .port_info 3 /OUTPUT 4 "out_different";
+v0x55e438ddf130_0 .net "in", 3 0, v0x55e438e0f2a0_0;  1 drivers
+v0x55e438de4500_0 .net "out_any", 3 1, o0x7f5489275048;  alias, 0 drivers
+v0x55e438e0ef50_0 .net "out_both", 2 0, o0x7f5489275078;  alias, 0 drivers
+v0x55e438e0f010_0 .net "out_different", 3 0, o0x7f54892750a8;  alias, 0 drivers
+    .scope S_0x55e438df6490;
+T_0 ;
+    %vpi_func 3 23 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x55e438e0f1a0_0, 0, 32;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 28 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 1, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 33 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 2, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 38 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 3, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 43 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 4, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 48 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 5, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 53 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 6, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 58 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 7, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 9, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 63 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 8, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 14, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 68 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 9, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x55e438e0f2a0_0, 0, 4;
+    %delay 1000, 0;
+    %vpi_call/w 3 73 "$fdisplay", v0x55e438e0f1a0_0, "scenario: 10, in = %b, out_both = %b, out_any = %b, out_different = %b", v0x55e438e0f2a0_0, v0x55e438e0f460_0, v0x55e438e0f360_0, v0x55e438e0f530_0 {0 0 0};
+    %vpi_call/w 3 76 "$fclose", v0x55e438e0f1a0_0 {0 0 0};
+    %vpi_call/w 3 78 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "gatesv_tb.v";
+    "gatesv.v";

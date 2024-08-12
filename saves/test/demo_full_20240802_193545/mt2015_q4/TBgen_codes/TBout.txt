@@ -1,0 +1,11 @@
+scenario: 1, x = 0, y = 0, z = z
+scenario: 2, x = 0, y = 0, z = z
+scenario: 3, x = 0, y = 0, z = z
+scenario: 4, x = 1, y = 0, z = z
+scenario: 5, x = 0, y = 1, z = z
+scenario: 6, x = 1, y = 1, z = z
+scenario: 7, x = 0, y = 0, z = z
+scenario: 8, x = 0, y = 1, z = z
+scenario: 9, x = 1, y = 1, z = z
+scenario: 10, x = 0, y = 1, z = z
+scenario: 11, x = 1, y = 0, z = z

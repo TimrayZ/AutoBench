@@ -1,0 +1,15 @@
+scenario: 1, in = 0000, pos = xx
+scenario: 2, in = 0001, pos = xx
+scenario: 3, in = 0010, pos = xx
+scenario: 4, in = 0100, pos = xx
+scenario: 5, in = 1000, pos = xx
+scenario: 6, in = 0011, pos = xx
+scenario: 7, in = 0101, pos = xx
+scenario: 8, in = 1001, pos = xx
+scenario: 9, in = 0110, pos = xx
+scenario: 10, in = 1010, pos = xx
+scenario: 11, in = 1100, pos = xx
+scenario: 12, in = 1011, pos = xx
+scenario: 13, in = 1101, pos = xx
+scenario: 14, in = 1110, pos = xx
+scenario: 15, in = 1111, pos = xx

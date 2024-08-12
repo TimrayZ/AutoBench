@@ -1,0 +1,48 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Implement a 4-bit adder with full adders. The output sum should include the overflow bit.
+RTL header:
+module top_module (
+	input [3:0] x,
+	input [3:0] y,
+	output [4:0] sum
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input [3:0] x,
+    input [3:0] y,
+    output [4:0] sum
+);
+    wire [3:0] carry;
+
+    // Full Adder for bit 0
+    assign sum[0] = x[0] ^ y[0];
+    assign carry[0] = x[0] & y[0];
+
+    // Full Adder for bit 1
+    assign sum[1] = x[1] ^ y[1] ^ carry[0];
+    assign carry[1] = (x[1] & y[1]) | (carry[0] & (x[1] ^ y[1]));
+
+    // Full Adder for bit 2
+    assign sum[2] = x[2] ^ y[2] ^ carry[1];
+    assign carry[2] = (x[2] & y[2]) | (carry[1] & (x[2] ^ y[2]));
+
+    // Full Adder for bit 3
+    assign sum[3] = x[3] ^ y[3] ^ carry[2];
+    assign sum[4] = (x[3] & y[3]) | (carry[2] & (x[3] ^ y[3]));
+endmodule
+```
+

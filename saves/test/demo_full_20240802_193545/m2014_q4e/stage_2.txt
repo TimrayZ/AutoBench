@@ -1,0 +1,48 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Implement a 2-input NOR gate.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1: The DUT is a 2-input NOR gate which has the following functionality: the output (out) is high if both inputs (in1 and in2) are low.",
+    "2: The module header for the DUT is as follows: module top_module (input in1, input in2, output logic out);",
+    "3: The testbench should provide various combinations of inputs (in1 and in2) to test the NOR gate functionality.",
+    "4: The expected results of the output (out) should be verified for each input combination: For (0, 0), expect out = 1; for (0, 1), expect out = 0; for (1, 0), expect out = 0; and for (1, 1), expect out = 0.",
+    "5: The testbench should check if the output matches the expected values for all possible combinations of the inputs."
+  ]
+}
+DUT header:
+module top_module (
+	input in1,
+	input in2,
+	output logic out
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply inputs in1 = 0 and in2 = 0 for clock cycle 0.",
+  "scenario 2": "Apply inputs in1 = 0 and in2 = 1 for clock cycle 1.",
+  "scenario 3": "Apply inputs in1 = 1 and in2 = 0 for clock cycle 2.",
+  "scenario 4": "Apply inputs in1 = 1 and in2 = 1 for clock cycle 3."
+}
+

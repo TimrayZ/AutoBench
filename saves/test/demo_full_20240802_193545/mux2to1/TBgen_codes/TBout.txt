@@ -1,0 +1,16 @@
+scenario: 1, a = 0, b = 0, sel = 0, out = z
+scenario: 2, a = 0, b = 1, sel = 0, out = z
+scenario: 3, a = 1, b = 0, sel = 0, out = z
+scenario: 4, a = 1, b = 1, sel = 0, out = z
+scenario: 5, a = 0, b = 0, sel = 1, out = z
+scenario: 6, a = 0, b = 1, sel = 1, out = z
+scenario: 7, a = 1, b = 0, sel = 1, out = z
+scenario: 8, a = 1, b = 1, sel = 1, out = z
+scenario: 9, a = 0, b = 0, sel = 0, out = z
+scenario: 9, a = 0, b = 0, sel = 1, out = z
+scenario: 9, a = 0, b = 0, sel = 0, out = z
+scenario: 9, a = 0, b = 0, sel = 1, out = z
+scenario: 10, a = 1, b = 0, sel = 0, out = z
+scenario: 10, a = 0, b = 0, sel = 0, out = z
+scenario: 10, a = 1, b = 1, sel = 0, out = z
+scenario: 10, a = 0, b = 0, sel = 0, out = z

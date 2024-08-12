@@ -1,0 +1,14 @@
+{
+    "task_id": "gatesv100",
+    "task_number": 109,
+    "time": 64.91,
+    "prompt_tokens": 5352,
+    "completion_tokens": 2895,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.06
+}

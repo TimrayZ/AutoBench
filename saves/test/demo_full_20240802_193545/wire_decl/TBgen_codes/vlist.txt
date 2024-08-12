@@ -1,0 +1,2 @@
+wire_decl_tb.v
+wire_decl.v

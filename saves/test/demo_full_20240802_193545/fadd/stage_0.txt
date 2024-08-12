@@ -1,0 +1,39 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Create a full adder. A full adder adds three bits (including carry-in) and produces a sum and carry-out.
+RTL header:
+module top_module (
+	input a,
+	input b,
+	input cin,
+	output cout,
+	output sum
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input a,
+    input b,
+    input cin,
+    output cout,
+    output sum
+);
+
+    assign sum = a ^ b ^ cin;         // Sum is the XOR of the three inputs
+    assign cout = (a & b) | (b & cin) | (cin & a); // Carry out is true if any two of the inputs are true
+
+endmodule
+```
+

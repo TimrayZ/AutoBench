@@ -1,0 +1,17 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp review2015_shiftcount_tb.v review2015_shiftcount.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+review2015_shiftcount_tb.v:11: warning: Port 4 (data) of top_module expects 1 bits, got 4.
+review2015_shiftcount_tb.v:11:        : Pruning 3 high bits of the expression.
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+review2015_shiftcount_tb.v:110: $finish called at 230000 (1ps)
+
+iverilog cmd 2 error:
+

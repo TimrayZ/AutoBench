@@ -1,0 +1,14 @@
+{
+    "task_id": "vector3",
+    "task_number": 134,
+    "time": 108.22,
+    "prompt_tokens": 5948,
+    "completion_tokens": 4036,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.07
+}

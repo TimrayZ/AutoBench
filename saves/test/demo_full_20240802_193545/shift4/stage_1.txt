@@ -1,0 +1,48 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Build a 4-bit shift register (right shift), with asynchronous positive edge triggered areset, synchronous active high signals load, and enable. 
+// (1) areset: Resets shift register to zero. 
+// (2) load: Loads shift register with data[3:0] instead of shifting. 
+// (3) ena: Shift right (q[3] becomes zero, q[0] is shifted out and disappears). 
+// (4) q: The contents of the shift register. If both the load and ena inputs are asserted (1), the load input has higher priority. 
+
+DUT header:
+module top_module(
+	input clk,
+	input areset,
+	input load,
+	input ena,
+	input [3:0] data,
+	output reg [3:0] q);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "The DUT is a 4-bit shift register that performs right shifts, with an asynchronous reset, synchronous load, and enable signals.",
+  "technical specifications": [
+    "1: The DUT is a 4-bit shift register that shifts data to the right. It has an asynchronous reset input (areset) that sets the output to zero when asserted.",
+    "2: The DUT can load a 4-bit input (data) into the output (q) when the load signal is high. If both load and ena are high, load has priority over the shift operation.",
+    "3: The output q represents the contents of the shift register and is a 4-bit register.",
+    "4: The DUT operates on the positive edge of the clk signal when ena is asserted, shifting the bits to the right and making q[3] zero while q[0] is shifted out.",
+    "5: The DUT has the following I/O specifications: input clk, areset, load, ena, and input data[3:0]; output is q[3:0]."
+  ]
+}
+

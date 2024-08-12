@@ -1,0 +1,14 @@
+{
+    "task_id": "hadd",
+    "task_number": 131,
+    "time": 37.32,
+    "prompt_tokens": 3100,
+    "completion_tokens": 1382,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.06
+}

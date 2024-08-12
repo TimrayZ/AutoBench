@@ -1,0 +1,10 @@
+scenario: 1, a =   3, b =   5, c =   2, d =   4, min =   x
+scenario: 2, a =   0, b =   0, c =   0, d =   0, min =   x
+scenario: 3, a = 255, b = 127, c = 128, d =   1, min =   x
+scenario: 4, a =  16, b =  32, c =  48, d =  64, min =   x
+scenario: 5, a = 153, b = 170, c = 136, d = 119, min =   x
+scenario: 6, a =   1, b =   2, c =   3, d =   4, min =   x
+scenario: 7, a =   4, b =   1, c =   2, d =   3, min =   x
+scenario: 8, a = 128, b =  64, c =  32, d =  16, min =   x
+scenario: 9, a = 254, b = 253, c = 252, d = 251, min =   x
+scenario: 10, a =  90, b = 165, c =  95, d = 160, min =   x

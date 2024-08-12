@@ -1,0 +1,60 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+The following is the state transition table for a Moore state machine with one input, one output, and four states. Implement this state machine. Include a synchronous active high reset that resets the FSM to state A. 
+// State | Next state in=0, Next state in=1 | Output
+// A | A, B | 0
+// B | C, B | 0
+// C | A, D | 0
+// D | C, B | 1
+RTL testbench specification:
+{
+  "important data": "// State | Next state in=0, Next state in=1 | Output\n// A | A, B | 0\n// B | C, B | 0\n// C | A, D | 0\n// D | C, B | 1",
+  "technical specifications": [
+    "1. DUT module header: module top_module (input clk, input in, input reset, output out);",
+    "2. The DUT is a Moore state machine with one input (in), one output (out), and four states (A, B, C, D).",
+    "3. The state transitions and outputs are defined by the following rules: \n   - From state A, if in=0 stay in A, if in=1 go to B (output 0).\n   - From state B, if in=0 go to C, if in=1 stay in B (output 0).\n   - From state C, if in=0 go to A, if in=1 go to D (output 0).\n   - From state D, if in=0 go to C, if in=1 go to B (output 1).",
+    "4. A synchronous active high reset is included to reset the FSM to state A.",
+    "5. The testbench should include test cases to check each state transition and corresponding output based on different input combinations."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input in,
+	input reset,
+	output out
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply synchronous active high reset. Set reset=1 for 1 clock cycle, then reset=0.",
+  "scenario 2": "Transition from state A to state B. Set in=1 for 1 clock cycle while in state A.",
+  "scenario 3": "Stay in state A. Set in=0 for 2 clock cycles while in state A.",
+  "scenario 4": "Transition from state B to state C. Set in=0 for 1 clock cycle while in state B.",
+  "scenario 5": "Stay in state B. Set in=1 for 2 clock cycles while in state B.",
+  "scenario 6": "Transition from state C to state A. Set in=0 for 1 clock cycle while in state C.",
+  "scenario 7": "Transition from state C to state D. Set in=1 for 1 clock cycle while in state C.",
+  "scenario 8": "Transition from state D to state C. Set in=0 for 1 clock cycle while in state D.",
+  "scenario 9": "Transition from state D to state B. Set in=1 for 1 clock cycle while in state D.",
+  "scenario 10": "Apply synchronous active high reset again. Set reset=1 for 1 clock cycle, then reset=0."
+}
+

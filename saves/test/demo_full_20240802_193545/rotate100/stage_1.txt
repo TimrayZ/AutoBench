@@ -1,0 +1,48 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Build a 100-bit left/right rotator, with synchronous load and left/right enable. A rotator shifts-in the shifted-out bit from the other end of the register, unlike a shifter that discards the shifted-out bit and shifts in a zero. If enabled, a rotator rotates the bits around and does not modify/discard them. 
+// (1) load: Loads shift register with data[99:0] instead of rotating. Synchronous active high.
+// (2) ena[1:0]: Synchronous. Chooses whether and which direction to rotate: 
+//     (a) 2'b01 rotates right by one bit, 
+//     (b) 2'b10 rotates left by one bit, 
+//     (c) 2'b00 and 2'b11 do not rotate. 
+// (3) q: The contents of the rotator.
+DUT header:
+module top_module(
+	input clk,
+	input load,
+	input [1:0] ena,
+	input [99:0] data,
+	output reg [99:0] q);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "(1) load: Loads shift register with data[99:0] instead of rotating. Synchronous active high. (2) ena[1:0]: Synchronous. Chooses whether and which direction to rotate: (a) 2'b01 rotates right by one bit, (b) 2'b10 rotates left by one bit, (c) 2'b00 and 2'b11 do not rotate. (3) q: The contents of the rotator.",
+  "technical specifications": [
+    "1. DUT Specification: The module 'top_module' performs a 100-bit left/right rotation based on the input signals.",
+    "2. Input Signals: clk (clock), load (active high), ena (2-bit enable signal), data (100-bit input data).",
+    "3. Output Signal: q (100-bit output which holds the contents of the rotator).",
+    "4. Functionality: When load is high, data is loaded into q. When ena is '01', q rotates right by one bit, when ena is '10', q rotates left by one bit, and when ena is '00' or '11', it does not rotate.",
+    "5. Test cases: The testbench should include test cases to validate loading data, left rotation, right rotation, and ensure no operation occurs for ena values of '00' and '11'."
+  ]
+}
+

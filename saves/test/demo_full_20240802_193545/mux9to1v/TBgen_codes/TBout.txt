@@ -1,0 +1,16 @@
+scenario: 1, a =     1, b =     2, c =     3, d =     4, e =     5, f =     6, g =     7, h =     8, i =     9, sel =  0, out =     x
+scenario: 2, a =     1, b =    16, c =    17, d =    18, e =    19, f =    20, g =    21, h =    22, i =    23, sel =  1, out =     x
+scenario: 3, a =     1, b =    32, c =    33, d =    34, e =    35, f =    36, g =    37, h =    38, i =    39, sel =  2, out =     x
+scenario: 4, a =     1, b =    48, c =    49, d =    50, e =    51, f =    52, g =    53, h =    54, i =    55, sel =  3, out =     x
+scenario: 5, a =     1, b =    64, c =    65, d =    66, e =    67, f =    68, g =    69, h =    70, i =    71, sel =  4, out =     x
+scenario: 6, a =     1, b =    80, c =    81, d =    82, e =    83, f =    84, g =    85, h =    86, i =    87, sel =  5, out =     x
+scenario: 7, a =     1, b =    96, c =    97, d =    98, e =    99, f =   100, g =   101, h =   102, i =   103, sel =  6, out =     x
+scenario: 8, a =     1, b =   112, c =   113, d =   114, e =   115, f =   116, g =   117, h =   118, i =   119, sel =  7, out =     x
+scenario: 9, a =     1, b =   128, c =   129, d =   130, e =   131, f =   132, g =   133, h =   134, i =   135, sel =  8, out =     x
+scenario: 10, a =     1, b =   144, c =   145, d =   146, e =   147, f =   148, g =   149, h =   150, i =   151, sel =  9, out =     x
+scenario: 11, a =     1, b =   160, c =   161, d =   162, e =   163, f =   164, g =   165, h =   166, i =   167, sel = 10, out =     x
+scenario: 12, a =     1, b =   176, c =   177, d =   178, e =   179, f =   180, g =   181, h =   182, i =   183, sel = 11, out =     x
+scenario: 13, a =     1, b =   192, c =   193, d =   194, e =   195, f =   196, g =   197, h =   198, i =   199, sel = 12, out =     x
+scenario: 14, a =     1, b =   208, c =   209, d =   210, e =   211, f =   212, g =   213, h =   214, i =   215, sel = 13, out =     x
+scenario: 15, a =     1, b =   224, c =   225, d =   226, e =   227, f =   228, g =   229, h =   230, i =   231, sel = 14, out =     x
+scenario: 16, a =     1, b =   240, c =   241, d =   242, e =   243, f =   244, g =   245, h =   246, i =   247, sel = 15, out =     x

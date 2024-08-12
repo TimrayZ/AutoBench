@@ -1,0 +1,12 @@
+scenario: 1, ring = 0, vibrate_mode = 0, ringer = z, motor = z
+scenario: 2, ring = 0, vibrate_mode = 1, ringer = z, motor = z
+scenario: 3, ring = 1, vibrate_mode = 0, ringer = z, motor = z
+scenario: 4, ring = 1, vibrate_mode = 1, ringer = z, motor = z
+scenario: 5a, ring = 1, vibrate_mode = 0, ringer = z, motor = z
+scenario: 5b, ring = 1, vibrate_mode = 1, ringer = z, motor = z
+scenario: 6a, ring = 0, vibrate_mode = 1, ringer = z, motor = z
+scenario: 6b, ring = 0, vibrate_mode = 1, ringer = z, motor = z
+scenario: 7, ring = 0, vibrate_mode = 0, ringer = z, motor = z
+scenario: 7, ring = 0, vibrate_mode = 1, ringer = z, motor = z
+scenario: 7, ring = 1, vibrate_mode = 0, ringer = z, motor = z
+scenario: 7, ring = 1, vibrate_mode = 1, ringer = z, motor = z

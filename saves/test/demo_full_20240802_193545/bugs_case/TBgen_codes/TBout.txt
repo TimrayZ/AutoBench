@@ -1,0 +1,15 @@
+scenario: 1, code =  69, out =  x, valid = x
+scenario: 2, code =  22, out =  x, valid = x
+scenario: 3, code =  30, out =  x, valid = x
+scenario: 4, code =  38, out =  x, valid = x
+scenario: 5, code =  37, out =  x, valid = x
+scenario: 6, code =  46, out =  x, valid = x
+scenario: 7, code =  54, out =  x, valid = x
+scenario: 8, code =  61, out =  x, valid = x
+scenario: 9, code =  62, out =  x, valid = x
+scenario: 10, code =  70, out =  x, valid = x
+scenario: 11, code =   0, out =  x, valid = x
+scenario: 12, code = 153, out =  x, valid = x
+scenario: 13, code = 255, out =  x, valid = x
+scenario: 14, code =  58, out =  x, valid = x
+scenario: 15, code = 171, out =  x, valid = x

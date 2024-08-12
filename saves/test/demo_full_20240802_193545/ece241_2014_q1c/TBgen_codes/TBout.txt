@@ -1,0 +1,10 @@
+scenario: 1, a =  15, b =   1, s =   z, overflow = z
+scenario: 2, a = 127, b =   1, s =   z, overflow = z
+scenario: 3, a = 128, b = 255, s =   z, overflow = z
+scenario: 4, a = 126, b =   2, s =   z, overflow = z
+scenario: 5, a = 127, b = 255, s =   z, overflow = z
+scenario: 6, a = 129, b = 129, s =   z, overflow = z
+scenario: 7, a = 170, b = 170, s =   z, overflow = z
+scenario: 8, a =   0, b =   0, s =   z, overflow = z
+scenario: 9, a = 255, b = 255, s =   z, overflow = z
+scenario: 10, a =  60, b = 204, s =   z, overflow = z

@@ -1,0 +1,39 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Build a circuit that has one 3-bit input, then outputs the same vector, and also splits it into three separate 1-bit outputs. Connect output o0 to the input vector's position 0, o1 to position 1, etc.
+RTL header:
+module top_module(
+	input [2:0] vec, 
+	output [2:0] outv,
+	output o2,
+	output o1,
+	output o0
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+    input [2:0] vec, 
+    output [2:0] outv,
+    output o2,
+    output o1,
+    output o0
+);
+    assign outv = vec;
+    assign o2 = vec[2];
+    assign o1 = vec[1];
+    assign o0 = vec[0];
+endmodule
+```
+

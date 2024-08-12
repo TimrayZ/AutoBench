@@ -1,0 +1,41 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+A linear feedback shift register is a shift register usually with a few XOR gates to produce the next state of the shift register. A Galois LFSR is one particular arrangement where bit positions with a "tap" are XORed with the output bit to produce each bit's next value, while bit positions without a tap shift. Build a 32-bit Galois LFSR with taps at bit positions 32, 22, 2, and 1. Reset should be active high synchronous, and should reset the output q to 32'h1.
+RTL header:
+module top_module(
+	input clk,
+	input reset,
+	output reg [31:0] q);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+    input clk,
+    input reset,
+    output reg [31:0] q
+);
+
+    always @(posedge clk) begin
+        if (reset) begin
+            q <= 32'h1;  // Reset to 1
+        end else begin
+            // Galois LFSR feedback
+            q[0] <= q[31] ^ q[21] ^ q[1] ^ q[0]; // Taps at 32, 22, 2, and 1
+            q[31:1] <= q[30:0]; // Shift
+        end
+    end
+
+endmodule
+```
+

@@ -1,0 +1,53 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Rule 110 is a one-dimensional cellular automaton with interesting properties (such as being Turing-complete). There is a one-dimensional array of cells (on or off). At each time step, the state of each cell changes. In Rule 110, the next state of each cell depends only on itself and its two neighbours, according to the following table:
+// Left | Center | Right | Center's next state
+// 1 | 1 | 1 | 0
+// 1 | 1 | 0 | 1
+// 1 | 0 | 1 | 1
+// 1 | 0 | 0 | 0
+// 0 | 1 | 1 | 1
+// 0 | 1 | 0 | 1
+// 0 | 0 | 1 | 1
+// 0 | 0 | 0 | 0 
+// In this circuit, create a 512-cell system (q[511:0]), and advance by one time step each clock cycle. The synchronous active high load input indicates the state of the system should be loaded with data[511:0]. Assume the boundaries (q[-1] and q[512]) are both zero (off).
+DUT header:
+module top_module(
+	input clk,
+	input load,
+	input [511:0] data,
+	output reg [511:0] q);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "Rule 110 is a one-dimensional cellular automaton applied to a 512-cell system where the next state of each cell is determined by its own state and the states of its two neighbors based on a specific transition table. The boundaries are assumed to be zero (off).",
+  "technical specifications": [
+    "1. The DUT has a clock input (clk) for synchronization.",
+    "2. The DUT has a load input (load) which, when high, forces the internal state (q) to take the value of the data input.",
+    "3. The DUT has a 512-bit data input (data[511:0]), which represents the initial state of the cellular automaton.",
+    "4. The DUT has a 512-bit output (q[511:0]) that represents the current state of the cellular automaton.",
+    "5. The DUT should implement the Rule 110 update logic based on the provided state transition table.",
+    "6. The state update occurs on the rising edge of the clock (clk).",
+    "7. It is required to check the behavior of the system for different initial conditions, including edge cases where cells are turned on or off based on the specified Rules of Rule 110."
+  ]
+}
+

@@ -1,0 +1,61 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Suppose you're building a circuit to process scancodes from a PS/2 keyboard for a game. Given the last two bytes of scancodes received, you need to indicate whether one of the arrow keys on the keyboard have been pressed. This involves a fairly simple mapping, which can be implemented as a case statement (or if-elseif) with four cases.
+// Scancode[15:0] | Arrow key
+// 16'he06b | left arrow
+// 16'he072 | down arrow
+// 16'he074 | right arrow
+// 16'he075 | up arrow
+// Anything else | none
+// Your circuit has one 16-bit input, and four outputs. Build this circuit that recognizes these four scancodes and asserts the correct output.
+
+
+RTL header:
+module top_module (
+	input [15:0] scancode,
+	output reg left,
+	output reg down,
+	output reg right,
+	output reg up
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input [15:0] scancode,
+    output reg left,
+    output reg down,
+    output reg right,
+    output reg up
+);
+
+    always @* begin
+        // Default outputs to 0
+        left = 0;
+        down = 0;
+        right = 0;
+        up = 0;
+
+        case (scancode)
+            16'hE06B: left = 1;   // Left arrow
+            16'hE072: down = 1;   // Down arrow
+            16'hE074: right = 1;  // Right arrow
+            16'hE075: up = 1;     // Up arrow
+            default: ;            // No action for other scancodes
+        endcase
+    end
+
+endmodule
+```
+

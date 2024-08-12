@@ -1,0 +1,2 @@
+dualedge_tb.v
+dualedge.v

@@ -1,0 +1,549 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns/1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg [7:0] a;
+    reg [7:0] b;
+    reg [7:0] c;
+    reg [7:0] d;
+
+    // Outputs
+    wire [7:0] min;
+
+    // Instantiate the DUT
+    top_module uut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .min(min)
+    );
+
+    // File handle
+    integer file;
+
+    initial begin
+        // Open the output file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1
+        a = 8'h00; b = 8'h10; c = 8'h20; d = 8'h30;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 2
+        a = 8'hFF; b = 8'hFF; c = 8'hFF; d = 8'hFF;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 3
+        a = 8'h05; b = 8'h03; c = 8'h02; d = 8'h01;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 4
+        a = 8'hAA; b = 8'h55; c = 8'h77; d = 8'h99;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 5
+        a = 8'h10; b = 8'h20; c = 8'h30; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 6
+        a = 8'h0F; b = 8'h1F; c = 8'h2F; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 7
+        a = 8'hFF; b = 8'h01; c = 8'hFE; d = 8'h02;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 8
+        a = 8'h12; b = 8'h12; c = 8'h12; d = 8'h12;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Close the file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Set inputs a, b, c, and d to 8'h00, 8'h10, 8'h20, and 8'h30 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set inputs a, b, c, and d to 8'hFF, 8'hFF, 8'hFF, and 8'hFF respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 3": "Set inputs a, b, c, and d to 8'h05, 8'h03, 8'h02, and 8'h01 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 4": "Set inputs a, b, c, and d to 8'hAA, 8'h55, 8'h77, and 8'h99 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 5": "Set inputs a, b, c, and d to 8'h10, 8'h20, 8'h30, and 8'h00 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 6": "Set inputs a, b, c as 8'h0F, 8'h1F, and 8'h2F, and leave d as 8'h00 at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 7": "Set inputs a, b, c, and d to 8'hFF, 8'h01, 8'hFE, and 8'h02 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 8": "Set inputs a, b, c, and d to 8'h12, 8'h12, 8'h12, and 8'h12 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns/1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg [7:0] a;
+    reg [7:0] b;
+    reg [7:0] c;
+    reg [7:0] d;
+
+    // Outputs
+    wire [7:0] min;
+
+    // Instantiate the DUT
+    top_module uut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .min(min)
+    );
+
+    // File handle
+    integer file;
+
+    initial begin
+        // Open the output file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1
+        a = 8'h00; b = 8'h10; c = 8'h20; d = 8'h30;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 2
+        a = 8'hFF; b = 8'hFF; c = 8'hFF; d = 8'hFF;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 3
+        a = 8'h05; b = 8'h03; c = 8'h02; d = 8'h01;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 4
+        a = 8'hAA; b = 8'h55; c = 8'h77; d = 8'h99;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 5
+        a = 8'h10; b = 8'h20; c = 8'h30; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 6
+        a = 8'h0F; b = 8'h1F; c = 8'h2F; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 7
+        a = 8'hFF; b = 8'h01; c = 8'hFE; d = 8'h02;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 8
+        a = 8'h12; b = 8'h12; c = 8'h12; d = 8'h12;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Close the file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns/1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg [7:0] a;
+    reg [7:0] b;
+    reg [7:0] c;
+    reg [7:0] d;
+
+    // Outputs
+    wire [7:0] min;
+
+    // Instantiate the DUT
+    top_module uut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .min(min)
+    );
+
+    // File handle
+    integer file;
+
+    initial begin
+        // Open the output file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1
+        a = 8'h00; b = 8'h10; c = 8'h20; d = 8'h30;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 2
+        a = 8'hFF; b = 8'hFF; c = 8'hFF; d = 8'hFF;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 3
+        a = 8'h05; b = 8'h03; c = 8'h02; d = 8'h01;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 4
+        a = 8'hAA; b = 8'h55; c = 8'h77; d = 8'h99;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 5
+        a = 8'h10; b = 8'h20; c = 8'h30; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 6
+        a = 8'h0F; b = 8'h1F; c = 8'h2F; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 7
+        a = 8'hFF; b = 8'h01; c = 8'hFE; d = 8'h02;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 8
+        a = 8'h12; b = 8'h12; c = 8'h12; d = 8'h12;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Close the file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Set inputs a, b, c, and d to 8'h00, 8'h10, 8'h20, and 8'h30 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set inputs a, b, c, and d to 8'hFF, 8'hFF, 8'hFF, and 8'hFF respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 3": "Set inputs a, b, c, and d to 8'h05, 8'h03, 8'h02, and 8'h01 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 4": "Set inputs a, b, c, and d to 8'hAA, 8'h55, 8'h77, and 8'h99 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 5": "Set inputs a, b, c, and d to 8'h10, 8'h20, 8'h30, and 8'h00 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 6": "Set inputs a, b, c as 8'h0F, 8'h1F, and 8'h2F, and leave d as 8'h00 at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 7": "Set inputs a, b, c, and d to 8'hFF, 8'h01, 8'hFE, and 8'h02 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 8": "Set inputs a, b, c, and d to 8'h12, 8'h12, 8'h12, and 8'h12 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns/1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg [7:0] a;
+    reg [7:0] b;
+    reg [7:0] c;
+    reg [7:0] d;
+
+    // Outputs
+    wire [7:0] min;
+
+    // Instantiate the DUT
+    top_module uut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .min(min)
+    );
+
+    // File handle
+    integer file;
+
+    initial begin
+        // Open the output file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1
+        a = 8'h00; b = 8'h10; c = 8'h20; d = 8'h30;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 2
+        a = 8'hFF; b = 8'hFF; c = 8'hFF; d = 8'hFF;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 3
+        a = 8'h05; b = 8'h03; c = 8'h02; d = 8'h01;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 4
+        a = 8'hAA; b = 8'h55; c = 8'h77; d = 8'h99;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 5
+        a = 8'h10; b = 8'h20; c = 8'h30; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 6
+        a = 8'h0F; b = 8'h1F; c = 8'h2F; d = 8'h00; // Ensure d is assigned as per the checklist
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 7
+        a = 8'hFF; b = 8'h01; c = 8'hFE; d = 8'h02;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 8
+        a = 8'h12; b = 8'h12; c = 8'h12; d = 8'h12;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Close the file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns/1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg [7:0] a;
+    reg [7:0] b;
+    reg [7:0] c;
+    reg [7:0] d;
+
+    // Outputs
+    wire [7:0] min;
+
+    // Instantiate the DUT
+    top_module uut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .min(min)
+    );
+
+    // File handle
+    integer file;
+
+    initial begin
+        // Open the output file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1
+        a = 8'h00; b = 8'h10; c = 8'h20; d = 8'h30;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 2
+        a = 8'hFF; b = 8'hFF; c = 8'hFF; d = 8'hFF;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 3
+        a = 8'h05; b = 8'h03; c = 8'h02; d = 8'h01;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 4
+        a = 8'hAA; b = 8'h55; c = 8'h77; d = 8'h99;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 5
+        a = 8'h10; b = 8'h20; c = 8'h30; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 6
+        a = 8'h0F; b = 8'h1F; c = 8'h2F; d = 8'h00; // Ensure d is assigned as per the checklist
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 7
+        a = 8'hFF; b = 8'h01; c = 8'hFE; d = 8'h02;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 8
+        a = 8'h12; b = 8'h12; c = 8'h12; d = 8'h12;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Close the file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Set inputs a, b, c, and d to 8'h00, 8'h10, 8'h20, and 8'h30 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set inputs a, b, c, and d to 8'hFF, 8'hFF, 8'hFF, and 8'hFF respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 3": "Set inputs a, b, c, and d to 8'h05, 8'h03, 8'h02, and 8'h01 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 4": "Set inputs a, b, c, and d to 8'hAA, 8'h55, 8'h77, and 8'h99 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 5": "Set inputs a, b, c, and d to 8'h10, 8'h20, 8'h30, and 8'h00 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 6": "Set inputs a, b, c as 8'h0F, 8'h1F, and 8'h2F, and leave d as 8'h00 at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 7": "Set inputs a, b, c, and d to 8'hFF, 8'h01, 8'hFE, and 8'h02 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output.",
+  "scenario 8": "Set inputs a, b, c, and d to 8'h12, 8'h12, 8'h12, and 8'h12 respectively at clock cycle 1. Wait for 1 clock cycle to observe the output."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns/1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg [7:0] a;
+    reg [7:0] b;
+    reg [7:0] c;
+    reg [7:0] d;
+
+    // Outputs
+    wire [7:0] min;
+
+    // Instantiate the DUT
+    top_module uut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .min(min)
+    );
+
+    // File handle
+    integer file;
+
+    initial begin
+        // Open the output file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1
+        a = 8'h00; b = 8'h10; c = 8'h20; d = 8'h30;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 2
+        a = 8'hFF; b = 8'hFF; c = 8'hFF; d = 8'hFF;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 3
+        a = 8'h05; b = 8'h03; c = 8'h02; d = 8'h01;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 4
+        a = 8'hAA; b = 8'h55; c = 8'h77; d = 8'h99;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 5
+        a = 8'h10; b = 8'h20; c = 8'h30; d = 8'h00;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 6
+        a = 8'h0F; b = 8'h1F; c = 8'h2F; d = 8'h00; // Ensure d is assigned as per the checklist
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 7
+        a = 8'hFF; b = 8'h01; c = 8'hFE; d = 8'h02;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Scenario 8
+        a = 8'h12; b = 8'h12; c = 8'h12; d = 8'h12;
+        #1; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, min = %d", a, b, c, d, min);
+
+        // Close the file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+```
+

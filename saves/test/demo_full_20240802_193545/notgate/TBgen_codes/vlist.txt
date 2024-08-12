@@ -1,0 +1,2 @@
+notgate_tb.v
+notgate.v

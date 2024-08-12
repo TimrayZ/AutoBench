@@ -1,0 +1,10 @@
+scenario: 1, in =   0, out =   z
+scenario: 2, in = 255, out =   z
+scenario: 3, in = 170, out =   z
+scenario: 4, in =  85, out =   z
+scenario: 5, in =  15, out =   z
+scenario: 6, in = 240, out =   z
+scenario: 7, in =   1, out =   z
+scenario: 8, in =  14, out =   z
+scenario: 9, in = 254, out =   z
+scenario: 10, in = 128, out =   z

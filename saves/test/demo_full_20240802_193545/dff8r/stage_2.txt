@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Create 8 D flip-flops with active high synchronous reset setting the output to zero. All DFFs should be triggered by the positive edge of clk.
+RTL testbench specification:
+{
+  "important data": "Create 8 D flip-flops with active high synchronous reset setting the output to zero. All DFFs should be triggered by the positive edge of clk.",
+  "technical specifications": [
+    "1: The DUT is a module named top_module that has inputs clk (1-bit), d (8-bit), and reset (1-bit), and outputs q (8-bit).",
+    "2: The DUT should implement 8 D flip-flops that are triggered by the positive edge of clk.",
+    "3: The DUT should have an active high synchronous reset that sets the output q to zero when reset is asserted (high).",
+    "4: The testbench must generate various test cases to validate the correct operation of the D flip-flops under different clk, d, and reset scenarios.",
+    "5: The expected results for the test cases must include scenarios of normal operation (registering d values) and edge cases (reset behavior)."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input [7:0] d,
+	input reset,
+	output reg [7:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "At time 0 ns, assert reset (reset = 1) for one clock cycle (clk = rising edge). This should clear all outputs (q = 00000000).",
+  "scenario 2": "At time 10 ns, deassert reset (reset = 0) and apply d = 10101010. After this (on the next rising edge of clk at 12 ns), the output q should reflect d.",
+  "scenario 3": "At time 20 ns, apply d = 11110000 while reset remains deasserted (reset = 0). On the next rising edge of clk at 22 ns, q should update to 11110000.",
+  "scenario 4": "At time 30 ns, assert reset (reset = 1) for one clock cycle (clk = rising edge at 32 ns). Expect q to clear to 00000000.",
+  "scenario 5": "At time 40 ns, deassert reset (reset = 0) and apply d = 00001111. On the next rising edge at 42 ns, the output q should reflect d.",
+  "scenario 6": "At time 50 ns, apply d = 11111111. On the rising edge of clk at 52 ns, q should update to 11111111.",
+  "scenario 7": "At time 60 ns, apply d = 00000000 while reset is kept deasserted (reset = 0). On the next rising edge at 62 ns, q should update to 00000000.",
+  "scenario 8": "At time 70 ns, apply d = 10101010 and hold it over 3 clock cycles (next three rising edges at 72 ns, 82 ns, and 92 ns). Observe the outputs for persistence."
+}
+

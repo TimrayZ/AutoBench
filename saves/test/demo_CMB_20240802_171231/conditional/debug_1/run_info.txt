@@ -1,0 +1,9 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/bin/bin/iverilog -g2012 -o run.vvp conditional_tb.v conditional.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+/bin/sh: /home/ge86pap/bin/bin/iverilog: No such file or directory
+

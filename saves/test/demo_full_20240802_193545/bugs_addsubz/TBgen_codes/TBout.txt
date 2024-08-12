@@ -1,0 +1,10 @@
+scenario: 1, do_sub = 0, a =   1, b =   1, out =   x, result_is_zero = x
+scenario: 2, do_sub = 0, a = 255, b =   1, out =   x, result_is_zero = x
+scenario: 3, do_sub = 0, a =   0, b =   0, out =   x, result_is_zero = x
+scenario: 4, do_sub = 1, a =   2, b =   1, out =   x, result_is_zero = x
+scenario: 5, do_sub = 1, a =   1, b = 255, out =   x, result_is_zero = x
+scenario: 6, do_sub = 1, a =   0, b =   0, out =   x, result_is_zero = x
+scenario: 7, do_sub = 0, a = 127, b = 128, out =   x, result_is_zero = x
+scenario: 8, do_sub = 1, a = 128, b = 127, out =   x, result_is_zero = x
+scenario: 9, do_sub = 0, a = 170, b =  85, out =   x, result_is_zero = x
+scenario: 10, do_sub = 1, a =  85, b = 170, out =   x, result_is_zero = x

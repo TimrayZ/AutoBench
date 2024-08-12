@@ -1,0 +1,53 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Implement a shift register with four D flops. Reset is active-low synchronous resettable.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is a synchronous 4-bit shift register using D flip-flops.",
+    "2. The shift register has 4 input bits and one output bit.",
+    "3. The clock signal (clk) controls the shifting of the input bit (in) to the output (out).",
+    "4. The reset signal (resetn) is active-low, meaning that a low signal will reset the shift register.",
+    "5. In the case of reset, all flip-flops within the shift register should be set to 0.",
+    "6. Under normal operation, on each rising edge of the clock, the current input (in) bit is shifted into the register, and the output (out) should reflect the state of the most significant bit (MSB) of the shift register."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input resetn,
+	input in,
+	output out
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply active-low reset (resetn = 0) at time 0 for 1 clock cycle, then release reset (resetn = 1) at time 1.",
+  "scenario 2": "After releasing the reset, hold clk at low (clk = 0) for 1 clock cycle, then transition clk to high (clk = 1) for 1 clock cycle while providing in = 1.",
+  "scenario 3": "After the first rising edge of clk, provide in = 0 on the next rising edge (time 3), and keep it constant while applying clk for 3 more cycles (total of 4 clock cycles).",
+  "scenario 4": "At time 7, assert in = 1 right before the next rising edge of clk, then provide clk for 1 clock cycle.",
+  "scenario 5": "Continue to apply clk with in toggled between 0 and 1 for 4 cycles, alternating input values at each rising edge until time 12.",
+  "scenario 6": "At time 12, hold resetn low (resetn = 0) for 1 clock cycle while clk is high (clk = 1), then release reset (resetn = 1) at time 13 with in = 1.",
+  "scenario 7": "After the reset is released, apply clk for 5 cycles with in = 0 for each cycle, ensuring that the shift register operates normally without resets."
+}
+

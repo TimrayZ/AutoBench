@@ -1,0 +1,43 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Suppose you are designing a circuit to control a cellphone's ringer and vibration motor. Whenever the phone needs to ring from an incoming call (input ring), your circuit must either turn on the ringer (output ringer = 1) or the motor (output motor = 1), but not both. If the phone is in vibrate mode (input vibrate_mode = 1), turn on the motor. Otherwise, turn on the ringer.
+DUT header:
+module top_module(
+	input ring, 
+	input vibrate_mode,
+	output ringer,
+	output motor
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is a module named 'top_module' which has two input signals: 'ring' and 'vibrate_mode'.",
+    "2. The output signals from the DUT are 'ringer' and 'motor'.",
+    "3. When 'ring' is asserted (1) and 'vibrate_mode' is also asserted (1), the output should prioritize 'motor' to be on (motor = 1, ringer = 0).",
+    "4. When 'ring' is asserted (1) and 'vibrate_mode' is not asserted (0), the output should turn on the ringer (ringer = 1, motor = 0).",
+    "5. If 'ring' is not asserted (0), both outputs should be off (ringer = 0, motor = 0).",
+    "6. The testbench must generate various test cases to validate all possible combinations of input signals and check the corresponding outputs."
+  ]
+}
+

@@ -1,0 +1,53 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+A linear feedback shift register is a shift register usually with a few XOR gates to produce the next state of the shift register. A Galois LFSR is one particular arrangement where bit positions with a "tap" are XORed with the output bit to produce each bit's next value, while bit positions without a tap shift. Build a 32-bit Galois LFSR with taps at bit positions 32, 22, 2, and 1. Reset should be active high synchronous, and should reset the output q to 32'h1.
+RTL testbench specification:
+{
+  "important data": "A 32-bit Galois LFSR with taps at bit positions 32, 22, 2, and 1. Reset is active high synchronous, output q should reset to 32'h1.",
+  "technical specifications": [
+    "0: Duty cycle - The DUT should operate on the rising edge of the clk signal and reset on the rising edge of the reset signal.",
+    "1: Reset behavior - When reset is high, the output q should be set to 32'h1, overriding any current state.",
+    "2: Taps - The next state of q is computed using XOR of bits at positions 32, 22, 2, and 1. This behavior needs to be verified.",
+    "3: Output verification - The testbench must check if the output q matches expected values for various input sequences after reset.",
+    "4: Clock cycles - The testbench should run for a sufficient number of clock cycles to ensure that the LFSR produces expected outputs based on the sequence.",
+    "5: Edge case - Include test cases for reset at various clock cycles to ensure synchronous reset functionality works as intended."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	output reg [31:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Initialize the testbench with reset high for 1 clock cycle, then bring reset low to start the LFSR operation. Observe the output q after the reset.",
+  "scenario 2": "After the initial reset, let the clock run for 10 clock cycles and observe how output q changes with each rising edge of clk.",
+  "scenario 3": "Apply reset high again during the 5th clock cycle for 1 clock cycle and then release it. Check if q resets to 32'h1 after the reset.",
+  "scenario 4": "Allow the DUT to run for 15 clock cycles following the second reset and record the changes in output q.",
+  "scenario 5": "Check the output q by applying a reset at clock cycle 3 and 4 in succession, each for 1 clock cycle. Confirm if q is maintained at 32'h1 after both resets.",
+  "scenario 6": "Run the DUT for 20 clock cycles without any reset and document the output q at each clock cycle. This will assess the functionality of the taps based on the previous state.",
+  "scenario 7": "Introduce random input to reset (high and low) at different clock cycles (4, 10, and 15) for 1 clock cycle each. After each reset, check that q returns to 32'h1.",
+  "scenario 8": "After an initial reset, run the DUT for 32 clock cycles, and verify that the output keeps cycling through the expected values as determined by the taps.",
+  "scenario 9": "Run the simulation with the reset held low for 5 clock cycles, then set it high for 1 clock cycle in cycle 6. Confirm the output q matches the expected state after the reset."
+}
+

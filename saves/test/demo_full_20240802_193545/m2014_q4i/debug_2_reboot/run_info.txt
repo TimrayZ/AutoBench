@@ -1,0 +1,30 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp m2014_q4i_tb.v m2014_q4i.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+Error: Scenario 1 output is not 0
+Error: Scenario 2 output is not 0
+Error: Scenario 3 output is not 0
+Error: Scenario 4 output is not 0
+Error: Scenario 4a output is not 0
+Error: Scenario 4b output is not 0
+Error: Scenario 4c output is not 0
+Error: Scenario 4d output is not 0
+Error: Scenario 4e output is not 0
+Error: Scenario 5 output is not 0
+Error: Scenario 5 output is not 0
+Error: Scenario 5 output is not 0
+Error: Scenario 5 output is not 0
+Error: Scenario 5 output is not 0
+Error: Scenario 5a output is not 0
+m2014_q4i_tb.v:70: $finish called at 150000 (1ps)
+
+iverilog cmd 2 error:
+

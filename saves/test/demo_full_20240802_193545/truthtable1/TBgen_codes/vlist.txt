@@ -1,0 +1,2 @@
+truthtable1_tb.v
+truthtable1.v

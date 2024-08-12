@@ -1,0 +1,10 @@
+scenario: 1, in =   0, pos = x
+scenario: 2, in =   1, pos = x
+scenario: 3, in =   2, pos = x
+scenario: 4, in =   4, pos = x
+scenario: 5, in =   8, pos = x
+scenario: 6, in = 128, pos = x
+scenario: 7, in =  85, pos = x
+scenario: 8, in = 255, pos = x
+scenario: 9, in =  40, pos = x
+scenario: 10, in =  15, pos = x

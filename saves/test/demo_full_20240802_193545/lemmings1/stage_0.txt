@@ -1,0 +1,95 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+The game Lemmings involves critters with fairly simple brains. So simple that we are going to model it using a finite state machine. In the Lemmings' 2D world, Lemmings can be in one of two states: walking left (walk_left is 1) or walking right (walk_right is 1). It will switch directions if it hits an obstacle. In particular, if a Lemming is bumped on the left (by receiving a 1 on bump_left), it will walk right. If it's bumped on the right (by receiving a 1 on bump_right), it will walk left. If it's bumped on both sides at the same time, it will still switch directions. Implement a Moore state machine with two states, two inputs, and one output (internal to the module) that models this behaviour. areset is positive edge triggered asynchronous reseting the Lemming machine to walk left.
+RTL header:
+module top_module (
+	input clk,
+	input areset,
+	input bump_left,
+	input bump_right,
+	output walk_left,
+	output walk_right
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input clk,
+    input areset,
+    input bump_left,
+    input bump_right,
+    output reg walk_left,
+    output reg walk_right
+);
+    // State encoding
+    parameter STATE_WALK_LEFT = 1'b0;
+    parameter STATE_WALK_RIGHT = 1'b1;
+
+    // Current state and next state
+    reg current_state, next_state;
+
+    // State transition logic
+    always @(*) begin
+        case (current_state)
+            STATE_WALK_LEFT: begin
+                if (bump_right) begin
+                    next_state = STATE_WALK_RIGHT;
+                end else begin
+                    next_state = STATE_WALK_LEFT;
+                end
+            end
+
+            STATE_WALK_RIGHT: begin
+                if (bump_left) begin
+                    next_state = STATE_WALK_LEFT;
+                end else begin
+                    next_state = STATE_WALK_RIGHT;
+                end
+            end
+
+            default: next_state = STATE_WALK_LEFT; // Default state
+        endcase
+    end
+
+    // State update logic
+    always @(posedge clk or posedge areset) begin
+        if (areset) begin
+            current_state <= STATE_WALK_LEFT; // Reset state
+        end else begin
+            current_state <= next_state; // Transition to next state
+        end
+    end
+
+    // Output logic
+    always @(*) begin
+        case (current_state)
+            STATE_WALK_LEFT: begin
+                walk_left = 1;
+                walk_right = 0;
+            end
+
+            STATE_WALK_RIGHT: begin
+                walk_left = 0;
+                walk_right = 1;
+            end
+
+            default: begin
+                walk_left = 0;
+                walk_right = 0; // Default case
+            end
+        endcase
+    end
+endmodule
+```
+

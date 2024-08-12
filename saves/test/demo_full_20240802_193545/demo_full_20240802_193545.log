@@ -1,0 +1,1707 @@
+
+---------------custom config--------------
+run: 
+    mode: autoline
+save: 
+    en: True
+    pub: 
+        prefix: demo_full
+        subdir: test
+gpt: 
+    model: 4om
+autoline: 
+    probset: 
+        path: data/HDLBits/HDLBits_data.jsonl
+        mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+    promptscript: pychecker
+    timeout: 5
+------------------------------------------
+------config info (custom + default)------
+run: 
+    version: 5.0
+    author: Ruidi Qiu - Technical University of Munich
+    time: 20240802_193545
+    custom_path: config/demos/156_template.yaml
+    mode: autoline
+    hostname: resi08
+    pid: 3662884
+save: 
+    en: True
+    root: saves/test/demo_full_20240802_193545/
+    pub: 
+        prefix: demo_full
+        dir: saves/
+        subdir: test/
+    log: 
+        en: True
+        dir: logs/
+        notes: None
+        cfg_pmode: iwantall
+    message: 
+        en: True
+        dir: messages/
+        format: json
+    iverilog: 
+        en: True
+        subdir: ivcode_nodebug
+load: 
+    prompt: 
+        path: config/initial_prompts/prompt1.txt
+        pick_idx: []
+    stage_template: 
+        path: config/templates/stage_template0301.txt
+gpt: 
+    model: gpt-4o-mini-2024-07-18
+    key_path: config/key_API.json
+    temperature: None
+    json_mode: False
+    chatgpt: 
+        start_form: chat
+        one_time_talk: False
+iverilog: 
+    dir: 
+    task_id: 
+autoline: 
+    probset: 
+        path: data/HDLBits/HDLBits_data.jsonl
+        mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+        gptgenRTL_path: None
+        more_info_paths: []
+        only: []
+        exclude: []
+        exclude_json: None
+        filter: [{}]
+    checklist: 
+        max: 3
+    debug: 
+        max: 5
+        reboot: 1
+        py_rollback: 2
+    onlyrun: None
+    promptscript: pychecker
+    error_interruption: False
+    timeout: 5
+------------------------------------------
+
+--------------default config--------------
+run: 
+    version: 5.0
+    author: Ruidi Qiu - Technical University of Munich
+    time: None
+    custom_path: None
+    mode: chatgpt
+save: 
+    en: True
+    root: None
+    pub: 
+        prefix: None
+        dir: saves/
+        subdir: 
+    log: 
+        en: True
+        dir: logs/
+        notes: None
+        cfg_pmode: iwantall
+    message: 
+        en: True
+        dir: messages/
+        format: json
+    iverilog: 
+        en: True
+        subdir: ivcode_nodebug
+load: 
+    prompt: 
+        path: config/initial_prompts/prompt1.txt
+        pick_idx: []
+    stage_template: 
+        path: config/templates/stage_template0301.txt
+gpt: 
+    model: 4
+    key_path: config/key_API.json
+    temperature: None
+    json_mode: False
+    chatgpt: 
+        start_form: chat
+        one_time_talk: False
+iverilog: 
+    dir: 
+    task_id: 
+autoline: 
+    probset: 
+        path: None
+        mutant_path: None
+        gptgenRTL_path: None
+        more_info_paths: []
+        only: []
+        exclude: []
+        exclude_json: None
+        filter: [{}]
+    checklist: 
+        max: 3
+    debug: 
+        max: 5
+        reboot: 1
+        py_rollback: 2
+    onlyrun: None
+    promptscript: None
+    error_interruption: False
+    timeout: 60
+------------------------------------------
+
+#################### task 1/156 [mux2to1v] ####################
+stage_0 ends (1.91s used, time: 19:35:47 2024-08-02)
+stage_1 ends (4.96s used, time: 19:35:52 2024-08-02)
+stage_2 ends (8.29s used, time: 19:36:01 2024-08-02)
+stage_4 ends (21.67s used, time: 19:36:22 2024-08-02)
+stage_checklist ends (58.62s used, time: 19:37:21 2024-08-02)
+[mux2to1v] iverilog compilation : passed! (19:37:21 2024-08-02)
+[mux2to1v] TBsim finished : True! (19:37:21 2024-08-02)
+
+#################### task 2/156 [m2014_q6b] ####################
+stage_0 ends (3.26s used, time: 19:37:24 2024-08-02)
+stage_1 ends (5.89s used, time: 19:37:30 2024-08-02)
+stage_2 ends (6.86s used, time: 19:37:37 2024-08-02)
+stage_4 ends (26.56s used, time: 19:38:04 2024-08-02)
+stage_checklist ends (17.22s used, time: 19:38:21 2024-08-02)
+[m2014_q6b] iverilog compilation : passed! (19:38:21 2024-08-02)
+[m2014_q6b] TBsim finished : True! (19:38:21 2024-08-02)
+
+#################### task 3/156 [ringer] ####################
+stage_0 ends (2.19s used, time: 19:38:23 2024-08-02)
+stage_1 ends (3.16s used, time: 19:38:26 2024-08-02)
+stage_2 ends (4.10s used, time: 19:38:30 2024-08-02)
+stage_4 ends (10.88s used, time: 19:38:41 2024-08-02)
+stage_checklist ends (28.98s used, time: 19:39:10 2024-08-02)
+[ringer] iverilog compilation : passed! (19:39:10 2024-08-02)
+[ringer] TBsim finished : True! (19:39:10 2024-08-02)
+
+#################### task 4/156 [alwaysblock1] ####################
+stage_0 ends (1.82s used, time: 19:39:12 2024-08-02)
+stage_1 ends (2.67s used, time: 19:39:15 2024-08-02)
+stage_2 ends (3.85s used, time: 19:39:19 2024-08-02)
+stage_4 ends (17.16s used, time: 19:39:36 2024-08-02)
+stage_checklist ends (45.13s used, time: 19:40:21 2024-08-02)
+
+[alwaysblock1] iverilog simulation failed! Debuging... (debug_iter = 1, time: 19:40:26 2024-08-02)
+[alwaysblock1] debug iter 1/5: verilog DEBUG finished (21.32s used, time: 19:40:47 2024-08-02)
+
+[alwaysblock1] iverilog simulation failed! Rebooting... (debug_iter = 2, time: 19:40:47 2024-08-02)
+stage_4 ends (14.34s used, time: 19:41:02 2024-08-02)
+stage_checklist ends (35.69s used, time: 19:41:38 2024-08-02)
+[alwaysblock1] debug iter 2/5: verilog REBOOT finished (50.15s used, time: 19:41:38 2024-08-02)
+[alwaysblock1] iverilog compilation : passed! (19:41:38 2024-08-02)
+[alwaysblock1] TBsim finished : True! (19:41:38 2024-08-02)
+
+#################### task 5/156 [zero] ####################
+stage_0 ends (0.91s used, time: 19:41:39 2024-08-02)
+stage_1 ends (3.70s used, time: 19:41:42 2024-08-02)
+stage_2 ends (4.04s used, time: 19:41:46 2024-08-02)
+stage_4 ends (5.69s used, time: 19:41:52 2024-08-02)
+stage_checklist ends (26.66s used, time: 19:42:19 2024-08-02)
+[zero] iverilog compilation : passed! (19:42:19 2024-08-02)
+[zero] TBsim finished : True! (19:42:19 2024-08-02)
+
+#################### task 6/156 [circuit7] ####################
+stage_0 ends (4.97s used, time: 19:42:24 2024-08-02)
+stage_1 ends (4.13s used, time: 19:42:28 2024-08-02)
+stage_2 ends (9.55s used, time: 19:42:38 2024-08-02)
+stage_4 ends (27.94s used, time: 19:43:05 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:43:05 2024-08-02)
+stage_4b ends (25.54s used, time: 19:43:31 2024-08-02)
+
+[circuit7] iverilog simulation failed! Debuging... (debug_iter = 1, time: 19:43:31 2024-08-02)
+[circuit7] debug iter 1/5: verilog DEBUG finished (48.3s used, time: 19:44:19 2024-08-02)
+
+[circuit7] iverilog simulation failed! Rebooting... (debug_iter = 2, time: 19:44:19 2024-08-02)
+stage_4 ends (19.50s used, time: 19:44:39 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:44:39 2024-08-02)
+stage_4b ends (28.28s used, time: 19:45:07 2024-08-02)
+[circuit7] debug iter 2/5: verilog REBOOT finished (47.88s used, time: 19:45:07 2024-08-02)
+[circuit7] iverilog compilation : passed! (19:45:07 2024-08-02)
+[circuit7] TBsim finished : True! (19:45:07 2024-08-02)
+
+#################### task 7/156 [ece241_2014_q5a] ####################
+stage_0 ends (6.66s used, time: 19:45:14 2024-08-02)
+stage_1 ends (3.35s used, time: 19:45:17 2024-08-02)
+stage_2 ends (5.78s used, time: 19:45:23 2024-08-02)
+stage_4 ends (18.22s used, time: 19:45:41 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:45:41 2024-08-02)
+stage_4b ends (38.21s used, time: 19:46:20 2024-08-02)
+[ece241_2014_q5a] iverilog compilation : passed! (19:46:20 2024-08-02)
+[ece241_2014_q5a] TBsim finished : True! (19:46:20 2024-08-02)
+
+#################### task 8/156 [fsm3] ####################
+stage_0 ends (5.41s used, time: 19:46:25 2024-08-02)
+stage_1 ends (4.22s used, time: 19:46:29 2024-08-02)
+stage_2 ends (7.79s used, time: 19:46:37 2024-08-02)
+stage_4 ends (21.16s used, time: 19:46:58 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:46:58 2024-08-02)
+stage_4b ends (18.68s used, time: 19:47:17 2024-08-02)
+[fsm3] iverilog compilation : passed! (19:47:17 2024-08-02)
+[fsm3] TBsim finished : True! (19:47:17 2024-08-02)
+
+#################### task 9/156 [vector2] ####################
+stage_0 ends (1.22s used, time: 19:47:18 2024-08-02)
+stage_1 ends (3.14s used, time: 19:47:21 2024-08-02)
+stage_2 ends (3.41s used, time: 19:47:25 2024-08-02)
+stage_4 ends (7.29s used, time: 19:47:32 2024-08-02)
+stage_checklist ends (27.23s used, time: 19:47:59 2024-08-02)
+[vector2] iverilog compilation : passed! (19:48:00 2024-08-02)
+[vector2] TBsim finished : True! (19:48:00 2024-08-02)
+
+#################### task 10/156 [m2014_q4c] ####################
+stage_0 ends (1.48s used, time: 19:48:01 2024-08-02)
+stage_1 ends (5.37s used, time: 19:48:06 2024-08-02)
+stage_2 ends (5.19s used, time: 19:48:12 2024-08-02)
+stage_4 ends (16.81s used, time: 19:48:28 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:48:28 2024-08-02)
+stage_4b ends (24.78s used, time: 19:48:53 2024-08-02)
+[m2014_q4c] iverilog compilation : passed! (19:48:53 2024-08-02)
+[m2014_q4c] TBsim finished : True! (19:48:53 2024-08-02)
+
+#################### task 11/156 [mt2015_q4a] ####################
+stage_0 ends (0.83s used, time: 19:48:54 2024-08-02)
+stage_1 ends (2.83s used, time: 19:48:57 2024-08-02)
+stage_2 ends (2.84s used, time: 19:49:00 2024-08-02)
+stage_4 ends (6.98s used, time: 19:49:07 2024-08-02)
+stage_checklist ends (12.20s used, time: 19:49:19 2024-08-02)
+[mt2015_q4a] iverilog compilation : passed! (19:49:19 2024-08-02)
+[mt2015_q4a] TBsim finished : True! (19:49:19 2024-08-02)
+
+#################### task 12/156 [shift18] ####################
+stage_0 ends (4.61s used, time: 19:49:24 2024-08-02)
+stage_1 ends (9.19s used, time: 19:49:33 2024-08-02)
+stage_2 ends (7.19s used, time: 19:49:40 2024-08-02)
+stage_4 ends (25.51s used, time: 19:50:06 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:50:06 2024-08-02)
+stage_4b ends (32.83s used, time: 19:50:38 2024-08-02)
+[shift18] iverilog compilation : passed! (19:50:39 2024-08-02)
+[shift18] TBsim finished : True! (19:50:39 2024-08-02)
+
+#################### task 13/156 [ece241_2013_q8] ####################
+stage_0 ends (8.95s used, time: 19:50:48 2024-08-02)
+stage_1 ends (4.78s used, time: 19:50:52 2024-08-02)
+stage_2 ends (5.03s used, time: 19:50:57 2024-08-02)
+stage_4 ends (18.00s used, time: 19:51:15 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:51:15 2024-08-02)
+stage_4b ends (23.21s used, time: 19:51:39 2024-08-02)
+[ece241_2013_q8] iverilog compilation : passed! (19:51:39 2024-08-02)
+[ece241_2013_q8] TBsim finished : True! (19:51:39 2024-08-02)
+
+#################### task 14/156 [m2014_q6] ####################
+stage_0 ends (4.78s used, time: 19:51:44 2024-08-02)
+stage_1 ends (8.11s used, time: 19:51:52 2024-08-02)
+stage_2 ends (4.44s used, time: 19:51:56 2024-08-02)
+stage_4 ends (14.98s used, time: 19:52:11 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:52:11 2024-08-02)
+stage_4b ends (19.35s used, time: 19:52:30 2024-08-02)
+[m2014_q6] iverilog compilation : passed! (19:52:30 2024-08-02)
+[m2014_q6] TBsim finished : True! (19:52:30 2024-08-02)
+
+#################### task 15/156 [fsm_ps2data] ####################
+stage_0 ends (8.65s used, time: 19:52:39 2024-08-02)
+stage_1 ends (5.59s used, time: 19:52:45 2024-08-02)
+stage_2 ends (8.13s used, time: 19:52:53 2024-08-02)
+stage_4 ends (31.53s used, time: 19:53:24 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:53:24 2024-08-02)
+stage_4b ends (32.10s used, time: 19:53:57 2024-08-02)
+[fsm_ps2data] iverilog compilation : passed! (19:53:57 2024-08-02)
+[fsm_ps2data] TBsim finished : True! (19:53:57 2024-08-02)
+
+#################### task 16/156 [2012_q2b] ####################
+stage_0 ends (2.62s used, time: 19:53:59 2024-08-02)
+stage_1 ends (6.61s used, time: 19:54:06 2024-08-02)
+stage_2 ends (6.59s used, time: 19:54:12 2024-08-02)
+stage_4 ends (15.10s used, time: 19:54:28 2024-08-02)
+stage_checklist ends (0.74s used, time: 19:54:28 2024-08-02)
+[2012_q2b] iverilog compilation : passed! (19:54:28 2024-08-02)
+[2012_q2b] TBsim finished : True! (19:54:28 2024-08-02)
+
+#################### task 17/156 [vector0] ####################
+stage_0 ends (1.36s used, time: 19:54:30 2024-08-02)
+stage_1 ends (5.73s used, time: 19:54:36 2024-08-02)
+stage_2 ends (5.60s used, time: 19:54:41 2024-08-02)
+stage_4 ends (11.88s used, time: 19:54:53 2024-08-02)
+stage_checklist ends (0.86s used, time: 19:54:54 2024-08-02)
+[vector0] iverilog compilation : passed! (19:54:54 2024-08-02)
+[vector0] TBsim finished : True! (19:54:54 2024-08-02)
+
+#################### task 18/156 [kmap4] ####################
+stage_0 ends (6.75s used, time: 19:55:01 2024-08-02)
+stage_1 ends (4.47s used, time: 19:55:05 2024-08-02)
+stage_2 ends (8.12s used, time: 19:55:13 2024-08-02)
+stage_4 ends (22.54s used, time: 19:55:36 2024-08-02)
+stage_checklist ends (0.77s used, time: 19:55:37 2024-08-02)
+[kmap4] iverilog compilation : passed! (19:55:37 2024-08-02)
+[kmap4] TBsim finished : True! (19:55:37 2024-08-02)
+
+#################### task 19/156 [vector1] ####################
+stage_0 ends (1.99s used, time: 19:55:39 2024-08-02)
+stage_1 ends (3.39s used, time: 19:55:42 2024-08-02)
+stage_2 ends (6.59s used, time: 19:55:49 2024-08-02)
+stage_4 ends (11.48s used, time: 19:56:00 2024-08-02)
+stage_checklist ends (22.99s used, time: 19:56:23 2024-08-02)
+[vector1] iverilog compilation : passed! (19:56:23 2024-08-02)
+[vector1] TBsim finished : True! (19:56:23 2024-08-02)
+
+#################### task 20/156 [norgate] ####################
+stage_0 ends (0.95s used, time: 19:56:24 2024-08-02)
+stage_1 ends (8.24s used, time: 19:56:33 2024-08-02)
+stage_2 ends (1.79s used, time: 19:56:34 2024-08-02)
+stage_4 ends (6.48s used, time: 19:56:41 2024-08-02)
+stage_checklist ends (3.01s used, time: 19:56:44 2024-08-02)
+[norgate] iverilog compilation : passed! (19:56:44 2024-08-02)
+[norgate] TBsim finished : True! (19:56:44 2024-08-02)
+
+#################### task 21/156 [alwaysblock2] ####################
+stage_0 ends (2.44s used, time: 19:56:46 2024-08-02)
+stage_1 ends (3.43s used, time: 19:56:50 2024-08-02)
+stage_2 ends (5.71s used, time: 19:56:56 2024-08-02)
+stage_4 ends (16.10s used, time: 19:57:12 2024-08-02)
+stage_checklist ends (0.00s used, time: 19:57:12 2024-08-02)
+stage_4b ends (34.71s used, time: 19:57:46 2024-08-02)
+[alwaysblock2] iverilog compilation : passed! (19:57:46 2024-08-02)
+[alwaysblock2] TBsim finished : True! (19:57:47 2024-08-02)
+
+#################### task 22/156 [m2014_q6c] ####################
+stage_0 ends (2.18s used, time: 19:57:49 2024-08-02)
+stage_1 ends (6.94s used, time: 19:57:56 2024-08-02)
+stage_2 ends (7.39s used, time: 19:58:03 2024-08-02)
+stage_4 ends (20.08s used, time: 19:58:23 2024-08-02)
+stage_checklist ends (59.30s used, time: 19:59:22 2024-08-02)
+[m2014_q6c] iverilog compilation : passed! (19:59:23 2024-08-02)
+[m2014_q6c] TBsim finished : True! (19:59:23 2024-08-02)
+
+#################### task 23/156 [mux256to1] ####################
+stage_0 ends (1.30s used, time: 19:59:24 2024-08-02)
+stage_1 ends (4.28s used, time: 19:59:28 2024-08-02)
+stage_2 ends (7.34s used, time: 19:59:36 2024-08-02)
+stage_4 ends (13.69s used, time: 19:59:49 2024-08-02)
+stage_checklist ends (46.92s used, time: 20:00:36 2024-08-02)
+
+[mux256to1] iverilog simulation failed! Debuging... (debug_iter = 1, time: 20:00:41 2024-08-02)
+[mux256to1] debug iter 1/5: verilog DEBUG finished (28.67s used, time: 20:01:10 2024-08-02)
+[mux256to1] iverilog compilation : passed! (20:01:10 2024-08-02)
+[mux256to1] TBsim finished : True! (20:01:10 2024-08-02)
+
+#################### task 24/156 [2014_q4a] ####################
+stage_0 ends (2.61s used, time: 20:01:13 2024-08-02)
+stage_1 ends (2.25s used, time: 20:01:15 2024-08-02)
+stage_2 ends (4.76s used, time: 20:01:20 2024-08-02)
+stage_4 ends (20.95s used, time: 20:01:41 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:01:41 2024-08-02)
+stage_4b ends (39.36s used, time: 20:02:20 2024-08-02)
+[2014_q4a] iverilog compilation : passed! (20:02:20 2024-08-02)
+[2014_q4a] TBsim finished : True! (20:02:20 2024-08-02)
+
+#################### task 25/156 [ece241_2014_q4] ####################
+stage_0 ends (3.72s used, time: 20:02:24 2024-08-02)
+stage_1 ends (5.19s used, time: 20:02:29 2024-08-02)
+stage_2 ends (6.67s used, time: 20:02:36 2024-08-02)
+stage_4 ends (9.44s used, time: 20:02:45 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:02:45 2024-08-02)
+stage_4b ends (12.30s used, time: 20:02:57 2024-08-02)
+[ece241_2014_q4] iverilog compilation : passed! (20:02:57 2024-08-02)
+[ece241_2014_q4] TBsim finished : True! (20:02:58 2024-08-02)
+
+#################### task 26/156 [circuit4] ####################
+stage_0 ends (1.61s used, time: 20:02:59 2024-08-02)
+stage_1 ends (3.30s used, time: 20:03:02 2024-08-02)
+stage_2 ends (8.59s used, time: 20:03:11 2024-08-02)
+stage_4 ends (20.15s used, time: 20:03:31 2024-08-02)
+stage_checklist ends (65.95s used, time: 20:04:37 2024-08-02)
+[circuit4] iverilog compilation : passed! (20:04:37 2024-08-02)
+[circuit4] TBsim finished : True! (20:04:37 2024-08-02)
+
+#################### task 27/156 [rule110] ####################
+stage_0 ends (5.91s used, time: 20:04:43 2024-08-02)
+stage_1 ends (4.60s used, time: 20:04:48 2024-08-02)
+stage_2 ends (11.98s used, time: 20:05:00 2024-08-02)
+stage_4 ends (11.68s used, time: 20:05:11 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:05:11 2024-08-02)
+stage_4b ends (18.73s used, time: 20:05:30 2024-08-02)
+[rule110] iverilog compilation : passed! (20:05:30 2024-08-02)
+[rule110] TBsim finished : True! (20:05:30 2024-08-02)
+
+#################### task 28/156 [fsm3s] ####################
+stage_0 ends (4.73s used, time: 20:05:35 2024-08-02)
+stage_1 ends (5.56s used, time: 20:05:41 2024-08-02)
+stage_2 ends (4.01s used, time: 20:05:45 2024-08-02)
+stage_4 ends (12.69s used, time: 20:05:57 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:05:57 2024-08-02)
+stage_4b ends (17.95s used, time: 20:06:15 2024-08-02)
+[fsm3s] iverilog compilation : passed! (20:06:15 2024-08-02)
+[fsm3s] TBsim finished : True! (20:06:15 2024-08-02)
+
+#################### task 29/156 [circuit5] ####################
+stage_0 ends (5.65s used, time: 20:06:21 2024-08-02)
+stage_1 ends (21.04s used, time: 20:06:42 2024-08-02)
+stage_2 ends (10.57s used, time: 20:06:53 2024-08-02)
+stage_4 ends (24.44s used, time: 20:07:17 2024-08-02)
+stage_checklist ends (85.70s used, time: 20:08:43 2024-08-02)
+[circuit5] iverilog compilation : passed! (20:08:43 2024-08-02)
+[circuit5] TBsim finished : True! (20:08:43 2024-08-02)
+
+#################### task 30/156 [bugs_mux2] ####################
+stage_0 ends (5.63s used, time: 20:08:49 2024-08-02)
+stage_1 ends (2.84s used, time: 20:08:51 2024-08-02)
+stage_2 ends (6.11s used, time: 20:08:58 2024-08-02)
+stage_4 ends (9.46s used, time: 20:09:07 2024-08-02)
+stage_checklist ends (35.91s used, time: 20:09:43 2024-08-02)
+[bugs_mux2] iverilog compilation : passed! (20:09:43 2024-08-02)
+[bugs_mux2] TBsim finished : True! (20:09:43 2024-08-02)
+
+#################### task 31/156 [mt2015_muxdff] ####################
+stage_0 ends (4.86s used, time: 20:09:48 2024-08-02)
+stage_1 ends (8.15s used, time: 20:09:56 2024-08-02)
+stage_2 ends (6.74s used, time: 20:10:03 2024-08-02)
+stage_4 ends (13.47s used, time: 20:10:16 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:10:16 2024-08-02)
+stage_4b ends (23.91s used, time: 20:10:40 2024-08-02)
+[mt2015_muxdff] iverilog compilation : passed! (20:10:40 2024-08-02)
+[mt2015_muxdff] TBsim finished : True! (20:10:40 2024-08-02)
+
+#################### task 32/156 [edgecapture] ####################
+stage_0 ends (1.88s used, time: 20:10:42 2024-08-02)
+stage_1 ends (4.28s used, time: 20:10:47 2024-08-02)
+stage_2 ends (12.98s used, time: 20:10:59 2024-08-02)
+stage_4 ends (16.43s used, time: 20:11:16 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:11:16 2024-08-02)
+stage_4b ends (25.78s used, time: 20:11:42 2024-08-02)
+[edgecapture] iverilog compilation : passed! (20:11:42 2024-08-02)
+[edgecapture] TBsim finished : True! (20:11:42 2024-08-02)
+
+#################### task 33/156 [dff8] ####################
+stage_0 ends (1.04s used, time: 20:11:43 2024-08-02)
+stage_1 ends (3.57s used, time: 20:11:46 2024-08-02)
+stage_2 ends (9.05s used, time: 20:11:56 2024-08-02)
+stage_4 ends (13.04s used, time: 20:12:09 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:12:09 2024-08-02)
+stage_4b ends (19.05s used, time: 20:12:28 2024-08-02)
+[dff8] iverilog compilation : passed! (20:12:28 2024-08-02)
+[dff8] TBsim finished : True! (20:12:28 2024-08-02)
+
+#################### task 34/156 [ece241_2014_q1c] ####################
+stage_0 ends (2.53s used, time: 20:12:30 2024-08-02)
+stage_1 ends (4.95s used, time: 20:12:35 2024-08-02)
+stage_2 ends (7.76s used, time: 20:12:43 2024-08-02)
+stage_4 ends (13.03s used, time: 20:12:56 2024-08-02)
+stage_checklist ends (0.49s used, time: 20:12:57 2024-08-02)
+[ece241_2014_q1c] iverilog compilation : passed! (20:12:57 2024-08-02)
+[ece241_2014_q1c] TBsim finished : True! (20:12:57 2024-08-02)
+
+#################### task 35/156 [review2015_fsmonehot] ####################
+stage_0 ends (12.53s used, time: 20:13:09 2024-08-02)
+stage_1 ends (6.49s used, time: 20:13:16 2024-08-02)
+stage_2 ends (9.72s used, time: 20:13:25 2024-08-02)
+stage_4 ends (56.41s used, time: 20:14:22 2024-08-02)
+stage_checklist ends (108.98s used, time: 20:16:11 2024-08-02)
+[review2015_fsmonehot] iverilog compilation : passed! (20:16:11 2024-08-02)
+[review2015_fsmonehot] TBsim finished : True! (20:16:11 2024-08-02)
+
+#################### task 36/156 [counter_2bc] ####################
+stage_0 ends (3.51s used, time: 20:16:14 2024-08-02)
+stage_1 ends (2.10s used, time: 20:16:16 2024-08-02)
+stage_2 ends (4.13s used, time: 20:16:21 2024-08-02)
+stage_4 ends (23.48s used, time: 20:16:44 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:16:44 2024-08-02)
+stage_4b ends (23.87s used, time: 20:17:08 2024-08-02)
+[counter_2bc] iverilog compilation : passed! (20:17:08 2024-08-02)
+[counter_2bc] TBsim finished : True! (20:17:08 2024-08-02)
+
+#################### task 37/156 [always_casez] ####################
+stage_0 ends (2.74s used, time: 20:17:11 2024-08-02)
+stage_1 ends (5.29s used, time: 20:17:16 2024-08-02)
+stage_2 ends (6.74s used, time: 20:17:23 2024-08-02)
+stage_4 ends (9.83s used, time: 20:17:33 2024-08-02)
+stage_checklist ends (0.80s used, time: 20:17:34 2024-08-02)
+[always_casez] iverilog compilation : passed! (20:17:34 2024-08-02)
+[always_casez] TBsim finished : True! (20:17:34 2024-08-02)
+
+#################### task 38/156 [always_nolatches] ####################
+stage_0 ends (4.19s used, time: 20:17:38 2024-08-02)
+stage_1 ends (3.15s used, time: 20:17:41 2024-08-02)
+stage_2 ends (3.62s used, time: 20:17:45 2024-08-02)
+stage_4 ends (18.47s used, time: 20:18:03 2024-08-02)
+stage_checklist ends (35.05s used, time: 20:18:38 2024-08-02)
+[always_nolatches] iverilog compilation : passed! (20:18:38 2024-08-02)
+[always_nolatches] TBsim finished : True! (20:18:38 2024-08-02)
+
+#################### task 39/156 [m2014_q4j] ####################
+stage_0 ends (3.78s used, time: 20:18:42 2024-08-02)
+stage_1 ends (2.46s used, time: 20:18:45 2024-08-02)
+stage_2 ends (4.90s used, time: 20:18:50 2024-08-02)
+stage_4 ends (10.95s used, time: 20:19:00 2024-08-02)
+stage_checklist ends (32.27s used, time: 20:19:33 2024-08-02)
+[m2014_q4j] iverilog compilation : passed! (20:19:33 2024-08-02)
+[m2014_q4j] TBsim finished : True! (20:19:33 2024-08-02)
+
+#################### task 40/156 [history_shift] ####################
+stage_0 ends (2.61s used, time: 20:19:35 2024-08-02)
+stage_1 ends (4.60s used, time: 20:19:40 2024-08-02)
+stage_2 ends (7.59s used, time: 20:19:48 2024-08-02)
+stage_4 ends (27.80s used, time: 20:20:15 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:20:15 2024-08-02)
+stage_4b ends (41.97s used, time: 20:20:57 2024-08-02)
+[history_shift] iverilog compilation : passed! (20:20:58 2024-08-02)
+[history_shift] TBsim finished : True! (20:20:58 2024-08-02)
+
+#################### task 41/156 [wire_decl] ####################
+stage_0 ends (2.34s used, time: 20:21:00 2024-08-02)
+stage_1 ends (4.36s used, time: 20:21:04 2024-08-02)
+stage_2 ends (12.04s used, time: 20:21:16 2024-08-02)
+stage_4 ends (24.51s used, time: 20:21:41 2024-08-02)
+stage_checklist ends (0.58s used, time: 20:21:41 2024-08-02)
+[wire_decl] iverilog compilation : passed! (20:21:42 2024-08-02)
+[wire_decl] TBsim finished : True! (20:21:42 2024-08-02)
+
+#################### task 42/156 [dff] ####################
+stage_0 ends (1.15s used, time: 20:21:43 2024-08-02)
+stage_1 ends (5.23s used, time: 20:21:48 2024-08-02)
+stage_2 ends (7.86s used, time: 20:21:56 2024-08-02)
+stage_4 ends (17.54s used, time: 20:22:13 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:22:13 2024-08-02)
+stage_4b ends (20.12s used, time: 20:22:34 2024-08-02)
+[dff] iverilog compilation : passed! (20:22:34 2024-08-02)
+[dff] TBsim finished : True! (20:22:34 2024-08-02)
+
+#################### task 43/156 [ece241_2013_q12] ####################
+stage_0 ends (3.33s used, time: 20:22:37 2024-08-02)
+stage_1 ends (3.66s used, time: 20:22:41 2024-08-02)
+stage_2 ends (7.64s used, time: 20:22:48 2024-08-02)
+stage_4 ends (15.81s used, time: 20:23:04 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:23:04 2024-08-02)
+stage_4b ends (33.04s used, time: 20:23:37 2024-08-02)
+[ece241_2013_q12] iverilog compilation : passed! (20:23:37 2024-08-02)
+[ece241_2013_q12] TBsim finished : True! (20:23:37 2024-08-02)
+
+#################### task 44/156 [thermostat] ####################
+stage_0 ends (2.15s used, time: 20:23:40 2024-08-02)
+stage_1 ends (10.38s used, time: 20:23:50 2024-08-02)
+stage_2 ends (7.01s used, time: 20:23:57 2024-08-02)
+stage_4 ends (19.54s used, time: 20:24:16 2024-08-02)
+stage_checklist ends (57.26s used, time: 20:25:14 2024-08-02)
+[thermostat] iverilog compilation : passed! (20:25:14 2024-08-02)
+[thermostat] TBsim finished : True! (20:25:14 2024-08-02)
+
+#################### task 45/156 [ece241_2013_q2] ####################
+stage_0 ends (3.67s used, time: 20:25:18 2024-08-02)
+stage_1 ends (5.91s used, time: 20:25:23 2024-08-02)
+stage_2 ends (5.42s used, time: 20:25:29 2024-08-02)
+stage_4 ends (16.08s used, time: 20:25:45 2024-08-02)
+stage_checklist ends (54.85s used, time: 20:26:40 2024-08-02)
+[ece241_2013_q2] iverilog compilation : passed! (20:26:40 2024-08-02)
+[ece241_2013_q2] TBsim finished : True! (20:26:40 2024-08-02)
+
+#################### task 46/156 [lfsr32] ####################
+stage_0 ends (2.09s used, time: 20:26:42 2024-08-02)
+stage_1 ends (4.72s used, time: 20:26:47 2024-08-02)
+stage_2 ends (5.59s used, time: 20:26:52 2024-08-02)
+stage_4 ends (16.62s used, time: 20:27:09 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:27:09 2024-08-02)
+stage_4b ends (18.99s used, time: 20:27:28 2024-08-02)
+[lfsr32] iverilog compilation : passed! (20:27:28 2024-08-02)
+[lfsr32] TBsim finished : True! (20:27:28 2024-08-02)
+
+#################### task 47/156 [circuit3] ####################
+stage_0 ends (1.92s used, time: 20:27:30 2024-08-02)
+stage_1 ends (3.65s used, time: 20:27:34 2024-08-02)
+stage_2 ends (11.37s used, time: 20:27:45 2024-08-02)
+stage_4 ends (21.33s used, time: 20:28:06 2024-08-02)
+stage_checklist ends (61.27s used, time: 20:29:08 2024-08-02)
+[circuit3] iverilog compilation : passed! (20:29:08 2024-08-02)
+[circuit3] TBsim finished : True! (20:29:08 2024-08-02)
+
+#################### task 48/156 [7420] ####################
+stage_0 ends (1.89s used, time: 20:29:10 2024-08-02)
+stage_1 ends (3.80s used, time: 20:29:13 2024-08-02)
+stage_2 ends (6.76s used, time: 20:29:20 2024-08-02)
+stage_4 ends (29.26s used, time: 20:29:50 2024-08-02)
+stage_checklist ends (99.03s used, time: 20:31:29 2024-08-02)
+[7420] iverilog compilation : passed! (20:31:29 2024-08-02)
+[7420] TBsim finished : True! (20:31:29 2024-08-02)
+
+#################### task 49/156 [popcount255] ####################
+stage_0 ends (2.00s used, time: 20:31:31 2024-08-02)
+stage_1 ends (3.44s used, time: 20:31:34 2024-08-02)
+stage_2 ends (4.55s used, time: 20:31:39 2024-08-02)
+stage_4 ends (8.30s used, time: 20:31:47 2024-08-02)
+stage_checklist ends (50.39s used, time: 20:32:37 2024-08-02)
+[popcount255] iverilog compilation : passed! (20:32:37 2024-08-02)
+[popcount255] TBsim finished : True! (20:32:37 2024-08-02)
+
+#################### task 50/156 [gatesv] ####################
+stage_0 ends (7.24s used, time: 20:32:45 2024-08-02)
+stage_1 ends (4.36s used, time: 20:32:49 2024-08-02)
+stage_2 ends (3.19s used, time: 20:32:52 2024-08-02)
+stage_4 ends (17.37s used, time: 20:33:10 2024-08-02)
+stage_checklist ends (47.80s used, time: 20:33:57 2024-08-02)
+[gatesv] iverilog compilation : passed! (20:33:58 2024-08-02)
+[gatesv] TBsim finished : True! (20:33:58 2024-08-02)
+
+#################### task 51/156 [circuit6] ####################
+stage_0 ends (2.41s used, time: 20:34:00 2024-08-02)
+stage_1 ends (8.18s used, time: 20:34:08 2024-08-02)
+stage_2 ends (11.11s used, time: 20:34:19 2024-08-02)
+stage_4 ends (21.27s used, time: 20:34:41 2024-08-02)
+stage_checklist ends (53.45s used, time: 20:35:34 2024-08-02)
+[circuit6] iverilog compilation : passed! (20:35:34 2024-08-02)
+[circuit6] TBsim finished : True! (20:35:34 2024-08-02)
+
+#################### task 52/156 [countslow] ####################
+stage_0 ends (2.55s used, time: 20:35:37 2024-08-02)
+stage_1 ends (2.18s used, time: 20:35:39 2024-08-02)
+stage_2 ends (3.06s used, time: 20:35:42 2024-08-02)
+stage_4 ends (13.14s used, time: 20:35:55 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:35:55 2024-08-02)
+stage_4b ends (22.67s used, time: 20:36:18 2024-08-02)
+[countslow] iverilog compilation : passed! (20:36:18 2024-08-02)
+[countslow] TBsim finished : True! (20:36:18 2024-08-02)
+
+#################### task 53/156 [m2014_q4f] ####################
+stage_0 ends (1.75s used, time: 20:36:20 2024-08-02)
+stage_1 ends (3.36s used, time: 20:36:23 2024-08-02)
+stage_2 ends (3.40s used, time: 20:36:26 2024-08-02)
+stage_4 ends (18.53s used, time: 20:36:45 2024-08-02)
+stage_checklist ends (41.85s used, time: 20:37:27 2024-08-02)
+[m2014_q4f] iverilog compilation : passed! (20:37:27 2024-08-02)
+[m2014_q4f] TBsim finished : True! (20:37:27 2024-08-02)
+
+#################### task 54/156 [m2014_q4h] ####################
+stage_0 ends (0.88s used, time: 20:37:28 2024-08-02)
+stage_1 ends (2.75s used, time: 20:37:31 2024-08-02)
+stage_2 ends (4.00s used, time: 20:37:35 2024-08-02)
+stage_4 ends (6.71s used, time: 20:37:41 2024-08-02)
+stage_checklist ends (20.44s used, time: 20:38:02 2024-08-02)
+[m2014_q4h] iverilog compilation : passed! (20:38:02 2024-08-02)
+[m2014_q4h] TBsim finished : True! (20:38:02 2024-08-02)
+
+#################### task 55/156 [fsm1] ####################
+stage_0 ends (4.50s used, time: 20:38:06 2024-08-02)
+stage_1 ends (5.32s used, time: 20:38:12 2024-08-02)
+stage_2 ends (5.33s used, time: 20:38:17 2024-08-02)
+stage_4 ends (14.72s used, time: 20:38:32 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:38:32 2024-08-02)
+stage_4b ends (19.29s used, time: 20:38:51 2024-08-02)
+[fsm1] iverilog compilation : passed! (20:38:51 2024-08-02)
+[fsm1] TBsim finished : True! (20:38:51 2024-08-02)
+
+#################### task 56/156 [dualedge] ####################
+stage_0 ends (2.02s used, time: 20:38:53 2024-08-02)
+stage_1 ends (2.68s used, time: 20:38:56 2024-08-02)
+stage_2 ends (4.07s used, time: 20:39:00 2024-08-02)
+stage_4 ends (21.32s used, time: 20:39:21 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:39:21 2024-08-02)
+stage_4b ends (17.68s used, time: 20:39:39 2024-08-02)
+[dualedge] iverilog compilation : passed! (20:39:39 2024-08-02)
+[dualedge] TBsim finished : True! (20:39:39 2024-08-02)
+
+#################### task 57/156 [xnorgate] ####################
+stage_0 ends (1.10s used, time: 20:39:40 2024-08-02)
+stage_1 ends (2.97s used, time: 20:39:43 2024-08-02)
+stage_2 ends (4.59s used, time: 20:39:48 2024-08-02)
+stage_4 ends (9.26s used, time: 20:39:57 2024-08-02)
+stage_checklist ends (28.33s used, time: 20:40:25 2024-08-02)
+[xnorgate] iverilog compilation : passed! (20:40:25 2024-08-02)
+[xnorgate] TBsim finished : True! (20:40:25 2024-08-02)
+
+#################### task 58/156 [mt2015_q4] ####################
+stage_0 ends (4.17s used, time: 20:40:30 2024-08-02)
+stage_1 ends (2.66s used, time: 20:40:32 2024-08-02)
+stage_2 ends (4.58s used, time: 20:40:37 2024-08-02)
+stage_4 ends (9.99s used, time: 20:40:47 2024-08-02)
+stage_checklist ends (39.85s used, time: 20:41:27 2024-08-02)
+[mt2015_q4] iverilog compilation : passed! (20:41:27 2024-08-02)
+[mt2015_q4] TBsim finished : True! (20:41:27 2024-08-02)
+
+#################### task 59/156 [rotate100] ####################
+stage_0 ends (3.14s used, time: 20:41:30 2024-08-02)
+stage_1 ends (4.35s used, time: 20:41:34 2024-08-02)
+stage_2 ends (4.99s used, time: 20:41:39 2024-08-02)
+stage_4 ends (16.57s used, time: 20:41:56 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:41:56 2024-08-02)
+stage_4b ends (30.50s used, time: 20:42:26 2024-08-02)
+[rotate100] iverilog compilation : passed! (20:42:27 2024-08-02)
+[rotate100] TBsim finished : True! (20:42:27 2024-08-02)
+
+#################### task 60/156 [review2015_count1k] ####################
+stage_0 ends (1.52s used, time: 20:42:28 2024-08-02)
+stage_1 ends (2.97s used, time: 20:42:31 2024-08-02)
+stage_2 ends (7.18s used, time: 20:42:38 2024-08-02)
+stage_4 ends (10.70s used, time: 20:42:49 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:42:49 2024-08-02)
+stage_4b ends (17.42s used, time: 20:43:06 2024-08-02)
+[review2015_count1k] iverilog compilation : passed! (20:43:07 2024-08-02)
+[review2015_count1k] TBsim finished : True! (20:43:07 2024-08-02)
+
+#################### task 61/156 [notgate] ####################
+stage_0 ends (0.90s used, time: 20:43:07 2024-08-02)
+stage_1 ends (2.29s used, time: 20:43:10 2024-08-02)
+stage_2 ends (3.22s used, time: 20:43:13 2024-08-02)
+stage_4 ends (5.53s used, time: 20:43:19 2024-08-02)
+stage_checklist ends (18.61s used, time: 20:43:37 2024-08-02)
+[notgate] iverilog compilation : passed! (20:43:37 2024-08-02)
+[notgate] TBsim finished : True! (20:43:37 2024-08-02)
+
+#################### task 62/156 [fsm_onehot] ####################
+stage_0 ends (11.98s used, time: 20:43:49 2024-08-02)
+stage_1 ends (4.13s used, time: 20:43:53 2024-08-02)
+stage_2 ends (11.65s used, time: 20:44:05 2024-08-02)
+stage_4 ends (23.19s used, time: 20:44:28 2024-08-02)
+stage_checklist ends (72.86s used, time: 20:45:41 2024-08-02)
+[fsm_onehot] iverilog compilation : passed! (20:45:41 2024-08-02)
+[fsm_onehot] TBsim finished : True! (20:45:41 2024-08-02)
+
+#################### task 63/156 [ece241_2013_q7] ####################
+stage_0 ends (2.06s used, time: 20:45:43 2024-08-02)
+stage_1 ends (4.31s used, time: 20:45:48 2024-08-02)
+stage_2 ends (4.68s used, time: 20:45:52 2024-08-02)
+stage_4 ends (10.27s used, time: 20:46:03 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:46:03 2024-08-02)
+stage_4b ends (16.41s used, time: 20:46:19 2024-08-02)
+[ece241_2013_q7] iverilog compilation : passed! (20:46:19 2024-08-02)
+[ece241_2013_q7] TBsim finished : True! (20:46:19 2024-08-02)
+
+#################### task 64/156 [popcount3] ####################
+stage_0 ends (1.17s used, time: 20:46:20 2024-08-02)
+stage_1 ends (4.36s used, time: 20:46:25 2024-08-02)
+stage_2 ends (9.16s used, time: 20:46:34 2024-08-02)
+stage_4 ends (8.53s used, time: 20:46:42 2024-08-02)
+stage_checklist ends (0.52s used, time: 20:46:43 2024-08-02)
+[popcount3] iverilog compilation : passed! (20:46:43 2024-08-02)
+[popcount3] TBsim finished : True! (20:46:43 2024-08-02)
+
+#################### task 65/156 [vector5] ####################
+stage_0 ends (4.37s used, time: 20:46:47 2024-08-02)
+stage_1 ends (3.88s used, time: 20:46:51 2024-08-02)
+stage_2 ends (6.56s used, time: 20:46:58 2024-08-02)
+stage_4 ends (13.11s used, time: 20:47:11 2024-08-02)
+stage_checklist ends (42.42s used, time: 20:47:53 2024-08-02)
+[vector5] iverilog compilation : passed! (20:47:54 2024-08-02)
+[vector5] TBsim finished : True! (20:47:54 2024-08-02)
+
+#################### task 66/156 [lemmings1] ####################
+stage_0 ends (5.30s used, time: 20:47:59 2024-08-02)
+stage_1 ends (3.30s used, time: 20:48:02 2024-08-02)
+stage_2 ends (4.82s used, time: 20:48:07 2024-08-02)
+stage_4 ends (18.43s used, time: 20:48:25 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:48:25 2024-08-02)
+stage_4b ends (50.62s used, time: 20:49:16 2024-08-02)
+[lemmings1] iverilog compilation : passed! (20:49:16 2024-08-02)
+[lemmings1] TBsim finished : True! (20:49:16 2024-08-02)
+
+#################### task 67/156 [circuit1] ####################
+stage_0 ends (0.91s used, time: 20:49:17 2024-08-02)
+stage_1 ends (4.12s used, time: 20:49:21 2024-08-02)
+stage_2 ends (3.82s used, time: 20:49:25 2024-08-02)
+stage_4 ends (9.06s used, time: 20:49:34 2024-08-02)
+stage_checklist ends (27.17s used, time: 20:50:01 2024-08-02)
+[circuit1] iverilog compilation : passed! (20:50:01 2024-08-02)
+[circuit1] TBsim finished : True! (20:50:01 2024-08-02)
+
+#################### task 68/156 [7458] ####################
+stage_0 ends (4.46s used, time: 20:50:06 2024-08-02)
+stage_1 ends (4.58s used, time: 20:50:10 2024-08-02)
+stage_2 ends (8.38s used, time: 20:50:19 2024-08-02)
+stage_4 ends (32.53s used, time: 20:50:51 2024-08-02)
+stage_checklist ends (106.52s used, time: 20:52:38 2024-08-02)
+[7458] iverilog compilation : passed! (20:52:38 2024-08-02)
+[7458] TBsim finished : True! (20:52:38 2024-08-02)
+
+#################### task 69/156 [2014_q3c] ####################
+stage_0 ends (4.93s used, time: 20:52:43 2024-08-02)
+stage_1 ends (6.87s used, time: 20:52:50 2024-08-02)
+stage_2 ends (4.07s used, time: 20:52:54 2024-08-02)
+stage_4 ends (11.74s used, time: 20:53:06 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:53:06 2024-08-02)
+stage_4b ends (19.00s used, time: 20:53:25 2024-08-02)
+[2014_q3c] iverilog compilation : passed! (20:53:25 2024-08-02)
+[2014_q3c] TBsim finished : True! (20:53:25 2024-08-02)
+
+#################### task 70/156 [m2014_q4e] ####################
+stage_0 ends (0.96s used, time: 20:53:26 2024-08-02)
+stage_1 ends (3.38s used, time: 20:53:29 2024-08-02)
+stage_2 ends (1.87s used, time: 20:53:31 2024-08-02)
+stage_4 ends (7.65s used, time: 20:53:39 2024-08-02)
+stage_checklist ends (10.35s used, time: 20:53:49 2024-08-02)
+[m2014_q4e] iverilog compilation : passed! (20:53:49 2024-08-02)
+[m2014_q4e] TBsim finished : True! (20:53:49 2024-08-02)
+
+#################### task 71/156 [wire4] ####################
+stage_0 ends (1.47s used, time: 20:53:51 2024-08-02)
+stage_1 ends (3.12s used, time: 20:53:54 2024-08-02)
+stage_2 ends (5.03s used, time: 20:53:59 2024-08-02)
+stage_4 ends (17.36s used, time: 20:54:16 2024-08-02)
+stage_checklist ends (54.65s used, time: 20:55:11 2024-08-02)
+[wire4] iverilog compilation : passed! (20:55:11 2024-08-02)
+[wire4] TBsim finished : True! (20:55:11 2024-08-02)
+
+#################### task 72/156 [m2014_q4b] ####################
+stage_0 ends (1.86s used, time: 20:55:13 2024-08-02)
+stage_1 ends (2.14s used, time: 20:55:15 2024-08-02)
+stage_2 ends (4.60s used, time: 20:55:20 2024-08-02)
+stage_4 ends (14.37s used, time: 20:55:34 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:55:34 2024-08-02)
+stage_4b ends (18.50s used, time: 20:55:52 2024-08-02)
+[m2014_q4b] iverilog compilation : passed! (20:55:53 2024-08-02)
+[m2014_q4b] TBsim finished : True! (20:55:53 2024-08-02)
+
+#################### task 73/156 [always_case] ####################
+stage_0 ends (2.51s used, time: 20:55:55 2024-08-02)
+stage_1 ends (4.18s used, time: 20:55:59 2024-08-02)
+stage_2 ends (11.13s used, time: 20:56:10 2024-08-02)
+stage_4 ends (16.48s used, time: 20:56:27 2024-08-02)
+stage_checklist ends (46.50s used, time: 20:57:13 2024-08-02)
+[always_case] iverilog compilation : passed! (20:57:14 2024-08-02)
+[always_case] TBsim finished : True! (20:57:14 2024-08-02)
+
+#################### task 74/156 [timer] ####################
+stage_0 ends (2.29s used, time: 20:57:16 2024-08-02)
+stage_1 ends (2.79s used, time: 20:57:19 2024-08-02)
+stage_2 ends (7.05s used, time: 20:57:26 2024-08-02)
+stage_4 ends (9.68s used, time: 20:57:35 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:57:35 2024-08-02)
+stage_4b ends (16.98s used, time: 20:57:52 2024-08-02)
+[timer] iverilog compilation : passed! (20:57:52 2024-08-02)
+[timer] TBsim finished : True! (20:57:52 2024-08-02)
+
+#################### task 75/156 [review2015_fsmseq] ####################
+stage_0 ends (4.92s used, time: 20:57:57 2024-08-02)
+stage_1 ends (2.92s used, time: 20:58:00 2024-08-02)
+stage_2 ends (5.53s used, time: 20:58:06 2024-08-02)
+stage_4 ends (25.52s used, time: 20:58:31 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:58:31 2024-08-02)
+stage_4b ends (50.96s used, time: 20:59:22 2024-08-02)
+[review2015_fsmseq] iverilog compilation : passed! (20:59:22 2024-08-02)
+[review2015_fsmseq] TBsim finished : True! (20:59:22 2024-08-02)
+
+#################### task 76/156 [dff8r] ####################
+stage_0 ends (1.56s used, time: 20:59:24 2024-08-02)
+stage_1 ends (2.72s used, time: 20:59:27 2024-08-02)
+stage_2 ends (5.17s used, time: 20:59:32 2024-08-02)
+stage_4 ends (11.02s used, time: 20:59:43 2024-08-02)
+stage_checklist ends (0.00s used, time: 20:59:43 2024-08-02)
+stage_4b ends (15.17s used, time: 20:59:58 2024-08-02)
+[dff8r] iverilog compilation : passed! (20:59:58 2024-08-02)
+[dff8r] TBsim finished : True! (20:59:58 2024-08-02)
+
+#################### task 77/156 [edgedetect2] ####################
+stage_0 ends (1.51s used, time: 21:00:00 2024-08-02)
+stage_1 ends (3.39s used, time: 21:00:03 2024-08-02)
+stage_2 ends (6.61s used, time: 21:00:10 2024-08-02)
+stage_4 ends (14.39s used, time: 21:00:24 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:00:24 2024-08-02)
+stage_4b ends (26.70s used, time: 21:00:51 2024-08-02)
+
+[edgedetect2] iverilog simulation failed! Debuging... (debug_iter = 1, time: 21:00:51 2024-08-02)
+[edgedetect2] debug iter 1/5: verilog DEBUG finished (19.81s used, time: 21:01:11 2024-08-02)
+[edgedetect2] iverilog compilation : passed! (21:01:11 2024-08-02)
+[edgedetect2] TBsim finished : True! (21:01:11 2024-08-02)
+
+#################### task 78/156 [count1to10] ####################
+stage_0 ends (2.05s used, time: 21:01:13 2024-08-02)
+stage_1 ends (2.29s used, time: 21:01:15 2024-08-02)
+stage_2 ends (4.49s used, time: 21:01:20 2024-08-02)
+stage_4 ends (12.55s used, time: 21:01:32 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:01:32 2024-08-02)
+stage_4b ends (19.17s used, time: 21:01:51 2024-08-02)
+[count1to10] iverilog compilation : passed! (21:01:52 2024-08-02)
+[count1to10] TBsim finished : True! (21:01:52 2024-08-02)
+
+#################### task 79/156 [circuit9] ####################
+stage_0 ends (2.55s used, time: 21:01:54 2024-08-02)
+stage_1 ends (3.76s used, time: 21:01:58 2024-08-02)
+stage_2 ends (5.48s used, time: 21:02:03 2024-08-02)
+stage_4 ends (9.29s used, time: 21:02:13 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:02:13 2024-08-02)
+stage_4b ends (13.21s used, time: 21:02:26 2024-08-02)
+[circuit9] iverilog compilation : passed! (21:02:26 2024-08-02)
+[circuit9] TBsim finished : True! (21:02:26 2024-08-02)
+
+#################### task 80/156 [lfsr5] ####################
+stage_0 ends (2.29s used, time: 21:02:28 2024-08-02)
+stage_1 ends (2.70s used, time: 21:02:31 2024-08-02)
+stage_2 ends (4.24s used, time: 21:02:35 2024-08-02)
+stage_4 ends (9.53s used, time: 21:02:45 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:02:45 2024-08-02)
+stage_4b ends (13.07s used, time: 21:02:58 2024-08-02)
+[lfsr5] iverilog compilation : passed! (21:02:58 2024-08-02)
+[lfsr5] TBsim finished : True! (21:02:58 2024-08-02)
+
+#################### task 81/156 [bugs_addsubz] ####################
+stage_0 ends (2.77s used, time: 21:03:01 2024-08-02)
+stage_1 ends (3.60s used, time: 21:03:04 2024-08-02)
+stage_2 ends (4.37s used, time: 21:03:09 2024-08-02)
+stage_4 ends (17.38s used, time: 21:03:26 2024-08-02)
+stage_checklist ends (0.49s used, time: 21:03:27 2024-08-02)
+[bugs_addsubz] iverilog compilation : passed! (21:03:27 2024-08-02)
+[bugs_addsubz] TBsim finished : True! (21:03:27 2024-08-02)
+
+#################### task 82/156 [m2014_q3] ####################
+stage_0 ends (5.74s used, time: 21:03:32 2024-08-02)
+stage_1 ends (2.55s used, time: 21:03:35 2024-08-02)
+stage_2 ends (4.60s used, time: 21:03:40 2024-08-02)
+stage_4 ends (10.55s used, time: 21:03:50 2024-08-02)
+stage_checklist ends (0.67s used, time: 21:03:51 2024-08-02)
+[m2014_q3] iverilog compilation : passed! (21:03:51 2024-08-02)
+[m2014_q3] TBsim finished : True! (21:03:51 2024-08-02)
+
+#################### task 83/156 [bugs_case] ####################
+stage_0 ends (4.58s used, time: 21:03:56 2024-08-02)
+stage_1 ends (4.97s used, time: 21:04:00 2024-08-02)
+stage_2 ends (9.65s used, time: 21:04:10 2024-08-02)
+stage_4 ends (14.15s used, time: 21:04:24 2024-08-02)
+stage_checklist ends (48.53s used, time: 21:05:13 2024-08-02)
+[bugs_case] iverilog compilation : passed! (21:05:13 2024-08-02)
+[bugs_case] TBsim finished : True! (21:05:13 2024-08-02)
+
+#################### task 84/156 [vectorr] ####################
+stage_0 ends (1.56s used, time: 21:05:15 2024-08-02)
+stage_1 ends (4.29s used, time: 21:05:19 2024-08-02)
+stage_2 ends (3.28s used, time: 21:05:22 2024-08-02)
+stage_4 ends (6.60s used, time: 21:05:29 2024-08-02)
+stage_checklist ends (0.58s used, time: 21:05:29 2024-08-02)
+[vectorr] iverilog compilation : passed! (21:05:29 2024-08-02)
+[vectorr] TBsim finished : True! (21:05:29 2024-08-02)
+
+#################### task 85/156 [kmap3] ####################
+stage_0 ends (4.69s used, time: 21:05:34 2024-08-02)
+stage_1 ends (9.30s used, time: 21:05:43 2024-08-02)
+stage_2 ends (8.41s used, time: 21:05:52 2024-08-02)
+stage_4 ends (15.48s used, time: 21:06:07 2024-08-02)
+stage_checklist ends (58.93s used, time: 21:07:06 2024-08-02)
+[kmap3] iverilog compilation : passed! (21:07:06 2024-08-02)
+[kmap3] TBsim finished : True! (21:07:06 2024-08-02)
+
+#################### task 86/156 [review2015_shiftcount] ####################
+stage_0 ends (1.67s used, time: 21:07:08 2024-08-02)
+stage_1 ends (5.80s used, time: 21:07:14 2024-08-02)
+stage_2 ends (6.68s used, time: 21:07:21 2024-08-02)
+stage_4 ends (12.67s used, time: 21:07:33 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:07:33 2024-08-02)
+stage_4b ends (21.32s used, time: 21:07:55 2024-08-02)
+[review2015_shiftcount] iverilog compilation : passed! (21:07:55 2024-08-02)
+[review2015_shiftcount] TBsim finished : True! (21:07:55 2024-08-02)
+
+#################### task 87/156 [wire] ####################
+stage_0 ends (0.90s used, time: 21:07:56 2024-08-02)
+stage_1 ends (2.39s used, time: 21:07:58 2024-08-02)
+stage_2 ends (2.50s used, time: 21:08:00 2024-08-02)
+stage_4 ends (7.40s used, time: 21:08:08 2024-08-02)
+stage_checklist ends (40.44s used, time: 21:08:48 2024-08-02)
+[wire] iverilog compilation : passed! (21:08:48 2024-08-02)
+[wire] TBsim finished : True! (21:08:48 2024-08-02)
+
+#################### task 88/156 [review2015_fsmshift] ####################
+stage_0 ends (3.70s used, time: 21:08:52 2024-08-02)
+stage_1 ends (3.51s used, time: 21:08:56 2024-08-02)
+stage_2 ends (4.02s used, time: 21:09:00 2024-08-02)
+stage_4 ends (7.28s used, time: 21:09:07 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:09:07 2024-08-02)
+stage_4b ends (22.22s used, time: 21:09:29 2024-08-02)
+[review2015_fsmshift] iverilog compilation : passed! (21:09:29 2024-08-02)
+[review2015_fsmshift] TBsim finished : True! (21:09:29 2024-08-02)
+
+#################### task 89/156 [count15] ####################
+stage_0 ends (1.51s used, time: 21:09:31 2024-08-02)
+stage_1 ends (4.81s used, time: 21:09:36 2024-08-02)
+stage_2 ends (7.45s used, time: 21:09:43 2024-08-02)
+stage_4 ends (12.34s used, time: 21:09:55 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:09:55 2024-08-02)
+stage_4b ends (11.63s used, time: 21:10:07 2024-08-02)
+[count15] iverilog compilation : passed! (21:10:07 2024-08-02)
+[count15] TBsim finished : True! (21:10:07 2024-08-02)
+
+#################### task 90/156 [always_if] ####################
+stage_0 ends (1.66s used, time: 21:10:09 2024-08-02)
+stage_1 ends (3.05s used, time: 21:10:12 2024-08-02)
+stage_2 ends (6.57s used, time: 21:10:18 2024-08-02)
+stage_4 ends (28.45s used, time: 21:10:47 2024-08-02)
+stage_checklist ends (27.22s used, time: 21:11:14 2024-08-02)
+[always_if] iverilog compilation : passed! (21:11:14 2024-08-02)
+[always_if] TBsim finished : True! (21:11:14 2024-08-02)
+
+#################### task 91/156 [kmap1] ####################
+stage_0 ends (1.24s used, time: 21:11:16 2024-08-02)
+stage_1 ends (4.05s used, time: 21:11:20 2024-08-02)
+stage_2 ends (3.59s used, time: 21:11:23 2024-08-02)
+stage_4 ends (10.27s used, time: 21:11:33 2024-08-02)
+stage_checklist ends (33.25s used, time: 21:12:07 2024-08-02)
+[kmap1] iverilog compilation : passed! (21:12:07 2024-08-02)
+[kmap1] TBsim finished : True! (21:12:07 2024-08-02)
+
+#################### task 92/156 [2013_q2afsm] ####################
+stage_0 ends (9.41s used, time: 21:12:16 2024-08-02)
+stage_1 ends (4.89s used, time: 21:12:21 2024-08-02)
+stage_2 ends (12.05s used, time: 21:12:33 2024-08-02)
+stage_4 ends (20.53s used, time: 21:12:54 2024-08-02)
+stage_checklist ends (42.73s used, time: 21:13:37 2024-08-02)
+[2013_q2afsm] iverilog compilation : passed! (21:13:37 2024-08-02)
+[2013_q2afsm] TBsim finished : True! (21:13:37 2024-08-02)
+
+#################### task 93/156 [count10] ####################
+stage_0 ends (2.05s used, time: 21:13:39 2024-08-02)
+stage_1 ends (4.29s used, time: 21:13:43 2024-08-02)
+stage_2 ends (5.01s used, time: 21:13:48 2024-08-02)
+stage_4 ends (13.08s used, time: 21:14:01 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:14:01 2024-08-02)
+stage_4b ends (13.75s used, time: 21:14:15 2024-08-02)
+[count10] iverilog compilation : passed! (21:14:15 2024-08-02)
+[count10] TBsim finished : True! (21:14:15 2024-08-02)
+
+#################### task 94/156 [fsm_ps2] ####################
+stage_0 ends (6.49s used, time: 21:14:22 2024-08-02)
+stage_1 ends (3.66s used, time: 21:14:25 2024-08-02)
+stage_2 ends (8.25s used, time: 21:14:33 2024-08-02)
+stage_4 ends (23.52s used, time: 21:14:57 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:14:57 2024-08-02)
+stage_4b ends (47.11s used, time: 21:15:44 2024-08-02)
+[fsm_ps2] iverilog compilation : passed! (21:15:44 2024-08-02)
+[fsm_ps2] TBsim finished : True! (21:15:44 2024-08-02)
+
+#################### task 95/156 [mux2to1] ####################
+stage_0 ends (1.14s used, time: 21:15:45 2024-08-02)
+stage_1 ends (2.91s used, time: 21:15:48 2024-08-02)
+stage_2 ends (8.52s used, time: 21:15:57 2024-08-02)
+stage_4 ends (10.44s used, time: 21:16:07 2024-08-02)
+stage_checklist ends (50.86s used, time: 21:16:58 2024-08-02)
+[mux2to1] iverilog compilation : passed! (21:16:58 2024-08-02)
+[mux2to1] TBsim finished : True! (21:16:58 2024-08-02)
+
+#################### task 96/156 [gates4] ####################
+stage_0 ends (2.49s used, time: 21:17:01 2024-08-02)
+stage_1 ends (2.63s used, time: 21:17:03 2024-08-02)
+stage_2 ends (3.99s used, time: 21:17:07 2024-08-02)
+stage_4 ends (9.42s used, time: 21:17:17 2024-08-02)
+stage_checklist ends (72.05s used, time: 21:18:29 2024-08-02)
+[gates4] iverilog compilation : passed! (21:18:29 2024-08-02)
+[gates4] TBsim finished : True! (21:18:29 2024-08-02)
+
+#################### task 97/156 [2014_q3bfsm] ####################
+stage_0 ends (5.87s used, time: 21:18:35 2024-08-02)
+stage_1 ends (7.59s used, time: 21:18:42 2024-08-02)
+stage_2 ends (6.10s used, time: 21:18:49 2024-08-02)
+stage_4 ends (17.10s used, time: 21:19:06 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:19:06 2024-08-02)
+stage_4b ends (22.39s used, time: 21:19:28 2024-08-02)
+[2014_q3bfsm] iverilog compilation : passed! (21:19:28 2024-08-02)
+[2014_q3bfsm] TBsim finished : True! (21:19:28 2024-08-02)
+
+#################### task 98/156 [2013_q2bfsm] ####################
+stage_0 ends (11.66s used, time: 21:19:40 2024-08-02)
+stage_1 ends (4.68s used, time: 21:19:44 2024-08-02)
+stage_2 ends (4.53s used, time: 21:19:49 2024-08-02)
+stage_4 ends (21.41s used, time: 21:20:10 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:20:10 2024-08-02)
+stage_4b ends (27.60s used, time: 21:20:38 2024-08-02)
+[2013_q2bfsm] iverilog compilation : passed! (21:20:38 2024-08-02)
+[2013_q2bfsm] TBsim finished : True! (21:20:38 2024-08-02)
+
+#################### task 99/156 [dff8p] ####################
+stage_0 ends (1.85s used, time: 21:20:40 2024-08-02)
+stage_1 ends (10.49s used, time: 21:20:50 2024-08-02)
+stage_2 ends (8.65s used, time: 21:20:59 2024-08-02)
+stage_4 ends (14.23s used, time: 21:21:13 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:21:13 2024-08-02)
+stage_4b ends (24.32s used, time: 21:21:38 2024-08-02)
+[dff8p] iverilog compilation : passed! (21:21:38 2024-08-02)
+[dff8p] TBsim finished : True! (21:21:38 2024-08-02)
+
+#################### task 100/156 [reduction] ####################
+stage_0 ends (1.78s used, time: 21:21:40 2024-08-02)
+stage_1 ends (2.57s used, time: 21:21:42 2024-08-02)
+stage_2 ends (5.42s used, time: 21:21:48 2024-08-02)
+stage_4 ends (10.27s used, time: 21:21:58 2024-08-02)
+stage_checklist ends (26.42s used, time: 21:22:24 2024-08-02)
+[reduction] iverilog compilation : passed! (21:22:24 2024-08-02)
+[reduction] TBsim finished : True! (21:22:24 2024-08-02)
+
+#################### task 101/156 [fsm3comb] ####################
+stage_0 ends (15.08s used, time: 21:22:40 2024-08-02)
+stage_1 ends (3.43s used, time: 21:22:43 2024-08-02)
+stage_2 ends (3.73s used, time: 21:22:47 2024-08-02)
+stage_4 ends (12.32s used, time: 21:22:59 2024-08-02)
+stage_checklist ends (10.98s used, time: 21:23:10 2024-08-02)
+[fsm3comb] iverilog compilation : passed! (21:23:10 2024-08-02)
+[fsm3comb] TBsim finished : True! (21:23:10 2024-08-02)
+
+#################### task 102/156 [mt2015_q4b] ####################
+stage_0 ends (4.04s used, time: 21:23:14 2024-08-02)
+stage_1 ends (3.33s used, time: 21:23:18 2024-08-02)
+stage_2 ends (5.79s used, time: 21:23:23 2024-08-02)
+stage_4 ends (23.73s used, time: 21:23:47 2024-08-02)
+stage_checklist ends (40.10s used, time: 21:24:27 2024-08-02)
+[mt2015_q4b] iverilog compilation : passed! (21:24:27 2024-08-02)
+[mt2015_q4b] TBsim finished : True! (21:24:27 2024-08-02)
+
+#################### task 103/156 [2012_q2fsm] ####################
+stage_0 ends (7.14s used, time: 21:24:34 2024-08-02)
+stage_1 ends (4.84s used, time: 21:24:39 2024-08-02)
+stage_2 ends (4.81s used, time: 21:24:44 2024-08-02)
+stage_4 ends (15.71s used, time: 21:25:00 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:25:00 2024-08-02)
+stage_4b ends (23.80s used, time: 21:25:24 2024-08-02)
+[2012_q2fsm] iverilog compilation : passed! (21:25:24 2024-08-02)
+[2012_q2fsm] TBsim finished : True! (21:25:24 2024-08-02)
+
+#################### task 104/156 [dff16e] ####################
+stage_0 ends (4.47s used, time: 21:25:28 2024-08-02)
+stage_1 ends (6.87s used, time: 21:25:35 2024-08-02)
+stage_2 ends (9.86s used, time: 21:25:45 2024-08-02)
+stage_4 ends (16.82s used, time: 21:26:02 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:26:02 2024-08-02)
+stage_4b ends (30.28s used, time: 21:26:32 2024-08-02)
+[dff16e] iverilog compilation : passed! (21:26:32 2024-08-02)
+[dff16e] TBsim finished : True! (21:26:32 2024-08-02)
+
+#################### task 105/156 [edgedetect] ####################
+stage_0 ends (1.68s used, time: 21:26:34 2024-08-02)
+stage_1 ends (3.65s used, time: 21:26:38 2024-08-02)
+stage_2 ends (9.61s used, time: 21:26:47 2024-08-02)
+stage_4 ends (14.50s used, time: 21:27:02 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:27:02 2024-08-02)
+stage_4b ends (22.17s used, time: 21:27:24 2024-08-02)
+[edgedetect] iverilog compilation : passed! (21:27:24 2024-08-02)
+[edgedetect] TBsim finished : True! (21:27:24 2024-08-02)
+
+#################### task 106/156 [circuit8] ####################
+stage_0 ends (5.36s used, time: 21:27:29 2024-08-02)
+stage_1 ends (4.95s used, time: 21:27:34 2024-08-02)
+stage_2 ends (7.84s used, time: 21:27:42 2024-08-02)
+stage_4 ends (35.22s used, time: 21:28:17 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:28:17 2024-08-02)
+stage_4b ends (58.08s used, time: 21:29:16 2024-08-02)
+[circuit8] iverilog compilation : passed! (21:29:16 2024-08-02)
+[circuit8] TBsim finished : True! (21:29:16 2024-08-02)
+
+#################### task 107/156 [rule90] ####################
+stage_0 ends (7.65s used, time: 21:29:23 2024-08-02)
+stage_1 ends (2.81s used, time: 21:29:26 2024-08-02)
+stage_2 ends (14.45s used, time: 21:29:41 2024-08-02)
+stage_4 ends (11.68s used, time: 21:29:52 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:29:52 2024-08-02)
+stage_4b ends (17.56s used, time: 21:30:10 2024-08-02)
+[rule90] iverilog compilation : passed! (21:30:10 2024-08-02)
+[rule90] TBsim finished : True! (21:30:10 2024-08-02)
+
+#################### task 108/156 [mt2015_eq2] ####################
+stage_0 ends (1.18s used, time: 21:30:11 2024-08-02)
+stage_1 ends (2.86s used, time: 21:30:14 2024-08-02)
+stage_2 ends (3.64s used, time: 21:30:18 2024-08-02)
+stage_4 ends (10.35s used, time: 21:30:28 2024-08-02)
+stage_checklist ends (29.93s used, time: 21:30:58 2024-08-02)
+[mt2015_eq2] iverilog compilation : passed! (21:30:58 2024-08-02)
+[mt2015_eq2] TBsim finished : True! (21:30:58 2024-08-02)
+
+#################### task 109/156 [gatesv100] ####################
+stage_0 ends (4.96s used, time: 21:31:03 2024-08-02)
+stage_1 ends (6.23s used, time: 21:31:09 2024-08-02)
+stage_2 ends (6.05s used, time: 21:31:15 2024-08-02)
+stage_4 ends (11.31s used, time: 21:31:27 2024-08-02)
+stage_checklist ends (36.27s used, time: 21:32:03 2024-08-02)
+[gatesv100] iverilog compilation : passed! (21:32:03 2024-08-02)
+[gatesv100] TBsim finished : True! (21:32:03 2024-08-02)
+
+#################### task 110/156 [m2014_q4a] ####################
+stage_0 ends (1.71s used, time: 21:32:05 2024-08-02)
+stage_1 ends (4.27s used, time: 21:32:09 2024-08-02)
+stage_2 ends (4.67s used, time: 21:32:14 2024-08-02)
+stage_4 ends (14.03s used, time: 21:32:28 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:32:28 2024-08-02)
+stage_4b ends (15.15s used, time: 21:32:43 2024-08-02)
+[m2014_q4a] iverilog compilation : passed! (21:32:43 2024-08-02)
+[m2014_q4a] TBsim finished : True! (21:32:43 2024-08-02)
+
+#################### task 111/156 [mux256to1v] ####################
+stage_0 ends (1.20s used, time: 21:32:44 2024-08-02)
+stage_1 ends (3.82s used, time: 21:32:48 2024-08-02)
+stage_2 ends (7.45s used, time: 21:32:55 2024-08-02)
+stage_4 ends (26.77s used, time: 21:33:22 2024-08-02)
+stage_checklist ends (54.94s used, time: 21:34:17 2024-08-02)
+[mux256to1v] iverilog compilation : passed! (21:34:17 2024-08-02)
+[mux256to1v] TBsim finished : True! (21:34:17 2024-08-02)
+
+#################### task 112/156 [mux9to1v] ####################
+stage_0 ends (4.98s used, time: 21:34:22 2024-08-02)
+stage_1 ends (5.65s used, time: 21:34:28 2024-08-02)
+stage_2 ends (25.45s used, time: 21:34:53 2024-08-02)
+stage_4 ends (45.40s used, time: 21:35:39 2024-08-02)
+stage_checklist ends (167.23s used, time: 21:38:26 2024-08-02)
+[mux9to1v] iverilog compilation : passed! (21:38:26 2024-08-02)
+[mux9to1v] TBsim finished : True! (21:38:26 2024-08-02)
+
+#################### task 113/156 [vectorgates] ####################
+stage_0 ends (6.06s used, time: 21:38:32 2024-08-02)
+stage_1 ends (4.10s used, time: 21:38:36 2024-08-02)
+stage_2 ends (4.13s used, time: 21:38:40 2024-08-02)
+stage_4 ends (15.33s used, time: 21:38:56 2024-08-02)
+stage_checklist ends (45.04s used, time: 21:39:41 2024-08-02)
+[vectorgates] iverilog compilation : passed! (21:39:41 2024-08-02)
+[vectorgates] TBsim finished : True! (21:39:41 2024-08-02)
+
+#################### task 114/156 [fsm3onehot] ####################
+stage_0 ends (7.39s used, time: 21:39:48 2024-08-02)
+stage_1 ends (6.19s used, time: 21:39:54 2024-08-02)
+stage_2 ends (3.80s used, time: 21:39:58 2024-08-02)
+stage_4 ends (12.99s used, time: 21:40:11 2024-08-02)
+stage_checklist ends (17.57s used, time: 21:40:29 2024-08-02)
+[fsm3onehot] iverilog compilation : passed! (21:40:29 2024-08-02)
+[fsm3onehot] TBsim finished : True! (21:40:29 2024-08-02)
+
+#################### task 115/156 [conditional] ####################
+stage_0 ends (3.11s used, time: 21:40:32 2024-08-02)
+stage_1 ends (3.73s used, time: 21:40:36 2024-08-02)
+stage_2 ends (7.68s used, time: 21:40:43 2024-08-02)
+stage_4 ends (14.25s used, time: 21:40:58 2024-08-02)
+stage_checklist ends (0.58s used, time: 21:40:58 2024-08-02)
+[conditional] iverilog compilation : passed! (21:40:58 2024-08-02)
+[conditional] TBsim finished : True! (21:40:58 2024-08-02)
+
+#################### task 116/156 [gates] ####################
+stage_0 ends (3.26s used, time: 21:41:02 2024-08-02)
+stage_1 ends (5.99s used, time: 21:41:08 2024-08-02)
+stage_2 ends (3.50s used, time: 21:41:11 2024-08-02)
+stage_4 ends (16.92s used, time: 21:41:28 2024-08-02)
+stage_checklist ends (0.53s used, time: 21:41:29 2024-08-02)
+[gates] iverilog compilation : passed! (21:41:29 2024-08-02)
+[gates] TBsim finished : True! (21:41:29 2024-08-02)
+
+#################### task 117/156 [kmap2] ####################
+stage_0 ends (2.16s used, time: 21:41:31 2024-08-02)
+stage_1 ends (3.65s used, time: 21:41:35 2024-08-02)
+stage_2 ends (10.98s used, time: 21:41:46 2024-08-02)
+stage_4 ends (17.27s used, time: 21:42:03 2024-08-02)
+stage_checklist ends (79.19s used, time: 21:43:22 2024-08-02)
+[kmap2] iverilog compilation : passed! (21:43:22 2024-08-02)
+[kmap2] TBsim finished : True! (21:43:22 2024-08-02)
+
+#################### task 118/156 [2014_q3fsm] ####################
+stage_0 ends (6.42s used, time: 21:43:29 2024-08-02)
+stage_1 ends (3.76s used, time: 21:43:32 2024-08-02)
+stage_2 ends (9.77s used, time: 21:43:42 2024-08-02)
+stage_4 ends (26.74s used, time: 21:44:09 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:44:09 2024-08-02)
+stage_4b ends (53.16s used, time: 21:45:02 2024-08-02)
+[2014_q3fsm] iverilog compilation : passed! (21:45:02 2024-08-02)
+[2014_q3fsm] TBsim finished : True! (21:45:02 2024-08-02)
+
+#################### task 119/156 [vector4] ####################
+stage_0 ends (1.22s used, time: 21:45:03 2024-08-02)
+stage_1 ends (4.60s used, time: 21:45:08 2024-08-02)
+stage_2 ends (6.24s used, time: 21:45:14 2024-08-02)
+stage_4 ends (9.33s used, time: 21:45:24 2024-08-02)
+stage_checklist ends (25.78s used, time: 21:45:49 2024-08-02)
+[vector4] iverilog compilation : passed! (21:45:50 2024-08-02)
+[vector4] TBsim finished : True! (21:45:50 2024-08-02)
+
+#################### task 120/156 [m2014_q4k] ####################
+stage_0 ends (2.55s used, time: 21:45:52 2024-08-02)
+stage_1 ends (4.81s used, time: 21:45:57 2024-08-02)
+stage_2 ends (3.99s used, time: 21:46:01 2024-08-02)
+stage_4 ends (12.94s used, time: 21:46:14 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:46:14 2024-08-02)
+stage_4b ends (16.06s used, time: 21:46:30 2024-08-02)
+[m2014_q4k] iverilog compilation : passed! (21:46:30 2024-08-02)
+[m2014_q4k] TBsim finished : True! (21:46:30 2024-08-02)
+
+#################### task 121/156 [always_case2] ####################
+stage_0 ends (3.14s used, time: 21:46:33 2024-08-02)
+stage_1 ends (2.67s used, time: 21:46:36 2024-08-02)
+stage_2 ends (4.39s used, time: 21:46:40 2024-08-02)
+stage_4 ends (12.68s used, time: 21:46:53 2024-08-02)
+stage_checklist ends (7.41s used, time: 21:47:00 2024-08-02)
+[always_case2] iverilog compilation : passed! (21:47:01 2024-08-02)
+[always_case2] TBsim finished : True! (21:47:01 2024-08-02)
+
+#################### task 122/156 [fsm2] ####################
+stage_0 ends (5.07s used, time: 21:47:06 2024-08-02)
+stage_1 ends (3.65s used, time: 21:47:09 2024-08-02)
+stage_2 ends (4.23s used, time: 21:47:13 2024-08-02)
+stage_4 ends (24.03s used, time: 21:47:38 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:47:38 2024-08-02)
+stage_4b ends (35.69s used, time: 21:48:13 2024-08-02)
+[fsm2] iverilog compilation : passed! (21:48:13 2024-08-02)
+[fsm2] TBsim finished : True! (21:48:13 2024-08-02)
+
+#################### task 123/156 [m2014_q4i] ####################
+stage_0 ends (0.89s used, time: 21:48:14 2024-08-02)
+stage_1 ends (1.71s used, time: 21:48:16 2024-08-02)
+stage_2 ends (2.71s used, time: 21:48:19 2024-08-02)
+stage_4 ends (6.05s used, time: 21:48:25 2024-08-02)
+stage_checklist ends (28.14s used, time: 21:48:53 2024-08-02)
+
+[m2014_q4i] iverilog simulation failed! Debuging... (debug_iter = 1, time: 21:48:58 2024-08-02)
+[m2014_q4i] debug iter 1/5: verilog DEBUG finished (19.63s used, time: 21:49:18 2024-08-02)
+
+[m2014_q4i] iverilog simulation failed! Rebooting... (debug_iter = 2, time: 21:49:18 2024-08-02)
+stage_4 ends (7.76s used, time: 21:49:25 2024-08-02)
+stage_checklist ends (40.10s used, time: 21:50:05 2024-08-02)
+[m2014_q4i] debug iter 2/5: verilog REBOOT finished (47.94s used, time: 21:50:06 2024-08-02)
+[m2014_q4i] iverilog compilation : passed! (21:50:06 2024-08-02)
+[m2014_q4i] TBsim finished : True! (21:50:06 2024-08-02)
+
+#################### task 124/156 [step_one] ####################
+stage_0 ends (0.78s used, time: 21:50:06 2024-08-02)
+stage_1 ends (2.26s used, time: 21:50:09 2024-08-02)
+stage_2 ends (2.37s used, time: 21:50:11 2024-08-02)
+stage_4 ends (5.58s used, time: 21:50:17 2024-08-02)
+stage_checklist ends (16.25s used, time: 21:50:33 2024-08-02)
+[step_one] iverilog compilation : passed! (21:50:33 2024-08-02)
+[step_one] TBsim finished : True! (21:50:33 2024-08-02)
+
+#################### task 125/156 [vector100r] ####################
+stage_0 ends (1.73s used, time: 21:50:35 2024-08-02)
+stage_1 ends (3.79s used, time: 21:50:39 2024-08-02)
+stage_2 ends (9.07s used, time: 21:50:48 2024-08-02)
+stage_4 ends (17.40s used, time: 21:51:05 2024-08-02)
+stage_checklist ends (38.16s used, time: 21:51:43 2024-08-02)
+[vector100r] iverilog compilation : passed! (21:51:43 2024-08-02)
+[vector100r] TBsim finished : True! (21:51:43 2024-08-02)
+
+#################### task 126/156 [m2014_q4d] ####################
+stage_0 ends (1.47s used, time: 21:51:45 2024-08-02)
+stage_1 ends (2.16s used, time: 21:51:47 2024-08-02)
+stage_2 ends (7.34s used, time: 21:51:54 2024-08-02)
+stage_4 ends (10.33s used, time: 21:52:05 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:52:05 2024-08-02)
+stage_4b ends (20.88s used, time: 21:52:25 2024-08-02)
+[m2014_q4d] iverilog compilation : passed! (21:52:26 2024-08-02)
+[m2014_q4d] TBsim finished : True! (21:52:26 2024-08-02)
+
+#################### task 127/156 [shift4] ####################
+stage_0 ends (2.97s used, time: 21:52:29 2024-08-02)
+stage_1 ends (4.44s used, time: 21:52:33 2024-08-02)
+stage_2 ends (8.84s used, time: 21:52:42 2024-08-02)
+stage_4 ends (29.39s used, time: 21:53:11 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:53:11 2024-08-02)
+stage_4b ends (51.77s used, time: 21:54:03 2024-08-02)
+[shift4] iverilog compilation : passed! (21:54:03 2024-08-02)
+[shift4] TBsim finished : True! (21:54:03 2024-08-02)
+
+#################### task 128/156 [truthtable1] ####################
+stage_0 ends (1.39s used, time: 21:54:05 2024-08-02)
+stage_1 ends (4.78s used, time: 21:54:09 2024-08-02)
+stage_2 ends (3.86s used, time: 21:54:13 2024-08-02)
+stage_4 ends (10.33s used, time: 21:54:24 2024-08-02)
+stage_checklist ends (0.56s used, time: 21:54:24 2024-08-02)
+[truthtable1] iverilog compilation : passed! (21:54:24 2024-08-02)
+[truthtable1] TBsim finished : True! (21:54:24 2024-08-02)
+
+#################### task 129/156 [dff8ar] ####################
+stage_0 ends (1.64s used, time: 21:54:26 2024-08-02)
+stage_1 ends (2.55s used, time: 21:54:28 2024-08-02)
+stage_2 ends (5.00s used, time: 21:54:33 2024-08-02)
+stage_4 ends (16.63s used, time: 21:54:50 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:54:50 2024-08-02)
+stage_4b ends (22.97s used, time: 21:55:13 2024-08-02)
+[dff8ar] iverilog compilation : passed! (21:55:13 2024-08-02)
+[dff8ar] TBsim finished : True! (21:55:13 2024-08-02)
+
+#################### task 130/156 [gates100] ####################
+stage_0 ends (1.96s used, time: 21:55:15 2024-08-02)
+stage_1 ends (3.07s used, time: 21:55:18 2024-08-02)
+stage_2 ends (5.12s used, time: 21:55:23 2024-08-02)
+stage_4 ends (10.29s used, time: 21:55:34 2024-08-02)
+stage_checklist ends (48.02s used, time: 21:56:22 2024-08-02)
+[gates100] iverilog compilation : passed! (21:56:22 2024-08-02)
+[gates100] TBsim finished : True! (21:56:22 2024-08-02)
+
+#################### task 131/156 [hadd] ####################
+stage_0 ends (1.44s used, time: 21:56:23 2024-08-02)
+stage_1 ends (3.69s used, time: 21:56:27 2024-08-02)
+stage_2 ends (3.26s used, time: 21:56:30 2024-08-02)
+stage_4 ends (5.85s used, time: 21:56:36 2024-08-02)
+stage_checklist ends (22.99s used, time: 21:56:59 2024-08-02)
+[hadd] iverilog compilation : passed! (21:56:59 2024-08-02)
+[hadd] TBsim finished : True! (21:56:59 2024-08-02)
+
+#################### task 132/156 [always_if2] ####################
+stage_0 ends (2.52s used, time: 21:57:02 2024-08-02)
+stage_1 ends (2.97s used, time: 21:57:05 2024-08-02)
+stage_2 ends (6.80s used, time: 21:57:12 2024-08-02)
+stage_4 ends (17.58s used, time: 21:57:29 2024-08-02)
+stage_checklist ends (49.73s used, time: 21:58:19 2024-08-02)
+[always_if2] iverilog compilation : passed! (21:58:19 2024-08-02)
+[always_if2] TBsim finished : True! (21:58:19 2024-08-02)
+
+#################### task 133/156 [fsm2s] ####################
+stage_0 ends (4.08s used, time: 21:58:23 2024-08-02)
+stage_1 ends (2.82s used, time: 21:58:26 2024-08-02)
+stage_2 ends (6.56s used, time: 21:58:32 2024-08-02)
+stage_4 ends (12.92s used, time: 21:58:45 2024-08-02)
+stage_checklist ends (0.00s used, time: 21:58:45 2024-08-02)
+stage_4b ends (25.66s used, time: 21:59:11 2024-08-02)
+[fsm2s] iverilog compilation : passed! (21:59:11 2024-08-02)
+[fsm2s] TBsim finished : True! (21:59:11 2024-08-02)
+
+#################### task 134/156 [vector3] ####################
+stage_0 ends (4.99s used, time: 21:59:16 2024-08-02)
+stage_1 ends (7.95s used, time: 21:59:24 2024-08-02)
+stage_2 ends (8.54s used, time: 21:59:33 2024-08-02)
+stage_4 ends (16.06s used, time: 21:59:49 2024-08-02)
+stage_checklist ends (70.54s used, time: 22:00:59 2024-08-02)
+[vector3] iverilog compilation : passed! (22:00:59 2024-08-02)
+[vector3] TBsim finished : True! (22:00:59 2024-08-02)
+
+#################### task 135/156 [circuit2] ####################
+stage_0 ends (2.43s used, time: 22:01:02 2024-08-02)
+stage_1 ends (2.65s used, time: 22:01:04 2024-08-02)
+stage_2 ends (13.10s used, time: 22:01:18 2024-08-02)
+stage_4 ends (13.78s used, time: 22:01:31 2024-08-02)
+stage_checklist ends (49.18s used, time: 22:02:21 2024-08-02)
+[circuit2] iverilog compilation : passed! (22:02:21 2024-08-02)
+[circuit2] TBsim finished : True! (22:02:21 2024-08-02)
+
+#################### task 136/156 [andgate] ####################
+stage_0 ends (1.02s used, time: 22:02:22 2024-08-02)
+stage_1 ends (3.31s used, time: 22:02:25 2024-08-02)
+stage_2 ends (2.49s used, time: 22:02:28 2024-08-02)
+stage_4 ends (6.18s used, time: 22:02:34 2024-08-02)
+stage_checklist ends (0.49s used, time: 22:02:34 2024-08-02)
+[andgate] iverilog compilation : passed! (22:02:34 2024-08-02)
+[andgate] TBsim finished : True! (22:02:34 2024-08-02)
+
+#################### task 137/156 [fsm1s] ####################
+stage_0 ends (4.56s used, time: 22:02:39 2024-08-02)
+stage_1 ends (2.86s used, time: 22:02:42 2024-08-02)
+stage_2 ends (5.56s used, time: 22:02:47 2024-08-02)
+stage_4 ends (13.36s used, time: 22:03:01 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:03:01 2024-08-02)
+stage_4b ends (25.75s used, time: 22:03:26 2024-08-02)
+[fsm1s] iverilog compilation : passed! (22:03:27 2024-08-02)
+[fsm1s] TBsim finished : True! (22:03:27 2024-08-02)
+
+#################### task 138/156 [fadd] ####################
+stage_0 ends (1.33s used, time: 22:03:28 2024-08-02)
+stage_1 ends (2.42s used, time: 22:03:30 2024-08-02)
+stage_2 ends (3.11s used, time: 22:03:33 2024-08-02)
+stage_4 ends (9.38s used, time: 22:03:43 2024-08-02)
+stage_checklist ends (0.42s used, time: 22:03:43 2024-08-02)
+[fadd] iverilog compilation : passed! (22:03:43 2024-08-02)
+[fadd] TBsim finished : True! (22:03:43 2024-08-02)
+
+#################### task 139/156 [m2014_q4g] ####################
+stage_0 ends (1.32s used, time: 22:03:45 2024-08-02)
+stage_1 ends (1.78s used, time: 22:03:46 2024-08-02)
+stage_2 ends (6.12s used, time: 22:03:53 2024-08-02)
+stage_4 ends (18.08s used, time: 22:04:11 2024-08-02)
+stage_checklist ends (58.04s used, time: 22:05:09 2024-08-02)
+[m2014_q4g] iverilog compilation : passed! (22:05:09 2024-08-02)
+[m2014_q4g] TBsim finished : True! (22:05:09 2024-08-02)
+
+#################### task 140/156 [ece241_2014_q3] ####################
+stage_0 ends (1.83s used, time: 22:05:11 2024-08-02)
+stage_1 ends (5.35s used, time: 22:05:16 2024-08-02)
+stage_2 ends (10.41s used, time: 22:05:26 2024-08-02)
+stage_4 ends (26.63s used, time: 22:05:53 2024-08-02)
+stage_checklist ends (75.03s used, time: 22:07:08 2024-08-02)
+[ece241_2014_q3] iverilog compilation : passed! (22:07:08 2024-08-02)
+[ece241_2014_q3] TBsim finished : True! (22:07:08 2024-08-02)
+
+#################### task 141/156 [ece241_2014_q5b] ####################
+stage_0 ends (5.61s used, time: 22:07:14 2024-08-02)
+stage_1 ends (3.30s used, time: 22:07:17 2024-08-02)
+stage_2 ends (7.26s used, time: 22:07:24 2024-08-02)
+stage_4 ends (15.51s used, time: 22:07:40 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:07:40 2024-08-02)
+stage_4b ends (17.07s used, time: 22:07:57 2024-08-02)
+[ece241_2014_q5b] iverilog compilation : passed! (22:07:57 2024-08-02)
+[ece241_2014_q5b] TBsim finished : True! (22:07:57 2024-08-02)
+
+#################### task 142/156 [circuit10] ####################
+stage_0 ends (4.27s used, time: 22:08:02 2024-08-02)
+stage_1 ends (4.30s used, time: 22:08:06 2024-08-02)
+stage_2 ends (13.63s used, time: 22:08:19 2024-08-02)
+stage_4 ends (40.10s used, time: 22:09:00 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:09:00 2024-08-02)
+stage_4b ends (36.55s used, time: 22:09:36 2024-08-02)
+
+[circuit10] iverilog simulation failed! Debuging... (debug_iter = 1, time: 22:09:36 2024-08-02)
+[circuit10] debug iter 1/5: verilog DEBUG finished (53.61s used, time: 22:10:30 2024-08-02)
+[circuit10] iverilog compilation : passed! (22:10:30 2024-08-02)
+[circuit10] TBsim finished : True! (22:10:30 2024-08-02)
+
+#################### task 143/156 [2012_q1g] ####################
+stage_0 ends (3.33s used, time: 22:10:33 2024-08-02)
+stage_1 ends (3.39s used, time: 22:10:37 2024-08-02)
+stage_2 ends (6.33s used, time: 22:10:43 2024-08-02)
+stage_4 ends (13.16s used, time: 22:10:56 2024-08-02)
+stage_checklist ends (38.63s used, time: 22:11:35 2024-08-02)
+[2012_q1g] iverilog compilation : passed! (22:11:35 2024-08-02)
+[2012_q1g] TBsim finished : True! (22:11:35 2024-08-02)
+
+#################### task 144/156 [fsm_hdlc] ####################
+stage_0 ends (6.20s used, time: 22:11:41 2024-08-02)
+stage_1 ends (6.50s used, time: 22:11:48 2024-08-02)
+stage_2 ends (9.72s used, time: 22:11:57 2024-08-02)
+stage_4 ends (13.57s used, time: 22:12:11 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:12:11 2024-08-02)
+stage_4b ends (21.17s used, time: 22:12:32 2024-08-02)
+[fsm_hdlc] iverilog compilation : passed! (22:12:32 2024-08-02)
+[fsm_hdlc] TBsim finished : True! (22:12:32 2024-08-02)
+
+#################### task 145/156 [review2015_fancytimer] ####################
+stage_0 ends (7.65s used, time: 22:12:40 2024-08-02)
+stage_1 ends (5.02s used, time: 22:12:45 2024-08-02)
+stage_2 ends (4.72s used, time: 22:12:50 2024-08-02)
+stage_4 ends (14.70s used, time: 22:13:04 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:13:04 2024-08-02)
+stage_4b ends (40.70s used, time: 22:13:45 2024-08-02)
+[review2015_fancytimer] iverilog compilation : passed! (22:13:45 2024-08-02)
+[review2015_fancytimer] TBsim finished : True! (22:13:45 2024-08-02)
+
+#################### task 146/156 [ece241_2013_q4] ####################
+stage_0 ends (12.35s used, time: 22:13:58 2024-08-02)
+stage_1 ends (5.24s used, time: 22:14:03 2024-08-02)
+stage_2 ends (6.77s used, time: 22:14:10 2024-08-02)
+stage_4 ends (22.71s used, time: 22:14:32 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:14:32 2024-08-02)
+stage_4b ends (27.94s used, time: 22:15:00 2024-08-02)
+
+[ece241_2013_q4] iverilog simulation failed! Debuging... (debug_iter = 1, time: 22:15:00 2024-08-02)
+[ece241_2013_q4] debug iter 1/5: verilog DEBUG finished (21.46s used, time: 22:15:22 2024-08-02)
+[ece241_2013_q4] iverilog compilation : passed! (22:15:22 2024-08-02)
+[ece241_2013_q4] TBsim finished : True! (22:15:22 2024-08-02)
+
+#################### task 147/156 [fsm_serial] ####################
+stage_0 ends (8.65s used, time: 22:15:30 2024-08-02)
+stage_1 ends (2.39s used, time: 22:15:33 2024-08-02)
+stage_2 ends (10.41s used, time: 22:15:43 2024-08-02)
+stage_4 ends (13.13s used, time: 22:15:56 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:15:56 2024-08-02)
+stage_4b ends (41.70s used, time: 22:16:38 2024-08-02)
+
+[fsm_serial] iverilog simulation failed! Debuging... (debug_iter = 1, time: 22:16:38 2024-08-02)
+[fsm_serial] debug iter 1/5: verilog DEBUG finished (38.97s used, time: 22:17:17 2024-08-02)
+
+[fsm_serial] iverilog simulation failed! Rebooting... (debug_iter = 2, time: 22:17:17 2024-08-02)
+stage_4 ends (12.07s used, time: 22:17:29 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:17:29 2024-08-02)
+stage_4b ends (28.83s used, time: 22:17:58 2024-08-02)
+[fsm_serial] debug iter 2/5: verilog REBOOT finished (41.0s used, time: 22:17:58 2024-08-02)
+[fsm_serial] iverilog compilation : passed! (22:17:58 2024-08-02)
+[fsm_serial] TBsim finished : True! (22:17:58 2024-08-02)
+
+#################### task 148/156 [fsm_serialdata] ####################
+stage_0 ends (8.22s used, time: 22:18:06 2024-08-02)
+stage_1 ends (4.23s used, time: 22:18:11 2024-08-02)
+stage_2 ends (6.65s used, time: 22:18:17 2024-08-02)
+stage_4 ends (30.00s used, time: 22:18:47 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:18:47 2024-08-02)
+stage_4b ends (30.24s used, time: 22:19:18 2024-08-02)
+[fsm_serialdata] iverilog compilation : passed! (22:19:18 2024-08-02)
+[fsm_serialdata] TBsim finished : True! (22:19:18 2024-08-02)
+
+#################### task 149/156 [gshare] ####################
+stage_0 ends (8.95s used, time: 22:19:27 2024-08-02)
+stage_1 ends (3.83s used, time: 22:19:31 2024-08-02)
+stage_2 ends (13.73s used, time: 22:19:44 2024-08-02)
+stage_4 ends (25.33s used, time: 22:20:10 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:20:10 2024-08-02)
+stage_4b ends (45.96s used, time: 22:20:56 2024-08-02)
+[gshare] iverilog compilation : passed! (22:20:56 2024-08-02)
+[gshare] TBsim finished : True! (22:20:56 2024-08-02)
+
+#################### task 150/156 [lemmings4] ####################
+stage_0 ends (9.64s used, time: 22:21:05 2024-08-02)
+stage_1 ends (3.81s used, time: 22:21:09 2024-08-02)
+stage_2 ends (7.97s used, time: 22:21:17 2024-08-02)
+stage_4 ends (25.91s used, time: 22:21:43 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:21:43 2024-08-02)
+stage_4b ends (36.49s used, time: 22:22:20 2024-08-02)
+[lemmings4] iverilog compilation : passed! (22:22:20 2024-08-02)
+[lemmings4] TBsim finished : True! (22:22:20 2024-08-02)
+
+#################### task 151/156 [review2015_fsm] ####################
+stage_0 ends (10.86s used, time: 22:22:31 2024-08-02)
+stage_1 ends (2.75s used, time: 22:22:33 2024-08-02)
+stage_2 ends (4.93s used, time: 22:22:38 2024-08-02)
+stage_4 ends (26.58s used, time: 22:23:05 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:23:05 2024-08-02)
+stage_4b ends (43.28s used, time: 22:23:48 2024-08-02)
+[review2015_fsm] iverilog compilation : passed! (22:23:48 2024-08-02)
+[review2015_fsm] TBsim finished : True! (22:23:48 2024-08-02)
+
+#################### task 152/156 [conwaylife] ####################
+stage_0 ends (7.06s used, time: 22:23:55 2024-08-02)
+stage_1 ends (4.49s used, time: 22:24:00 2024-08-02)
+stage_2 ends (6.49s used, time: 22:24:06 2024-08-02)
+stage_4 ends (13.17s used, time: 22:24:20 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:24:20 2024-08-02)
+stage_4b ends (26.39s used, time: 22:24:46 2024-08-02)
+[conwaylife] iverilog compilation : passed! (22:24:46 2024-08-02)
+[conwaylife] TBsim finished : True! (22:24:46 2024-08-02)
+
+#################### task 153/156 [lemmings3] ####################
+stage_0 ends (10.16s used, time: 22:24:56 2024-08-02)
+stage_1 ends (3.04s used, time: 22:24:59 2024-08-02)
+stage_2 ends (5.16s used, time: 22:25:04 2024-08-02)
+stage_4 ends (29.43s used, time: 22:25:34 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:25:34 2024-08-02)
+stage_4b ends (65.85s used, time: 22:26:40 2024-08-02)
+[lemmings3] iverilog compilation : passed! (22:26:40 2024-08-02)
+[lemmings3] TBsim finished : True! (22:26:40 2024-08-02)
+
+#################### task 154/156 [count_clock] ####################
+stage_0 ends (6.23s used, time: 22:26:46 2024-08-02)
+stage_1 ends (4.35s used, time: 22:26:50 2024-08-02)
+stage_2 ends (7.43s used, time: 22:26:58 2024-08-02)
+stage_4 ends (13.41s used, time: 22:27:11 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:27:11 2024-08-02)
+stage_4b ends (24.28s used, time: 22:27:36 2024-08-02)
+
+[count_clock] iverilog simulation failed! Debuging... (debug_iter = 1, time: 22:27:36 2024-08-02)
+[count_clock] debug iter 1/5: verilog DEBUG finished (27.06s used, time: 22:28:03 2024-08-02)
+[count_clock] iverilog compilation : passed! (22:28:03 2024-08-02)
+[count_clock] TBsim finished : True! (22:28:03 2024-08-02)
+
+#################### task 155/156 [lemmings2] ####################
+stage_0 ends (10.62s used, time: 22:28:13 2024-08-02)
+stage_1 ends (3.65s used, time: 22:28:17 2024-08-02)
+stage_2 ends (7.46s used, time: 22:28:24 2024-08-02)
+stage_4 ends (19.72s used, time: 22:28:44 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:28:44 2024-08-02)
+stage_4b ends (38.89s used, time: 22:29:23 2024-08-02)
+[lemmings2] iverilog compilation : passed! (22:29:23 2024-08-02)
+[lemmings2] TBsim finished : True! (22:29:23 2024-08-02)
+
+#################### task 156/156 [countbcd] ####################
+stage_0 ends (5.37s used, time: 22:29:29 2024-08-02)
+stage_1 ends (3.18s used, time: 22:29:32 2024-08-02)
+stage_2 ends (3.48s used, time: 22:29:35 2024-08-02)
+stage_4 ends (9.47s used, time: 22:29:45 2024-08-02)
+stage_checklist ends (0.00s used, time: 22:29:45 2024-08-02)
+stage_4b ends (16.07s used, time: 22:30:01 2024-08-02)
+[countbcd] iverilog compilation : passed! (22:30:01 2024-08-02)
+[countbcd] TBsim finished : True! (22:30:01 2024-08-02)
+
+########## Analyze of Chatbench_RunInfo ##########
+
+#### pass numbers:
+Eval2 : 0
+Eval1 : 0
+Eval0 : 156
+total : 156 (Failed: 0)
+
+#### tokens and cost:
+average prompt tokens: 5000
+average completion tokens: 3418
+total cost: 0.4369
+average cost: 0.0028
+
+#### time:
+average time: 66.99s
+
+#### debug info table:
+debug info table:
+         | un-debugged | debugged | total |
+failed   |           0 |        0 |     0 |
+Eval0    |         147 |        9 |   156 |
+Eval1    |           0 |        0 |     0 |
+Eval2    |           0 |        0 |     0 |
+
+#### Eval2 ratio:
+
+loose Eval2 pass metric applied: R = 0.80
+
+

@@ -1,0 +1,12 @@
+scenario: 1, a = 0, b = 0, c = 0, w = z, x = z, y = z, z = z
+scenario: 2, a = 1, b = 0, c = 0, w = z, x = z, y = z, z = z
+scenario: 3, a = 0, b = 1, c = 0, w = z, x = z, y = z, z = z
+scenario: 4, a = 0, b = 0, c = 1, w = z, x = z, y = z, z = z
+scenario: 5, a = 1, b = 1, c = 0, w = z, x = z, y = z, z = z
+scenario: 6, a = 1, b = 0, c = 1, w = z, x = z, y = z, z = z
+scenario: 7, a = 0, b = 1, c = 1, w = z, x = z, y = z, z = z
+scenario: 8, a = 1, b = 1, c = 1, w = z, x = z, y = z, z = z
+scenario: 9a, a = 0, b = 1, c = 0, w = z, x = z, y = z, z = z
+scenario: 9b, a = 1, b = 1, c = 0, w = z, x = z, y = z, z = z
+scenario: 10a, a = 1, b = 1, c = 1, w = z, x = z, y = z, z = z
+scenario: 10b, a = 0, b = 0, c = 0, w = z, x = z, y = z, z = z

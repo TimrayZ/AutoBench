@@ -1,0 +1,942 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module tb_top_module;
+
+  // Parameters
+  reg d;
+  reg done_counting;
+  reg ack;
+  reg [9:0] state;
+  
+  // Outputs
+  wire B3_next;
+  wire S_next;
+  wire S1_next;
+  wire Count_next;
+  wire Wait_next;
+  wire done;
+  wire counting;
+  wire shift_ena;
+
+  // Instantiate the DUT
+  top_module DUT (
+    .d(d),
+    .done_counting(done_counting),
+    .ack(ack),
+    .state(state),
+    .B3_next(B3_next),
+    .S_next(S_next),
+    .S1_next(S1_next),
+    .Count_next(Count_next),
+    .Wait_next(Wait_next),
+    .done(done),
+    .counting(counting),
+    .shift_ena(shift_ena)
+  );
+
+  // File for output
+  integer file;
+
+  // Initial block
+  initial begin
+    file = $fopen("TBout.txt", "w");
+    
+    // Scenario 1
+    state = 10'b0000000001; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 2
+    state = 10'b0000000001; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 3
+    state = 10'b0000000010; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 4
+    state = 10'b0000000010; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 5
+    state = 10'b0000000100; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 6
+    state = 10'b0000000100; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 7
+    state = 10'b0000001000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 8
+    state = 10'b0000001000; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 9
+    state = 10'b0000010000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 10
+    state = 10'b0000100000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 11
+    state = 10'b0001000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 12
+    state = 10'b0010000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 13
+    state = 10'b0100000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    done_counting = 1;
+    #1;
+    $fdisplay(file, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 14
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 15
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 1;
+    #1;
+    $fdisplay(file, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Close the file and terminate
+    $fclose(file);
+    $finish;
+  end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Initialize the simulation with state S (10'b0000000001), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set state to S (10'b0000000001), d=1, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to S1.",
+  "scenario 3": "Set state to S1 (10'b0000000010), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition back to S.",
+  "scenario 4": "Set state to S1 (10'b0000000010), d=1, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to S11.",
+  "scenario 5": "Set state to S11 (10'b0000000100), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe transition to S110.",
+  "scenario 6": "Set state to S11 (10'b0000000100), d=1, done_counting=0, ack=0. Wait for 1 clock cycle and observe the output remains in state S11.",
+  "scenario 7": "Set state to S110 (10'b0000001000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to see the transition back to S.",
+  "scenario 8": "Set state to S110 (10'b0000001000), d=1, done_counting=0, ack=0. Wait for 1 clock cycle, check the transition to B0.",
+  "scenario 9": "Set state to B0 (10'b0000010000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to ensure shift_ena is high as we transition to B1.",
+  "scenario 10": "Set state to B1 (10'b0000100000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to B2.",
+  "scenario 11": "Set state to B2 (10'b0001000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to B3.",
+  "scenario 12": "Set state to B3 (10'b0010000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to confirm transition to Count.",
+  "scenario 13": "Set state to Count (10'b0100000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle and set done_counting=1, then observe the transition to Wait.",
+  "scenario 14": "Set state to Wait (10'b1000000000), d=0, done_counting=1, ack=0. Wait for 1 clock cycle to ensure the state remains in Wait.",
+  "scenario 15": "Set state to Wait (10'b1000000000), d=0, done_counting=1, ack=1. Wait for 1 clock cycle, then observe the transition back to S."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module tb_top_module;
+
+  // Parameters
+  reg d;
+  reg done_counting;
+  reg ack;
+  reg [9:0] state;
+  
+  // Outputs
+  wire B3_next;
+  wire S_next;
+  wire S1_next;
+  wire Count_next;
+  wire Wait_next;
+  wire done;
+  wire counting;
+  wire shift_ena;
+
+  // Instantiate the DUT
+  top_module DUT (
+    .d(d),
+    .done_counting(done_counting),
+    .ack(ack),
+    .state(state),
+    .B3_next(B3_next),
+    .S_next(S_next),
+    .S1_next(S1_next),
+    .Count_next(Count_next),
+    .Wait_next(Wait_next),
+    .done(done),
+    .counting(counting),
+    .shift_ena(shift_ena)
+  );
+
+  // File for output
+  integer file;
+
+  // Initial block
+  initial begin
+    file = $fopen("TBout.txt", "w");
+    
+    // Scenario 1
+    state = 10'b0000000001; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 2
+    state = 10'b0000000001; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 3
+    state = 10'b0000000010; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 4
+    state = 10'b0000000010; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 5
+    state = 10'b0000000100; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 6
+    state = 10'b0000000100; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 7
+    state = 10'b0000001000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 8
+    state = 10'b0000001000; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 9
+    state = 10'b0000010000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 10
+    state = 10'b0000100000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 11
+    state = 10'b0001000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 12
+    state = 10'b0010000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 13
+    state = 10'b0100000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    done_counting = 1;
+    #1;
+    $fdisplay(file, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 14
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 15
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 1;
+    #1;
+    $fdisplay(file, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Close the file and terminate
+    $fclose(file);
+    $finish;
+  end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module tb_top_module;
+
+  // Parameters
+  reg d;
+  reg done_counting;
+  reg ack;
+  reg [9:0] state;
+  
+  // Outputs
+  wire B3_next;
+  wire S_next;
+  wire S1_next;
+  wire Count_next;
+  wire Wait_next;
+  wire done;
+  wire counting;
+  wire shift_ena;
+
+  // Instantiate the DUT
+  top_module DUT (
+    .d(d),
+    .done_counting(done_counting),
+    .ack(ack),
+    .state(state),
+    .B3_next(B3_next),
+    .S_next(S_next),
+    .S1_next(S1_next),
+    .Count_next(Count_next),
+    .Wait_next(Wait_next),
+    .done(done),
+    .counting(counting),
+    .shift_ena(shift_ena)
+  );
+
+  // File for output
+  integer file;
+
+  // Initial block
+  initial begin
+    file = $fopen("TBout.txt", "w");
+    
+    // Scenario 1
+    state = 10'b0000000001; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 2
+    state = 10'b0000000001; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 3
+    state = 10'b0000000010; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 4
+    state = 10'b0000000010; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 5
+    state = 10'b0000000100; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 6
+    state = 10'b0000000100; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 7
+    state = 10'b0000001000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 8
+    state = 10'b0000001000; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 9
+    state = 10'b0000010000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 10
+    state = 10'b0000100000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 11
+    state = 10'b0001000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 12
+    state = 10'b0010000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 13
+    state = 10'b0100000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    done_counting = 1;
+    #1;
+    $fdisplay(file, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 14
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 15
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 1;
+    #1;
+    $fdisplay(file, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Close the file and terminate
+    $fclose(file);
+    $finish;
+  end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Initialize the simulation with state S (10'b0000000001), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set state to S (10'b0000000001), d=1, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to S1.",
+  "scenario 3": "Set state to S1 (10'b0000000010), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition back to S.",
+  "scenario 4": "Set state to S1 (10'b0000000010), d=1, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to S11.",
+  "scenario 5": "Set state to S11 (10'b0000000100), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe transition to S110.",
+  "scenario 6": "Set state to S11 (10'b0000000100), d=1, done_counting=0, ack=0. Wait for 1 clock cycle and observe the output remains in state S11.",
+  "scenario 7": "Set state to S110 (10'b0000001000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to see the transition back to S.",
+  "scenario 8": "Set state to S110 (10'b0000001000), d=1, done_counting=0, ack=0. Wait for 1 clock cycle, check the transition to B0.",
+  "scenario 9": "Set state to B0 (10'b0000010000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to ensure shift_ena is high as we transition to B1.",
+  "scenario 10": "Set state to B1 (10'b0000100000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to B2.",
+  "scenario 11": "Set state to B2 (10'b0001000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to B3.",
+  "scenario 12": "Set state to B3 (10'b0010000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to confirm transition to Count.",
+  "scenario 13": "Set state to Count (10'b0100000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle and set done_counting=1, then observe the transition to Wait.",
+  "scenario 14": "Set state to Wait (10'b1000000000), d=0, done_counting=1, ack=0. Wait for 1 clock cycle to ensure the state remains in Wait.",
+  "scenario 15": "Set state to Wait (10'b1000000000), d=0, done_counting=1, ack=1. Wait for 1 clock cycle, then observe the transition back to S."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module tb_top_module;
+
+  // Parameters
+  reg d;
+  reg done_counting;
+  reg ack;
+  reg [9:0] state;
+  
+  // Outputs
+  wire B3_next;
+  wire S_next;
+  wire S1_next;
+  wire Count_next;
+  wire Wait_next;
+  wire done;
+  wire counting;
+  wire shift_ena;
+
+  // Instantiate the DUT
+  top_module DUT (
+    .d(d),
+    .done_counting(done_counting),
+    .ack(ack),
+    .state(state),
+    .B3_next(B3_next),
+    .S_next(S_next),
+    .S1_next(S1_next),
+    .Count_next(Count_next),
+    .Wait_next(Wait_next),
+    .done(done),
+    .counting(counting),
+    .shift_ena(shift_ena)
+  );
+
+  // File for output
+  integer file;
+
+  // Initial block
+  initial begin
+    file = $fopen("TBout.txt", "w");
+    
+    // Scenario 1
+    state = 10'b0000000001; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 2
+    state = 10'b0000000001; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 3
+    state = 10'b0000000010; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 4
+    state = 10'b0000000010; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 5
+    state = 10'b0000000100; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 6
+    state = 10'b0000000100; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 7
+    state = 10'b0000001000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 8
+    state = 10'b0000001000; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 9
+    state = 10'b0000010000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 10
+    state = 10'b0000100000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 11
+    state = 10'b0001000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 12
+    state = 10'b0010000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 13
+    state = 10'b0100000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    done_counting = 1;
+    #1;
+    $fdisplay(file, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 14
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 15
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 1;
+    #1;
+    $fdisplay(file, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Close the file and terminate
+    $fclose(file);
+    $finish;
+  end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+module tb_top_module;
+
+  // Parameters
+  reg d;
+  reg done_counting;
+  reg ack;
+  reg [9:0] state;
+  
+  // Outputs
+  wire B3_next;
+  wire S_next;
+  wire S1_next;
+  wire Count_next;
+  wire Wait_next;
+  wire done;
+  wire counting;
+  wire shift_ena;
+
+  // Instantiate the DUT
+  top_module DUT (
+    .d(d),
+    .done_counting(done_counting),
+    .ack(ack),
+    .state(state),
+    .B3_next(B3_next),
+    .S_next(S_next),
+    .S1_next(S1_next),
+    .Count_next(Count_next),
+    .Wait_next(Wait_next),
+    .done(done),
+    .counting(counting),
+    .shift_ena(shift_ena)
+  );
+
+  // File for output
+  integer file;
+
+  // Initial block
+  initial begin
+    file = $fopen("TBout.txt", "w");
+    
+    // Scenario 1
+    state = 10'b0000000001; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 2
+    state = 10'b0000000001; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 3
+    state = 10'b0000000010; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 4
+    state = 10'b0000000010; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 5
+    state = 10'b0000000100; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 6
+    state = 10'b0000000100; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 7
+    state = 10'b0000001000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 8
+    state = 10'b0000001000; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 9
+    state = 10'b0000010000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 10
+    state = 10'b0000100000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 11
+    state = 10'b0001000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 12
+    state = 10'b0010000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 13
+    state = 10'b0100000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    done_counting = 1;
+    #1;
+    $fdisplay(file, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 14
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 15
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 1;
+    #1;
+    $fdisplay(file, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Close the file and terminate
+    $fclose(file);
+    $finish;
+  end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Initialize the simulation with state S (10'b0000000001), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the output.",
+  "scenario 2": "Set state to S (10'b0000000001), d=1, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to S1.",
+  "scenario 3": "Set state to S1 (10'b0000000010), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition back to S.",
+  "scenario 4": "Set state to S1 (10'b0000000010), d=1, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to S11.",
+  "scenario 5": "Set state to S11 (10'b0000000100), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe transition to S110.",
+  "scenario 6": "Set state to S11 (10'b0000000100), d=1, done_counting=0, ack=0. Wait for 1 clock cycle and observe the output remains in state S11.",
+  "scenario 7": "Set state to S110 (10'b0000001000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to see the transition back to S.",
+  "scenario 8": "Set state to S110 (10'b0000001000), d=1, done_counting=0, ack=0. Wait for 1 clock cycle, check the transition to B0.",
+  "scenario 9": "Set state to B0 (10'b0000010000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to ensure shift_ena is high as we transition to B1.",
+  "scenario 10": "Set state to B1 (10'b0000100000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to B2.",
+  "scenario 11": "Set state to B2 (10'b0001000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to observe the transition to B3.",
+  "scenario 12": "Set state to B3 (10'b0010000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle to confirm transition to Count.",
+  "scenario 13": "Set state to Count (10'b0100000000), d=0, done_counting=0, ack=0. Wait for 1 clock cycle and set done_counting=1, then observe the transition to Wait.",
+  "scenario 14": "Set state to Wait (10'b1000000000), d=0, done_counting=1, ack=0. Wait for 1 clock cycle to ensure the state remains in Wait.",
+  "scenario 15": "Set state to Wait (10'b1000000000), d=0, done_counting=1, ack=1. Wait for 1 clock cycle, then observe the transition back to S."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+module tb_top_module;
+
+  // Parameters
+  reg d;
+  reg done_counting;
+  reg ack;
+  reg [9:0] state;
+  
+  // Outputs
+  wire B3_next;
+  wire S_next;
+  wire S1_next;
+  wire Count_next;
+  wire Wait_next;
+  wire done;
+  wire counting;
+  wire shift_ena;
+
+  // Instantiate the DUT
+  top_module DUT (
+    .d(d),
+    .done_counting(done_counting),
+    .ack(ack),
+    .state(state),
+    .B3_next(B3_next),
+    .S_next(S_next),
+    .S1_next(S1_next),
+    .Count_next(Count_next),
+    .Wait_next(Wait_next),
+    .done(done),
+    .counting(counting),
+    .shift_ena(shift_ena)
+  );
+
+  // File for output
+  integer file;
+
+  // Initial block
+  initial begin
+    file = $fopen("TBout.txt", "w");
+    
+    // Scenario 1
+    state = 10'b0000000001; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 2
+    state = 10'b0000000001; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 3
+    state = 10'b0000000010; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 4
+    state = 10'b0000000010; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 5
+    state = 10'b0000000100; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 6
+    state = 10'b0000000100; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 7
+    state = 10'b0000001000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 8
+    state = 10'b0000001000; d = 1; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 9
+    state = 10'b0000010000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 10
+    state = 10'b0000100000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 11
+    state = 10'b0001000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 12
+    state = 10'b0010000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 13
+    state = 10'b0100000000; d = 0; done_counting = 0; ack = 0;
+    #1;
+    done_counting = 1;
+    #1;
+    $fdisplay(file, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 14
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 0;
+    #1;
+    $fdisplay(file, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Scenario 15
+    state = 10'b1000000000; d = 0; done_counting = 1; ack = 1;
+    #1;
+    $fdisplay(file, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", 
+              d, done_counting, ack, state, B3_next, S_next, S1_next, Count_next, Wait_next, done, counting, shift_ena);
+
+    // Close the file and terminate
+    $fclose(file);
+    $finish;
+  end
+
+endmodule
+```
+

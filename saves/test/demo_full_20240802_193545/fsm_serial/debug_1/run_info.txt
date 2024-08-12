@@ -1,0 +1,18 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp fsm_serial_tb.v fsm_serial.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+fsm_serial_tb.v:45: syntax error
+fsm_serial_tb.v:45: error: Malformed statement
+fsm_serial_tb.v:59: syntax error
+fsm_serial_tb.v:59: error: Malformed statement
+fsm_serial_tb.v:73: syntax error
+fsm_serial_tb.v:73: error: Malformed statement
+fsm_serial_tb.v:87: syntax error
+fsm_serial_tb.v:87: error: Malformed statement
+fsm_serial_tb.v:111: syntax error
+fsm_serial_tb.v:111: error: Malformed statement
+

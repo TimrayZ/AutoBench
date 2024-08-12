@@ -1,0 +1,15 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp review2015_fsmonehot_tb.v review2015_fsmonehot.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+review2015_fsmonehot_tb.v:136: $finish called at 16 (1s)
+
+iverilog cmd 2 error:
+

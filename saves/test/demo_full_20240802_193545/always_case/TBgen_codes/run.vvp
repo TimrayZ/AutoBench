@@ -1,0 +1,100 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x557116021f30 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x5571160220c0 .scope module, "tb_top_module" "tb_top_module" 3 3;
+ .timescale -9 -12;
+v0x55711603ed20_0 .var "data0", 3 0;
+v0x55711603ee00_0 .var "data1", 3 0;
+v0x55711603eea0_0 .var "data2", 3 0;
+v0x55711603efa0_0 .var "data3", 3 0;
+v0x55711603f070_0 .var "data4", 3 0;
+v0x55711603f110_0 .var "data5", 3 0;
+v0x55711603f1e0_0 .var/i "file", 31 0;
+v0x55711603f280_0 .net "out", 3 0, v0x55711603ea10_0;  1 drivers
+v0x55711603f370_0 .var "sel", 2 0;
+S_0x557116022250 .scope module, "DUT" "top_module" 3 11, 4 1 0, S_0x5571160220c0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 3 "sel";
+    .port_info 1 /INPUT 4 "data0";
+    .port_info 2 /INPUT 4 "data1";
+    .port_info 3 /INPUT 4 "data2";
+    .port_info 4 /INPUT 4 "data3";
+    .port_info 5 /INPUT 4 "data4";
+    .port_info 6 /INPUT 4 "data5";
+    .port_info 7 /OUTPUT 4 "out";
+v0x55711600a880_0 .net "data0", 3 0, v0x55711603ed20_0;  1 drivers
+v0x55711600a920_0 .net "data1", 3 0, v0x55711603ee00_0;  1 drivers
+v0x55711603e660_0 .net "data2", 3 0, v0x55711603eea0_0;  1 drivers
+v0x55711603e720_0 .net "data3", 3 0, v0x55711603efa0_0;  1 drivers
+v0x55711603e800_0 .net "data4", 3 0, v0x55711603f070_0;  1 drivers
+v0x55711603e930_0 .net "data5", 3 0, v0x55711603f110_0;  1 drivers
+v0x55711603ea10_0 .var "out", 3 0;
+v0x55711603eaf0_0 .net "sel", 2 0, v0x55711603f370_0;  1 drivers
+    .scope S_0x5571160220c0;
+T_0 ;
+    %vpi_func 3 27 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x55711603f1e0_0, 0, 32;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x55711603ed20_0, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x55711603ee00_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x55711603eea0_0, 0, 4;
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v0x55711603efa0_0, 0, 4;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x55711603f070_0, 0, 4;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v0x55711603f110_0, 0, 4;
+    %pushi/vec4 0, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 40 "$fdisplay", v0x55711603f1e0_0, "scenario: 1, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 1, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 45 "$fdisplay", v0x55711603f1e0_0, "scenario: 2, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 2, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 50 "$fdisplay", v0x55711603f1e0_0, "scenario: 3, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 3, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 55 "$fdisplay", v0x55711603f1e0_0, "scenario: 4, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 4, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 60 "$fdisplay", v0x55711603f1e0_0, "scenario: 5, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 5, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 65 "$fdisplay", v0x55711603f1e0_0, "scenario: 6, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 6, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 70 "$fdisplay", v0x55711603f1e0_0, "scenario: 7, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %pushi/vec4 7, 0, 3;
+    %store/vec4 v0x55711603f370_0, 0, 3;
+    %delay 1000, 0;
+    %vpi_call/w 3 75 "$fdisplay", v0x55711603f1e0_0, "scenario: 8, sel = %d, data0 = %d, data1 = %d, data2 = %d, data3 = %d, data4 = %d, data5 = %d, out = %d", v0x55711603f370_0, v0x55711603ed20_0, v0x55711603ee00_0, v0x55711603eea0_0, v0x55711603efa0_0, v0x55711603f070_0, v0x55711603f110_0, v0x55711603f280_0 {0 0 0};
+    %vpi_call/w 3 78 "$fclose", v0x55711603f1e0_0 {0 0 0};
+    %vpi_call/w 3 79 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "always_case_tb.v";
+    "always_case.v";

@@ -1,0 +1,14 @@
+{
+    "task_id": "fsm3s",
+    "task_number": 28,
+    "time": 45.07,
+    "prompt_tokens": 4124,
+    "completion_tokens": 3373,
+    "ERROR(incomplete)": false,
+    "circuit_type": "SEQ",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.07
+}

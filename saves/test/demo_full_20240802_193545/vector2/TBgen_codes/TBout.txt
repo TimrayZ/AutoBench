@@ -1,0 +1,12 @@
+scenario: 1, in = 00000000, out = zzzzzzzz
+scenario: 2, in = ffffffff, out = zzzzzzzz
+scenario: 3, in = aabbccdd, out = zzzzzzzz
+scenario: 4, in = 12345678, out = zzzzzzzz
+scenario: 5, in = deadbeef, out = zzzzzzzz
+scenario: 6, in = 0f0e0d0c, out = zzzzzzzz
+scenario: 7, in = 11112222, out = zzzzzzzz
+scenario: 8, in = 87654321, out = zzzzzzzz
+scenario: 9a, in = ffffffff, out = zzzzzzzz
+scenario: 9b, in = 00000001, out = zzzzzzzz
+scenario: 10a, in = 12345678, out = zzzzzzzz
+scenario: 10b, in = ffffffff, out = zzzzzzzz

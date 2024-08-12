@@ -1,0 +1,10 @@
+scenario: 1, scancode = 57451, left = x, down = x, right = x, up = x
+scenario: 2, scancode = 57458, left = x, down = x, right = x, up = x
+scenario: 3, scancode = 57460, left = x, down = x, right = x, up = x
+scenario: 4, scancode = 57461, left = x, down = x, right = x, up = x
+scenario: 5, scancode = 65535, left = x, down = x, right = x, up = x
+scenario: 6, scancode =     0, left = x, down = x, right = x, up = x
+scenario: 7a, scancode = 57451, left = x, down = x, right = x, up = x
+scenario: 7b, scancode = 57458, left = x, down = x, right = x, up = x
+scenario: 8a, scancode = 57460, left = x, down = x, right = x, up = x
+scenario: 8b, scancode = 57461, left = x, down = x, right = x, up = x

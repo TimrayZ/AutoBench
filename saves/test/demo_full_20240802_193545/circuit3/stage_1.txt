@@ -1,0 +1,64 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+This is a combinational circuit. Read the simulation waveforms to determine what the circuit does, then implement it.
+
+// time            a               b               c               d               q               
+// 0ns             0               0               0               0               0               
+// 5ns             0               0               0               0               0               
+// 10ns            0               0               0               0               0               
+// 15ns            0               0               0               0               0               
+// 20ns            0               0               0               1               0               
+// 25ns            0               0               1               0               0               
+// 30ns            0               0               1               1               0               
+// 35ns            0               1               0               0               0               
+// 40ns            0               1               0               1               1               
+// 45ns            0               1               1               0               1               
+// 50ns            0               1               1               1               1               
+// 55ns            1               0               0               0               0               
+// 60ns            1               0               0               1               1               
+// 65ns            1               0               1               0               1               
+// 70ns            1               0               1               1               1               
+// 75ns            1               1               0               0               0               
+// 80ns            1               1               0               1               1               
+// 85ns            1               1               1               0               1               
+// 90ns            1               1               1               1               1               
+DUT header:
+module top_module (
+	input a, 
+	input b, 
+	input c, 
+	input d,
+	output q
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "Simulation waveforms showing the relationship between inputs (a, b, c, d) and output (q) at various time intervals.",
+  "technical specifications": [
+    "1. DUT is a combinational circuit with inputs 'a', 'b', 'c', 'd' and a single output 'q'.",
+    "2. The DUT should evaluate the output 'q' based on the defined input transitions from the simulation waveforms.",
+    "3. The output 'q' must be verified against expected values outlined in the simulation waveforms for corresponding inputs at each specified time interval.",
+    "4. Testbench will consist of test cases that provide the various combinations of inputs and check the output against the expected result at specific simulation times.",
+    "5. The test cases must cover all possible input combinations for inputs 'a', 'b', 'c', 'd' to ensure comprehensive verification."
+  ]
+}
+

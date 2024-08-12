@@ -1,0 +1,53 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Build a counter that counts from 0 to 999, inclusive, with a period of 1000 cycles. The reset input is active high synchronous, and should reset the counter to 0.
+RTL testbench specification:
+{
+  "important data": "The DUT counts from 0 to 999, inclusive, with a period of 1000 cycles. The reset input is active high synchronous, resetting the counter to 0.",
+  "technical specifications": [
+    "0. DUT header: module top_module(input clk, input reset, output reg [9:0] q);",
+    "1. The counter (q) should increment on every clock cycle until it reaches 999, then reset to 0.",
+    "2. The reset signal should immediately set the counter (q) to 0 when asserted high.",
+    "3. The counter must be capable of counting up to 1000 cycles (0-999 range).",
+    "4. The output q should be a 10-bit wide register.",
+    "5. The counter logic should be synchronous to the clk signal.",
+    "6. Testbench must verify proper counting behavior by applying clock cycles and checking output against expected values.",
+    "7. Multiple test cases should be developed to handle normal counting, reset behavior, and boundary conditions."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	output reg [9:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Initialize the testbench by asserting reset high for 1 clock cycle to reset the counter to 0. After 1 clock cycle, de-assert reset and let the counter start counting from 0.",
+  "scenario 2": "Clock the DUT for 1000 cycles while monitoring the output q to observe the counting behavior from 0 to 999.",
+  "scenario 3": "Assert reset high for 1 clock cycle when q is at 500, then de-assert reset. Observe that q returns to 0 at the next clock cycle.",
+  "scenario 4": "Clock the DUT for an additional 500 cycles after resetting. Observe that q counts from 0 to 499 for a total of 500 cycles post-reset.",
+  "scenario 5": "Apply a continuous clock for 1500 cycles while toggling reset high for 1 clock cycle at various intervals (particularly during counts 249, 500, and 999) to observe the reset behavior.",
+  "scenario 6": "Immediately assert reset, then de-assert it within 10 clock cycles. The counter should not have counted during this time, and q should still be 0.",
+  "scenario 7": "Perform continuous clock cycles for 1000 cycles, then immediately trigger reset for 1 clock cycle, and resume counting. Check that q starts counting from 0 after reset."
+}
+

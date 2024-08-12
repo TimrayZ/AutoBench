@@ -1,0 +1,12 @@
+scenario: 1, y = 000001, w = 0, Y1 = z, Y3 = z
+scenario: 2, y = 000001, w = 1, Y1 = z, Y3 = z
+scenario: 3, y = 000010, w = 0, Y1 = z, Y3 = z
+scenario: 4, y = 000010, w = 1, Y1 = z, Y3 = z
+scenario: 5, y = 000100, w = 0, Y1 = z, Y3 = z
+scenario: 6, y = 000100, w = 1, Y1 = z, Y3 = z
+scenario: 7, y = 001000, w = 0, Y1 = z, Y3 = z
+scenario: 8, y = 001000, w = 1, Y1 = z, Y3 = z
+scenario: 9, y = 010000, w = 0, Y1 = z, Y3 = z
+scenario: 10, y = 010000, w = 1, Y1 = z, Y3 = z
+scenario: 11, y = 100000, w = 0, Y1 = z, Y3 = z
+scenario: 12, y = 100000, w = 1, Y1 = z, Y3 = z

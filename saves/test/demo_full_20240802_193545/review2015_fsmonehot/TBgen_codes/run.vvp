@@ -1,0 +1,229 @@
+#! /home/ge86pap/iverilog/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-116-g014416872)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/system.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/va_math.vpi";
+:vpi_module "/home/ge86pap/iverilog/lib/ivl/v2009.vpi";
+S_0x5636483dd810 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x5636483d06d0 .scope module, "tb_top_module" "tb_top_module" 3 1;
+ .timescale 0 0;
+o0x7fc5ff09c018 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648402ba0_0 .net "B3_next", 0 0, o0x7fc5ff09c018;  0 drivers
+o0x7fc5ff09c048 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648402c60_0 .net "Count_next", 0 0, o0x7fc5ff09c048;  0 drivers
+o0x7fc5ff09c078 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648402d30_0 .net "S1_next", 0 0, o0x7fc5ff09c078;  0 drivers
+o0x7fc5ff09c0a8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648402e30_0 .net "S_next", 0 0, o0x7fc5ff09c0a8;  0 drivers
+o0x7fc5ff09c0d8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648402f00_0 .net "Wait_next", 0 0, o0x7fc5ff09c0d8;  0 drivers
+v0x563648402fa0_0 .var "ack", 0 0;
+o0x7fc5ff09c138 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648403070_0 .net "counting", 0 0, o0x7fc5ff09c138;  0 drivers
+v0x563648403140_0 .var "d", 0 0;
+o0x7fc5ff09c198 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648403210_0 .net "done", 0 0, o0x7fc5ff09c198;  0 drivers
+v0x5636484032e0_0 .var "done_counting", 0 0;
+v0x5636484033b0_0 .var/i "file", 31 0;
+o0x7fc5ff09c1f8 .functor BUFZ 1, C4<z>; HiZ drive
+v0x563648403450_0 .net "shift_ena", 0 0, o0x7fc5ff09c1f8;  0 drivers
+v0x563648403520_0 .var "state", 9 0;
+S_0x5636483d0860 .scope module, "DUT" "top_module" 3 20, 4 1 0, S_0x5636483d06d0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "d";
+    .port_info 1 /INPUT 1 "done_counting";
+    .port_info 2 /INPUT 1 "ack";
+    .port_info 3 /INPUT 10 "state";
+    .port_info 4 /OUTPUT 1 "B3_next";
+    .port_info 5 /OUTPUT 1 "S_next";
+    .port_info 6 /OUTPUT 1 "S1_next";
+    .port_info 7 /OUTPUT 1 "Count_next";
+    .port_info 8 /OUTPUT 1 "Wait_next";
+    .port_info 9 /OUTPUT 1 "done";
+    .port_info 10 /OUTPUT 1 "counting";
+    .port_info 11 /OUTPUT 1 "shift_ena";
+v0x5636483ad210_0 .net "B3_next", 0 0, o0x7fc5ff09c018;  alias, 0 drivers
+v0x5636483ad2b0_0 .net "Count_next", 0 0, o0x7fc5ff09c048;  alias, 0 drivers
+v0x563648402250_0 .net "S1_next", 0 0, o0x7fc5ff09c078;  alias, 0 drivers
+v0x5636484022f0_0 .net "S_next", 0 0, o0x7fc5ff09c0a8;  alias, 0 drivers
+v0x5636484023b0_0 .net "Wait_next", 0 0, o0x7fc5ff09c0d8;  alias, 0 drivers
+v0x5636484024c0_0 .net "ack", 0 0, v0x563648402fa0_0;  1 drivers
+v0x563648402580_0 .net "counting", 0 0, o0x7fc5ff09c138;  alias, 0 drivers
+v0x563648402640_0 .net "d", 0 0, v0x563648403140_0;  1 drivers
+v0x563648402700_0 .net "done", 0 0, o0x7fc5ff09c198;  alias, 0 drivers
+v0x5636484027c0_0 .net "done_counting", 0 0, v0x5636484032e0_0;  1 drivers
+v0x563648402880_0 .net "shift_ena", 0 0, o0x7fc5ff09c1f8;  alias, 0 drivers
+v0x563648402940_0 .net "state", 9 0, v0x563648403520_0;  1 drivers
+    .scope S_0x5636483d06d0;
+T_0 ;
+    %vpi_func 3 40 "$fopen" 32, "TBout.txt", "w" {0 0 0};
+    %store/vec4 v0x5636484033b0_0, 0, 32;
+    %pushi/vec4 1, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 45 "$fdisplay", v0x5636484033b0_0, "scenario: 1, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 1, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 51 "$fdisplay", v0x5636484033b0_0, "scenario: 2, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 2, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 57 "$fdisplay", v0x5636484033b0_0, "scenario: 3, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 2, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 63 "$fdisplay", v0x5636484033b0_0, "scenario: 4, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 4, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 69 "$fdisplay", v0x5636484033b0_0, "scenario: 5, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 4, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 75 "$fdisplay", v0x5636484033b0_0, "scenario: 6, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 8, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 81 "$fdisplay", v0x5636484033b0_0, "scenario: 7, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 8, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 87 "$fdisplay", v0x5636484033b0_0, "scenario: 8, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 16, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 93 "$fdisplay", v0x5636484033b0_0, "scenario: 9, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 32, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 99 "$fdisplay", v0x5636484033b0_0, "scenario: 10, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 64, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 105 "$fdisplay", v0x5636484033b0_0, "scenario: 11, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 128, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 111 "$fdisplay", v0x5636484033b0_0, "scenario: 12, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 256, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 119 "$fdisplay", v0x5636484033b0_0, "scenario: 13, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 512, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 125 "$fdisplay", v0x5636484033b0_0, "scenario: 14, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %pushi/vec4 512, 0, 10;
+    %store/vec4 v0x563648403520_0, 0, 10;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x563648403140_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5636484032e0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x563648402fa0_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 131 "$fdisplay", v0x5636484033b0_0, "scenario: 15, d = %d, done_counting = %d, ack = %d, state = %b, B3_next = %d, S_next = %d, S1_next = %d, Count_next = %d, Wait_next = %d, done = %d, counting = %d, shift_ena = %d", v0x563648403140_0, v0x5636484032e0_0, v0x563648402fa0_0, v0x563648403520_0, v0x563648402ba0_0, v0x563648402e30_0, v0x563648402d30_0, v0x563648402c60_0, v0x563648402f00_0, v0x563648403210_0, v0x563648403070_0, v0x563648403450_0 {0 0 0};
+    %vpi_call/w 3 135 "$fclose", v0x5636484033b0_0 {0 0 0};
+    %vpi_call/w 3 136 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "review2015_fsmonehot_tb.v";
+    "review2015_fsmonehot.v";

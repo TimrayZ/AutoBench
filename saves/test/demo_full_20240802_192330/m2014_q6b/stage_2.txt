@@ -1,0 +1,70 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Consider the state machine shown below:
+
+// A (0) --0--> B
+// A (0) --1--> A
+// B (0) --0--> C
+// B (0) --1--> D
+// C (0) --0--> E
+// C (0) --1--> D
+// D (0) --0--> F
+// D (0) --1--> A
+// E (1) --0--> E
+// E (1) --1--> D
+// F (1) --0--> C
+// F (1) --1--> D
+
+// Assume that you want to Implement the FSM using three flip-flops and state codes y[3:1] = 000, 001, ..., 101 for states A, B, ..., F, respectively. Implement just the next-state logic for y[2] in Verilog. The output Y2 is y[2].
+RTL testbench specification:
+{
+  "important data": "// State Transition Table:\n// State (y)   | Input (w) | Next State (y_next)\n// 000 (A)     | 0         | 001 (B)\n// 000 (A)     | 1         | 000 (A)\n// 001 (B)     | 0         | 010 (C)\n// 001 (B)     | 1         | 011 (D)\n// 010 (C)     | 0         | 100 (E)\n// 010 (C)     | 1         | 011 (D)\n// 011 (D)     | 0         | 101 (F)\n// 011 (D)     | 1         | 000 (A)\n// 100 (E)     | 0         | 100 (E)\n// 100 (E)     | 1         | 011 (D)\n// 101 (F)     | 0         | 010 (C)\n// 101 (F)     | 1         | 011 (D)",
+  "technical specifications": [
+    "1. DUT Module Header: top_module(input [3:1] y, input w, output reg Y2)",
+    "2. The design implements next-state logic based on the current state (y) and input (w).",
+    "3. The output Y2 corresponds to the second bit (y[2]) of the state code.",
+    "4. Testbench must generate combinations of current state (y) and inputs (w) to verify output (Y2).",
+    "5. The DUT should be tested for all possible input combinations to ensure functionality."
+  ]
+}
+DUT header:
+module top_module(
+	input [3:1] y,
+	input w,
+	output reg Y2);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set initial state to A (y = 3'b000) and apply input w = 0. Wait for 1 clock cycle.",
+  "scenario 2": "Keep state at A (y = 3'b000) and apply input w = 1. Wait for 1 clock cycle.",
+  "scenario 3": "Change state to B (y = 3'b001) and apply input w = 0. Wait for 1 clock cycle.",
+  "scenario 4": "Keep state at B (y = 3'b001) and apply input w = 1. Wait for 1 clock cycle.",
+  "scenario 5": "Change state to C (y = 3'b010) and apply input w = 0. Wait for 1 clock cycle.",
+  "scenario 6": "Keep state at C (y = 3'b010) and apply input w = 1. Wait for 1 clock cycle.",
+  "scenario 7": "Change state to D (y = 3'b011) and apply input w = 0. Wait for 1 clock cycle.",
+  "scenario 8": "Keep state at D (y = 3'b011) and apply input w = 1. Wait for 1 clock cycle.",
+  "scenario 9": "Change state to E (y = 3'b100) and apply input w = 0. Wait for 1 clock cycle.",
+  "scenario 10": "Keep state at E (y = 3'b100) and apply input w = 1. Wait for 1 clock cycle.",
+  "scenario 11": "Change state to F (y = 3'b101) and apply input w = 0. Wait for 1 clock cycle.",
+  "scenario 12": "Keep state at F (y = 3'b101) and apply input w = 1. Wait for 1 clock cycle."
+}
+

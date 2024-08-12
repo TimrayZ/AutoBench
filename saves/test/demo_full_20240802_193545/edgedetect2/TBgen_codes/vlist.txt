@@ -1,0 +1,2 @@
+edgedetect2_tb.v
+edgedetect2.v

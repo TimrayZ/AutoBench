@@ -1,0 +1,43 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Implement the circuit described by the Karnaugh map below.
+//        a
+// bc   0 1 
+//  00 | 0 | 1 |
+//  01 | 1 | 1 | 
+//  11 | 1 | 1 | 
+//  10 | 1 | 1 | 
+
+RTL header:
+module top_module(
+	input a, 
+	input b,
+	input c,
+	output out
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+    input a, 
+    input b,
+    input c,
+    output out
+);
+
+    assign out = (b & c) | (a & ~b) | (a & ~c) | (~a & b & c);
+
+endmodule
+```
+

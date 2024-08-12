@@ -1,0 +1,49 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp ece241_2013_q4_tb.v ece241_2013_q4.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+ece241_2013_q4_tb.v:55: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:61: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:66: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:67: error: fr2 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:7:      : fr2 is declared here as wire.
+ece241_2013_q4_tb.v:73: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:74: error: fr2 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:7:      : fr2 is declared here as wire.
+ece241_2013_q4_tb.v:79: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:80: error: fr2 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:7:      : fr2 is declared here as wire.
+ece241_2013_q4_tb.v:81: error: fr3 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:6:      : fr3 is declared here as wire.
+ece241_2013_q4_tb.v:87: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:88: error: fr2 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:7:      : fr2 is declared here as wire.
+ece241_2013_q4_tb.v:89: error: fr3 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:6:      : fr3 is declared here as wire.
+ece241_2013_q4_tb.v:94: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:100: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:105: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:106: error: fr2 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:7:      : fr2 is declared here as wire.
+ece241_2013_q4_tb.v:107: error: fr3 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:6:      : fr3 is declared here as wire.
+ece241_2013_q4_tb.v:113: error: fr1 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:8:      : fr1 is declared here as wire.
+ece241_2013_q4_tb.v:114: error: fr2 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:7:      : fr2 is declared here as wire.
+ece241_2013_q4_tb.v:115: error: fr3 is not a valid l-value in testbench.
+ece241_2013_q4_tb.v:6:      : fr3 is declared here as wire.
+20 error(s) during elaboration.
+

@@ -1,0 +1,84 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+This is a combinational circuit. Read the simulation waveforms to determine what the circuit does, then implement it.
+
+// time            a                  q            
+// 0ns             x                  x            
+// 5ns             x                  x            
+// 10ns            x                  x            
+// 15ns            0               1232            
+// 20ns            1               aee0            
+// 25ns            2               27d4            
+// 30ns            3               5a0e            
+// 35ns            4               2066            
+// 40ns            5               64ce            
+// 45ns            6               c526            
+// 50ns            7               2f19            
+// 55ns            0               1232            
+// 60ns            1               aee0            
+// 65ns            2               27d4            
+// 70ns            4               2066            
+// 75ns            1               aee0            
+// 80ns            1               aee0            
+// 85ns            3               5a0e            
+// 90ns            5               64ce            
+DUT header:
+module top_module (
+	input [2:0] a, 
+	output reg [15:0] q
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": 
+    "Time vs Input/Output Mapping: \n" 
+        		
+    	 	, 	"0ns" : {"a": "x", "q": "x"}, 
+    	"5ns" : {"a": "x", "q": "x"}, 
+    	"10ns": {"a": "x", "q": "x"}, 
+    	"15ns": {"a": "0", "q": "1232"}, 
+    	"20ns": {"a": "1", "q": "aee0"}, 
+    	"25ns": {"a": "2", "q": "27d4"}, 
+    	"30ns": {"a": "3", "q": "5a0e"}, 
+    	"35ns": {"a": "4", "q": "2066"}, 
+    	"40ns": {"a": "5", "q": "64ce"}, 
+    	"45ns": {"a": "6", "q": "c526"}, 
+    	"50ns": {"a": "7", "q": "2f19"}, 
+    	"55ns": {"a": "0", "q": "1232"}, 
+    	"60ns": {"a": "1", "q": "aee0"}, 
+    	"65ns": {"a": "2", "q": "27d4"}, 
+    	"70ns": {"a": "4", "q": "2066"}, 
+    	"75ns": {"a": "1", "q": "aee0"}, 
+    	"80ns": {"a": "1", "q": "aee0"}, 
+    	"85ns": {"a": "3", "q": "5a0e"}, 
+    	"90ns": {"a": "5", "q": "64ce"} 
+   ,
+  "technical specifications": [
+    "1. DUT Name: top_module",
+    "2. DUT Inputs: 1 x 3-bit input 'a'",
+    "3. DUT Outputs: 1 x 16-bit output 'q'",
+    "4. DUT Behavior: Combinational logic that maps input 'a' to output 'q' based on the given time versus input/output values.",
+    "5. Number of test cases needed: At least 15 based on the provided time instances.",
+    "6. Expected Output for each input 'a' at the respective time instance is given}"
+  ]
+}
+

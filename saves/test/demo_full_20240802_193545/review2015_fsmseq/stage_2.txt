@@ -1,0 +1,54 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Build a finite-state machine that searches for the sequence 1101 in an input bit stream. When the sequence is found, it should set start_shifting to 1, forever, until reset. Reset is active high synchronous.
+RTL testbench specification:
+{
+  "important data": "The finite-state machine will search for the sequence 1101 in the input bit stream. When the sequence is found, it sets start_shifting to 1 until reset is activated. Reset is high and synchronous.",
+  "technical specifications": [
+    "1. DUT module header: module top_module(input clk, input reset, input data, output start_shifting);",
+    "2. The DUT should correctly identify the sequence 1101 from the input data.",
+    "3. The start_shifting output should be set to 1 when the sequence 1101 is detected.",
+    "4. The DUT must maintain start_shifting as 1 until a synchronous reset signal is received.",
+    "5. The reset signal should have a priority over the data input and should reset all states in the finite-state machine.",
+    "6. The testbench should generate a sequence of input data that contains both the sequence 1101 and other unrelated bits to test both positive and negative scenarios.",
+    "7. The testbench should verify that the output start_shifting is correctly set to 1 when the sequence is detected and reset to 0 upon receiving the reset signal."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	input data,
+	output start_shifting);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Initialize reset high for 2 clock cycles, then set reset low and apply a sequence of data bits that does not contain '1101' (e.g., 0000) for 4 clock cycles.",
+  "scenario 2": "After scenario 1, set reset high for 1 clock cycle and then low again. Apply the data bits '0001101' over 5 clock cycles to test positive detection followed by a non-detection.",
+  "scenario 3": "Set reset high for 2 clock cycles, then set reset low. Apply the data bits '00110101' over 8 clock cycles, testing both the occurrence of the sequence and unrelated bits that do not form '1101'.",
+  "scenario 4": "Set reset high for 1 clock cycle, then set it low. Inject the sequence '11010000' over 5 clock cycles, ensuring detection occurs and check continuous input after the detected sequence.",
+  "scenario 5": "Set reset high for 2 clock cycles, then low. Feed the sequence '11100101' over 7 clock cycles, which includes '1101' but is separated by non-matching bits and check appropriate handling.",
+  "scenario 6": "Hold reset high for 1 clock cycle, then low. Input the sequence '000000000' for 5 clock cycles, ensuring that there’s no misinterpretation of input bits.",
+  "scenario 7": "Start with reset high for 1 clock cycle, then low. Sequentially provide the bitstream '1101' for 1 clock cycle, followed by random bits for the next 4 cycles to assess whether the reset affects the output correctly.",
+  "scenario 8": "Assert reset high for 1 clock cycle, bring it low, and then provide a continuous stream of the bit sequence '11110110101' over 11 clock cycles, ensuring stability and correctness in output after a sequence is detected."
+}
+

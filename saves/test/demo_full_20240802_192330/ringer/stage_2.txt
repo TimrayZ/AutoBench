@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Suppose you are designing a circuit to control a cellphone's ringer and vibration motor. Whenever the phone needs to ring from an incoming call (input ring), your circuit must either turn on the ringer (output ringer = 1) or the motor (output motor = 1), but not both. If the phone is in vibrate mode (input vibrate_mode = 1), turn on the motor. Otherwise, turn on the ringer.
+RTL testbench specification:
+{
+  "important data": "The DUT must have the following operational characteristics: When ring = 1 and vibrate_mode = 0, output ringer = 1 and motor = 0; When vibrate_mode = 1, output ringer = 0 and motor = 1. It must never allow both outputs to be high at the same time. Inputs are ring (1 bit, signifies an incoming call) and vibrate_mode (1 bit, signifies if the phone is in vibrate mode). Outputs are ringer (1 bit, activates the ringer) and motor (1 bit, activates the vibration motor).",
+  "technical specifications": [
+    "1. DUT Module Header: module top_module(input ring, input vibrate_mode, output ringer, output motor);",
+    "2. The DUT should turn on the ringer (ringer = 1) when ring = 1 and vibrate_mode = 0.",
+    "3. The DUT should turn on the motor (motor = 1) when vibrate_mode = 1.",
+    "4. The DUT must ensure that the ringer and motor outputs are never both high at the same time.",
+    "5. The testbench should initialize inputs, apply stimulus to the DUT, check outputs, and report whether they match expected results."
+  ]
+}
+DUT header:
+module top_module(
+	input ring, 
+	input vibrate_mode,
+	output ringer,
+	output motor
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set ring = 1 and vibrate_mode = 0. This scenario should be tested for 2 clock cycles (initially apply inputs at clock cycle 0).",
+  "scenario 2": "Set ring = 0 and vibrate_mode = 0. This scenario should be tested for 2 clock cycles (initially apply inputs at clock cycle 2).",
+  "scenario 3": "Set ring = 0 and vibrate_mode = 1. This scenario should be tested for 2 clock cycles (initially apply inputs at clock cycle 4).",
+  "scenario 4": "Set ring = 1 and vibrate_mode = 1. This scenario should be tested for 2 clock cycles (initially apply inputs at clock cycle 6).",
+  "scenario 5": "Set ring = 1 and vibrate_mode = 0, then at clock cycle 8, change vibrate_mode to 1 while keeping ring = 1. This scenario should be tested for 4 clock cycles (initially apply inputs at clock cycle 8 and monitor until clock cycle 12).",
+  "scenario 6": "Set ring = 0 and vibrate_mode = 0, then at clock cycle 10, change ring to 1. This scenario should be tested for 4 clock cycles (initially apply inputs at clock cycle 10 and monitor until clock cycle 14).",
+  "scenario 7": "Set ring = 0 and vibrate_mode = 1, then at clock cycle 12, change vibrate_mode to 0. This scenario should be tested for 4 clock cycles (initially apply inputs at clock cycle 12 and monitor until clock cycle 16)."
+}
+

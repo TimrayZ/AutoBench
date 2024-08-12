@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Suppose you're building a circuit to process scancodes from a PS/2 keyboard for a game. Given the last two bytes of scancodes received, you need to indicate whether one of the arrow keys on the keyboard have been pressed. This involves a fairly simple mapping, which can be implemented as a case statement (or if-elseif) with four cases.
+// Scancode[15:0] | Arrow key
+// 16'he06b | left arrow
+// 16'he072 | down arrow
+// 16'he074 | right arrow
+// 16'he075 | up arrow
+// Anything else | none
+// Your circuit has one 16-bit input, and four outputs. Build this circuit that recognizes these four scancodes and asserts the correct output.
+
+
+DUT header:
+module top_module (
+	input [15:0] scancode,
+	output reg left,
+	output reg down,
+	output reg right,
+	output reg up
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "Scancode[15:0] | Arrow key\n16'he06b | left arrow\n16'he072 | down arrow\n16'he074 | right arrow\n16'he075 | up arrow\nAnything else | none",
+  "technical specifications": [
+    "0: DUT Module Header: module top_module (input [15:0] scancode, output reg left, output reg down, output reg right, output reg up)",
+    "1: Input Signal Specification: The DUT accepts a 16-bit input signal named 'scancode'.",
+    "2: Output Signal Specification: The DUT provides four output signals: 'left', 'down', 'right', and 'up', each of type reg.",
+    "3: Functional Requirements: The DUT should assert only one of the output signals corresponding to the scancode input based on the defined mapping for arrow keys.",
+    "4: Output Logic: The output signals should be deasserted (0) when the scancode is not one of the specified values (16'he06b, 16'he072, 16'he074, 16'he075)."
+  ]
+}
+

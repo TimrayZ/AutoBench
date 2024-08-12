@@ -1,0 +1,54 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+One common place to see a replication operator is when sign-extending a smaller number to a larger one, while preserving its signed value. This is done by replicating the sign bit (the most significant bit) of the smaller number to the left. For example, sign-extending 4'b0101 (5) to 8 bits results in 8'b00000101 (5), while sign-extending 4'b1101 (-3) to 8 bits results in 8'b11111101 (-3). Build a circuit that sign-extends an 8-bit number to 32 bits. This requires a concatenation of 24 copies of the sign bit (i.e., replicate bit[7] 24 times) followed by the 8-bit number itself.
+RTL testbench specification:
+{
+  "important data": "The DUT takes an 8-bit signed input and produces a 32-bit signed output through sign extension by replicating the sign bit.",
+  "technical specifications": [
+    "0: The DUT module name is 'top_module'.",
+    "1: The DUT has one input signal 'in' that is 8 bits wide.",
+    "2: The DUT has one output signal 'out' that is 32 bits wide.",
+    "3: The DUT must yield a result where the most significant bit (bit[7]) of the input 'in' is replicated 24 times to the left of the 8-bit number in order to form the 32-bit output 'out'.",
+    "4: For input 8'b0101, the expected output is 32'b00000000000000000000000000000101.",
+    "5: For input 8'b1101, the expected output is 32'b11111111111111111111111111111101."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] in,
+	output [31:0] out
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply an input of 8'b01010101 (binary representation for 85) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 2": "Apply an input of 8'b11010011 (binary representation for -13) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 3": "Apply an input of 8'b00000000 (binary representation for 0) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 4": "Apply an input of 8'b11111111 (binary representation for -1) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 5": "Apply an input of 8'b01111111 (binary representation for 127) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 6": "Apply an input of 8'b10000000 (binary representation for -128) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 7": "Apply an input of 8'b10101010 (binary representation for -86) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 8": "Apply an input of 8'b00001111 (binary representation for 15) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 9": "Apply an input of 8'b01101001 (binary representation for 105) at time 0 and observe the output after 1 clock cycle.",
+  "scenario 10": "Apply an input of 8'b11111100 (binary representation for -4) at time 0 and observe the output after 1 clock cycle."
+}
+

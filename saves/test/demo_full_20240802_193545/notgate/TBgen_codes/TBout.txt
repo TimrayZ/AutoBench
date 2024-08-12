@@ -1,0 +1,9 @@
+scenario: 1, in = 0, out = z
+scenario: 2, in = 1, out = z
+scenario: 3a, in = 0, out = z
+scenario: 3b, in = 1, out = z
+scenario: 4a, in = 1, out = z
+scenario: 4b, in = 0, out = z
+scenario: 5a, in = 0, out = z
+scenario: 5b, in = 1, out = z
+scenario: 5c, in = 0, out = z

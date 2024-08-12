@@ -1,0 +1,10 @@
+scenario: 1, a = 0, b = 0, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 2, a = 5, b = 2, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 3, a = 7, b = 0, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 4, a = 3, b = 3, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 5, a = 6, b = 7, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 6, a = 1, b = 4, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 7, a = 2, b = 5, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 8, a = 7, b = 7, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 9, a = 0, b = 7, out_or_bitwise = z, out_or_logical = z, out_not =  z
+scenario: 10, a = 6, b = 2, out_or_bitwise = z, out_or_logical = z, out_not =  z

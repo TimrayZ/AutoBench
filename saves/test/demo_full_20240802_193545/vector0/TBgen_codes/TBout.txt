@@ -1,0 +1,8 @@
+scenario: 1, vec = 0, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 2, vec = 1, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 3, vec = 2, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 4, vec = 3, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 5, vec = 4, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 6, vec = 5, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 7, vec = 6, outv = z, o2 = z, o1 = z, o0 = z
+scenario: 8, vec = 7, outv = z, o2 = z, o1 = z, o0 = z

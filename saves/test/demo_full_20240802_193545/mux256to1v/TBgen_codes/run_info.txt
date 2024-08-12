@@ -1,0 +1,75 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp mux256to1v_tb.v mux256to1v.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:60: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:61: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:62: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:63: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:64: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:65: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:66: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:66: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:66: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:66: warning: Numeric constant truncated to 4 bits.
+mux256to1v_tb.v:66: warning: Numeric constant truncated to 4 bits.
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+mux256to1v_tb.v:80: $finish called at 39000 (1ps)
+
+iverilog cmd 2 error:
+

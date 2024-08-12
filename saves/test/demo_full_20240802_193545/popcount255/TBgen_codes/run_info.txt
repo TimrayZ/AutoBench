@@ -1,0 +1,17 @@
+iverilog simulation passed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp popcount255_tb.v popcount255.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+popcount255_tb.v:36: warning: Extra digits given for sized binary constant.
+popcount255_tb.v:36: warning: Numeric constant truncated to 255 bits.
+
+iverilog cmd 2:
+~/iverilog/bin/vvp run.vvp
+iverilog cmd 2 output:
+popcount255_tb.v:63: $finish called at 8000 (1ps)
+
+iverilog cmd 2 error:
+

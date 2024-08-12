@@ -1,0 +1,8 @@
+scenario: 1, a =  1, b =  2, c =  3, d =  4, e =  5, f =  6, w =   z, x =   z, y =   z, z =   z
+scenario: 2, a = 31, b = 30, c = 29, d = 28, e = 27, f = 26, w =   z, x =   z, y =   z, z =   z
+scenario: 3, a = 10, b = 21, c = 24, d =  7, e =  9, f = 18, w =   z, x =   z, y =   z, z =   z
+scenario: 4, a =  0, b = 31, c =  1, d = 30, e =  2, f = 29, w =   z, x =   z, y =   z, z =   z
+scenario: 5, a =  7, b =  8, c =  9, d = 10, e = 11, f = 12, w =   z, x =   z, y =   z, z =   z
+scenario: 6, a = 16, b = 17, c = 18, d = 19, e = 20, f = 21, w =   z, x =   z, y =   z, z =   z
+scenario: 7, a = 25, b = 26, c = 27, d = 28, e = 29, f = 30, w =   z, x =   z, y =   z, z =   z
+scenario: 8, a = 31, b =  0, c = 21, d = 22, e =  8, f =  9, w =   z, x =   z, y =   z, z =   z

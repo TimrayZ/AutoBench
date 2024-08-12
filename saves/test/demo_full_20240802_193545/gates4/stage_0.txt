@@ -1,0 +1,42 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Build a combinational circuit with four inputs, in[3:0]. There are 3 outputs: 
+// (1) out_and: output of a 4-input AND gate. 
+// (2) out_or: output of a 4-input OR gate. 
+// (3) out_xor: output of a 4-input XOR gate.
+
+RTL header:
+module top_module (
+	input [3:0] in,
+	output out_and,
+	output out_or,
+	output out_xor
+);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module (
+    input [3:0] in,
+    output out_and,
+    output out_or,
+    output out_xor
+);
+
+    assign out_and = in[0] & in[1] & in[2] & in[3];
+    assign out_or = in[0] | in[1] | in[2] | in[3];
+    assign out_xor = in[0] ^ in[1] ^ in[2] ^ in[3];
+
+endmodule
+```
+

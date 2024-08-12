@@ -1,0 +1,15 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp count_clock_tb.v count_clock.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+count_clock_tb.v:54: error: Unable to bind wire/reg/memory `i' in `testbench'
+count_clock_tb.v:54: error: Unable to elaborate condition expression.
+count_clock_tb.v:66: error: Unable to bind wire/reg/memory `i' in `testbench'
+count_clock_tb.v:66: error: Unable to elaborate condition expression.
+count_clock_tb.v:101: error: Unable to bind wire/reg/memory `i' in `testbench'
+count_clock_tb.v:101: error: Unable to elaborate condition expression.
+6 error(s) during elaboration.
+

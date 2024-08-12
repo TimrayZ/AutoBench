@@ -1,0 +1,594 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Parameters
+    reg clk;
+    reg resetn;
+    reg [3:1] r;
+    wire [3:1] g;
+
+    // Instantiate the DUT
+    top_module DUT (
+        .clk(clk),
+        .resetn(resetn),
+        .r(r),
+        .g(g)
+    );
+
+    // File Handling
+    integer file;
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+    end
+
+    // Test Cases
+    initial begin
+        // Open the file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1: Reset the FSM
+        resetn = 0; // Active low reset
+        #10; // Wait for 1 clock cycle
+        resetn = 1; // Release reset
+        #10; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Scenario 2: Device 1 grant
+        r = 3'b100; // r1=1, r2=0, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 2, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 3: Device 2 grant
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 3, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 4: Device 3 grant
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 4, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 5: Priority handling
+        r = 3'b110; // r1=1, r2=1, r3=0
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 5, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 5a, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 6: Device 3 without higher priority
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 6, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 7: Conflicting requests
+        r = 3'b111; // r1=1, r2=1, r3=1
+        #40; // Wait for 4 clock cycles
+        $fdisplay(file, "scenario: 7, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 8: Idle state
+        r = 3'b000; // All requests are low
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 8, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Close the file
+        $fclose(file);
+        $finish; // End simulation
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Reset the FSM by setting resetn low (0) and maintain it for 1 clock cycle. After that, set resetn high (1) and observe the initial state.",
+  "scenario 2": "With resetn high (1), set r[1] to 1 (high) and r[2] and r[3] to 0 (low) for 2 clock cycles to check for state transition to device 1 grant.",
+  "scenario 3": "Keep resetn high (1) and set r[2] to 1 (high) while r[1] and r[3] are low (0) for 2 clock cycles to verify state transition to device 2 grant.",
+  "scenario 4": "With resetn high (1), set r[3] to 1 (high) while r[1] and r[2] are low (0) for 2 clock cycles to validate state transition for device 3 when no higher priority requests are active.",
+  "scenario 5": "Set resetn high (1), and in cycle 1, set r[1] = 1 (high), r[2] = 1 (high), and r[3] = 0 (low) to test priority handling for device 1 for 3 clock cycles. Then, switch r[1] back to 0 (low) while keeping r[2] high for another 2 clock cycles to see if the FSM grants to device 2.",
+  "scenario 6": "With resetn high (1), keep r[1] and r[2] low (0), set r[3] high (1) for 2 clock cycles to check return to the appropriate state after releasing device 3.",
+  "scenario 7": "Set resetn high (1), and for 1 clock cycle drive r[1] = 1 (high) and r[2] = 1 (high) and r[3] = 1 (high) to test the FSM's behavior under conflicting requests and validate the priority of grants for the next 4 clock cycles.",
+  "scenario 8": "With resetn high (1), cycle through combinations where all r[i] are low (0) for 3 clock cycles, confirming the FSM can return to its idle state."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Parameters
+    reg clk;
+    reg resetn;
+    reg [3:1] r;
+    wire [3:1] g;
+
+    // Instantiate the DUT
+    top_module DUT (
+        .clk(clk),
+        .resetn(resetn),
+        .r(r),
+        .g(g)
+    );
+
+    // File Handling
+    integer file;
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+    end
+
+    // Test Cases
+    initial begin
+        // Open the file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1: Reset the FSM
+        resetn = 0; // Active low reset
+        #10; // Wait for 1 clock cycle
+        resetn = 1; // Release reset
+        #10; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Scenario 2: Device 1 grant
+        r = 3'b100; // r1=1, r2=0, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 2, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 3: Device 2 grant
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 3, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 4: Device 3 grant
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 4, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 5: Priority handling
+        r = 3'b110; // r1=1, r2=1, r3=0
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 5, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 5a, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 6: Device 3 without higher priority
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 6, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 7: Conflicting requests
+        r = 3'b111; // r1=1, r2=1, r3=1
+        #40; // Wait for 4 clock cycles
+        $fdisplay(file, "scenario: 7, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 8: Idle state
+        r = 3'b000; // All requests are low
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 8, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Close the file
+        $fclose(file);
+        $finish; // End simulation
+    end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Parameters
+    reg clk;
+    reg resetn;
+    reg [3:1] r;
+    wire [3:1] g;
+
+    // Instantiate the DUT
+    top_module DUT (
+        .clk(clk),
+        .resetn(resetn),
+        .r(r),
+        .g(g)
+    );
+
+    // File Handling
+    integer file;
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+    end
+
+    // Test Cases
+    initial begin
+        // Open the file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1: Reset the FSM
+        resetn = 0; // Active low reset
+        #10; // Wait for 1 clock cycle
+        resetn = 1; // Release reset
+        #10; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Scenario 2: Device 1 grant
+        r = 3'b100; // r1=1, r2=0, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 2, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 3: Device 2 grant
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 3, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 4: Device 3 grant
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 4, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 5: Priority handling
+        r = 3'b110; // r1=1, r2=1, r3=0
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 5, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 5a, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 6: Device 3 without higher priority
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 6, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 7: Conflicting requests
+        r = 3'b111; // r1=1, r2=1, r3=1
+        #40; // Wait for 4 clock cycles
+        $fdisplay(file, "scenario: 7, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 8: Idle state
+        r = 3'b000; // All requests are low
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 8, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Close the file
+        $fclose(file);
+        $finish; // End simulation
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Reset the FSM by setting resetn low (0) and maintain it for 1 clock cycle. After that, set resetn high (1) and observe the initial state.",
+  "scenario 2": "With resetn high (1), set r[1] to 1 (high) and r[2] and r[3] to 0 (low) for 2 clock cycles to check for state transition to device 1 grant.",
+  "scenario 3": "Keep resetn high (1) and set r[2] to 1 (high) while r[1] and r[3] are low (0) for 2 clock cycles to verify state transition to device 2 grant.",
+  "scenario 4": "With resetn high (1), set r[3] to 1 (high) while r[1] and r[2] are low (0) for 2 clock cycles to validate state transition for device 3 when no higher priority requests are active.",
+  "scenario 5": "Set resetn high (1), and in cycle 1, set r[1] = 1 (high), r[2] = 1 (high), and r[3] = 0 (low) to test priority handling for device 1 for 3 clock cycles. Then, switch r[1] back to 0 (low) while keeping r[2] high for another 2 clock cycles to see if the FSM grants to device 2.",
+  "scenario 6": "With resetn high (1), keep r[1] and r[2] low (0), set r[3] high (1) for 2 clock cycles to check return to the appropriate state after releasing device 3.",
+  "scenario 7": "Set resetn high (1), and for 1 clock cycle drive r[1] = 1 (high) and r[2] = 1 (high) and r[3] = 1 (high) to test the FSM's behavior under conflicting requests and validate the priority of grants for the next 4 clock cycles.",
+  "scenario 8": "With resetn high (1), cycle through combinations where all r[i] are low (0) for 3 clock cycles, confirming the FSM can return to its idle state."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Parameters
+    reg clk;
+    reg resetn;
+    reg [3:1] r;
+    wire [3:1] g;
+
+    // Instantiate the DUT
+    top_module DUT (
+        .clk(clk),
+        .resetn(resetn),
+        .r(r),
+        .g(g)
+    );
+
+    // File Handling
+    integer file;
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+    end
+
+    // Test Cases
+    initial begin
+        // Open the file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1: Reset the FSM
+        resetn = 0; // Active low reset
+        #10; // Wait for 1 clock cycle
+        resetn = 1; // Release reset
+        #10; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Scenario 2: Device 1 grant
+        r = 3'b100; // r1=1, r2=0, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 2, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 3: Device 2 grant
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 3, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 4: Device 3 grant
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 4, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 5: Priority handling
+        r = 3'b110; // r1=1, r2=1, r3=0
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 5, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 5a, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 6: Device 3 without higher priority
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 6, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 7: Conflicting requests
+        r = 3'b111; // r1=1, r2=1, r3=1
+        #40; // Wait for 4 clock cycles
+        $fdisplay(file, "scenario: 7, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Verify priority during conflicting requests (extended)
+        #20; // Wait for an additional 2 clock cycles to check state after conflicting requests
+        
+        // Scenario 8: Idle state
+        r = 3'b000; // All requests are low
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 8, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Close the file
+        $fclose(file);
+        $finish; // End simulation
+    end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Parameters
+    reg clk;
+    reg resetn;
+    reg [3:1] r;
+    wire [3:1] g;
+
+    // Instantiate the DUT
+    top_module DUT (
+        .clk(clk),
+        .resetn(resetn),
+        .r(r),
+        .g(g)
+    );
+
+    // File Handling
+    integer file;
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+    end
+
+    // Test Cases
+    initial begin
+        // Open the file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1: Reset the FSM
+        resetn = 0; // Active low reset
+        #10; // Wait for 1 clock cycle
+        resetn = 1; // Release reset
+        #10; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Scenario 2: Device 1 grant
+        r = 3'b100; // r1=1, r2=0, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 2, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 3: Device 2 grant
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 3, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 4: Device 3 grant
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 4, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 5: Priority handling
+        r = 3'b110; // r1=1, r2=1, r3=0
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 5, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 5a, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 6: Device 3 without higher priority
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 6, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 7: Conflicting requests
+        r = 3'b111; // r1=1, r2=1, r3=1
+        #40; // Wait for 4 clock cycles
+        $fdisplay(file, "scenario: 7, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Verify priority during conflicting requests (extended)
+        #20; // Wait for an additional 2 clock cycles to check state after conflicting requests
+        
+        // Scenario 8: Idle state
+        r = 3'b000; // All requests are low
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 8, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Close the file
+        $fclose(file);
+        $finish; // End simulation
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Reset the FSM by setting resetn low (0) and maintain it for 1 clock cycle. After that, set resetn high (1) and observe the initial state.",
+  "scenario 2": "With resetn high (1), set r[1] to 1 (high) and r[2] and r[3] to 0 (low) for 2 clock cycles to check for state transition to device 1 grant.",
+  "scenario 3": "Keep resetn high (1) and set r[2] to 1 (high) while r[1] and r[3] are low (0) for 2 clock cycles to verify state transition to device 2 grant.",
+  "scenario 4": "With resetn high (1), set r[3] to 1 (high) while r[1] and r[2] are low (0) for 2 clock cycles to validate state transition for device 3 when no higher priority requests are active.",
+  "scenario 5": "Set resetn high (1), and in cycle 1, set r[1] = 1 (high), r[2] = 1 (high), and r[3] = 0 (low) to test priority handling for device 1 for 3 clock cycles. Then, switch r[1] back to 0 (low) while keeping r[2] high for another 2 clock cycles to see if the FSM grants to device 2.",
+  "scenario 6": "With resetn high (1), keep r[1] and r[2] low (0), set r[3] high (1) for 2 clock cycles to check return to the appropriate state after releasing device 3.",
+  "scenario 7": "Set resetn high (1), and for 1 clock cycle drive r[1] = 1 (high) and r[2] = 1 (high) and r[3] = 1 (high) to test the FSM's behavior under conflicting requests and validate the priority of grants for the next 4 clock cycles.",
+  "scenario 8": "With resetn high (1), cycle through combinations where all r[i] are low (0) for 3 clock cycles, confirming the FSM can return to its idle state."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Parameters
+    reg clk;
+    reg resetn;
+    reg [3:1] r;
+    wire [3:1] g;
+
+    // Instantiate the DUT
+    top_module DUT (
+        .clk(clk),
+        .resetn(resetn),
+        .r(r),
+        .g(g)
+    );
+
+    // File Handling
+    integer file;
+
+    // Clock Generation
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk; // 10 time units period
+    end
+
+    // Test Cases
+    initial begin
+        // Open the file
+        file = $fopen("TBout.txt", "w");
+
+        // Scenario 1: Reset the FSM
+        resetn = 0; // Active low reset
+        #10; // Wait for 1 clock cycle
+        resetn = 1; // Release reset
+        #10; // Wait for signals to stabilize
+        $fdisplay(file, "scenario: 1, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Scenario 2: Device 1 grant
+        r = 3'b100; // r1=1, r2=0, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 2, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 3: Device 2 grant
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 3, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 4: Device 3 grant
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 4, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 5: Priority handling
+        r = 3'b110; // r1=1, r2=1, r3=0
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 5, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        r = 3'b010; // r1=0, r2=1, r3=0
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 5a, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 6: Device 3 without higher priority
+        r = 3'b001; // r1=0, r2=0, r3=1
+        #20; // Wait for 2 clock cycles
+        $fdisplay(file, "scenario: 6, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Scenario 7: Conflicting requests
+        r = 3'b111; // r1=1, r2=1, r3=1
+        #40; // Wait for 4 clock cycles
+        $fdisplay(file, "scenario: 7, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+        
+        // Verify priority during conflicting requests (extended)
+        #20; // Wait for an additional 2 clock cycles to check state after conflicting requests
+        
+        // Scenario 8: Idle state
+        r = 3'b000; // All requests are low
+        #30; // Wait for 3 clock cycles
+        $fdisplay(file, "scenario: 8, clk = %d, resetn = %d, r = %b, g = %b", clk, resetn, r, g);
+
+        // Close the file
+        $fclose(file);
+        $finish; // End simulation
+    end
+
+endmodule
+```
+

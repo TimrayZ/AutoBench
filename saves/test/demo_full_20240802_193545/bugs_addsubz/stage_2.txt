@@ -1,0 +1,79 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+The following adder-subtractor with zero flag doesn't work. Fix the bug(s).
+
+// synthesis verilog_input_version verilog_2001
+// module top_module ( 
+//     input do_sub,
+//     input [7:0] a,
+//     input [7:0] b,
+//     output reg [7:0] out,
+//     output reg result_is_zero
+// );//
+
+//     always @(*) begin
+//         case (do_sub)
+//           0: out = a+b;
+//           1: out = a-b;
+//         endcase
+
+//         if (~out)
+//             result_is_zero = 1;
+//     end
+
+// endmodule
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is a combinational circuit that operates as an adder or subtractor based on the 'do_sub' control input.",
+    "2. Inputs: 'do_sub' (control signal, 1-bit), 'a' (8-bit input), 'b' (8-bit input).",
+    "3. Outputs: 'out' (8-bit result of addition or subtraction), 'result_is_zero' (1-bit indicating if the 'out' is zero).",
+    "4. The output 'out' is computed as follows: if 'do_sub' is 0, then 'out' = a + b; if 'do_sub' is 1, then 'out' = a - b.",
+    "5. The 'result_is_zero' output should be asserted (1) if 'out' is equal to zero, else (0).",
+    "6. The current implementation has a bug in the assignment of 'result_is_zero'. It should ideally be checked after calculating 'out'.",
+    "7. The testbench will simulate various cases for different values of inputs 'a' and 'b' with both control states (do_sub = 0 and do_sub = 1) to validate the functionality of the DUT."
+  ]
+}
+DUT header:
+module top_module (
+	input do_sub,
+	input [7:0] a,
+	input [7:0] b,
+	output reg [7:0] out,
+	output reg result_is_zero
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set do_sub = 0, a = 8'h01, b = 8'h01. Wait for 1 clock cycle.",
+  "scenario 2": "Set do_sub = 0, a = 8'hFF, b = 8'h01. Wait for 1 clock cycle.",
+  "scenario 3": "Set do_sub = 0, a = 8'h00, b = 8'h00. Wait for 1 clock cycle.",
+  "scenario 4": "Set do_sub = 1, a = 8'h02, b = 8'h01. Wait for 1 clock cycle.",
+  "scenario 5": "Set do_sub = 1, a = 8'h01, b = 8'hFF. Wait for 1 clock cycle.",
+  "scenario 6": "Set do_sub = 1, a = 8'h00, b = 8'h00. Wait for 1 clock cycle.",
+  "scenario 7": "Set do_sub = 0, a = 8'h7F, b = 8'h80. Wait for 1 clock cycle.",
+  "scenario 8": "Set do_sub = 1, a = 8'h80, b = 8'h7F. Wait for 1 clock cycle.",
+  "scenario 9": "Set do_sub = 0, a = 8'hAA, b = 8'h55. Wait for 1 clock cycle.",
+  "scenario 10": "Set do_sub = 1, a = 8'h55, b = 8'hAA. Wait for 1 clock cycle."
+}
+

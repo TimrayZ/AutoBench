@@ -1,0 +1,14 @@
+{
+    "task_id": "reduction",
+    "task_number": 100,
+    "time": 46.58,
+    "prompt_tokens": 3741,
+    "completion_tokens": 1964,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": true,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.08
+}

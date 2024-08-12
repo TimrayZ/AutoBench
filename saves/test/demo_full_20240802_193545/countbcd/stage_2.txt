@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Build a 4-digit BCD (binary-coded decimal) counter. Each decimal digit is encoded using 4 bits: q[3:0] is the ones digit, q[7:4] is the tens digit, etc. For digits [3:1], also output an enable signal indicating when each of the upper three digits should be incremented. Include a synchronous active-high reset.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. DUT module header: module top_module(input clk, input reset, output [3:1] ena, output reg [15:0] q);",
+    "2. DUT functionality: The module is a 4-digit BCD counter using 4 bits per decimal digit: q[3:0] for ones, q[7:4] for tens, q[11:8] for hundreds, and q[15:12] for thousands.",
+    "3. The output enable signal 'ena' indicates when to increment each of the upper three digits (hundreds, thousands, tens).",
+    "4. The counter should reset synchronously with an active-high reset signal.",
+    "5. Each decimal digit (ones, tens, hundreds, thousands) must increment correctly in BCD format, meaning they should roll over from 9 to 0.",
+    "6. The testbench should include stimulus generation for clk and reset, and then check the output 'q' and 'ena' values against expected results for various input scenarios."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	output [3:1] ena,
+	output reg [15:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply active-high reset for 1 clock cycle (at clk=0 to clk=1), then release reset (reset goes low). Observe output q and ena signals.",
+  "scenario 2": "Activate clock for 10 cycles (clk toggles from 0 to 1 and back), observe q and ena after each rising edge of the clock. Start from the reset state.",
+  "scenario 3": "Continue to clock for an additional 20 cycles after the previous test, checking the state of q and ena at each rising edge to see how they increment in BCD format.",
+  "scenario 4": "Test by releasing reset, then apply active-high reset again for 1 clock cycle at clk=30, then release reset. Observe output q and ena signals.",
+  "scenario 5": "Run the counter until q transitions from 9 to 0 in the ones place (at least 10 clock cycles) and monitor ena for correct enable outputs.",
+  "scenario 6": "Hold the clk signal low for 5 cycles to ensure that the DUT does not change its state followed by releasing clk and observing the initial increment state.",
+  "scenario 7": "After letting the counter run, apply reset again after 50 clock cycles and ensure that q returns to 0 and ena outputs reflect the reset state."
+}
+

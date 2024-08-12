@@ -1,0 +1,66 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+Please generate the verilog RTL code according to the following description and header information:
+problem description:
+Build a 4-digit BCD (binary-coded decimal) counter. Each decimal digit is encoded using 4 bits: q[3:0] is the ones digit, q[7:4] is the tens digit, etc. For digits [3:1], also output an enable signal indicating when each of the upper three digits should be incremented. Include a synchronous active-high reset.
+RTL header:
+module top_module(
+	input clk,
+	input reset,
+	output [3:1] ena,
+	output reg [15:0] q);
+
+please only reply verilog codes. reply_format:
+```verilog
+your_code_here...
+```
+
+
+########## assistant ##########
+```verilog
+module top_module(
+    input clk,
+    input reset,
+    output reg [3:1] ena,
+    output reg [15:0] q
+);
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            q <= 16'b0;
+            ena <= 3'b0;
+        end else begin
+            // Increment BCD counter
+            if (q[3:0] == 4'b1001) begin
+                q[3:0] <= 4'b0000; // Reset ones digit
+                ena[1] <= 1; // Enable increment for tens digit
+                if (q[7:4] == 4'b1001) begin
+                    q[7:4] <= 4'b0000; // Reset tens digit
+                    ena[2] <= 1; // Enable increment for hundreds digit
+                    if (q[11:8] == 4'b1001) begin
+                        q[11:8] <= 4'b0000; // Reset hundreds digit
+                        ena[3] <= 1; // Enable increment for thousands digit
+                        if (q[15:12] == 4'b1001) begin
+                            q[15:12] <= 4'b0000; // Reset thousands digit
+                        end else begin
+                            q[15:12] <= q[15:12] + 1; // Increment thousands digit
+                        end
+                    end else begin
+                        q[11:8] <= q[11:8] + 1; // Increment hundreds digit
+                    end
+                end else begin
+                    q[7:4] <= q[7:4] + 1; // Increment tens digit
+                end
+            end else begin
+                q[3:0] <= q[3:0] + 1; // Increment ones digit
+                ena <= 3'b0; // Reset enable signals
+            end
+        end
+    end
+
+endmodule
+```
+

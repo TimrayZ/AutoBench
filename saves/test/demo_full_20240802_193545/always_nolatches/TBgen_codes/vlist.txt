@@ -1,0 +1,2 @@
+always_nolatches_tb.v
+always_nolatches.v

@@ -1,0 +1,12 @@
+scenario: 1, sel = 0, a = 170, b =  85, out =   x
+scenario: 2, sel = 1, a = 170, b =  85, out =   x
+scenario: 3, sel = 0, a =   0, b = 255, out =   x
+scenario: 4, sel = 1, a =   0, b = 255, out =   x
+scenario: 5, sel = 0, a = 204, b =  51, out =   x
+scenario: 6, sel = 1, a = 204, b =  51, out =   x
+scenario: 7a, sel = 0, a = 170, b =  85, out =   x
+scenario: 7b, sel = 1, a = 170, b =  85, out =   x
+scenario: 7c, sel = 0, a = 170, b =  85, out =   x
+scenario: 7d, sel = 1, a = 170, b =  85, out =   x
+scenario: 7e, sel = 0, a = 170, b =  85, out =   x
+scenario: 7f, sel = 1, a = 170, b =  85, out =   x

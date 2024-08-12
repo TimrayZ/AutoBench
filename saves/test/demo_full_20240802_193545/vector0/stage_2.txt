@@ -1,0 +1,54 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Build a circuit that has one 3-bit input, then outputs the same vector, and also splits it into three separate 1-bit outputs. Connect output o0 to the input vector's position 0, o1 to position 1, etc.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT (Device Under Test) is a circuit that accepts a 3-bit input vector (input 'vec') and produces a 3-bit output vector (output 'outv').",
+    "2. The DUT splits the 3-bit input into three individual 1-bit output signals: 'o2', 'o1', and 'o0'.",
+    "3. Output 'o2' corresponds to position 0 of the input vector, output 'o1' corresponds to position 1, and output 'o0' corresponds to position 2.",
+    "4. The module header of the DUT is as follows: 'module top_module(input [2:0] vec, output [2:0] outv, output o2, output o1, output o0);'",
+    "5. Test cases will need to validate the proper mapping from 'vec' to 'outv' and the individual outputs 'o2', 'o1', and 'o0'."
+  ]
+}
+DUT header:
+module top_module(
+	input [2:0] vec, 
+	output [2:0] outv,
+	output o2,
+	output o1,
+	output o0
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply the input vector '000' to 'vec' and wait for 1 clock cycle.",
+  "scenario 2": "Apply the input vector '001' to 'vec' and wait for 1 clock cycle.",
+  "scenario 3": "Apply the input vector '010' to 'vec' and wait for 1 clock cycle.",
+  "scenario 4": "Apply the input vector '011' to 'vec' and wait for 1 clock cycle.",
+  "scenario 5": "Apply the input vector '100' to 'vec' and wait for 1 clock cycle.",
+  "scenario 6": "Apply the input vector '101' to 'vec' and wait for 1 clock cycle.",
+  "scenario 7": "Apply the input vector '110' to 'vec' and wait for 1 clock cycle.",
+  "scenario 8": "Apply the input vector '111' to 'vec' and wait for 1 clock cycle."
+}
+

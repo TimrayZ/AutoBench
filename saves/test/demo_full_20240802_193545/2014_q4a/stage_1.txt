@@ -1,0 +1,45 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. You are in the first stage. In this stage, please summarize the technical details of the DUT and give me a technical specification of the testbench generation task, so we can use it to design its corresponding testbench.
+3. The core of testbench is the testcases. It usually include two parts logically: the input signals to the DUT and the expected result signals from DUT. The testbench will send the input signals to DUT and check if the result signals are the same as the expected result signals. If they are the same, this means the DUT is passed. Otherwise the DUT fails.
+4. Your technical specification should include these sections:
+- section 1: specification of the DUT, including the module header of the RTL code. If table or other detailed data is provided in the original problem description, DO repeat them in your response. They are very important!!!
+5. your response should be in the form of JSON.
+6. below is the information including the problem description and the DUT header:
+RTL circuit problem description:
+Consider an n-bit shift register circuit. Inputs E are for enabling shift, R for value to load, L is asserted when it should load, and w is the input to the first stage of the shift register. Write a Verilog module named top_module for one stage of this circuit, including both the flip-flop and multiplexers.
+DUT header:
+module top_module (
+	input clk,
+	input w,
+	input R,
+	input E,
+	input L,
+	output reg Q
+);
+
+your response must be in JSON form. example:
+{
+  "important data": "...", # type: string. If no table, state transition or other direct data, leave this with ""
+  "technical specifications": ["...", "...", ...] # each element of the list is one specification string, the starting of the string is its index 
+}
+
+
+
+########## assistant ##########
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is a n-bit shift register circuit.",
+    "2. Inputs: clk (clock signal), w (input to the first stage), R (value to load), E (enable shift), L (load signal).",
+    "3. Output: Q (the current value at the output of the flip-flop).",
+    "4. The module name of the DUT is 'top_module'.",
+    "5. When L is asserted, the value of R should be loaded into the shift register output Q.",
+    "6. When E is asserted, the input w should be shifted into the register, moving the current contents of Q to the next stage."
+  ]
+}
+

@@ -1,0 +1,54 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Create a full adder. A full adder adds three bits (including carry-in) and produces a sum and carry-out.
+RTL testbench specification:
+{
+  "important data": "A full adder adds three bits (including carry-in) and produces a sum and carry-out.",
+  "technical specifications": [
+    "1. DUT module name: top_module",
+    "2. Input signals: a (1 bit), b (1 bit), cin (1 bit) - total of 3 input bits",
+    "3. Output signals: cout (1 bit), sum (1 bit) - total of 2 output bits",
+    "4. Functionality: The DUT must correctly compute the sum and carry-out from the given inputs a, b, and cin.",
+    "5. Expected behavior: For all combinations of a, b, and cin (0 or 1), the DUT's output signals (cout, sum) must match the predefined truth table for a full adder."
+  ]
+}
+DUT header:
+module top_module (
+	input a,
+	input b,
+	input cin,
+	output cout,
+	output sum
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set inputs a, b, and cin to 0. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 2": "Set input a to 0, b to 0, and cin to 1. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 3": "Set input a to 0, b to 1, and cin to 0. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 4": "Set input a to 0, b to 1, and cin to 1. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 5": "Set input a to 1, b to 0, and cin to 0. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 6": "Set input a to 1, b to 0, and cin to 1. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 7": "Set input a to 1, b to 1, and cin to 0. Wait for 1 clock cycle to observe the outputs.",
+  "scenario 8": "Set input a to 1, b to 1, and cin to 1. Wait for 1 clock cycle to observe the outputs."
+}
+

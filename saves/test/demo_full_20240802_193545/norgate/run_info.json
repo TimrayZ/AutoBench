@@ -1,0 +1,14 @@
+{
+    "task_id": "norgate",
+    "task_number": 20,
+    "time": 20.55,
+    "prompt_tokens": 2845,
+    "completion_tokens": 701,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.06
+}

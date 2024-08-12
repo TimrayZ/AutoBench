@@ -1,0 +1,2 @@
+fsm2s_tb.v
+fsm2s.v

@@ -1,0 +1,14 @@
+{
+    "task_id": "popcount3",
+    "task_number": 64,
+    "time": 23.9,
+    "prompt_tokens": 3476,
+    "completion_tokens": 1114,
+    "ERROR(incomplete)": false,
+    "circuit_type": "CMB",
+    "checklist_worked": false,
+    "Eval0_pass": true,
+    "Eval0_iv_pass": true,
+    "debug_iter_iv": 0,
+    "iv_runing_time": 0.08
+}

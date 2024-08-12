@@ -1,0 +1,8 @@
+scenario: 1, a =   0, b =  16, c =  32, d =  48, min =   x
+scenario: 2, a = 255, b = 255, c = 255, d = 255, min =   x
+scenario: 3, a =   5, b =   3, c =   2, d =   1, min =   x
+scenario: 4, a = 170, b =  85, c = 119, d = 153, min =   x
+scenario: 5, a =  16, b =  32, c =  48, d =   0, min =   x
+scenario: 6, a =  15, b =  31, c =  47, d =   0, min =   x
+scenario: 7, a = 255, b =   1, c = 254, d =   2, min =   x
+scenario: 8, a =  18, b =  18, c =  18, d =  18, min =   x

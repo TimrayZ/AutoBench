@@ -1,0 +1,639 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg a;
+    reg b;
+    reg c;
+    reg d;
+    reg e;
+
+    // Outputs
+    wire [24:0] out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .out(out)
+    );
+
+    integer file;
+
+    // Open the output file
+    initial begin
+        file = $fopen("TBout.txt", "w");
+    end
+
+    // Test scenarios
+    initial begin
+        // Scenario 1
+        a = 0; b = 0; c = 0; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 2
+        a = 1; b = 1; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 3
+        a = 1; b = 0; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 4
+        a = 0; b = 1; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 5
+        a = 0; b = 0; c = 1; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 6
+        a = 0; b = 1; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 7
+        a = 1; b = 1; c = 0; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 8
+        a = 1; b = 1; c = 1; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 9
+        a = 1; b = 0; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 9, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 10
+        a = 0; b = 0; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 10, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+        
+        // Close the output file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Set inputs a, b, c, d, e to 0, 0, 0, 0, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 2": "Set inputs a, b, c, d, e to 1, 1, 1, 1, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 3": "Set inputs a, b, c, d, e to 1, 0, 1, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 4": "Set inputs a, b, c, d, e to 0, 1, 0, 1, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 5": "Set inputs a, b, c, d, e to 0, 0, 1, 1, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 6": "Set inputs a, b, c, d, e to 0, 1, 1, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 7": "Set inputs a, b, c, d, e to 1, 1, 0, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 8": "Set inputs a, b, c, d, e to 1, 1, 1, 0, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 9": "Set inputs a, b, c, d, e to random values, e.g., 1, 0, 0, 1, 0. Wait for 1 clock cycle to observe output.",
+  "scenario 10": "Set inputs a, b, c, d, e to random values, e.g., 0, 0, 1, 1, 1. Wait for 1 clock cycle to observe output."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg a;
+    reg b;
+    reg c;
+    reg d;
+    reg e;
+
+    // Outputs
+    wire [24:0] out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .out(out)
+    );
+
+    integer file;
+
+    // Open the output file
+    initial begin
+        file = $fopen("TBout.txt", "w");
+    end
+
+    // Test scenarios
+    initial begin
+        // Scenario 1
+        a = 0; b = 0; c = 0; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 2
+        a = 1; b = 1; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 3
+        a = 1; b = 0; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 4
+        a = 0; b = 1; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 5
+        a = 0; b = 0; c = 1; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 6
+        a = 0; b = 1; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 7
+        a = 1; b = 1; c = 0; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 8
+        a = 1; b = 1; c = 1; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 9 (Random values)
+        a = 1; b = 0; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 9, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 10 (Random values)
+        a = 0; b = 0; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 10, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+        
+        // Close the output file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg a;
+    reg b;
+    reg c;
+    reg d;
+    reg e;
+
+    // Outputs
+    wire [24:0] out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .out(out)
+    );
+
+    integer file;
+
+    // Open the output file
+    initial begin
+        file = $fopen("TBout.txt", "w");
+    end
+
+    // Test scenarios
+    initial begin
+        // Scenario 1
+        a = 0; b = 0; c = 0; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 2
+        a = 1; b = 1; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 3
+        a = 1; b = 0; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 4
+        a = 0; b = 1; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 5
+        a = 0; b = 0; c = 1; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 6
+        a = 0; b = 1; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 7
+        a = 1; b = 1; c = 0; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 8
+        a = 1; b = 1; c = 1; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 9 (Random values)
+        a = 1; b = 0; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 9, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 10 (Random values)
+        a = 0; b = 0; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 10, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+        
+        // Close the output file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Set inputs a, b, c, d, e to 0, 0, 0, 0, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 2": "Set inputs a, b, c, d, e to 1, 1, 1, 1, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 3": "Set inputs a, b, c, d, e to 1, 0, 1, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 4": "Set inputs a, b, c, d, e to 0, 1, 0, 1, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 5": "Set inputs a, b, c, d, e to 0, 0, 1, 1, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 6": "Set inputs a, b, c, d, e to 0, 1, 1, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 7": "Set inputs a, b, c, d, e to 1, 1, 0, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 8": "Set inputs a, b, c, d, e to 1, 1, 1, 0, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 9": "Set inputs a, b, c, d, e to random values, e.g., 1, 0, 0, 1, 0. Wait for 1 clock cycle to observe output.",
+  "scenario 10": "Set inputs a, b, c, d, e to random values, e.g., 0, 0, 1, 1, 1. Wait for 1 clock cycle to observe output."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg a;
+    reg b;
+    reg c;
+    reg d;
+    reg e;
+
+    // Outputs
+    wire [24:0] out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .out(out)
+    );
+
+    integer file;
+
+    // Open the output file
+    initial begin
+        file = $fopen("TBout.txt", "w");
+    end
+
+    // Test scenarios
+    initial begin
+        // Scenario 1
+        a = 0; b = 0; c = 0; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 2
+        a = 1; b = 1; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 3
+        a = 1; b = 0; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 4
+        a = 0; b = 1; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 5
+        a = 0; b = 0; c = 1; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 6
+        a = 0; b = 1; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 7
+        a = 1; b = 1; c = 0; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 8
+        a = 1; b = 1; c = 1; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 9 (Random values)
+        a = 1; b = 0; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 9, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 10 (Random values)
+        a = 0; b = 0; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 10, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+        
+        // Close the output file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+```
+
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+please check the if the testbench code contains all the items in the checklist:
+testbench code here...
+
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg a;
+    reg b;
+    reg c;
+    reg d;
+    reg e;
+
+    // Outputs
+    wire [24:0] out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .out(out)
+    );
+
+    integer file;
+
+    // Open the output file
+    initial begin
+        file = $fopen("TBout.txt", "w");
+    end
+
+    // Test scenarios
+    initial begin
+        // Scenario 1
+        a = 0; b = 0; c = 0; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 2
+        a = 1; b = 1; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 3
+        a = 1; b = 0; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 4
+        a = 0; b = 1; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 5
+        a = 0; b = 0; c = 1; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 6
+        a = 0; b = 1; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 7
+        a = 1; b = 1; c = 0; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 8
+        a = 1; b = 1; c = 1; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 9 (Random values)
+        a = 1; b = 0; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 9, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 10 (Random values)
+        a = 0; b = 0; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 10, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+        
+        // Close the output file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+
+
+please check the if the testbench code above contains all the scenarios in the checklist:
+{
+  "scenario 1": "Set inputs a, b, c, d, e to 0, 0, 0, 0, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 2": "Set inputs a, b, c, d, e to 1, 1, 1, 1, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 3": "Set inputs a, b, c, d, e to 1, 0, 1, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 4": "Set inputs a, b, c, d, e to 0, 1, 0, 1, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 5": "Set inputs a, b, c, d, e to 0, 0, 1, 1, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 6": "Set inputs a, b, c, d, e to 0, 1, 1, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 7": "Set inputs a, b, c, d, e to 1, 1, 0, 0, 1 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 8": "Set inputs a, b, c, d, e to 1, 1, 1, 0, 0 respectively. Wait for 1 clock cycle to observe output.",
+  "scenario 9": "Set inputs a, b, c, d, e to random values, e.g., 1, 0, 0, 1, 0. Wait for 1 clock cycle to observe output.",
+  "scenario 10": "Set inputs a, b, c, d, e to random values, e.g., 0, 0, 1, 1, 1. Wait for 1 clock cycle to observe output."
+}
+please reply 'YES' if all the items are included. If some of the items are missed in testbench, please add the missing items and reply the modified testbench code (full code).
+VERY IMPORTANT: please ONLY reply 'YES' or the full code modified. NEVER remove other irrelevant codes!!!
+
+
+########## assistant ##########
+```verilog
+`timescale 1ns / 1ps
+
+module tb_top_module;
+
+    // Inputs
+    reg a;
+    reg b;
+    reg c;
+    reg d;
+    reg e;
+
+    // Outputs
+    wire [24:0] out;
+
+    // Instantiate the DUT
+    top_module dut (
+        .a(a),
+        .b(b),
+        .c(c),
+        .d(d),
+        .e(e),
+        .out(out)
+    );
+
+    integer file;
+
+    // Open the output file
+    initial begin
+        file = $fopen("TBout.txt", "w");
+    end
+
+    // Test scenarios
+    initial begin
+        // Scenario 1
+        a = 0; b = 0; c = 0; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 1, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 2
+        a = 1; b = 1; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 2, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 3
+        a = 1; b = 0; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 3, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 4
+        a = 0; b = 1; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 4, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 5
+        a = 0; b = 0; c = 1; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 5, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 6
+        a = 0; b = 1; c = 1; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 6, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 7
+        a = 1; b = 1; c = 0; d = 0; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 7, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 8
+        a = 1; b = 1; c = 1; d = 0; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 8, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 9 (Random values)
+        a = 1; b = 0; c = 0; d = 1; e = 0;
+        #1;
+        $fdisplay(file, "scenario: 9, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+
+        // Scenario 10 (Random values)
+        a = 0; b = 0; c = 1; d = 1; e = 1;
+        #1;
+        $fdisplay(file, "scenario: 10, a = %d, b = %d, c = %d, d = %d, e = %d, out = %b", a, b, c, d, e, out);
+        
+        // Close the output file
+        $fclose(file);
+        
+        // End simulation
+        $finish;
+    end
+
+endmodule
+```
+

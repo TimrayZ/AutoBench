@@ -1,0 +1,49 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Make a decade counter that counts 1 through 10, inclusive. The reset input is active high synchronous, and should reset the counter to 1.
+RTL testbench specification:
+{
+  "important data": "The counter should count from 1 to 10, inclusive, and reset to 1 on a high synchronous reset signal. The output 'q' is a 4-bit register.",
+  "technical specifications": [
+    "1: The DUT (top_module) has three ports: input 'clk', input 'reset', and output 'q'.",
+    "2: The 'reset' input is active high and synchronous, meaning the counter should be reset when 'reset' is high during a clock edge.",
+    "3: The counter should increment on the rising edge of the 'clk' signal if reset is low.",
+    "4: The counter should wrap from 10 back to 1.",
+    "5: The output 'q' is a 4-bit register, which means it should be able to represent values from 1 to 10."
+  ]
+}
+DUT header:
+module top_module(
+	input clk,
+	input reset,
+	output reg [3:0] q);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Initially, set 'reset' to high for 1 clock cycle to reset the counter, then set 'reset' low. Wait for 1 clock cycle.",
+  "scenario 2": "With 'reset' low, toggle 'clk' for 10 clock cycles. Monitor the output 'q' as it increments each clock cycle from the reset value.",
+  "scenario 3": "After 10 clock cycles, keep 'reset' low, and toggle 'clk' for 1 additional clock cycle to observe the wrap-around from 10 back to 1.",
+  "scenario 4": "Set 'reset' high during the 5th clock cycle (after 4 increments). Hold 'reset' high for 1 clock cycle and then set it low. Wait for 1 clock cycle.",
+  "scenario 5": "After resetting, toggle the 'clk' for 3 clock cycles while observing the output, confirming the counter increments from 1 to 3.",
+  "scenario 6": "Set 'reset' high during the 8th clock cycle. Hold 'reset' for 1 clock cycle, then release 'reset' and let the system run for 5 clock cycles to check the counter increments from 1 after the reset."
+}
+

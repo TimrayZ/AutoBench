@@ -1,0 +1,56 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Given four unsigned numbers, find the minimum. Unsigned numbers can be compared with standard comparison operators (a < b). 
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "0: The DUT is designed to find the minimum of four unsigned 8-bit input numbers (a, b, c, d).",
+    "1: The DUT accepts four inputs: a, b, c, and d, each with a width of 8 bits.",
+    "2: The DUT outputs a single value min, which is also an 8-bit unsigned number.",
+    "3: The output min should be the smallest value among the inputs a, b, c, and d after comparison.",
+    "4: The comparisons between the unsigned numbers will use standard comparison operators, such as '<'.",
+    "5: The testbench should instantiate the DUT as top_module and provide valid input vectors to test all possible combinations.",
+    "6: The expected output for each test case should be validated against the actual output from the DUT to ensure correctness."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] a,
+	input [7:0] b,
+	input [7:0] c,
+	input [7:0] d,
+	output reg [7:0] min
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set inputs a = 8'hFF, b = 8'hAA, c = 8'hBB, d = 8'hCC. Hold for 1 clock cycle.",
+  "scenario 2": "Set inputs a = 8'h00, b = 8'h01, c = 8'h02, d = 8'h03. Hold for 1 clock cycle.",
+  "scenario 3": "Set inputs a = 8'h7F, b = 8'h80, c = 8'h7E, d = 8'h7D. Hold for 1 clock cycle.",
+  "scenario 4": "Set inputs a = 8'h10, b = 8'h10, c = 8'h10, d = 8'h10. Hold for 1 clock cycle.",
+  "scenario 5": "Set inputs a = 8'h01, b = 8'h01, c = 8'h00, d = 8'h01. Hold for 1 clock cycle.",
+  "scenario 6": "Set inputs a = 8'hAB, b = 8'h7D, c = 8'hCA, d = 8'hFE. Hold for 1 clock cycle.",
+  "scenario 7": "Set inputs a = 8'hFF, b = 8'hFF, c = 8'h00, d = 8'h00. Hold for 1 clock cycle.",
+  "scenario 8": "Set inputs a = 8'h24, b = 8'h30, c = 8'h12, d = 8'h18. Hold for 1 clock cycle."
+}
+

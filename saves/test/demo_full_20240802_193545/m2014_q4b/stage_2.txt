@@ -1,0 +1,50 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Implement a D flip flop, positive edge triggered, with an asynchronous reset "ar".
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. DUT is a D flip flop that is positive edge triggered.",
+    "2. DUT has an asynchronous reset signal denoted as 'ar'.",
+    "3. The DUT has the following ports: input 'clk', input 'd', input 'ar', and output 'q'.",
+    "4. When 'ar' is asserted (high), regardless of 'clk' or 'd', the output 'q' should be reset to 0.",
+    "5. On the rising edge of 'clk', 'q' should take the value of 'd' if 'ar' is not asserted."
+  ]
+}
+DUT header:
+module top_module (
+	input clk,
+	input d,
+	input ar,
+	output logic q
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Asynchronously assert 'ar' high for 1 clock cycle to reset the output 'q'. After the reset, deassert 'ar' and apply 'd' as high, then toggle 'clk' to check if 'q' captures the value of 'd'.", 
+  "scenario 2": "Set 'd' to low and assert 'ar' high for 1 clock cycle. After that, deassert 'ar' and toggle 'clk' to see if 'q' remains low after the rising edge of 'clk'.", 
+  "scenario 3": "Assert 'ar' high, keep 'd' low, and toggle 'clk' for 3 clock cycles. After that, deassert 'ar', assert 'd' high, and then toggle 'clk' to check the value of 'q'.", 
+  "scenario 4": "Initially toggle 'clk' for 2 clock cycles with 'ar' deasserted and 'd' kept high. After these cycles, assert 'ar' high, toggle 'clk' once, then deassert 'ar' and check if 'q' resets to 0.", 
+  "scenario 5": "Set 'd' to high, keep 'ar' low, and toggle 'clk' for 3 clock cycles. Then assert 'ar' high for 1 clock cycle, and after deasserting, toggle 'clk' to determine the behavior of 'q' on the next clock edge."
+}
+

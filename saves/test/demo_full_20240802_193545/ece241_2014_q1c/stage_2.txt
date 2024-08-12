@@ -1,0 +1,54 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Assume that you have two 8-bit 2's complement numbers, a[7:0] and b[7:0]. These numbers are added to produce s[7:0]. Also compute whether a (signed) overflow has occurred.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1: The DUT takes two 8-bit 2's complement signed integers as input: a[7:0] and b[7:0].",
+    "2: The DUT produces a single 8-bit 2's complement output, s[7:0], which is the sum of a and b.",
+    "3: The DUT detects and outputs an 'overflow' signal, which indicates if an overflow occurred during the addition of a and b.",
+    "4: The overflow condition is determined by checking if the sign of a and b are the same, and the sign of the result s is different."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] a,
+	input [7:0] b,
+	output [7:0] s,
+	output overflow
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Set a = 8'b00001111 (15) and b = 8'b00000001 (1), wait for 1 clock cycle, then check the outputs.",
+  "scenario 2": "Set a = 8'b01111111 (127) and b = 8'b00000001 (1), wait for 1 clock cycle, then check the outputs.",
+  "scenario 3": "Set a = 8'b10000000 (-128) and b = 8'b11111111 (-1), wait for 1 clock cycle, then check the outputs.",
+  "scenario 4": "Set a = 8'b01111110 (126) and b = 8'b00000010 (2), wait for 1 clock cycle, then check the outputs.",
+  "scenario 5": "Set a = 8'b01111111 (127) and b = 8'b11111111 (-1), wait for 1 clock cycle, then check the outputs.",
+  "scenario 6": "Set a = 8'b10000001 (-127) and b = 8'b10000001 (-127), wait for 1 clock cycle, then check the outputs.",
+  "scenario 7": "Set a = 8'b10101010 (-86) and b = 8'b10101010 (-86), wait for 1 clock cycle, then check the outputs.",
+  "scenario 8": "Set a = 8'b00000000 (0) and b = 8'b00000000 (0), wait for 1 clock cycle, then check the outputs.",
+  "scenario 9": "Set a = 8'b11111111 (-1) and b = 8'b11111111 (-1), wait for 1 clock cycle, then check the outputs.",
+  "scenario 10": "Set a = 8'b00111100 (60) and b = 8'b11001100 (-52), wait for 1 clock cycle, then check the outputs."
+}
+

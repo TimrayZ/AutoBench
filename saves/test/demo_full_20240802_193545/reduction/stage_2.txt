@@ -1,0 +1,52 @@
+############################## conversation begin ##############################
+########## system ##########
+You are the strongest AI in the world. You alraedy have the knowledge of verilog, python and hardware designing. Do not save words by discarding information. I will tip you 200$ if you can fullfill the tasks I give you.
+
+########## user ##########
+1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The infomation we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+2. you are in section 2. in this section, please give me the test scenarios. you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+3. your information is:
+RTL circuit problem description:
+Parity checking is often used as a simple method of detecting errors when transmitting data through an imperfect channel. Create a circuit that will compute a parity bit for a 8-bit byte (which will add a 9th bit to the byte). We will use "even" parity, where the parity bit is just the XOR of all 8 data bits.
+RTL testbench specification:
+{
+  "important data": "",
+  "technical specifications": [
+    "1. The DUT is a module named 'top_module' that takes an 8-bit input 'in' and produces a 1-bit output 'parity'.",
+    "2. The parity bit is calculated using even parity, which is the XOR of all 8 bits of the input.",
+    "3. The expected output 'parity' will be '0' if the number of '1's in the input is even, and '1' if the number of '1's is odd.",
+    "4. The input signal 'in' is a vector of size 8 (i.e., [7:0])."
+  ]
+}
+DUT header:
+module top_module (
+	input [7:0] in,
+	output parity
+);
+
+
+you only need to describe the stimulus in each test scenarios. If time is important, please inform the clock cycle information. we will use the stimulus description to generate the test vectors and send them to DUT. you must not tell the expected results even though you know that. 
+
+your response must be in JSON form. example:
+{
+  "scenario 1": "...", # each content is a string
+  "scenario 2": "...",
+  "scenario 3": "...",
+  ...
+}
+
+
+########## assistant ##########
+{
+  "scenario 1": "Apply input 'in' = 8'b00000000 at clock cycle 0. Wait for 1 clock cycle.",
+  "scenario 2": "Apply input 'in' = 8'b00000001 at clock cycle 1. Wait for 1 clock cycle.",
+  "scenario 3": "Apply input 'in' = 8'b11111111 at clock cycle 2. Wait for 1 clock cycle.",
+  "scenario 4": "Apply input 'in' = 8'b10101010 at clock cycle 3. Wait for 1 clock cycle.",
+  "scenario 5": "Apply input 'in' = 8'b01010101 at clock cycle 4. Wait for 1 clock cycle.",
+  "scenario 6": "Apply input 'in' = 8'b11001100 at clock cycle 5. Wait for 1 clock cycle.",
+  "scenario 7": "Apply input 'in' = 8'b00110011 at clock cycle 6. Wait for 1 clock cycle.",
+  "scenario 8": "Apply input 'in' = 8'b00001111 at clock cycle 7. Wait for 1 clock cycle.",
+  "scenario 9": "Apply input 'in' = 8'b11110000 at clock cycle 8. Wait for 1 clock cycle.",
+  "scenario 10": "Apply input 'in' = 8'b10111100 at clock cycle 9. Wait for 1 clock cycle."
+}
+

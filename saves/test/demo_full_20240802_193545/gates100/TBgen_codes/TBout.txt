@@ -1,0 +1,10 @@
+scenario: 1, in =                               0, out_and = z, out_or = z, out_xor = z
+scenario: 2, in =                               1, out_and = z, out_or = z, out_xor = z
+scenario: 3, in =                               1, out_and = z, out_or = z, out_xor = z
+scenario: 4, in = 1267650600228229401496703205120, out_and = z, out_or = z, out_xor = z
+scenario: 5, in =  422550200076076467165567735125, out_and = z, out_or = z, out_xor = z
+scenario: 6, in =                              63, out_and = z, out_or = z, out_xor = z
+scenario: 7, in =  845100400152152934331135470250, out_and = z, out_or = z, out_xor = z
+scenario: 8, in =  845100400152152934331135470250, out_and = z, out_or = z, out_xor = z
+scenario: 9, in =                               1, out_and = z, out_or = z, out_xor = z
+scenario: 10, in = 1267650600228229401496703205120, out_and = z, out_or = z, out_xor = z

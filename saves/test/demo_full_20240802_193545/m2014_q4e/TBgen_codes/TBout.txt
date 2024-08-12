@@ -1,0 +1,4 @@
+scenario: 1, in1 = 0, in2 = 0, out = x
+scenario: 2, in1 = 0, in2 = 1, out = x
+scenario: 3, in1 = 1, in2 = 0, out = x
+scenario: 4, in1 = 1, in2 = 1, out = x

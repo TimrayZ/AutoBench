@@ -1,0 +1,10 @@
+iverilog simulation failed!
+
+iverilog cmd 1:
+~/iverilog/bin/iverilog -g2012 -o run.vvp edgedetect2_tb.v edgedetect2.v 
+iverilog cmd 1 output:
+
+iverilog cmd 1 error:
+edgedetect2_tb.v:108: syntax error
+edgedetect2_tb.v:108: error: Malformed statement
+
