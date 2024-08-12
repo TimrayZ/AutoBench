@@ -26,18 +26,18 @@ class WF_pychecker_CMB(BaseScript):
         # stage2
         self.stage2 = Stage2(self.prob_data, self.stage1.response, **self.gptkwargs)
         self.stage_operation(self.stage2)
-        # stage3
-        self.stage3 = Stage3(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
-        self.stage_operation(self.stage3)
+        # # stage3
+        # self.stage3 = Stage3(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
+        # self.stage_operation(self.stage3)
         # stage4
         self.stage4 = Stage4(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
         self.stage_operation(self.stage4)
         # stagechecklist
         self.stagecheck = StageChecklist(self.TB_code, self.stage2.response, self.max_check_iter, **self.gptkwargs)
         self.stage_operation(self.stagecheck)
-        # stage5
-        self.stage5 = Stage5(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-        self.stage_operation(self.stage5)
+        # # stage5
+        # self.stage5 = Stage5(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        # self.stage_operation(self.stage5)
         # self.TB_code += "\n" + stage3b.response   
 
     def make_and_run_reboot_stages(self, debug_dir):
@@ -48,10 +48,10 @@ class WF_pychecker_CMB(BaseScript):
             # stagechecklist
             self.stagecheck = StageChecklist(self.TB_code, self.stage2.response, self.max_check_iter, **self.gptkwargs)
             self.stage_operation(self.stagecheck, debug_dir, reboot_en=True)
-        elif self.reboot_mode == "PY":
-            # stage5
-            self.stage5 = Stage5(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-            self.stage_operation(self.stage5, debug_dir, reboot_en=True)
+        # elif self.reboot_mode == "PY":
+        #     # stage5
+        #     self.stage5 = Stage5(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        #     self.stage_operation(self.stage5, debug_dir, reboot_en=True)
         else:
             raise ValueError("invalid reboot_mode in WF_pychecker script (circuit type: CMB)")
 
@@ -69,12 +69,12 @@ class Stage2(public_stages.Stage2):
     def __init__(self, prob_data:dict, response_stage1:str, **gptkwargs):
         super().__init__(prob_data, response_stage1, **gptkwargs)
 
-class Stage3(public_stages.Stage3):
-    """
-    stage3 for pychecker, the same as RTLchecker0306.Stage3
-    """
-    def __init__(self, prob_data:dict, response_stage1:str, response_stage2:str, **gptkwargs):
-        super().__init__(prob_data, response_stage1, response_stage2, **gptkwargs)
+# class Stage3(public_stages.Stage3):
+#     """
+#     stage3 for pychecker, the same as RTLchecker0306.Stage3
+#     """
+#     def __init__(self, prob_data:dict, response_stage1:str, response_stage2:str, **gptkwargs):
+#         super().__init__(prob_data, response_stage1, response_stage2, **gptkwargs)
 
 SIGNALTEMP_PLACEHOLDER_1 = "/* SIGNAL TEMPLATE 1 */"
 SIGNALTEMP_PLACEHOLDER_1A = "/* SIGNAL TEMPLATE 1A */"
@@ -191,51 +191,51 @@ vectors_in = SignalTxt_to_dictlist(txt)
 tb_pass = check_dut(vectors_in)
 print(tb_pass)
 """
-class Stage5(BaseScriptStage):
-    """stage 5: generate the pychecker that receive the signals from testbench and check the correctness of DUT"""
-    def __init__(self, prob_data, response_stage1, response_stage3, **gptkwargs) -> None:
-        super().__init__("stage_5", **gptkwargs)
-        self.prob_data = prob_data
-        self.response_stage1 = response_stage1
-        self.response_stage3 = response_stage3 # currently not used
-        self.txt1 = STAGEPYGEN_TXT1.replace(SIGNALTEMP_PLACEHOLDER_1, self.signal_dictlist_template(prob_data["header"]))
-        self.txt2 = STAGEPYGEN_TXT2
-        self.pycode_tail = STAGEPYGEN_TAIL
+# class Stage5(BaseScriptStage):
+#     """stage 5: generate the pychecker that receive the signals from testbench and check the correctness of DUT"""
+#     def __init__(self, prob_data, response_stage1, response_stage3, **gptkwargs) -> None:
+#         super().__init__("stage_5", **gptkwargs)
+#         self.prob_data = prob_data
+#         self.response_stage1 = response_stage1
+#         self.response_stage3 = response_stage3 # currently not used
+#         self.txt1 = STAGEPYGEN_TXT1.replace(SIGNALTEMP_PLACEHOLDER_1, self.signal_dictlist_template(prob_data["header"]))
+#         self.txt2 = STAGEPYGEN_TXT2
+#         self.pycode_tail = STAGEPYGEN_TAIL
 
-    def make_prompt(self):
-        self.prompt = ""
-        # introduction
-        self.add_prompt_line(self.txt1)
-        # problem description
-        self.add_prompt_line("RTL circuit problem description:")
-        self.add_prompt_line(self.prob_data["description"])
-        # specification
-        self.add_prompt_line("Checker specification:")
-        self.add_prompt_line(self.response_stage1)
-        # python rules (optional)
-        self.add_prompt_line("Here is the basic rules in python for the module. It is generated in previous stage. You can use it as a reference, but you should write your own python script. This is just for your better understanding:")
-        self.add_prompt_line(self.response_stage3)
-        # end
-        self.add_prompt_line(self.txt2)
+#     def make_prompt(self):
+#         self.prompt = ""
+#         # introduction
+#         self.add_prompt_line(self.txt1)
+#         # problem description
+#         self.add_prompt_line("RTL circuit problem description:")
+#         self.add_prompt_line(self.prob_data["description"])
+#         # specification
+#         self.add_prompt_line("Checker specification:")
+#         self.add_prompt_line(self.response_stage1)
+#         # python rules (optional)
+#         self.add_prompt_line("Here is the basic rules in python for the module. It is generated in previous stage. You can use it as a reference, but you should write your own python script. This is just for your better understanding:")
+#         self.add_prompt_line(self.response_stage3)
+#         # end
+#         self.add_prompt_line(self.txt2)
 
-    def postprocessing(self):
-        # python codes
-        self.response = self.extract_code(self.response, "python")[-1]
-        self.Pychecker_code_out = self.response + self.pycode_tail
+#     def postprocessing(self):
+#         # python codes
+#         self.response = self.extract_code(self.response, "python")[-1]
+#         self.Pychecker_code_out = self.response + self.pycode_tail
 
-    @staticmethod
-    def signal_dictlist_template(header:str) -> str:
-        """
-        for the automatic generation of signals in testbench
-        target: given the DUT header, generate the signal output template
-        eg: if we have a DUT header like "module DUT(input a, b, c, output d, e);", the signal output template should be like "[{"scenario": "1", "a": 1, "b": 0, "c":1, "d": 0, "e": 0}, {"scenario": "2", "a": 0, "b": 0, "c":1, "d": 0, "e": 0}]"
-        """
-        signals1 = header_to_SignalTxt_template(header, "1")
-        signals2 = header_to_SignalTxt_template(header, "2")
-        signals_dictlist1 = SignalTxt_to_dictlist(signals1)
-        signals_dictlist2 = SignalTxt_to_dictlist(signals2)
-        signals_dictlist = signals_dictlist1 + signals_dictlist2
-        return str(signals_dictlist)
+#     @staticmethod
+#     def signal_dictlist_template(header:str) -> str:
+#         """
+#         for the automatic generation of signals in testbench
+#         target: given the DUT header, generate the signal output template
+#         eg: if we have a DUT header like "module DUT(input a, b, c, output d, e);", the signal output template should be like "[{"scenario": "1", "a": 1, "b": 0, "c":1, "d": 0, "e": 0}, {"scenario": "2", "a": 0, "b": 0, "c":1, "d": 0, "e": 0}]"
+#         """
+#         signals1 = header_to_SignalTxt_template(header, "1")
+#         signals2 = header_to_SignalTxt_template(header, "2")
+#         signals_dictlist1 = SignalTxt_to_dictlist(signals1)
+#         signals_dictlist2 = SignalTxt_to_dictlist(signals2)
+#         signals_dictlist = signals_dictlist1 + signals_dictlist2
+#         return str(signals_dictlist)
 
     
 def header_to_SignalTxt_template(header:str, template_scenario_idx:str="1", signal_value:str="0"):

@@ -32,9 +32,9 @@ class WF_pychecker_SEQ(BaseScript):
         # stage2
         self.stage2 = public_stages.Stage2(self.prob_data, self.stage1.response, **self.gptkwargs)
         self.stage_operation(self.stage2)
-        # stage3
-        self.stage3 = Stage3(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
-        self.stage_operation(self.stage3)
+        # # stage3
+        # self.stage3 = Stage3(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
+        # self.stage_operation(self.stage3)
         # stage4
         self.stage4 = Stage4_SEQ(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
         self.stage_operation(self.stage4)
@@ -44,9 +44,9 @@ class WF_pychecker_SEQ(BaseScript):
         # stage4b
         self.stage4b = Stage4b_SEQ(self.prob_data, self.TB_code, **self.gptkwargs)
         self.stage_operation(self.stage4b)
-        # stage5
-        self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-        self.stage_operation(self.stage5) 
+        # # stage5
+        # self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        # self.stage_operation(self.stage5) 
 
 
     def make_and_run_reboot_stages(self, debug_dir):
@@ -60,10 +60,10 @@ class WF_pychecker_SEQ(BaseScript):
             # stage4b
             self.stage4b = Stage4b_SEQ(self.prob_data, self.TB_code, **self.gptkwargs)
             self.stage_operation(self.stage4b, debug_dir, reboot_en=True)
-        elif self.reboot_mode == "PY":
-            # stage5
-            self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-            self.stage_operation(self.stage5, debug_dir, reboot_en=True)
+        # elif self.reboot_mode == "PY":
+        #     # stage5
+        #     self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        #     self.stage_operation(self.stage5, debug_dir, reboot_en=True)
         else:
             raise ValueError("invalid reboot_mode in WF_pychecker script (circuit type: SEQ)")
         
@@ -89,43 +89,43 @@ SIGNALTEMP_PLACEHOLDER_1 = "/* SIGNAL TEMPLATE 1 */"
 SIGNALTEMP_PLACEHOLDER_1A = "/* SIGNAL TEMPLATE 1A */"
 SIGNALTEMP_PLACEHOLDER_1B = "/* SIGNAL TEMPLATE 1B */"
 
-STAGE3_TXT1="""1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The information we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
-2. you are in stage 3; in this stage, please give me the core rules of an ideal DUT. you should give these rules in python. (For convenience, you can use binary or hexadecimal format in python, i.e. 0b0010 and 0x1a). Later we will use these ideal rules to generate expected values in each test scenario. currently you must only generate the core part of the rules. the input of these rules should be related to the test vectors from test scenario. the rule should give the expected values under test vectors. You don't need to consider the control signals like clk or reset, unless the core rules of this task are about these signals. You can use numpy, scipy or other third party python libraries to help you write the rules. Please import them if you need. 
-3. your information is:"""
+# STAGE3_TXT1="""1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The information we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+# 2. you are in stage 3; in this stage, please give me the core rules of an ideal DUT. you should give these rules in python. (For convenience, you can use binary or hexadecimal format in python, i.e. 0b0010 and 0x1a). Later we will use these ideal rules to generate expected values in each test scenario. currently you must only generate the core part of the rules. the input of these rules should be related to the test vectors from test scenario. the rule should give the expected values under test vectors. You don't need to consider the control signals like clk or reset, unless the core rules of this task are about these signals. You can use numpy, scipy or other third party python libraries to help you write the rules. Please import them if you need. 
+# 3. your information is:"""
 
-class Stage3(BaseScriptStage):
-    def __init__(self, prob_data, response_stage1, response_stage2, **gptkwargs) -> None:
-        super().__init__("stage_3", **gptkwargs)
-        self.prob_data = prob_data
-        self.response_stage1 = response_stage1
-        self.response_stage2 = response_stage2
-        self.txt1 = STAGE3_TXT1
+# class Stage3(BaseScriptStage):
+#     def __init__(self, prob_data, response_stage1, response_stage2, **gptkwargs) -> None:
+#         super().__init__("stage_3", **gptkwargs)
+#         self.prob_data = prob_data
+#         self.response_stage1 = response_stage1
+#         self.response_stage2 = response_stage2
+#         self.txt1 = STAGE3_TXT1
 
-    def make_prompt(self):
-        self.prompt = ""
-        self.add_prompt_line(self.txt1)
-        # problem description
-        self.add_prompt_line("RTL circuit problem description:")
-        self.add_prompt_line(self.prob_data["description"])
-        # specification
-        self.add_prompt_line("RTL testbench specification:")
-        self.add_prompt_line(self.response_stage1)
-        # DUT header
-        self.add_prompt_line("DUT header:")
-        self.add_prompt_line(self.prob_data["header"])
-        # test scenarios
-        self.add_prompt_line("test scenario: (please note the test vectors below, it will help you determine the input parameters of the rules)")
-        self.add_prompt_line(self.response_stage2)
-        # end
-        self.add_prompt_line("your response should only contain python code. For convenience, you can use binary or hexadecimal format in python. For example: 0b0010 and 0x1a")
+#     def make_prompt(self):
+#         self.prompt = ""
+#         self.add_prompt_line(self.txt1)
+#         # problem description
+#         self.add_prompt_line("RTL circuit problem description:")
+#         self.add_prompt_line(self.prob_data["description"])
+#         # specification
+#         self.add_prompt_line("RTL testbench specification:")
+#         self.add_prompt_line(self.response_stage1)
+#         # DUT header
+#         self.add_prompt_line("DUT header:")
+#         self.add_prompt_line(self.prob_data["header"])
+#         # test scenarios
+#         self.add_prompt_line("test scenario: (please note the test vectors below, it will help you determine the input parameters of the rules)")
+#         self.add_prompt_line(self.response_stage2)
+#         # end
+#         self.add_prompt_line("your response should only contain python code. For convenience, you can use binary or hexadecimal format in python. For example: 0b0010 and 0x1a")
 
-    def postprocessing(self):
-        # extract python codes; codes may be more than one
-        python_codes = self.extract_code(self.response, "python")
-        response = ""
-        for python_code in python_codes:
-            response += python_code + "\n"
-        self.response = response
+#     def postprocessing(self):
+#         # extract python codes; codes may be more than one
+#         python_codes = self.extract_code(self.response, "python")
+#         response = ""
+#         for python_code in python_codes:
+#             response += python_code + "\n"
+#         self.response = response
     
 def header_to_SignalTxt_template(header:str, template_scenario_idx:str="1", signal_value:str="0"):
     """
@@ -354,127 +354,127 @@ class Stage4b_SEQ(BaseScriptStage):
         self.TB_code_out = self.extract_code(self.response, "verilog")[-1]
         self.TB_code_out = utils.pychecker_SEQ_TB_standardization(self.TB_code_out, self.header)
 
-STAGE5_SEQ_TXT1 = """
-1. background: Your task is to verify the functional correctness of a verilog RTL module code (we call it as "DUT", device under test). This module is a sequential circuit. Our plan is to first export the signals (input and output) of the DUT under test scenarios. Then, we will use a python script to check the correctness of DUT.
-2. You are in stage 5. In this stage, we already exported the signals of DUT. The signals are like below: (the signal names are real, but the values are just for example, clock signals are not included, each vector represents a new clock cycle)
-%s
-Here's the explanation of some special signals in signal vectors: 
-- "scenario": The "scenario" is not DUT's signal but to tell you the current scenario index. 
-- "check_en": The "check_en" signal is not from the DUT. "Check_en" is a bool value to tell you this is the time to check the output of DUT. It is related to the class method "check" (we will explain it later). After checking the output, a new scenario will start.
-3. Your current task is: write a python class "GoldenDUT". This python class can represent the golden DUT (the ideal one). In your "GoldenDUT", you should do the following things:
-- 3.1. write a method "def __init__(self)". Set the inner states/values of the golden DUT. These values have suffix "_reg". The initial value of these inner values is "x", but later will be digits. The "__init__" method has no input parameters except "self".
-- 3.2. write a method "def load(self, signal_vector)". This method is to load the important input signals and the inner values of "GoldenDUT" shall change according to the input signals. There is no clock signal in the input signal vector, every time the "load" method is called, it means a new clock cycle. The initial values "x" should be changed according to the input signals. This method has no return value.
-- 3.3. write a method "def check(self, signal_vector)". This method is to determine the expected output values and compare them with output signals from DUT. It should return True or False only. If return false, please print the error message. Hint: you can use code like "print(f"Scenario: {signal_vector['scenario']}, expected: a={a_reg}, observed a={a_observed}")" to print, suppose "a" is the output signal's name.
-- 3.4. write other methods you need, they can be called by "load" or "check".
-- 3.5. the input of "load" and "check" is the signal vector. The signal vector is a dictionary, the key is the signal name, the value is the signal value.
-4. Other information:
-- You can use binary (like 0x1101), hexadecimal (like 0x1a) or normal number format in python.
-- if the bit width of one variable is limited, use bit mask to assure the correctness of the value.
-- you can import numpy, math, scipy or other python libraries to help you write the python class.
-5. You have the information below to help you check the correctness of DUT:
-"""%(SIGNALTEMP_PLACEHOLDER_1)
+# STAGE5_SEQ_TXT1 = """
+# 1. background: Your task is to verify the functional correctness of a verilog RTL module code (we call it as "DUT", device under test). This module is a sequential circuit. Our plan is to first export the signals (input and output) of the DUT under test scenarios. Then, we will use a python script to check the correctness of DUT.
+# 2. You are in stage 5. In this stage, we already exported the signals of DUT. The signals are like below: (the signal names are real, but the values are just for example, clock signals are not included, each vector represents a new clock cycle)
+# %s
+# Here's the explanation of some special signals in signal vectors: 
+# - "scenario": The "scenario" is not DUT's signal but to tell you the current scenario index. 
+# - "check_en": The "check_en" signal is not from the DUT. "Check_en" is a bool value to tell you this is the time to check the output of DUT. It is related to the class method "check" (we will explain it later). After checking the output, a new scenario will start.
+# 3. Your current task is: write a python class "GoldenDUT". This python class can represent the golden DUT (the ideal one). In your "GoldenDUT", you should do the following things:
+# - 3.1. write a method "def __init__(self)". Set the inner states/values of the golden DUT. These values have suffix "_reg". The initial value of these inner values is "x", but later will be digits. The "__init__" method has no input parameters except "self".
+# - 3.2. write a method "def load(self, signal_vector)". This method is to load the important input signals and the inner values of "GoldenDUT" shall change according to the input signals. There is no clock signal in the input signal vector, every time the "load" method is called, it means a new clock cycle. The initial values "x" should be changed according to the input signals. This method has no return value.
+# - 3.3. write a method "def check(self, signal_vector)". This method is to determine the expected output values and compare them with output signals from DUT. It should return True or False only. If return false, please print the error message. Hint: you can use code like "print(f"Scenario: {signal_vector['scenario']}, expected: a={a_reg}, observed a={a_observed}")" to print, suppose "a" is the output signal's name.
+# - 3.4. write other methods you need, they can be called by "load" or "check".
+# - 3.5. the input of "load" and "check" is the signal vector. The signal vector is a dictionary, the key is the signal name, the value is the signal value.
+# 4. Other information:
+# - You can use binary (like 0x1101), hexadecimal (like 0x1a) or normal number format in python.
+# - if the bit width of one variable is limited, use bit mask to assure the correctness of the value.
+# - you can import numpy, math, scipy or other python libraries to help you write the python class.
+# 5. You have the information below to help you check the correctness of DUT:
+# """%(SIGNALTEMP_PLACEHOLDER_1)
 
-STAGE5_SEQ_TXT2 = """
-[IMPORTANT]
-I will repeat the important information: 
-3. Your current task is: write a python class "GoldenDUT". This python class can represent the golden DUT (the ideal one). In your "GoldenDUT", you should do the following things:
-- 3.1. write a method "def __init__(self)". Set the inner states/values of the golden DUT. These values have suffix "_reg". The initial value of these inner values should be digits. You can set the initial values according to information or just "0"s. The "__init__" method has no input parameters except "self".
-- 3.2. write a method "def load(self, signal_vector)". This method is to load the important input signals and the inner values of "GoldenDUT" shall change according to the input signals. There is no clock signal in the input signal vector, every time the "load" method is called, it means a new clock cycle. The initial values "x" should be changed according to the input signals. This method has no return value.
-- 3.3. write a method "def check(self, signal_vector)". This method is to determine the expected output values and compare them with output signals from DUT. It should return True or False only. If return false, please print the error message. Hint: you can use code like "print(f"Scenario: {signal_vector['scenario']}, expected: a={a_reg}, observed a={a_observed}")" to print, suppose "a" is the output signal's name.  
-- 3.4. write other methods you need, they can be called by "load" or "check".
-- 3.5. the input of "load" and "check" is the signal vector. The signal vector is a dictionary, the key is the signal name, the value is the signal value.
-4. Other information:
-- You can use binary (like 0x1101), hexadecimal (like 0x1a) or normal number format in python.
-- if the bit width of one variable is limited, use bit mask to assure the correctness of the value.
-- you can import numpy, math, scipy or other python libraries to help you write the python class.
+# STAGE5_SEQ_TXT2 = """
+# [IMPORTANT]
+# I will repeat the important information: 
+# 3. Your current task is: write a python class "GoldenDUT". This python class can represent the golden DUT (the ideal one). In your "GoldenDUT", you should do the following things:
+# - 3.1. write a method "def __init__(self)". Set the inner states/values of the golden DUT. These values have suffix "_reg". The initial value of these inner values should be digits. You can set the initial values according to information or just "0"s. The "__init__" method has no input parameters except "self".
+# - 3.2. write a method "def load(self, signal_vector)". This method is to load the important input signals and the inner values of "GoldenDUT" shall change according to the input signals. There is no clock signal in the input signal vector, every time the "load" method is called, it means a new clock cycle. The initial values "x" should be changed according to the input signals. This method has no return value.
+# - 3.3. write a method "def check(self, signal_vector)". This method is to determine the expected output values and compare them with output signals from DUT. It should return True or False only. If return false, please print the error message. Hint: you can use code like "print(f"Scenario: {signal_vector['scenario']}, expected: a={a_reg}, observed a={a_observed}")" to print, suppose "a" is the output signal's name.  
+# - 3.4. write other methods you need, they can be called by "load" or "check".
+# - 3.5. the input of "load" and "check" is the signal vector. The signal vector is a dictionary, the key is the signal name, the value is the signal value.
+# 4. Other information:
+# - You can use binary (like 0x1101), hexadecimal (like 0x1a) or normal number format in python.
+# - if the bit width of one variable is limited, use bit mask to assure the correctness of the value.
+# - you can import numpy, math, scipy or other python libraries to help you write the python class.
 
-please only reply the python codes of the python class. no other words.
-"""
+# please only reply the python codes of the python class. no other words.
+# """
 
-STAGE5_SEQ_CODE1 = """
-def check_dut(vectors_in):
-    golden_dut = GoldenDUT()
-    failed_scenarios = []
-    for vector in vectors_in:
-        if vector["check_en"]:
-            check_pass = golden_dut.check(vector)
-            if check_pass:
-                print(f"Passed; vector: {vector}")
-            else:
-                print(f"Failed; vector: {vector}")
-                failed_scenarios.append(vector["scenario"])
-        golden_dut.load(vector)
-    return failed_scenarios
-"""
+# STAGE5_SEQ_CODE1 = """
+# def check_dut(vectors_in):
+#     golden_dut = GoldenDUT()
+#     failed_scenarios = []
+#     for vector in vectors_in:
+#         if vector["check_en"]:
+#             check_pass = golden_dut.check(vector)
+#             if check_pass:
+#                 print(f"Passed; vector: {vector}")
+#             else:
+#                 print(f"Failed; vector: {vector}")
+#                 failed_scenarios.append(vector["scenario"])
+#         golden_dut.load(vector)
+#     return failed_scenarios
+# """
 
-STAGE5_SEQ_CODE2 = """
-def SignalTxt_to_dictlist(txt:str):
-    signals = []
-    lines = txt.strip().split("\\n")
-    for line in lines:
-        signal = {}
-        if line.startswith("[check]"):
-            signal["check_en"] = True
-            line = line[7:]
-        elif line.startswith("scenario"):
-            signal["check_en"] = False
-        else:
-            continue
-        line = line.strip().split(", ")
-        for item in line:
-            if "scenario" in item:
-                item = item.split(": ")
-                signal["scenario"] = item[1].replace(" ", "")
-            else:
-                item = item.split(" = ")
-                key = item[0]
-                value = item[1]
-                if ("x" not in value) and ("X" not in value) and ("z" not in value):
-                    signal[key] = int(value)
-                else:
-                    if ("x" in value) or ("X" in value):
-                        signal[key] = 0 # used to be "x"
-                    else:
-                        signal[key] = 0 # used to be "z"
-        signals.append(signal)
-    return signals
-with open("TBout.txt", "r") as f:
-    txt = f.read()
-vectors_in = SignalTxt_to_dictlist(txt)
-tb_pass = check_dut(vectors_in)
-print(tb_pass)
-"""
-class Stage5_SEQ(BaseScriptStage):
-    """stage 5 (SEQ): generate the pychecker that receive the signals from testbench and check the correctness of DUT"""
-    def __init__(self, prob_data, response_stage1, response_stage3, **gptkwargs) -> None:
-        super().__init__("stage_5", **gptkwargs)
-        self.prob_data = prob_data
-        self.response_stage1 = response_stage1 # currently not used
-        self.response_stage3 = response_stage3
-        self.txt1 = STAGE5_SEQ_TXT1.replace(SIGNALTEMP_PLACEHOLDER_1, utils.signal_dictlist_template(prob_data["header"], exclude_clk=True))
-        self.txt2 = STAGE5_SEQ_TXT2
-        self.code_tail = STAGE5_SEQ_CODE1 + STAGE5_SEQ_CODE2
+# STAGE5_SEQ_CODE2 = """
+# def SignalTxt_to_dictlist(txt:str):
+#     signals = []
+#     lines = txt.strip().split("\\n")
+#     for line in lines:
+#         signal = {}
+#         if line.startswith("[check]"):
+#             signal["check_en"] = True
+#             line = line[7:]
+#         elif line.startswith("scenario"):
+#             signal["check_en"] = False
+#         else:
+#             continue
+#         line = line.strip().split(", ")
+#         for item in line:
+#             if "scenario" in item:
+#                 item = item.split(": ")
+#                 signal["scenario"] = item[1].replace(" ", "")
+#             else:
+#                 item = item.split(" = ")
+#                 key = item[0]
+#                 value = item[1]
+#                 if ("x" not in value) and ("X" not in value) and ("z" not in value):
+#                     signal[key] = int(value)
+#                 else:
+#                     if ("x" in value) or ("X" in value):
+#                         signal[key] = 0 # used to be "x"
+#                     else:
+#                         signal[key] = 0 # used to be "z"
+#         signals.append(signal)
+#     return signals
+# with open("TBout.txt", "r") as f:
+#     txt = f.read()
+# vectors_in = SignalTxt_to_dictlist(txt)
+# tb_pass = check_dut(vectors_in)
+# print(tb_pass)
+# """
+# class Stage5_SEQ(BaseScriptStage):
+#     """stage 5 (SEQ): generate the pychecker that receive the signals from testbench and check the correctness of DUT"""
+#     def __init__(self, prob_data, response_stage1, response_stage3, **gptkwargs) -> None:
+#         super().__init__("stage_5", **gptkwargs)
+#         self.prob_data = prob_data
+#         self.response_stage1 = response_stage1 # currently not used
+#         self.response_stage3 = response_stage3
+#         self.txt1 = STAGE5_SEQ_TXT1.replace(SIGNALTEMP_PLACEHOLDER_1, utils.signal_dictlist_template(prob_data["header"], exclude_clk=True))
+#         self.txt2 = STAGE5_SEQ_TXT2
+#         self.code_tail = STAGE5_SEQ_CODE1 + STAGE5_SEQ_CODE2
 
-    def make_prompt(self):
-        self.prompt = ""
-        # introduction
-        self.add_prompt_line(self.txt1)
-        # problem description
-        self.add_prompt_line("DUT circuit problem description:")
-        self.add_prompt_line(self.prob_data["description"])
-        # DUT header
-        self.add_prompt_line("The header of DUT (note the input and output signals):")
-        self.add_prompt_line(self.prob_data["header"])
-        # python rules
-        self.add_prompt_line("Here is the basic rules in python for the module. It was generated in previous stage. You can use it as a reference, but you should write your own python script. This is just for your better understanding. You can use them or not in your python class")
-        self.add_prompt_line(self.response_stage3)
-        # end
-        self.add_prompt_line(self.txt2)
+#     def make_prompt(self):
+#         self.prompt = ""
+#         # introduction
+#         self.add_prompt_line(self.txt1)
+#         # problem description
+#         self.add_prompt_line("DUT circuit problem description:")
+#         self.add_prompt_line(self.prob_data["description"])
+#         # DUT header
+#         self.add_prompt_line("The header of DUT (note the input and output signals):")
+#         self.add_prompt_line(self.prob_data["header"])
+#         # python rules
+#         self.add_prompt_line("Here is the basic rules in python for the module. It was generated in previous stage. You can use it as a reference, but you should write your own python script. This is just for your better understanding. You can use them or not in your python class")
+#         self.add_prompt_line(self.response_stage3)
+#         # end
+#         self.add_prompt_line(self.txt2)
 
-    def postprocessing(self):
-        # python codes
-        self.response = self.extract_code(self.response, "python")[-1]
-        self.Pychecker_code_out = self.response + self.code_tail
+#     def postprocessing(self):
+#         # python codes
+#         self.response = self.extract_code(self.response, "python")[-1]
+#         self.Pychecker_code_out = self.response + self.code_tail
 
 
 # class Stage5b_SEQ(BaseScriptStage):

@@ -3,13 +3,14 @@ run:
 save: 
     en: True
     pub: 
-        prefix: demo_full
+        prefix: demo_CMB
         subdir: test
 gpt: 
-    model: 4om
+    model: 4t
 autoline: 
     probset: 
         path: data/HDLBits/HDLBits_data.jsonl
         mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
+        only: ["conditional"]
     promptscript: pychecker
-    timeout: 5
+    timeout: 40

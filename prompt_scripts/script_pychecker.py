@@ -8,8 +8,8 @@ LastEdited  :   2024/5/3 22:55:30
 import json
 from . import utils
 from .base_script import BaseScript, BaseScriptStage
-from .script_pychecker_CMB import Stage4 as Stage4_CMB, Stage5 as Stage5_CMB
-from .script_pychecker_SEQ import Stage4_SEQ, Stage4b_SEQ, Stage5_SEQ
+from .script_pychecker_CMB import Stage4 as Stage4_CMB#, Stage5 as Stage5_CMB
+from .script_pychecker_SEQ import Stage4_SEQ, Stage4b_SEQ#, Stage5_SEQ
 from .public_stages import StageChecklist as StageChecklist_old
 
 class WF_pychecker(BaseScript):
@@ -32,9 +32,9 @@ class WF_pychecker(BaseScript):
         # stage2
         self.stage2 = Stage2(self.prob_data, self.stage1.response, **self.gptkwargs)
         self.stage_operation(self.stage2)
-        # stage3
-        self.stage3 = Stage3(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
-        self.stage_operation(self.stage3)
+        # # stage3
+        # self.stage3 = Stage3(self.prob_data, self.stage1.response, self.stage2.response, **self.gptkwargs)
+        # self.stage_operation(self.stage3)
         # split into CMB and SEQ
         if self.circuit_type == "CMB":
             self.make_and_run_stages_CMB()
@@ -50,9 +50,9 @@ class WF_pychecker(BaseScript):
         self.stage_operation(self.stagecheck)
         # we perform pychecker_CMB_TB_standardization after stagechecklist because there is no stage 4b
         # self.TB_code = utils.pychecker_CMB_TB_standardization(self.TB_code, self.prob_data["header"])
-        # stage5
-        self.stage5 = Stage5_CMB(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-        self.stage_operation(self.stage5)
+        # # stage5
+        # self.stage5 = Stage5_CMB(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        # self.stage_operation(self.stage5)
 
     def make_and_run_stages_SEQ(self):
         self.py_debug_focus = True # extract core part of the code when debugging. CMB does not need this because CMB's result is already good and time is limited. But this would be easy to do in the future.
@@ -65,9 +65,9 @@ class WF_pychecker(BaseScript):
         # stage4b
         self.stage4b = Stage4b_SEQ(self.prob_data, self.TB_code, **self.gptkwargs)
         self.stage_operation(self.stage4b)
-        # stage5
-        self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-        self.stage_operation(self.stage5) 
+        # # stage5
+        # self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        # self.stage_operation(self.stage5) 
 
     def make_and_run_reboot_stages(self, debug_dir):
         if self.circuit_type == "CMB":
@@ -85,10 +85,10 @@ class WF_pychecker(BaseScript):
             self.stage_operation(self.stagecheck, debug_dir, reboot_en=True)
             # pychecker_CMB_TB_standardization
             # self.TB_code = utils.pychecker_CMB_TB_standardization(self.TB_code, self.prob_data["header"])
-        elif self.reboot_mode == "PY":
-            # stage5
-            self.stage5 = Stage5_CMB(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-            self.stage_operation(self.stage5, debug_dir, reboot_en=True)
+        # elif self.reboot_mode == "PY":
+        #     # # stage5
+        #     # self.stage5 = Stage5_CMB(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        #     self.stage_operation(self.stage5, debug_dir, reboot_en=True)
         else:
             raise ValueError("invalid reboot_mode in WF_pychecker script (circuit type: CMB)")
 
@@ -103,10 +103,10 @@ class WF_pychecker(BaseScript):
             # stage4b
             self.stage4b = Stage4b_SEQ(self.prob_data, self.TB_code, **self.gptkwargs)
             self.stage_operation(self.stage4b, debug_dir, reboot_en=True)
-        elif self.reboot_mode == "PY":
-            # stage5
-            self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
-            self.stage_operation(self.stage5, debug_dir, reboot_en=True)
+        # elif self.reboot_mode == "PY":
+        #     # stage5
+        #     self.stage5 = Stage5_SEQ(self.prob_data, self.stage1.response, self.stage3.response, **self.gptkwargs)
+        #     self.stage_operation(self.stage5, debug_dir, reboot_en=True)
         else:
             raise ValueError("invalid reboot_mode in WF_pychecker script (circuit type: SEQ)")
 

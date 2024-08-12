@@ -84,43 +84,43 @@ class Stage2(BaseScriptStage):
         self.add_prompt_line(self.txt2)
 
 
-STAGE3_TXT1="""1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The information we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
-2. you are in section 3; in this section, please give me the rules of an ideal DUT. you should give these rules in python. (For convenience, you can use binary or hexadecimal format in python, i.e. 0b0010 and 0x1a). Later we will use these ideal rules to generate expected values in each test scenario. currently you must only generate the rules. the input of these rules should be related to the test vectors from test scenario. the rule should give the expected values under test vectors. 
-3. your information is:"""
+# STAGE3_TXT1="""1. Your task is to write a verilog testbench for an verilog RTL module code (we call it as "DUT", device under test). The information we have is the problem description that guides student to write the RTL code (DUT) and the header of the "DUT". Our target is to generate the verilog testbench for the DUT. This testbench can check if the DUT in verilog satisfies all technical requirements of the problem description.
+# 2. you are in section 3; in this section, please give me the rules of an ideal DUT. you should give these rules in python. (For convenience, you can use binary or hexadecimal format in python, i.e. 0b0010 and 0x1a). Later we will use these ideal rules to generate expected values in each test scenario. currently you must only generate the rules. the input of these rules should be related to the test vectors from test scenario. the rule should give the expected values under test vectors. 
+# 3. your information is:"""
 
-class Stage3(BaseScriptStage):
-    def __init__(self, prob_data, response_stage1, response_stage2, **gptkwargs) -> None:
-        super().__init__("stage_3", **gptkwargs)
-        self.prob_data = prob_data
-        self.response_stage1 = response_stage1
-        self.response_stage2 = response_stage2
-        self.txt1 = STAGE3_TXT1
+# class Stage3(BaseScriptStage):
+#     def __init__(self, prob_data, response_stage1, response_stage2, **gptkwargs) -> None:
+#         super().__init__("stage_3", **gptkwargs)
+#         self.prob_data = prob_data
+#         self.response_stage1 = response_stage1
+#         self.response_stage2 = response_stage2
+#         self.txt1 = STAGE3_TXT1
 
-    def make_prompt(self):
-        self.prompt = ""
-        self.add_prompt_line(self.txt1)
-        # problem description
-        self.add_prompt_line("RTL circuit problem description:")
-        self.add_prompt_line(self.prob_data["description"])
-        # specification
-        self.add_prompt_line("RTL testbench specification:")
-        self.add_prompt_line(self.response_stage1)
-        # DUT header
-        self.add_prompt_line("DUT header:")
-        self.add_prompt_line(self.prob_data["header"])
-        # test scenarios
-        self.add_prompt_line("test scenario: (please note the test vectors below, it will help you determine the input parameters of the rules)")
-        self.add_prompt_line(self.response_stage2)
-        # end
-        self.add_prompt_line("your response should only contain python code. For convenience, you can use binary or hexadecimal format in python. For example: 0b0010 and 0x1a")
+#     def make_prompt(self):
+#         self.prompt = ""
+#         self.add_prompt_line(self.txt1)
+#         # problem description
+#         self.add_prompt_line("RTL circuit problem description:")
+#         self.add_prompt_line(self.prob_data["description"])
+#         # specification
+#         self.add_prompt_line("RTL testbench specification:")
+#         self.add_prompt_line(self.response_stage1)
+#         # DUT header
+#         self.add_prompt_line("DUT header:")
+#         self.add_prompt_line(self.prob_data["header"])
+#         # test scenarios
+#         self.add_prompt_line("test scenario: (please note the test vectors below, it will help you determine the input parameters of the rules)")
+#         self.add_prompt_line(self.response_stage2)
+#         # end
+#         self.add_prompt_line("your response should only contain python code. For convenience, you can use binary or hexadecimal format in python. For example: 0b0010 and 0x1a")
 
-    def postprocessing(self):
-        # extract python codes; codes may be more than one
-        python_codes = self.extract_code(self.response, "python")
-        response = ""
-        for python_code in python_codes:
-            response += python_code + "\n"
-        self.response = response
+#     def postprocessing(self):
+#         # extract python codes; codes may be more than one
+#         python_codes = self.extract_code(self.response, "python")
+#         response = ""
+#         for python_code in python_codes:
+#             response += python_code + "\n"
+#         self.response = response
 
         
 

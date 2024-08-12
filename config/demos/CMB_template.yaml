@@ -6,7 +6,7 @@ save:
         prefix: demo_CMB
         subdir: test
 gpt: 
-    model: 4t
+    model: 4om
 autoline: 
     probset: 
         path: data/HDLBits/HDLBits_data.jsonl
