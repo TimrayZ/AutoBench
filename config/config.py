@@ -32,7 +32,8 @@ GPT_MODELS = {
     "3.5" : "gpt-3.5-turbo-0125",
     "4" : "gpt-4-0125-preview",
     "3.5old" : "gpt-3.5-turbo-1106",
-    "4old" : "gpt-4-1106-preview"
+    "4old" : "gpt-4-1106-preview",
+    "4om":"gpt-4o-mini-2024-07-18"
 }
 
 CLAUDE_MODELS = {
@@ -55,7 +56,8 @@ LLM_MODEL_REDIRECTION = {
     '4.0' : GPT_MODELS["4"],
     4 : GPT_MODELS["4"],
     "3.5old" : GPT_MODELS["3.5old"],
-    "4old" : GPT_MODELS["4old"]
+    "4old" : GPT_MODELS["4old"],
+    "4om": GPT_MODELS["4om"]
 }
 
 LLM_MODEL_REDIRECTION = {**LLM_MODEL_REDIRECTION, **CLAUDE_MODELS}

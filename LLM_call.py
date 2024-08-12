@@ -36,7 +36,6 @@ PRICING_MODELS = {
     'gpt-4-0613-preview': [0.01, 0.03],
     # gpt 4o
     'gpt-4o': [0.005, 0.015],
-    'gpt-4o-2024-08-06': [0.0025, 0.01],
     'gpt-4o-2024-05-13': [0.005, 0.015],
     'gpt-4o-mini-2024-07-18': [0.00015, 0.0006],
     # gpt 4 (old)
@@ -253,6 +252,9 @@ def run_like_a_chatgpt(config):
 def enter_api_key(api_key_path, provider="openai"):
     if provider == "openai":
         key = ls.load_json_dict(api_key_path)["OPENAI_API_KEY"]
+        api_key_env = os.getenv("OPENAI_API_KEY")
+        if api_key_env is not None:
+            key = api_key_env
         client = OpenAI(api_key=key)
     elif provider == "anthropic":
         key = ls.load_json_dict(api_key_path)["ANTHROPIC_API_KEY"]

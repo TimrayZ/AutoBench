@@ -1,21 +1,16 @@
 """
-Description :   This file is related to iverilog calling. Some codes are modified from autosim.py v0.2 by Rain Bellinsky.
-Author      :   Ruidi Qiu (r.qiu@tum.de)
-Time        :   2023/12/9 23:22:51
-LastEdited  :   2024/4/29 12:51:22
+Description :   This file is related to iverilog calling. Originally adapted from the iverilog_call.py in AutoBench, credit to Ruidi Qiu.
+Author      :   Zhuorui Zhao (zhuorui.zhao@tum.de)
+Time        :   2024/08/05 16:11:31
+LastEdited  :   2024/08/05 16:11:31
 """
 
 import os
 import sys
 from utils.utils import run_in_dir
-from subproc import subproc_call
+from utils.utils import subproc_call
 
-if os.name == 'nt':
-    IC = '\\' # IC: Iterval Character
-else:
-    IC = '/'
-
-RUN_DIR = "ipynb_demo/verilog_test/"
+RUN_DIR = "demo_test"
 
 def iverilog_call(dir, silent = False, timeout = 120):
     """
@@ -43,21 +38,21 @@ def iverilog_call(dir, silent = False, timeout = 120):
         if not silent:
             print(*args, **kwargs)
 
-    if not dir.endswith(IC):
-        dir += IC
+    if not dir.endswith("/"):
+        dir += "/"
     vlist_data = vList_gen(dir)["data"]
     vlist_str = "".join(vlist_data).replace("\n", " ") # eg: saves/1204~1210/test/Mux256to1v/Mux256to1v.v saves/1204~1210/test/Mux256to1v/Mux256to1v_tb.v
     # vvp_filename = "%s.vvp"%(task_id)
     vvp_filename = "run.vvp"
     # cmd1 = "iverilog -g2012 -o %s %s"%(vvp_filename, vlist_str) # used to be vvp_path
-    cmd1 = "~/bin/bin/iverilog -g2012 -o %s %s"%(vvp_filename, vlist_str) # used to be vvp_path
+    cmd1 = "~/iverilog/bin/iverilog -g2012 -o %s %s"%(vvp_filename, vlist_str) # used to be vvp_path
     s_print(cmd1)
     with run_in_dir(dir):
         run1_info = subproc_call(cmd1, timeout) # {"out": out_reg, "err": err_reg, "haserror": error_exist}
     if run1_info["haserror"]:
         s_print("iverilog compiling failed")
         return [False, cmd1, run1_info, None, None, run1_info["err"]]
-    cmd2 = "~/bin/bin/vvp %s"%(vvp_filename) # used to be vvp_path
+    cmd2 = "~/iverilog/bin/vvp %s"%(vvp_filename) # used to be vvp_path
     s_print(cmd2)
     with run_in_dir(dir):
         run2_info = subproc_call(cmd2, timeout)
@@ -142,12 +137,10 @@ def main(dir=None):
     #     task_id = input("Please enter task_id:\n>> ")
     msg = iverilog_call(dir)
     save_iv_runinfo(msg, dir)
-    print(msg)
 
 if __name__ == '__main__':
     arg = len(sys.argv)
     if arg == 2:
         main(sys.argv[1])
     else:
-        dir_path = RUN_DIR if RUN_DIR.endswith(IC) else RUN_DIR + IC
-        main(RUN_DIR)
+        raise Exception("Invalid argument number! Please enter the directory name.")

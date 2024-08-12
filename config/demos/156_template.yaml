@@ -6,10 +6,10 @@ save:
         prefix: demo_full
         subdir: test
 gpt: 
-    model: 4t
+    model: 4om
 autoline: 
     probset: 
         path: data/HDLBits/HDLBits_data.jsonl
         mutant_path: data/HDLBits/HDLBits_data_mutants.jsonl
     promptscript: pychecker
-    timeout: 40
+    timeout: 5
